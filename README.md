@@ -30,7 +30,7 @@ The ordinary buildings change with the seed.
 | [docs/player-guide.md](docs/player-guide.md) | **How to play**, from the first night to after the ending: water, light and noise, blasters and chargers, havens, infection, hordes, special infected, the district loop, bosses, the Bench, Plasma Blades, the Black Start, Sever vs Bind, and every recipe |
 | [docs/install-and-server.md](docs/install-and-server.md) | **Installing and hosting**: Prism or the Modrinth app, memory, Open to LAN and e4mc, dedicated servers (mrpack-install or manual), configs, Chunky pregeneration and the atlas pass, the full admin command reference, game rules, troubleshooting |
 | [CREDITS.md](CREDITS.md) | Every bundled asset and library and its licence, and the mods the pack references |
-| [docs/versions.md](docs/versions.md) | **Version numbers**: what makes an update major, medium or minor, and the old rc labels mapped to the new numbers |
+| [docs/versions.md](docs/versions.md) | **Version numbers**: semantic versioning (major, minor, patch), and the pre-1.0.0 history |
 | [docs/endgame-design.md](docs/endgame-design.md) and [docs/specs/](docs/specs/) | The design and the per-system specs, with every number and the file it lives in |
 | `docs/phase*-report.md` | Milestone playtest reports and known issues |
 

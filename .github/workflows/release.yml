@@ -1,0 +1,54 @@
+name: Release
+
+# Builds the pack for a vX.Y.Z tag and attaches Ashfall-X.Y.Z.mrpack to the GitHub release, creating the release
+# (notes from the docs/versions.md row) or replacing the file on an existing one. Runs on a tag pushed by hand, or
+# is called by auto-version.yml after a merged pull request (a tag pushed by a workflow starts no other workflow).
+on:
+  push:
+    tags: ['v*.*.*']
+  workflow_call:
+    inputs:
+      tag:
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      TAG: ${{ inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 25
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Check the tag matches gradle.properties
+        run: |
+          version="$(sed -n 's/^version=//p' gradle.properties)"
+          if [ "v$version" != "$TAG" ]; then
+            echo "Tag $TAG does not match version=$version in gradle.properties"; exit 1
+          fi
+          echo "VERSION=$version" >> "$GITHUB_ENV"
+      - name: Build
+        run: ./gradlew build
+      - name: Pack
+        run: python3 -I tools/build_mrpack.py
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          pack="dist/Ashfall-$VERSION.mrpack"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$pack" --clobber
+          else
+            row="$(grep -m1 "^| $VERSION |" docs/versions.md | awk -F'|' '{print $4}' | sed 's/^ *//; s/ *$//')"
+            gh release create "$TAG" "$pack" --title "$TAG" --notes "${row:-Ashfall $VERSION}"
+          fi
