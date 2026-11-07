@@ -1,0 +1,41 @@
+# 1.0.0-rc1 probe on a throwaway world (level-name world-rc-hull, seed ashfall-rc): does a Surge wave reach the
+# Uplink in a FRESH hull? In rc-arc the Uplink took no zombie damage for about 3 minutes; in rc-recheck, on the
+# same hull after those waves had been through it, 24 zombies stood at the socket 40 s after the first wave.
+until Done \(
+cmd forceload add 2220 -180 2380 -20
+wait 40
+cmd ashfall site place fixed:ashfall:wreck_hull
+wait 5
+cmd ashfall finale open
+wait 5
+cmd ashfall finale status
+cmd time set 228000
+cmd ashfall finale unattended 4
+cmd ashfall finale start
+until Finale: wave of
+wait 40
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..4]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..8]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..16]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..32]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale]
+cmd execute positioned 2304 65 -101 as @e[tag=ashfall_finale,sort=nearest,limit=12] run data get entity @s Pos
+cmd ashfall finale status
+wait 60
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..4]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..8]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..16]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale]
+cmd execute positioned 2304 65 -101 as @e[tag=ashfall_finale,sort=nearest,limit=12] run data get entity @s Pos
+cmd ashfall finale status
+wait 60
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..4]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..16]
+cmd execute positioned 2304 65 -101 as @e[tag=ashfall_finale,sort=nearest,limit=12] run data get entity @s Pos
+cmd ashfall finale status
+cmd spark tps
+cmd ashfall finale abort
+cmd ashfall finale unattended off
+cmd kill @e[tag=ashfall_finale]
+cmd forceload remove all
+wait 3

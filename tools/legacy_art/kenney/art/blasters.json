@@ -1,0 +1,74 @@
+{
+	"_doc": "Ashfall blaster id -> Kenney Blaster Kit (CC0) model, energy accent, Minecraft model length (pixels) and icon framing. Read by tools/art/build_blasters.py. Optional per blaster: grip [zfrac, yfrac] override (0 = muzzle / bottom), res (voxels per pixel), colors (k-means count), icon {yaw, pitch, roll}.",
+	"kit": ".cache/assets/blaster-kit/Models/GLB format",
+	"module": "modules/arms/src/main/resources/assets/ashfall",
+	"blasters": {
+		"spark_pistol": {
+			"name": "Spark Blaster",
+			"kenney": "blaster-j",
+			"accent": "#ff5a3c",
+			"length": 7.0,
+			"icon": {
+				"roll": 8
+			},
+			"res": 3
+		},
+		"volt_sidearm": {
+			"name": "Volt Blaster",
+			"kenney": "blaster-a",
+			"accent": "#ffb33c",
+			"length": 7.5,
+			"icon": {
+				"roll": 8
+			},
+			"res": 3
+		},
+		"pulse_carbine": {
+			"name": "Pulse Blaster Carbine",
+			"kenney": "blaster-d",
+			"accent": "#3cc8ff",
+			"length": 12.0,
+			"icon": {
+				"roll": 24
+			}
+		},
+		"ion_rifle": {
+			"name": "Ion Blaster Rifle",
+			"kenney": "blaster-n",
+			"accent": "#5aff8c",
+			"length": 14.0,
+			"icon": {
+				"roll": 24
+			}
+		},
+		"arc_magnum": {
+			"name": "Arc Blaster Magnum",
+			"kenney": "blaster-l",
+			"accent": "#ff3cb4",
+			"length": 9.0,
+			"icon": {
+				"roll": 10
+			},
+			"res": 3
+		},
+		"lancer_longrifle": {
+			"name": "Lancer Blaster Rifle",
+			"kenney": "blaster-f",
+			"accent": "#b45aff",
+			"length": 16.0,
+			"icon": {
+				"roll": 32
+			},
+			"threshold": 0.2
+		},
+		"storm_repeater": {
+			"name": "Storm Blaster Repeater",
+			"kenney": "blaster-q",
+			"accent": "#ff2d2d",
+			"length": 13.5,
+			"icon": {
+				"roll": 18
+			}
+		}
+	}
+}

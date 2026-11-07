@@ -1,0 +1,233 @@
+{
+	"entity.crawler.ambient": {
+		"subtitle": "subtitles.ashfall.crawler.ambient",
+		"sounds": [
+			{
+				"name": "minecraft:entity.zombie.ambient",
+				"type": "event",
+				"pitch": 1.4
+			}
+		]
+	},
+	"entity.crawler.hurt": {
+		"subtitle": "subtitles.ashfall.crawler.hurt",
+		"sounds": [
+			{
+				"name": "minecraft:entity.zombie.hurt",
+				"type": "event",
+				"pitch": 1.4
+			}
+		]
+	},
+	"entity.crawler.death": {
+		"subtitle": "subtitles.ashfall.crawler.death",
+		"sounds": [
+			{
+				"name": "minecraft:entity.zombie.death",
+				"type": "event",
+				"pitch": 1.4
+			}
+		]
+	},
+	"entity.bloated.ambient": {
+		"subtitle": "subtitles.ashfall.bloated.ambient",
+		"sounds": [
+			{
+				"name": "minecraft:entity.zombie.ambient",
+				"type": "event",
+				"pitch": 0.6
+			}
+		]
+	},
+	"entity.bloated.hurt": {
+		"subtitle": "subtitles.ashfall.bloated.hurt",
+		"sounds": [
+			{
+				"name": "minecraft:entity.zombie.hurt",
+				"type": "event",
+				"pitch": 0.6
+			}
+		]
+	},
+	"entity.bloated.death": {
+		"subtitle": "subtitles.ashfall.bloated.death",
+		"sounds": [
+			{
+				"name": "minecraft:entity.zombie.death",
+				"type": "event",
+				"pitch": 0.6
+			}
+		]
+	},
+	"entity.screamer.ambient": {
+		"subtitle": "subtitles.ashfall.screamer.ambient",
+		"sounds": [
+			{
+				"name": "minecraft:entity.zombie.ambient",
+				"type": "event",
+				"pitch": 1.6
+			}
+		]
+	},
+	"entity.screamer.hurt": {
+		"subtitle": "subtitles.ashfall.screamer.hurt",
+		"sounds": [
+			{
+				"name": "minecraft:entity.zombie.hurt",
+				"type": "event",
+				"pitch": 1.6
+			}
+		]
+	},
+	"entity.screamer.death": {
+		"subtitle": "subtitles.ashfall.screamer.death",
+		"sounds": [
+			{
+				"name": "minecraft:entity.zombie.death",
+				"type": "event",
+				"pitch": 1.6
+			}
+		]
+	},
+	"entity.spitter.ambient": {
+		"subtitle": "subtitles.ashfall.spitter.ambient",
+		"sounds": [
+			{
+				"name": "minecraft:entity.husk.ambient",
+				"type": "event",
+				"pitch": 1.2
+			}
+		]
+	},
+	"entity.spitter.hurt": {
+		"subtitle": "subtitles.ashfall.spitter.hurt",
+		"sounds": [
+			{
+				"name": "minecraft:entity.husk.hurt",
+				"type": "event",
+				"pitch": 1.2
+			}
+		]
+	},
+	"entity.spitter.death": {
+		"subtitle": "subtitles.ashfall.spitter.death",
+		"sounds": [
+			{
+				"name": "minecraft:entity.husk.death",
+				"type": "event",
+				"pitch": 1.2
+			}
+		]
+	},
+	"entity.brute.ambient": {
+		"subtitle": "subtitles.ashfall.brute.ambient",
+		"sounds": [
+			{
+				"name": "minecraft:entity.zombie.ambient",
+				"type": "event",
+				"pitch": 0.5
+			}
+		]
+	},
+	"entity.brute.hurt": {
+		"subtitle": "subtitles.ashfall.brute.hurt",
+		"sounds": [
+			{
+				"name": "minecraft:entity.zombie.hurt",
+				"type": "event",
+				"pitch": 0.5
+			}
+		]
+	},
+	"entity.brute.death": {
+		"subtitle": "subtitles.ashfall.brute.death",
+		"sounds": [
+			{
+				"name": "minecraft:entity.zombie.death",
+				"type": "event",
+				"pitch": 0.5
+			}
+		]
+	},
+	"entity.stalker.ambient": {
+		"subtitle": "subtitles.ashfall.stalker.ambient",
+		"sounds": [
+			{
+				"name": "minecraft:entity.husk.ambient",
+				"type": "event",
+				"pitch": 0.8
+			}
+		]
+	},
+	"entity.stalker.hurt": {
+		"subtitle": "subtitles.ashfall.stalker.hurt",
+		"sounds": [
+			{
+				"name": "minecraft:entity.husk.hurt",
+				"type": "event",
+				"pitch": 0.8
+			}
+		]
+	},
+	"entity.stalker.death": {
+		"subtitle": "subtitles.ashfall.stalker.death",
+		"sounds": [
+			{
+				"name": "minecraft:entity.husk.death",
+				"type": "event",
+				"pitch": 0.8
+			}
+		]
+	},
+	"entity.screamer.scream": {
+		"subtitle": "subtitles.ashfall.screamer.scream",
+		"sounds": [
+			{
+				"name": "minecraft:entity.ghast.scream",
+				"type": "event",
+				"pitch": 0.7,
+				"volume": 1.0
+			},
+			{
+				"name": "minecraft:entity.zombie_villager.ambient",
+				"type": "event",
+				"pitch": 1.8
+			}
+		]
+	},
+	"entity.spitter.spit": {
+		"subtitle": "subtitles.ashfall.spitter.spit",
+		"sounds": [
+			{
+				"name": "minecraft:entity.llama.spit",
+				"type": "event",
+				"pitch": 0.7
+			}
+		]
+	},
+	"entity.bloated.burst": {
+		"subtitle": "subtitles.ashfall.bloated.burst",
+		"sounds": [
+			{
+				"name": "minecraft:entity.slime.squish",
+				"type": "event",
+				"pitch": 0.5
+			},
+			{
+				"name": "minecraft:entity.puffer_fish.blow_out",
+				"type": "event",
+				"pitch": 0.5
+			}
+		]
+	},
+	"entity.stalker.ambush": {
+		"subtitle": "subtitles.ashfall.stalker.ambush",
+		"sounds": [
+			{
+				"name": "minecraft:entity.cat.hiss",
+				"type": "event",
+				"pitch": 0.5
+			}
+		]
+	}
+}

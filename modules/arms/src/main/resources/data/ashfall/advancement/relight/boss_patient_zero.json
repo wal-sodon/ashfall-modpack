@@ -1,0 +1,28 @@
+{
+	"parent": "ashfall:relight/root",
+	"criteria": {
+		"defeated": {
+			"trigger": "ashfall:boss_defeated",
+			"conditions": {
+				"boss": "ashfall:patient_zero"
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:antibiotics"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.boss_patient_zero.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.boss_patient_zero.description"
+		},
+		"frame": "goal"
+	},
+	"requirements": [
+		[
+			"defeated"
+		]
+	]
+}

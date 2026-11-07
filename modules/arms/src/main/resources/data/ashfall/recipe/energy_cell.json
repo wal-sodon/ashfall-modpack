@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"key": {
+		"B": "ashfall:battery",
+		"C": "ashfall:wire_spool"
+	},
+	"pattern": [
+		" C ",
+		"CBC",
+		" C "
+	],
+	"result": {
+		"id": "ashfall:energy_cell",
+		"components": {
+			"team_reborn_energy:energy": 240
+		}
+	}
+}

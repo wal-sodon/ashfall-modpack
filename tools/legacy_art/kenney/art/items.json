@@ -1,0 +1,936 @@
+{
+	"_doc": "Ashfall item icons from CC0 3D models (provenance and licences: sources.json). Read by tools/art/build_icons.py -> tools/art/blender/render_item.py. Per item: module (arms|director|salvage); parts [{file (relative to .cache/assets), size (longest side), stretch [sx,sy,sz], rot [deg X,Y,Z], loc, rules?, default?}]; materials {name: spec} (see render_item.py); rules [{<match keys>, use}] (first match wins); default (material for unmatched faces, else the original stays); camera {yaw, pitch, roll, forward, margin, exposure}. Match keys: mat (original material name or list); near (#hex or list) + tol (0-255 RGB distance) against the colour the face samples from its original texture or base colour; hue [deg0,deg1]; sat / lum [lo,hi]; fx / fy / fz [lo,hi] (face centre in the part's bbox, 0..1, Blender axes, Z up); diag [a,b,c,d] (a*fx + b*fy + c*fz >= d). use: material name or DELETE.",
+	"camera": {
+		"yaw": 30,
+		"pitch": 24
+	},
+	"samples": 64,
+	"items": {
+		"energy_cell": {
+			"module": "arms",
+			"parts": [
+				{
+					"file": "poly-pizza/scifi-power-cell_dipper98.glb",
+					"rot": [
+						0,
+						0,
+						-90
+					]
+				}
+			],
+			"materials": {
+				"housing": {
+					"color": "#4a4f57",
+					"metal": 0.75,
+					"rough": 0.38
+				},
+				"glow": {
+					"color": "#3cdcff",
+					"emit": "#3cdcff",
+					"emit_strength": 2.5,
+					"rough": 0.2
+				}
+			},
+			"rules": [
+				{
+					"mat": "Ground",
+					"use": "housing"
+				},
+				{
+					"mat": "Blue",
+					"use": "glow"
+				}
+			],
+			"camera": {
+				"yaw": 35,
+				"pitch": 20
+			}
+		},
+		"scrap_electronics": {
+			"module": "arms",
+			"parts": [
+				{
+					"file": "poly-pizza/electronics-board_ipoly3d.glb"
+				}
+			],
+			"materials": {
+				"pcb": {
+					"color": "#2f5a2a",
+					"color2": "#1f3519",
+					"noise": 5,
+					"noise_ramp": [
+						0.45,
+						0.65
+					],
+					"rough": 0.6
+				},
+				"burnt": {
+					"color": "#1e1c16",
+					"color2": "#3a3220",
+					"noise": 9,
+					"rough": 0.8
+				},
+				"gold": {
+					"color": "#b8913c",
+					"metal": 0.8,
+					"rough": 0.35
+				},
+				"chip": {
+					"color": "#18181b",
+					"rough": 0.45
+				},
+				"solder": {
+					"color": "#a8adb3",
+					"metal": 0.8,
+					"rough": 0.3
+				}
+			},
+			"rules": [
+				{
+					"diag": [
+						1,
+						0,
+						1,
+						1.72
+					],
+					"use": "DELETE"
+				},
+				{
+					"mat": "Green",
+					"diag": [
+						1,
+						0,
+						1,
+						1.42
+					],
+					"use": "burnt"
+				},
+				{
+					"mat": "Green",
+					"use": "pcb"
+				},
+				{
+					"mat": "conduct",
+					"use": "gold"
+				},
+				{
+					"mat": "black",
+					"use": "chip"
+				},
+				{
+					"mat": "Material.003",
+					"use": "solder"
+				}
+			],
+			"camera": {
+				"yaw": 20,
+				"pitch": 30,
+				"roll": 25
+			}
+		},
+		"weapon_parts": {
+			"module": "arms",
+			"parts": [
+				{
+					"file": "poly-pizza/gear_quaternius.glb",
+					"size": 1.0,
+					"rot": [
+						0,
+						0,
+						90
+					],
+					"loc": [
+						0.05,
+						0.3,
+						0.2
+					]
+				},
+				{
+					"file": "poly-pizza/spring_quaternius.glb",
+					"size": 0.5,
+					"loc": [
+						0.6,
+						-0.35,
+						-0.3
+					]
+				},
+				{
+					"file": "blaster-kit/Models/GLB format/clip-small.glb",
+					"size": 0.62,
+					"rot": [
+						0,
+						80,
+						0
+					],
+					"loc": [
+						-0.35,
+						-0.45,
+						-0.32
+					]
+				}
+			],
+			"materials": {
+				"steel": {
+					"color": "#9aa0a8",
+					"metal": 0.85,
+					"rough": 0.35
+				},
+				"spring": {
+					"color": "#c0c6ce",
+					"metal": 0.85,
+					"rough": 0.25
+				},
+				"gunmetal": {
+					"tex_lum": true,
+					"color": "#666c75",
+					"metal": 0.5,
+					"rough": 0.4
+				},
+				"dark": {
+					"color": "#2c3036",
+					"metal": 0.7,
+					"rough": 0.45
+				}
+			},
+			"rules": [
+				{
+					"mat": "Orange",
+					"use": "steel"
+				},
+				{
+					"mat": "Metal",
+					"use": "spring"
+				},
+				{
+					"mat": "Red",
+					"use": "DELETE"
+				},
+				{
+					"near": [
+						"#ffd185",
+						"#ffe29c"
+					],
+					"tol": 50,
+					"use": "dark"
+				},
+				{
+					"mat": "colormap",
+					"use": "gunmetal"
+				}
+			]
+		},
+		"focusing_lens": {
+			"module": "arms",
+			"parts": [
+				{
+					"file": "poly-pizza/mirror_milkandbanana.glb",
+					"rot": [
+						0,
+						0,
+						180
+					]
+				}
+			],
+			"materials": {
+				"frame": {
+					"color": "#b8975a",
+					"metal": 0.85,
+					"rough": 0.3
+				},
+				"glass": {
+					"color": "#7ab8de",
+					"emit": "#9fd8ff",
+					"emit_strength": 0.35,
+					"rough": 0.05,
+					"coat": 1.0
+				}
+			},
+			"rules": [
+				{
+					"fz": [
+						0,
+						0.47
+					],
+					"use": "DELETE"
+				},
+				{
+					"near": "#bfebff",
+					"tol": 20,
+					"use": "glass"
+				}
+			],
+			"default": "frame",
+			"camera": {
+				"yaw": 25,
+				"pitch": 15,
+				"roll": -20
+			}
+		},
+		"resonance_crystal": {
+			"module": "arms",
+			"parts": [
+				{
+					"file": "poly-pizza/crystal-cluster_ipoly3d.glb"
+				}
+			],
+			"materials": {
+				"crystal": {
+					"tex_lum": true,
+					"color": "#9a4dff",
+					"tex_gain": 1.8,
+					"emit": "#b45aff",
+					"emit_strength": 0.9,
+					"rough": 0.15,
+					"coat": 1.0
+				}
+			},
+			"default": "crystal"
+		},
+		"battery": {
+			"module": "arms",
+			"parts": [
+				{
+					"file": "poly-pizza/battery-aa_hat_my_guy.glb",
+					"rot": [
+						0,
+						-35,
+						0
+					]
+				}
+			],
+			"materials": {
+				"terminal": {
+					"color": "#c4c8cc",
+					"metal": 0.9,
+					"rough": 0.25
+				},
+				"copper": {
+					"color": "#c8641a",
+					"metal": 0.4,
+					"rough": 0.35
+				},
+				"black": {
+					"color": "#18181a",
+					"metal": 0.3,
+					"rough": 0.35
+				}
+			},
+			"rules": [
+				{
+					"mat": "Material.003",
+					"use": "terminal"
+				},
+				{
+					"mat": "Material.001",
+					"use": "copper"
+				},
+				{
+					"mat": "Material.002",
+					"use": "black"
+				}
+			]
+		},
+		"cell_pack_small": {
+			"module": "arms",
+			"parts": [
+				{
+					"file": "blaster-kit/Models/GLB format/clip-small.glb",
+					"size": 0.62
+				}
+			],
+			"materials": {
+				"gunmetal": {
+					"tex_lum": true,
+					"color": "#7a818b",
+					"metal": 0.6,
+					"rough": 0.4
+				},
+				"glow": {
+					"color": "#3cc8ff",
+					"emit": "#3cc8ff",
+					"emit_strength": 2.5,
+					"rough": 0.2
+				},
+				"window": {
+					"color": "#3cc8ff",
+					"emit": "#3cc8ff",
+					"emit_strength": 1.2,
+					"rough": 0.3
+				}
+			},
+			"rules": [
+				{
+					"near": [
+						"#ffd185",
+						"#ffe29c"
+					],
+					"tol": 50,
+					"use": "glow"
+				},
+				{
+					"near": [
+						"#a6aabb",
+						"#a7abbb"
+					],
+					"tol": 8,
+					"use": "window"
+				}
+			],
+			"default": "gunmetal",
+			"camera": {
+				"yaw": 55,
+				"margin": 4
+			}
+		},
+		"cell_pack_standard": {
+			"module": "arms",
+			"parts": [
+				{
+					"file": "blaster-kit/Models/GLB format/clip-large.glb"
+				}
+			],
+			"materials": {
+				"gunmetal": {
+					"tex_lum": true,
+					"color": "#7a818b",
+					"metal": 0.6,
+					"rough": 0.4
+				},
+				"glow": {
+					"color": "#3cc8ff",
+					"emit": "#3cc8ff",
+					"emit_strength": 2.5,
+					"rough": 0.2
+				},
+				"window": {
+					"color": "#3cc8ff",
+					"emit": "#3cc8ff",
+					"emit_strength": 1.2,
+					"rough": 0.3
+				}
+			},
+			"rules": [
+				{
+					"near": [
+						"#ffd185",
+						"#ffe29c"
+					],
+					"tol": 50,
+					"use": "glow"
+				},
+				{
+					"near": [
+						"#a6aabb",
+						"#a7abbb"
+					],
+					"tol": 8,
+					"use": "window"
+				}
+			],
+			"default": "gunmetal",
+			"camera": {
+				"yaw": 55
+			}
+		},
+		"cell_pack_heavy": {
+			"module": "arms",
+			"parts": [
+				{
+					"file": "blaster-kit/Models/GLB format/clip-large.glb",
+					"stretch": [
+						2.2,
+						1.15,
+						1
+					]
+				}
+			],
+			"materials": {
+				"gunmetal": {
+					"tex_lum": true,
+					"color": "#6a7079",
+					"metal": 0.6,
+					"rough": 0.4
+				},
+				"glow": {
+					"color": "#ffb33c",
+					"emit": "#ffb33c",
+					"emit_strength": 2.5,
+					"rough": 0.2
+				},
+				"window": {
+					"color": "#ffb33c",
+					"emit": "#ffb33c",
+					"emit_strength": 1.2,
+					"rough": 0.3
+				}
+			},
+			"rules": [
+				{
+					"near": [
+						"#ffd185",
+						"#ffe29c"
+					],
+					"tol": 50,
+					"use": "glow"
+				},
+				{
+					"near": [
+						"#a6aabb",
+						"#a7abbb"
+					],
+					"tol": 8,
+					"use": "window"
+				}
+			],
+			"default": "gunmetal",
+			"camera": {
+				"yaw": 40
+			}
+		},
+		"dampener": {
+			"module": "arms",
+			"parts": [
+				{
+					"file": "blaster-kit/Models/GLB format/silencer-larger.glb"
+				}
+			],
+			"materials": {
+				"body": {
+					"tex_lum": true,
+					"color": "#8f96a0",
+					"metal": 0.35,
+					"rough": 0.42
+				},
+				"ring": {
+					"tex_lum": true,
+					"color": "#3e4248",
+					"metal": 0.4,
+					"rough": 0.38
+				},
+				"glow": {
+					"color": "#3cc8ff",
+					"emit": "#3cc8ff",
+					"emit_strength": 1.5
+				}
+			},
+			"rules": [
+				{
+					"fy": [
+						0,
+						0.015
+					],
+					"use": "glow"
+				},
+				{
+					"near": "#868690",
+					"tol": 14,
+					"use": "ring"
+				}
+			],
+			"default": "body",
+			"camera": {
+				"forward": "+y",
+				"roll": 30
+			}
+		},
+		"bandage": {
+			"module": "director",
+			"parts": [
+				{
+					"file": "survival-kit/Models/GLB format/bedroll-packed.glb",
+					"stretch": [
+						0.6,
+						1,
+						1
+					]
+				}
+			],
+			"materials": {
+				"gauze": {
+					"tex_lum": true,
+					"color": "#ece8dc",
+					"tex_gain": 1.3,
+					"rough": 0.95
+				},
+				"strap": {
+					"tex_lum": true,
+					"color": "#d6cfbd",
+					"tex_gain": 1.3,
+					"rough": 0.95
+				}
+			},
+			"rules": [
+				{
+					"near": [
+						"#deab90",
+						"#f2c2a5"
+					],
+					"tol": 20,
+					"use": "strap"
+				}
+			],
+			"default": "gauze"
+		},
+		"antibiotics": {
+			"module": "director",
+			"parts": [
+				{
+					"file": "poly-pizza/pickup-jar_quaternius.glb"
+				}
+			],
+			"materials": {
+				"amber": {
+					"color": "#c8761e",
+					"emit": "#a85810",
+					"emit_strength": 0.25,
+					"rough": 0.18,
+					"coat": 1.0
+				},
+				"cap": {
+					"color": "#f2f2ee",
+					"rough": 0.45
+				},
+				"label": {
+					"color": "#f4f4f0",
+					"rough": 0.6
+				},
+				"stripe": {
+					"color": "#4a6a9a",
+					"rough": 0.6
+				}
+			},
+			"rules": [
+				{
+					"fz": [
+						0.78,
+						1.0
+					],
+					"use": "cap"
+				},
+				{
+					"near": "#fdd985",
+					"tol": 40,
+					"use": "label"
+				}
+			],
+			"default": "amber"
+		},
+		"canned_food": {
+			"module": "salvage",
+			"parts": [
+				{
+					"file": "food-kit/Models/GLB format/can.glb"
+				}
+			],
+			"materials": {
+				"tin": {
+					"tex_lum": true,
+					"color": "#b8bec6",
+					"metal": 0.85,
+					"rough": 0.3
+				},
+				"label": {
+					"color": "#a84a36",
+					"color2": "#8a5a3e",
+					"noise": 7,
+					"noise_ramp": [
+						0.5,
+						0.75
+					],
+					"rough": 0.6
+				}
+			},
+			"rules": [
+				{
+					"near": [
+						"#f4a48e",
+						"#f2a28f"
+					],
+					"tol": 30,
+					"use": "label"
+				}
+			],
+			"default": "tin"
+		},
+		"bottled_water": {
+			"module": "salvage",
+			"parts": [
+				{
+					"file": "poly-pizza/water-bottle_quaternius.glb"
+				}
+			],
+			"materials": {
+				"pet": {
+					"color": "#9fd0ee",
+					"emit": "#bfe6ff",
+					"emit_strength": 0.3,
+					"rough": 0.08,
+					"coat": 1.0
+				},
+				"cap": {
+					"color": "#2f7de0",
+					"rough": 0.35
+				},
+				"label": {
+					"color": "#f0f4f8",
+					"rough": 0.5
+				}
+			},
+			"rules": [
+				{
+					"mat": "Plastic",
+					"use": "pet"
+				},
+				{
+					"mat": "Grey",
+					"use": "cap"
+				},
+				{
+					"mat": "Red",
+					"use": "label"
+				}
+			]
+		},
+		"dirty_water": {
+			"module": "salvage",
+			"parts": [
+				{
+					"file": "survival-kit/Models/GLB format/bottle.glb"
+				}
+			],
+			"materials": {
+				"glass": {
+					"tex_lum": true,
+					"color": "#6b6a3a",
+					"tex_gain": 1.4,
+					"rough": 0.1,
+					"coat": 1.0
+				},
+				"label": {
+					"color": "#b8a888",
+					"color2": "#857558",
+					"noise": 4,
+					"noise_ramp": [
+						0.4,
+						0.6
+					],
+					"rough": 0.8
+				},
+				"cork": {
+					"color": "#6a4a2a",
+					"rough": 0.8
+				}
+			},
+			"rules": [
+				{
+					"near": [
+						"#edbda1",
+						"#e3b296"
+					],
+					"tol": 30,
+					"use": "cork"
+				},
+				{
+					"near": [
+						"#e9e9f1",
+						"#f3f3f8"
+					],
+					"tol": 30,
+					"use": "label"
+				}
+			],
+			"default": "glass"
+		},
+		"cloth": {
+			"module": "salvage",
+			"parts": [
+				{
+					"file": "poly-pizza/towel-blue_isa-lousberg.glb"
+				}
+			],
+			"materials": {
+				"rag": {
+					"color": "#9c8e72",
+					"color2": "#5e533f",
+					"noise": 7,
+					"noise_ramp": [
+						0.38,
+						0.62
+					],
+					"rough": 0.95
+				}
+			},
+			"default": "rag",
+			"camera": {
+				"pitch": 30,
+				"yaw": 20
+			}
+		},
+		"duct_tape": {
+			"module": "salvage",
+			"parts": [
+				{
+					"file": "oga-duct-tape/tape/tape.obj"
+				}
+			],
+			"materials": {
+				"tape": {
+					"color": "#80868c",
+					"color2": "#71777d",
+					"noise": 20,
+					"noise_ramp": [
+						0.45,
+						0.6
+					],
+					"metal": 0.25,
+					"rough": 0.45
+				},
+				"core": {
+					"tex_lum": true,
+					"color": "#b89060",
+					"rough": 0.9
+				}
+			},
+			"rules": [
+				{
+					"near": "#c5b19a",
+					"tol": 30,
+					"use": "core"
+				}
+			],
+			"default": "tape",
+			"camera": {
+				"pitch": 34
+			}
+		},
+		"scrap_metal": {
+			"module": "salvage",
+			"parts": [
+				{
+					"file": "survival-kit/Models/GLB format/metal-panel-screws-half.glb",
+					"rot": [
+						0,
+						0,
+						180
+					]
+				}
+			],
+			"materials": {
+				"rusty": {
+					"color": "#8a5534",
+					"color2": "#9a9fa4",
+					"noise": 3,
+					"noise_ramp": [
+						0.5,
+						0.62
+					],
+					"metal": 0.3,
+					"rough": 0.7
+				},
+				"screw": {
+					"color": "#3a3d42",
+					"metal": 0.8,
+					"rough": 0.4
+				}
+			},
+			"rules": [
+				{
+					"near": [
+						"#a0a5b6",
+						"#a3a7b8"
+					],
+					"tol": 10,
+					"use": "screw"
+				}
+			],
+			"default": "rusty",
+			"camera": {
+				"yaw": 30,
+				"pitch": 26,
+				"roll": 12
+			}
+		},
+		"matches": {
+			"module": "salvage",
+			"parts": [
+				{
+					"file": "poly-pizza/matchbox_quaternius.glb"
+				}
+			],
+			"materials": {
+				"box": {
+					"color": "#b89a5a",
+					"rough": 0.8
+				},
+				"striker": {
+					"color": "#6a4a2a",
+					"rough": 0.9
+				},
+				"stick": {
+					"color": "#e0c890",
+					"rough": 0.8
+				},
+				"head": {
+					"color": "#c0302a",
+					"rough": 0.6
+				}
+			},
+			"rules": [
+				{
+					"mat": "Yellow",
+					"use": "box"
+				},
+				{
+					"mat": "DarkYellow",
+					"use": "striker"
+				},
+				{
+					"mat": "Match",
+					"use": "stick"
+				},
+				{
+					"mat": "Red",
+					"use": "head"
+				}
+			]
+		},
+		"lighter_fluid": {
+			"module": "salvage",
+			"parts": [
+				{
+					"file": "poly-pizza/gas-can_quaternius.glb"
+				}
+			],
+			"materials": {
+				"can": {
+					"color": "#e0a020",
+					"metal": 0.3,
+					"rough": 0.4
+				},
+				"dark": {
+					"color": "#b07818",
+					"metal": 0.3,
+					"rough": 0.45
+				},
+				"cap": {
+					"color": "#151517",
+					"rough": 0.4
+				}
+			},
+			"rules": [
+				{
+					"mat": "Red",
+					"use": "can"
+				},
+				{
+					"mat": "DarkRed",
+					"use": "dark"
+				},
+				{
+					"mat": "Black",
+					"use": "cap"
+				}
+			]
+		}
+	}
+}

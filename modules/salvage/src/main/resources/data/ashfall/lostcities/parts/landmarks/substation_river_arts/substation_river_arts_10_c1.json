@@ -1,0 +1,172 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:stone_bricks"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:water[level=0]"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:iron_bars[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:iron_block"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:piston[extended=false,facing=down]"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:stone_brick_slab[type=bottom,waterlogged=false]"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:iron_bars[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:iron_bars[east=false,north=false,south=true,west=true]"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:iron_bars[east=true,north=false,south=true,west=false]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:iron_bars[east=false,north=false,south=false,west=false]"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "###############$",
+   "###############$"
+  ],
+  [
+   "!!!!!!!!!!!!!!!!",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "   %%   %%     !",
+   "   %%   %%     !",
+   "   &&   &&     !",
+   "!!!!!!!''!!!!!!!",
+   "#######''######$",
+   "#######''######$"
+  ],
+  [
+   "!!!!!!!!!!!!!!!!",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "   %%   %%     !",
+   "   %%   %%     !",
+   "               !",
+   "(((((()  *(((((!",
+   "      $  $     $",
+   "      $  $     $"
+  ],
+  [
+   "!!!!!!!!!!!!!!!!",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "   %%   %%     !",
+   "   %%   %%     !",
+   "               !",
+   "               !",
+   "               $",
+   "               $"
+  ],
+  [
+   "!!!!!!!!!!!!!!!!",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "   +    +      !",
+   "               !",
+   "               !",
+   "               $",
+   "               $"
+  ],
+  [
+   "!!!!!!!!!!!!!!!!",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "               !",
+   "     ,         !",
+   "               !",
+   "               !",
+   "               !",
+   "   +    +      !",
+   "               !",
+   "               !",
+   "               !",
+   "               !"
+  ]
+ ]
+}

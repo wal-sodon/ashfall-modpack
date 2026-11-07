@@ -1,0 +1,51 @@
+{
+	"id": "mission",
+	"kind": "district",
+	"district_index": 4,
+	"tier": 4,
+	"priority": 100,
+	"shape": {
+		"type": "disc",
+		"x": 750,
+		"z": 650,
+		"r": 300
+	},
+	"city": true,
+	"citystyle": "ashfall:mission",
+	"ruin_chance": 0.12,
+	"damage_scale": 1.0,
+	"population_scale": 1.5,
+	"landmarks": [
+		"ashfall:substation_mission",
+		"ashfall:hospital"
+	],
+	"key_relay_targets": [
+		[
+			650,
+			550
+		],
+		[
+			850,
+			550
+		],
+		[
+			900,
+			750
+		],
+		[
+			650,
+			800
+		],
+		[
+			750,
+			450
+		],
+		[
+			550,
+			650
+		]
+	],
+	"director": {
+		"darkness_scale": 1.2
+	}
+}

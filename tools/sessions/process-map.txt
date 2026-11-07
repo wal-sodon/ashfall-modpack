@@ -1,0 +1,9 @@
+# Runs the atlas post-processor over every building chunk, then audits the result.
+until Done \(
+cmd ashfall atlas status
+cmd ashfall atlas processall
+until processall finished
+cmd ashfall atlas status
+cmd ashfall atlas audit
+cmd save-all flush
+wait 5

@@ -1,0 +1,29 @@
+{
+	"schemaVersion": 1,
+	"id": "ashfall_salvage",
+	"version": "${version}",
+	"name": "Ashfall: Salvage",
+	"description": "City layout (zones over The Lost Cities), building context and loot zones.",
+	"authors": ["toesinthesand"],
+	"license": "MIT",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["xyz.toesinthesand.ashfall.salvage.AshfallSalvage"],
+		"client": ["xyz.toesinthesand.ashfall.salvage.client.AshfallSalvageClient"]
+	},
+	"mixins": [
+		"ashfall_salvage.mixins.json",
+		"ashfall_salvage.lostcities.mixins.json",
+		{ "config": "ashfall_salvage.client.mixins.json", "environment": "client" }
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	},
+	"recommends": {
+		"lostcities": ">=26.3-12.0.0-fabric",
+		"lostcitiesmoderntweaks": ">=6.0.0"
+	}
+}

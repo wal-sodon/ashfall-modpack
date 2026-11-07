@@ -1,0 +1,30 @@
+{
+	"parent": "ashfall:relight/first_log",
+	"criteria": {
+		"relay_logs": {
+			"trigger": "ashfall:relay_logs",
+			"conditions": {
+				"count": {
+					"min": 10
+				}
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "minecraft:writable_book"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.logs_10.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.logs_10.description"
+		},
+		"frame": "goal"
+	},
+	"requirements": [
+		[
+			"relay_logs"
+		]
+	]
+}

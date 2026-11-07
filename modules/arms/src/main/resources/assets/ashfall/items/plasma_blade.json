@@ -1,0 +1,51 @@
+{
+	"model": {
+		"type": "minecraft:condition",
+		"property": "minecraft:has_component",
+		"component": "ashfall:blade_lit",
+		"on_true": {
+			"type": "minecraft:select",
+			"property": "minecraft:display_context",
+			"cases": [
+				{
+					"when": [
+						"gui",
+						"ground",
+						"fixed",
+						"on_shelf"
+					],
+					"model": {
+						"type": "minecraft:model",
+						"model": "ashfall:item/plasma_blade_icon"
+					}
+				}
+			],
+			"fallback": {
+				"type": "minecraft:model",
+				"model": "ashfall:item/plasma_blade"
+			}
+		},
+		"on_false": {
+			"type": "minecraft:select",
+			"property": "minecraft:display_context",
+			"cases": [
+				{
+					"when": [
+						"gui",
+						"ground",
+						"fixed",
+						"on_shelf"
+					],
+					"model": {
+						"type": "minecraft:model",
+						"model": "ashfall:item/plasma_blade_hilt_icon"
+					}
+				}
+			],
+			"fallback": {
+				"type": "minecraft:model",
+				"model": "ashfall:item/plasma_blade_hilt"
+			}
+		}
+	}
+}

@@ -1,0 +1,65 @@
+{
+	"parent": "minecraft:recipes/root",
+	"criteria": {
+		"has_alloy_plate": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:alloy_plate"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_scrap_electronics": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:scrap_electronics"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_wire_spool": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:wire_spool"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_field_charger": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:field_charger"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_the_recipe": {
+			"conditions": {
+				"recipes": "ashfall:rapid_charger"
+			},
+			"trigger": "minecraft:recipe_unlocked"
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_alloy_plate",
+			"has_scrap_electronics",
+			"has_wire_spool",
+			"has_field_charger"
+		]
+	],
+	"rewards": {
+		"recipes": [
+			"ashfall:rapid_charger"
+		]
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "misc",
+	"ingredients": [
+		"ashfall:cloth",
+		"ashfall:cloth"
+	],
+	"result": {
+		"id": "ashfall:bandage"
+	}
+}

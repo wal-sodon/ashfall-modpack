@@ -1,0 +1,28 @@
+{
+	"parent": "ashfall:relight/south_slope_repaired",
+	"criteria": {
+		"energized": {
+			"trigger": "ashfall:district",
+			"conditions": {
+				"district": "south_slope",
+				"state": "energized"
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:energy_cell"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.south_slope_energized.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.south_slope_energized.description"
+		}
+	},
+	"requirements": [
+		[
+			"energized"
+		]
+	]
+}

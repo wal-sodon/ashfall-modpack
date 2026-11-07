@@ -1,0 +1,237 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:smooth_quartz"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:light_blue_terracotta"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:cyan_carpet"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:birch_door[facing=east,half=lower,hinge=right,open=false,powered=false]"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:iron_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:birch_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:smooth_quartz_slab[type=top,waterlogged=false]"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:chest[facing=west,type=single,waterlogged=false]",
+    "tag": {
+     "LootTable": "ashfall_cache:hospital_supply"
+    }
+   },
+   {
+    "char": "+",
+    "block": "minecraft:dark_oak_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:spruce_slab[type=top,waterlogged=false]"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:barrel[facing=north,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/hospital"
+    }
+   },
+   {
+    "char": ".",
+    "block": "minecraft:barrel[facing=north,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/pharmacy"
+    }
+   },
+   {
+    "char": "/",
+    "block": "minecraft:stone_button[face=wall,facing=north,powered=false]"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:birch_door[facing=east,half=upper,hinge=right,open=false,powered=false]"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:glass_pane[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:iron_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:birch_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "4",
+    "block": "minecraft:stone_button[face=wall,facing=south,powered=false]"
+   },
+   {
+    "char": "5",
+    "block": "minecraft:light_blue_stained_glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "6",
+    "block": "minecraft:birch_shelf[facing=north,powered=false,side_chain=unconnected,waterlogged=false]"
+   },
+   {
+    "char": "7",
+    "block": "minecraft:birch_shelf[facing=south,powered=false,side_chain=unconnected,waterlogged=false]"
+   },
+   {
+    "char": "8",
+    "block": "minecraft:note_block"
+   },
+   {
+    "char": "9",
+    "block": "minecraft:light_blue_stained_glass_pane[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": ":",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!#",
+   "!!!!!!!!!!!!!!!#",
+   "!!!!!!!!!!!!!!!#",
+   "!!!!!!!!!!!!!!!#",
+   "!!!!!!!!!!!!!!!#",
+   "!!!!!!!!!!!!!!!#",
+   "!!!!!!!!!!!!!!!#",
+   "!!!!!!!!!!!!!!!#",
+   "!!!!!!!!!!!!!!!#",
+   "!!!!!!!!!!!!!!!#",
+   "!!!!!!!!!!!!!!!#",
+   "!!!!!!!!!!!!!!!#",
+   "!!!!!!!!!!!!!!!#",
+   "!!!!!!!!!!!!!!!#",
+   "!!!!!!!!!!!!!!!#",
+   "################"
+  ],
+  [
+   "$$$$$$$$$$$$$$$%",
+   "####&######'###(",
+   "#!!     #      (",
+   "#       #      (",
+   "#       #      (",
+   "#  ###  #  ))  (",
+   "#  ###  #  ))  (",
+   "#       # #))# (",
+   "#      *#  ))  (",
+   "#       #  ))  (",
+   "#  ###  #  ))  (",
+   "#  ###  #      (",
+   "#       #+     (",
+   "#       #,,    (",
+   "#-.-.-.-#      (",
+   "(((((((((((((((("
+  ],
+  [
+   "   /           0",
+   "(11(2((((((3((((",
+   "(  4    (      (",
+   "(       (      5",
+   "(       (      5",
+   "(  666  (      (",
+   "(  777  (      (",
+   "(       ( (  ( 5",
+   "(       (      5",
+   "(       (      (",
+   "(  666  (      (",
+   "(  777  (      5",
+   "(       (      5",
+   "(       ( 8    (",
+   "(6666666(      (",
+   "((99((99((99(((("
+  ],
+  [
+   "               (",
+   "(11(((((((((((((",
+   "(       (      (",
+   "(       (      5",
+   "(       (      5",
+   "(  666  (      (",
+   "(  777  (      (",
+   "(       ( (  ( 5",
+   "(       (      5",
+   "(       (      (",
+   "(  666  (      (",
+   "(  777  (      5",
+   "(       (      5",
+   "(       (      (",
+   "(6666666(      (",
+   "((99((99((99(((("
+  ],
+  [
+   "               (",
+   "((((((((((((((((",
+   "(       (      (",
+   "(       (      (",
+   "(       (      (",
+   "(       (      (",
+   "(       (      (",
+   "(       ( (((( (",
+   "(       (      (",
+   "(       (      (",
+   "(       (      (",
+   "(       (      (",
+   "(       (      (",
+   "(       (      (",
+   "(6666666(      (",
+   "(((((((((((((((("
+  ],
+  [
+   "               (",
+   "((((((((((((((((",
+   "(       (      (",
+   "(       (      (",
+   "(       (      (",
+   "(       (      (",
+   "(       (      (",
+   "(       (      (",
+   "(   :   (      (",
+   "(       (      (",
+   "(       (      (",
+   "(       (   :  (",
+   "(       (      (",
+   "(       (      (",
+   "(       (      (",
+   "(((((((((((((((("
+  ]
+ ]
+}

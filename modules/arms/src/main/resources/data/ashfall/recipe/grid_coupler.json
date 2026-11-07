@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"key": {
+		"B": "ashfall:battery",
+		"C": "ashfall:wire_spool",
+		"M": "ashfall:scrap_metal",
+		"S": "ashfall:scrap_electronics",
+		"W": "ashfall:weapon_parts"
+	},
+	"pattern": [
+		"CSC",
+		"WBM"
+	],
+	"result": {
+		"id": "ashfall:grid_coupler"
+	}
+}

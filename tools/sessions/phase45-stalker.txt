@@ -1,0 +1,22 @@
+# Phase 4.5 playtest, part 4 (headless): the stalker hides by itself in the dark on a real server. Invisibility is
+# not saved in entity NBT in 26.3, so it is read with the entity_properties predicate's is_invisible flag.
+until Done \(
+cmd forceload add 112 32 127 47
+wait 10
+cmd time set 258000
+cmd fill 120 200 40 124 204 44 minecraft:stone hollow
+cmd summon ashfall:stalker 122 201 42 {PersistenceRequired:1b,Tags:["p45_special"]}
+cmd summon ashfall:stalker 116 210 36 {PersistenceRequired:1b,NoGravity:1b,Tags:["p45_special","p45_open"]}
+wait 5
+cmd execute positioned 122 202 42 if predicate {type:"minecraft:location_check",predicate:{light:{light:{min:0,max:5}}}}
+cmd execute positioned 116 210 36 if predicate {type:"minecraft:location_check",predicate:{light:{light:{min:0,max:5}}}}
+cmd execute as @e[type=ashfall:stalker,tag=!p45_open] if predicate {type:"minecraft:entity_properties",entity:"this",predicate:{flags:{is_invisible:true}}}
+cmd execute as @e[type=ashfall:stalker,tag=p45_open] if predicate {type:"minecraft:entity_properties",entity:"this",predicate:{flags:{is_invisible:true}}}
+cmd time set 6000
+wait 3
+cmd execute as @e[type=ashfall:stalker,tag=p45_open] if predicate {type:"minecraft:entity_properties",entity:"this",predicate:{flags:{is_invisible:true}}}
+cmd execute as @e[type=ashfall:stalker,tag=p45_open] unless predicate {type:"minecraft:entity_properties",entity:"this",predicate:{flags:{is_invisible:true}}}
+cmd kill @e[tag=p45_special]
+cmd fill 120 200 40 124 204 44 minecraft:air
+cmd forceload remove all
+wait 3

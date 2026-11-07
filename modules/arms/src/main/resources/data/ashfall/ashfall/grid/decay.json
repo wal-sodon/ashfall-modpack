@@ -1,0 +1,10 @@
+{
+	"enabled": true,
+	"wear_per_day": 8,
+	"grace_days": 3,
+	"flicker_days": 2,
+	"horde_relays_min": 1,
+	"horde_relays_max": 2,
+	"horde_damage": 30,
+	"warn_below": 30
+}

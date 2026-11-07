@@ -1,0 +1,17 @@
+{
+	"name": "boss.ashfall.ascendant",
+	"anchor": { "site": "ashfall:wreck_hull" },
+	"boss": { "variant": "ashfall:ascendant" },
+	"glowing": true,
+	"particle": "minecraft:end_rod",
+	"bossbar": { "color": "pink", "overlay": "notched_12" },
+	"trigger_radius": 40,
+	"bar_radius": 72,
+	"requires_flag": "ashfall:bind",
+	"respawn": { "after_ending_days": 10 },
+	"drops": {
+		"guaranteed": [ { "item": "ashfall:resonance_crystal", "count": 2 } ],
+		"loot_table": "ashfall:entities/boss/ascendant"
+	},
+	"summon": { "variant": "ashfall:armored", "every_ticks": 400, "count": 2, "max_alive": 6, "radius": 6 }
+}

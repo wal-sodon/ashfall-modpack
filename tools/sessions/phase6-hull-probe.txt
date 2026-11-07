@@ -1,0 +1,13 @@
+# Phase 6 playtest, part 0 (headless, new world-p6): generate the Ridge around the Wreck hull at (2300, -100), place
+# the hull from the console (sites place near players, and nobody is online) and report where its Uplink Socket
+# landed, so the arc script can aim pylon and relay checks at real coordinates.
+until Done \(
+cmd ashfall finale status
+cmd forceload add 2220 -180 2380 -20
+wait 40
+cmd ashfall site place fixed:ashfall:wreck_hull
+wait 5
+cmd ashfall finale status
+cmd ashfall site list 64
+cmd forceload remove all
+wait 3

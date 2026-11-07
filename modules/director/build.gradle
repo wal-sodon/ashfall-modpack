@@ -1,0 +1,94 @@
+plugins {
+	id 'net.fabricmc.fabric-loom'
+}
+
+ext.mod_id = 'ashfall_director'
+apply from: rootProject.file('gradle/module.gradle')
+
+dependencies {
+	implementation project(path: ':salvage')
+
+	// Reused mods we hook with mixins. Compile-only: the pack supplies them at runtime.
+	compileOnly "maven.modrinth:zombies-break-and-build:${rootProject.zbb_version}"
+	compileOnly "maven.modrinth:contagion:${rootProject.contagion_version}"
+	compileOnly "xaero.pac:open-parties-and-claims-fabric-26.3:${rootProject.opac_version}"
+	// Jade: compile-only for the wear line (compat/jade); its "jade" entrypoints only run when Jade is installed.
+	compileOnly "maven.modrinth:jade:${rootProject.jade_version}"
+
+	// The Lost Cities: compile-only (the pack supplies it), every use is behind FabricLoader.isModLoaded.
+	// Gametests run WITH it (plus FCAP and the Lights Off assets) so they can build Lost Cities levels.
+	compileOnly "maven.modrinth:the-lost-cities:${rootProject.lost_cities_version}"
+	compileOnly "maven.modrinth:forge-config-api-port:${rootProject.lost_cities_fcap_version}"
+	gametestImplementation "maven.modrinth:the-lost-cities:${rootProject.lost_cities_version}"
+	gametestImplementation "maven.modrinth:forge-config-api-port:${rootProject.lost_cities_fcap_version}"
+	gametestRuntimeOnly "maven.modrinth:lost-cities-modern-tweaks-nolighting:${rootProject.lcmt_nolighting_version}"
+}
+
+// Server gametests against the real pack (OPAC claims, Better Combat, ...), for bugs that only show with other mods:
+//   ./gradlew :director:runGameTest -PashfallPackTest=/abs/server/mods [-PashfallTestFilter=ashfall_director_test:infection*]
+// Same exclusions as the benchmark below; the pack's config overrides are copied in so the mods run as shipped.
+if (project.hasProperty('ashfallPackTest')) {
+	def skip = ~/(?i)^(ashfall-|fabric-api-|lostcities|ForgeConfigAPIPort|spark-|voicechat|Chunky|servercore).*/
+	dependencies {
+		gametestRuntimeOnly fileTree(project.property('ashfallPackTest').toString()) { include '*.jar' }.filter { !(it.name ==~ skip) }
+	}
+	if (project.hasProperty('ashfallTestFilter')) {
+		loom.runs.matching { it.name == 'gameTest' }.configureEach {
+			vmArg "-Dfabric-api.gametest.filter=${project.property('ashfallTestFilter')}"
+		}
+	}
+	['gameTest', 'clientGameTest'].each { run ->
+		def copy = tasks.register("ashfallPackTestConfig_${run}", Copy) {
+			from rootProject.file('pack/overrides/config')
+			into layout.projectDirectory.dir("build/run/${run}/config")
+		}
+		tasks.named("run${run.capitalize()}") {
+			dependsOn copy
+		}
+		copy.configure {
+			mustRunAfter tasks.named('deleteGameTestRunDir')
+		}
+	}
+}
+
+// Client zombie load benchmark (ZombieLoadClientBenchmark): a no-op unless -Dashfall.bench=true reaches the game JVM.
+//   ./gradlew :director:runClientGameTest -PashfallBench [-PashfallBenchJfr=/abs/bench.jfr] [-PashfallBenchOut=/abs/out.csv]
+//   [-PashfallBenchPack=/abs/server/mods] [-PashfallBenchArgs="-Dashfall.bench.extra=80 ..."]
+// It is the only client gametest in this module, which is why it lives here: Fabric filters client gametests by mod id.
+if (project.hasProperty('ashfallBench')) {
+	loom.runs.matching { it.name == 'clientGameTest' }.configureEach {
+		vmArg '-Dashfall.bench=true'
+		if (project.hasProperty('ashfallBenchOut')) {
+			vmArg "-Dashfall.bench.out=${project.property('ashfallBenchOut')}"
+		}
+		if (project.hasProperty('ashfallBenchJfr')) {
+			vmArg "-XX:StartFlightRecording=filename=${project.property('ashfallBenchJfr')},settings=profile,dumponexit=true"
+			vmArg "-XX:FlightRecorderOptions=stackdepth=256"
+		}
+		if (project.hasProperty('ashfallBenchArgs')) {
+			project.property('ashfallBenchArgs').toString().split(/\s+/).findAll { !it.isBlank() }.each { vmArg it }
+		}
+	}
+	if (project.hasProperty('ashfallBenchPack')) {
+		// Same exclusions as arms/build.gradle: our jars, Fabric API, the Lost Cities set, spark, voice chat, Chunky, ServerCore.
+		def skip = ~/(?i)^(ashfall-|fabric-api-|lostcities|ForgeConfigAPIPort|spark-|voicechat|Chunky|servercore).*/
+		def packJars = fileTree(project.property('ashfallBenchPack').toString()) {
+			include '*.jar'
+		}.filter { !(it.name ==~ skip) }
+		dependencies {
+			gametestRuntimeOnly packJars
+		}
+		// The pack's config overrides too, or the mods run on their defaults: ZB&B's default lets zombies notice and
+		// keep targets through blocks (a per-zombie block raycast) where the pack turns that off.
+		def packConfig = tasks.register('ashfallBenchPackConfig', Copy) {
+			from rootProject.file('pack/overrides/config')
+			into layout.projectDirectory.dir('build/run/clientGameTest/config')
+		}
+		tasks.named('runClientGameTest') {
+			dependsOn packConfig
+		}
+		packConfig.configure {
+			mustRunAfter tasks.named('deleteGameTestRunDir')
+		}
+	}
+}

@@ -1,0 +1,57 @@
+{
+	"dimension": "minecraft:overworld",
+	"chunkx": 46,
+	"chunkz": 40,
+	"radius": 256,
+	"citystyle": "ashfall:mission",
+	"buildings": [
+		{
+			"building": "ashfall:hospital",
+			"chunkx": -2,
+			"chunkz": -1,
+			"multi": true,
+			"preventruins": true
+		},
+		{
+			"building": "ashfall:substation_mission",
+			"chunkx": 2,
+			"chunkz": -1,
+			"multi": true,
+			"preventruins": true
+		}
+	],
+	"streets": [
+		{
+			"chunkx": -2,
+			"chunkz": 1
+		},
+		{
+			"chunkx": -1,
+			"chunkz": 1
+		},
+		{
+			"chunkx": 0,
+			"chunkz": 1
+		},
+		{
+			"chunkx": 1,
+			"chunkz": -1
+		},
+		{
+			"chunkx": 1,
+			"chunkz": 0
+		},
+		{
+			"chunkx": 1,
+			"chunkz": 1
+		},
+		{
+			"chunkx": 2,
+			"chunkz": 1
+		},
+		{
+			"chunkx": 3,
+			"chunkz": 1
+		}
+	]
+}

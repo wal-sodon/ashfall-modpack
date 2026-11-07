@@ -1,0 +1,51 @@
+{
+	"caps": {
+		"group": 6,
+		"base": 6,
+		"world": 30
+	},
+	"rescue_first_day": 7,
+	"guard_damage_share": 1.0,
+	"guard_bonus_health": 10.0,
+	"scavenger": {
+		"leave_from": 0,
+		"leave_until": 4000,
+		"trip_ticks": 12000,
+		"haul_rolls": 2,
+		"haul_attempts": 4,
+		"hurt_chance": 0.08,
+		"lost_chance": 0.03,
+		"fit_to_leave": 0.5,
+		"antibiotics_keep": 0.25
+	},
+	"medic": {
+		"interval_ticks": 100,
+		"range": 16.0,
+		"worth_a_bandage": 2.0
+	},
+	"mechanic": {
+		"interval_ticks": 600,
+		"sets_per_turn": 1
+	},
+	"upkeep": {
+		"nutrition_per_day": 5,
+		"extra_nutrition_per_day": 10,
+		"free_settlers": 3,
+		"hungry_days_to_leave": 3,
+		"hungry_speed": 0.5
+	},
+	"roles": {
+		"first_day_speed": 0.5,
+		"first_day_ticks": 24000,
+		"min_speed": 0.25
+	},
+	"trader": {
+		"restock_ticks": 72000,
+		"replace_ticks": 48000,
+		"radius": 8
+	},
+	"holdout": {
+		"chance": 0.06,
+		"call_range": 12.0
+	}
+}

@@ -1,0 +1,4 @@
+# Verifies the Ashfall world datapack loads and the shipped config overrides parse.
+until Done \(
+cmd datapack list enabled
+cmd datapack list available

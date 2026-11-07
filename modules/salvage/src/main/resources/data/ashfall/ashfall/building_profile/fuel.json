@@ -1,0 +1,45 @@
+{
+	"match": [
+		{
+			"amenity": "fuel"
+		},
+		{
+			"lc_building": "ashfall:gas_station|*gas_station*"
+		},
+		{
+			"lc_multibuilding": "*:oilrig"
+		}
+	],
+	"priority": 55,
+	"tier": 2,
+	"loot_table": "ashfall:buildings/fuel",
+	"containers": {
+		"per_100m2": 1.0,
+		"min": 1,
+		"max": 3,
+		"blocks": [
+			{
+				"block": "minecraft:chest",
+				"weight": 3
+			},
+			{
+				"block": "minecraft:barrel",
+				"weight": 1
+			}
+		]
+	},
+	"refill": {
+		"enabled": true,
+		"delay_ticks": 72000,
+		"no_player_radius": 32,
+		"quiet_ticks": 6000
+	},
+	"population": {
+		"per_100m2": 0.5,
+		"entities": {
+			"minecraft:zombie": 100
+		}
+	},
+	"safe_candidate": false,
+	"relay_chance": 0.02
+}

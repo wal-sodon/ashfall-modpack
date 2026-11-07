@@ -1,0 +1,23 @@
+{
+	"match": [
+		{
+			"lc_building": "ashfall:safehouse"
+		}
+	],
+	"priority": 200,
+	"tier": 1,
+	"loot_table": "ashfall:buildings/home",
+	"containers": {
+		"per_100m2": 0.0,
+		"min": 0,
+		"max": 0
+	},
+	"refill": {
+		"enabled": false
+	},
+	"population": {
+		"per_100m2": 0.0
+	},
+	"safe_candidate": true,
+	"relay_chance": 0.0
+}

@@ -1,0 +1,73 @@
+plugins {
+	id 'net.fabricmc.fabric-loom'
+}
+
+ext.mod_id = 'ashfall_arms'
+apply from: rootProject.file('gradle/module.gradle')
+
+dependencies {
+	implementation project(path: ':director')
+	implementation project(path: ':salvage')
+
+	// Team Reborn Energy: charge storage for cell packs, blades and chargers (MIT, jar-in-jar).
+	implementation("teamreborn:energy:${rootProject.team_reborn_energy_version}") {
+		exclude group: 'net.fabricmc.fabric-api'
+	}
+	include "teamreborn:energy:${rootProject.team_reborn_energy_version}"
+
+	// The Lost Cities in gametests, so arms tests run in the same mod set as the pack. On the gametest
+	// compile path too: LandmarkTourClientTest picks the Lost Cities profile for the worlds it creates.
+	gametestImplementation "maven.modrinth:the-lost-cities:${rootProject.lost_cities_version}"
+	gametestRuntimeOnly "maven.modrinth:forge-config-api-port:${rootProject.lost_cities_fcap_version}"
+	gametestRuntimeOnly "maven.modrinth:lost-cities-modern-tweaks-nolighting:${rootProject.lcmt_nolighting_version}"
+}
+
+// Zombie load benchmark (ZombieLoadBenchmark gametest). The test is a no-op unless -Dashfall.bench=true reaches the
+// game JVM, so the normal build's runGameTest pays nothing; these flags turn it on for a dedicated run:
+//   ./gradlew :arms:runGameTest -PashfallBench                       benchmark only (other gametests filtered out)
+//   -PashfallBenchJfr=/abs/path/bench.jfr                            also record Java Flight Recorder (profile settings)
+//   -PashfallBenchPack=/abs/path/to/server/mods                      also load the pack's server mods (ZB&B, Lithium...)
+//   -PashfallBenchOut=/abs/path/results.csv                          where the per-phase CSV goes
+//   -PashfallBenchArgs="-Dashfall.bench.counts=0,40 ..."             extra JVM args (phase counts, measure ticks)
+// Why a property and not a separate task: Loom only has the one gameTest run config per module, and keeping the
+// benchmark in the normal gametest source set means it always compiles against the current code.
+if (project.hasProperty('ashfallBench')) {
+	loom.runs.matching { it.name == 'gameTest' }.configureEach {
+		vmArg '-Dashfall.bench=true'
+		vmArg '-Dfabric-api.gametest.filter=ashfall_arms_test:zombie_load_benchmark*'
+		if (project.hasProperty('ashfallBenchOut')) {
+			vmArg "-Dashfall.bench.out=${project.property('ashfallBenchOut')}"
+		}
+		if (project.hasProperty('ashfallBenchJfr')) {
+			vmArg "-XX:StartFlightRecording=filename=${project.property('ashfallBenchJfr')},settings=profile,dumponexit=true"
+			vmArg "-XX:FlightRecorderOptions=stackdepth=256"
+		}
+		if (project.hasProperty('ashfallBenchArgs')) {
+			project.property('ashfallBenchArgs').toString().split(/\s+/).findAll { !it.isBlank() }.each { vmArg it }
+		}
+	}
+	if (project.hasProperty('ashfallBenchPack')) {
+		// The pack's own copies of what the gametests already load (or that would clash in a dev run) stay out:
+		// our jars, Fabric API, The Lost Cities set, spark (never upload), voice chat (opens a UDP port), Chunky,
+		// and ServerCore (server-only in the pack, so the user's singleplayer game does not have it).
+		def skip = ~/(?i)^(ashfall-|fabric-api-|lostcities|ForgeConfigAPIPort|spark-|voicechat|Chunky|servercore).*/
+		def packJars = fileTree(project.property('ashfallBenchPack').toString()) {
+			include '*.jar'
+		}.filter { !(it.name ==~ skip) }
+		dependencies {
+			gametestRuntimeOnly packJars
+		}
+		// The pack's config overrides too, or the mods run on their defaults: ZB&B's default lets zombies notice and
+		// keep targets through blocks (a per-zombie block raycast) where the pack turns that off.
+		def packConfig = tasks.register('ashfallBenchPackConfig', Copy) {
+			from rootProject.file('pack/overrides/config')
+			into layout.projectDirectory.dir('build/run/gameTest/config')
+		}
+		tasks.named('runGameTest') {
+			dependsOn packConfig
+		}
+		packConfig.configure {
+			mustRunAfter tasks.named('deleteGameTestRunDir')
+		}
+	}
+}

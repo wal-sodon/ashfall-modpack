@@ -1,0 +1,173 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"rolls": 2,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:energy_cell",
+					"modifier": {
+						"type": "minecraft:set_components",
+						"components": {
+							"team_reborn_energy:energy": 240
+						}
+					}
+				}
+			]
+		},
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 3,
+				"max": 5
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:grid_coupler",
+					"weight": 4,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_electronics",
+					"weight": 6,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 2,
+							"max": 4
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:weapon_parts",
+					"weight": 6,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:battery",
+					"weight": 4,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bottled_water",
+					"weight": 4,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:canned_food",
+					"weight": 4,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bandage",
+					"weight": 3,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:copper_ingot",
+					"weight": 3,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 2,
+							"max": 5
+						}
+					}
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:weapon_parts",
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 4,
+							"max": 8
+						}
+					}
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:dampener"
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:focusing_lens"
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:heat_sink"
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall_cache:grid_reward_south_slope"
+}

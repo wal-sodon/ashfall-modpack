@@ -1,0 +1,110 @@
+{
+	"day_tiers": [
+		{
+			"from_day": 1,
+			"tier": 1
+		},
+		{
+			"from_day": 14,
+			"tier": 2
+		},
+		{
+			"from_day": 28,
+			"tier": 3
+		},
+		{
+			"from_day": 45,
+			"tier": 4
+		},
+		{
+			"from_day": 65,
+			"tier": 5
+		},
+		{
+			"from_day": 90,
+			"tier": 6
+		}
+	],
+	"grid_tier_base": 1,
+	"first_siege_day_tier_cap": 2,
+	"spawn_radius_min": 18,
+	"spawn_radius_max": 30,
+	"wave_interval_seconds": 120,
+	"next_wave_alive_at_most": 4,
+	"party_scale": [
+		1.0,
+		1.6,
+		2.3,
+		2.8
+	],
+	"tiers": [
+		{
+			"tier": 1,
+			"waves": 4,
+			"size": 8,
+			"core_hp": 1280,
+			"variants": {
+				"ashfall:walker": 6,
+				"ashfall:runner": 2
+			}
+		},
+		{
+			"tier": 2,
+			"waves": 6,
+			"size": 12,
+			"core_hp": 1920,
+			"variants": {
+				"ashfall:walker": 6,
+				"ashfall:runner": 3,
+				"ashfall:armored": 1
+			}
+		},
+		{
+			"tier": 3,
+			"waves": 7,
+			"size": 20,
+			"core_hp": 3200,
+			"variants": {
+				"ashfall:walker": 5,
+				"ashfall:runner": 4,
+				"ashfall:armored": 2
+			}
+		},
+		{
+			"tier": 4,
+			"waves": 6,
+			"size": 22,
+			"core_hp": 3520,
+			"variants": {
+				"ashfall:walker": 3,
+				"ashfall:runner": 4,
+				"ashfall:armored": 4,
+				"ashfall:patient": 1
+			}
+		},
+		{
+			"tier": 5,
+			"waves": 6,
+			"size": 24,
+			"core_hp": 3840,
+			"variants": {
+				"ashfall:walker": 3,
+				"ashfall:runner": 5,
+				"ashfall:armored": 5,
+				"ashfall:patient": 2
+			}
+		},
+		{
+			"tier": 6,
+			"waves": 7,
+			"size": 26,
+			"core_hp": 4160,
+			"variants": {
+				"ashfall:walker": 2,
+				"ashfall:runner": 5,
+				"ashfall:armored": 6,
+				"ashfall:patient": 3
+			}
+		}
+	]
+}

@@ -1,0 +1,171 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:polished_andesite"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:cyan_carpet"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:light_blue_terracotta"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:spruce_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:barrel[facing=up,open=false]"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:barrel[facing=south,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/hospital"
+    }
+   },
+   {
+    "char": "(",
+    "block": "minecraft:stone_bricks"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:spruce_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "################",
+   "$$$$$$$%$$$$$$$$",
+   "                ",
+   "                ",
+   " &&&&&'  &&&&'& ",
+   "                ",
+   "                ",
+   " &&'&&&  &'&&&& ",
+   "                ",
+   "                ",
+   " &&&&&&  &&&&&' ",
+   "                ",
+   "                ",
+   " &&&'&&  &&'&&& ",
+   "                ",
+   "(((((((((((((((("
+  ],
+  [
+   "                ",
+   ")))))))*))))))))",
+   "                ",
+   "                ",
+   " &)&)&)  &)&)&) ",
+   "                ",
+   "                ",
+   " &)&)&)  &)&)&) ",
+   "                ",
+   "                ",
+   " &)&)&)  &)&)&) ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "(((((((((((((((("
+  ],
+  [
+   "                ",
+   "))))))))))))))))",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "(((((((((((((((("
+  ],
+  [
+   "                ",
+   "))))))))))))))))",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "(((((((((((((((("
+  ],
+  [
+   "                ",
+   "))))))))))))))))",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "       +        ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "       +        ",
+   "                ",
+   "                ",
+   "                ",
+   "(((((((((((((((("
+  ]
+ ]
+}

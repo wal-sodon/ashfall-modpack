@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"L": "ashfall:focusing_lens",
+		"W": "ashfall:weapon_parts",
+		"I": "ashfall:alloy_plate",
+		"E": "ashfall:scrap_electronics",
+		"T": "ashfall:duct_tape"
+	},
+	"pattern": [
+		"LWW",
+		"IEI",
+		"T  "
+	],
+	"result": {
+		"id": "ashfall:pulse_carbine"
+	}
+}

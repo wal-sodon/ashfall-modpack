@@ -1,0 +1,9 @@
+{
+	"weight": 20,
+	"min_day": 7,
+	"attributes": {
+		"minecraft:max_health": 14.0,
+		"minecraft:movement_speed": 0.3,
+		"minecraft:follow_range": 48.0
+	}
+}

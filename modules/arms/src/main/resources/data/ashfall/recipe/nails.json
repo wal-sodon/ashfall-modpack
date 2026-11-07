@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "equipment",
+	"ingredients": [
+		"ashfall:scrap_metal"
+	],
+	"result": {
+		"id": "ashfall:nails",
+		"count": 8
+	}
+}

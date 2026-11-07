@@ -1,0 +1,4 @@
+# Full-pack startup check: all mods load, Director/senses initialise, no errors.
+until Done \(
+cmd ashfall director status
+wait 5

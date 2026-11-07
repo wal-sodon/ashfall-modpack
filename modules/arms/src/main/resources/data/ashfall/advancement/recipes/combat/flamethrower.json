@@ -1,0 +1,76 @@
+{
+	"parent": "minecraft:recipes/root",
+	"criteria": {
+		"has_duct_tape": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:duct_tape"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_scrap_metal": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:scrap_metal"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_lighter_fluid": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:lighter_fluid"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_wire_spool": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:wire_spool"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_weapon_parts": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:weapon_parts"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_the_recipe": {
+			"conditions": {
+				"recipes": "ashfall:flamethrower"
+			},
+			"trigger": "minecraft:recipe_unlocked"
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_duct_tape",
+			"has_scrap_metal",
+			"has_lighter_fluid",
+			"has_wire_spool",
+			"has_weapon_parts"
+		]
+	],
+	"rewards": {
+		"recipes": [
+			"ashfall:flamethrower"
+		]
+	}
+}

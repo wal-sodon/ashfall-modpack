@@ -1,0 +1,219 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:gray_concrete"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:stone_bricks"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:iron_block"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:smooth_stone"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:dark_oak_planks"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:spruce_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:barrel[facing=east,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/office"
+    }
+   },
+   {
+    "char": "*",
+    "block": "minecraft:dark_oak_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:iron_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:barrel[facing=up,open=false]"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:observer[facing=east,powered=false]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:observer[facing=west,powered=false]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:dark_oak_fence[east=false,north=true,south=false,west=false]"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:stone_button[face=wall,facing=north,powered=false]"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:iron_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:stone_button[face=wall,facing=south,powered=false]"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:dark_oak_fence[east=false,north=true,south=true,west=true]"
+   },
+   {
+    "char": "4",
+    "block": "minecraft:dark_oak_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "5",
+    "block": "minecraft:dark_oak_fence[east=false,north=false,south=true,west=false]"
+   },
+   {
+    "char": "6",
+    "block": "minecraft:dark_oak_fence[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "7",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "################",
+   "#$ $ % % %  &'''",
+   "#$ $ % % %  &'''",
+   "#$ $ ( ( (  &'''",
+   "#           &)'*",
+   "#               ",
+   "#               ",
+   "#&&&&&&&+&&&&&&&",
+   "#               ",
+   "# ,  ,  ,  )  , ",
+   "# )  ,  ,  ,  ) ",
+   "# ,  )  ,  ,  , ",
+   "# ,  ,  )  ,  , ",
+   "# ,  ,  ,  )  , ",
+   "#               ",
+   "################"
+  ],
+  [
+   "################",
+   "#$ $ % % %  &'''",
+   "#- . % % %  &'''",
+   "#$ $        &''*",
+   "#           & / ",
+   "#               ",
+   "#        0      ",
+   "#&&&&&&&1&&&&&&&",
+   "#        2      ",
+   "# ,  ,  ,  ,  , ",
+   "# ,  ,  ,  ,  , ",
+   "# ,  ,  ,  ,  , ",
+   "# ,  ,  ,  ,  , ",
+   "# ,  ,  ,  ,  , ",
+   "#               ",
+   "################"
+  ],
+  [
+   "################",
+   "#$ $        &'''",
+   "#$ $        &''*",
+   "#$ $        &'3 ",
+   "#           & / ",
+   "#               ",
+   "#               ",
+   "#&&&&&&&&&&&&&&&",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "################"
+  ],
+  [
+   "################",
+   "#           &   ",
+   "#           &45 ",
+   "#           &'3 ",
+   "#           & / ",
+   "#               ",
+   "#               ",
+   "#&&&&&&&&&&&&&&&",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "################"
+  ],
+  [
+   "################",
+   "#           &   ",
+   "#           & 5 ",
+   "#           &46 ",
+   "#           & / ",
+   "#       7       ",
+   "#               ",
+   "#&&&&&&&&&&&&&&&",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#       7       ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "################"
+  ]
+ ]
+}

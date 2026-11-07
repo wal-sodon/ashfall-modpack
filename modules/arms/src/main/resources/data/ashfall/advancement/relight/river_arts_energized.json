@@ -1,0 +1,28 @@
+{
+	"parent": "ashfall:relight/river_arts_repaired",
+	"criteria": {
+		"energized": {
+			"trigger": "ashfall:district",
+			"conditions": {
+				"district": "river_arts",
+				"state": "energized"
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:energy_cell"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.river_arts_energized.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.river_arts_energized.description"
+		}
+	},
+	"requirements": [
+		[
+			"energized"
+		]
+	]
+}

@@ -1,0 +1,48 @@
+{
+	"id": "river_arts",
+	"kind": "district",
+	"district_index": 1,
+	"tier": 2,
+	"priority": 100,
+	"shape": {
+		"type": "disc",
+		"x": -900,
+		"z": 100,
+		"r": 350
+	},
+	"city": true,
+	"citystyle": "ashfall:river_arts",
+	"ruin_chance": 0.12,
+	"damage_scale": 1.0,
+	"population_scale": 1.0,
+	"landmarks": [
+		"ashfall:substation_river_arts",
+		"ashfall:kiln_warehouse"
+	],
+	"key_relay_targets": [
+		[
+			-1050,
+			0
+		],
+		[
+			-950,
+			250
+		],
+		[
+			-800,
+			-50
+		],
+		[
+			-700,
+			150
+		],
+		[
+			-1000,
+			350
+		],
+		[
+			-850,
+			300
+		]
+	]
+}

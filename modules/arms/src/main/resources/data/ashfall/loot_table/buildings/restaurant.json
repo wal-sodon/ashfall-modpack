@@ -1,0 +1,135 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 1,
+				"max": 3
+			},
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 25
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:canned_food",
+					"weight": 23,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bottled_water",
+					"weight": 12,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:cloth",
+					"weight": 3,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:matches",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:lighter_fluid",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:rotten_flesh",
+					"weight": 4,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:bread",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:baked_potato",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:bowl",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:cooked_chicken",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:mushroom_stew",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:cooked_beef",
+					"weight": 1
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:buildings/restaurant"
+}

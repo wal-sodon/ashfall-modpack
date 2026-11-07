@@ -1,0 +1,16 @@
+{
+	"id": "undiscovered",
+	"kind": "wild",
+	"district_index": 0,
+	"tier": 1,
+	"priority": 0,
+	"shape": {
+		"type": "all"
+	},
+	"city": false,
+	"ruin_chance": 0.0,
+	"damage_scale": 1.0,
+	"population_scale": 0.0,
+	"landmarks": [],
+	"key_relay_targets": []
+}

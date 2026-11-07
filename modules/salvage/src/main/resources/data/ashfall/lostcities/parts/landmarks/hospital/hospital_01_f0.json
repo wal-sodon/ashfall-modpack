@@ -1,0 +1,237 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:light_blue_terracotta"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:smooth_quartz"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:cyan_carpet"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:birch_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:barrel[facing=east,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/clinic"
+    }
+   },
+   {
+    "char": "(",
+    "block": "minecraft:barrel[facing=east,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/hospital"
+    }
+   },
+   {
+    "char": ")",
+    "block": "minecraft:birch_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:iron_bars[east=false,north=false,south=false,west=true]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:white_stained_glass_pane[east=false,north=false,south=true,west=false]"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:white_bed[facing=south,occupied=false,part=foot]"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:white_stained_glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:white_bed[facing=south,occupied=false,part=head]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:white_stained_glass_pane[east=true,north=true,south=true,west=false]"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:iron_bars[east=false,north=false,south=true,west=true]"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:barrel[facing=north,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/hospital"
+    }
+   },
+   {
+    "char": "2",
+    "block": "minecraft:birch_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:light_blue_stained_glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "4",
+    "block": "minecraft:note_block"
+   },
+   {
+    "char": "5",
+    "block": "minecraft:light_blue_stained_glass_pane[east=true,north=true,south=true,west=false]"
+   },
+   {
+    "char": "6",
+    "block": "minecraft:light_blue_stained_glass_pane[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "7",
+    "block": "minecraft:light_blue_stained_glass_pane[east=true,north=true,south=false,west=true]"
+   },
+   {
+    "char": "8",
+    "block": "minecraft:birch_shelf[facing=east,powered=false,side_chain=unconnected,waterlogged=false]"
+   },
+   {
+    "char": "9",
+    "block": "minecraft:tripwire_hook[attached=false,facing=north,powered=false]"
+   },
+   {
+    "char": ":",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "$%%%%%%%%%%%%%%%",
+   "$!!!!!!!&!!!!!!!",
+   "$'             !",
+   "$(             !",
+   "$              !",
+   "$              !",
+   "$    ######    !",
+   "$    # ) )     !",
+   "$    #         !",
+   "$              !",
+   "$              !",
+   "$              !",
+   "$* +  +  +  +  !",
+   "$ ,- ,- ,- ,-  !",
+   "$ .- ./0.- ./1 !",
+   "$$$$$$$$$$$$$$$$"
+  ],
+  [
+   "$               ",
+   "$$$$$$$$2$$$$$$$",
+   "$              $",
+   "3              $",
+   "3              $",
+   "$              $",
+   "$         4    $",
+   "3              $",
+   "3              $",
+   "$              $",
+   "$              $",
+   "3              $",
+   "5* +  +  +  +  $",
+   "$  -  -  -  -  $",
+   "$  -  /0 -  -  $",
+   "$$67$$77$$66$$67"
+  ],
+  [
+   "$               ",
+   "$$$$$$$$$$$$$$$$",
+   "$8             $",
+   "38             $",
+   "38             $",
+   "$8             $",
+   "$8             $",
+   "3              $",
+   "3              $",
+   "$              $",
+   "$              $",
+   "3              $",
+   "39 +  +  +  +  $",
+   "$  -  -  -  -  $",
+   "$  -  -9 -  -  $",
+   "$$67$$76$$66$$67"
+  ],
+  [
+   "$               ",
+   "$$$$$$$$$$$$$$$$",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$$$$$$$$$$$$$$$$"
+  ],
+  [
+   "$               ",
+   "$$$$$$$$$$$$$$$$",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$   :     :    $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$$$$$$$$$$$$$$$$"
+  ]
+ ]
+}

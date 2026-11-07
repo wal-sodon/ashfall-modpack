@@ -1,0 +1,9 @@
+{
+	"number": 8,
+	"title": "Reverse Flow",
+	"author": "Lena Abernathy, Grid Dispatch",
+	"pages": [
+		"River Arts substation tripped at 19:40. Normally a trip means the load drops. This time the load didn't drop, it moved.",
+		"Every amp River Arts was carrying went uphill to the ridge feeder. The relays did it. The new smart relays rerouted on their own. Nobody here told them to."
+	]
+}

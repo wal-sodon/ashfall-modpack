@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "ashfall_arms",
+	"version": "${version}",
+	"name": "Ashfall: Arms",
+	"description": "Energy weapons, cell packs, Energy Cells and chargers.",
+	"authors": ["toesinthesand"],
+	"license": "MIT",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["xyz.toesinthesand.ashfall.arms.AshfallArms"],
+		"client": ["xyz.toesinthesand.ashfall.arms.client.AshfallArmsClient"]
+	},
+	"mixins": [
+		"ashfall_arms.mixins.json",
+		{ "config": "ashfall_arms.client.mixins.json", "environment": "client" }
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*",
+		"ashfall_director": "*",
+		"ashfall_salvage": "*",
+		"team_reborn_energy": ">=5.0.0"
+	}
+}

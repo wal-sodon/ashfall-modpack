@@ -1,0 +1,14 @@
+{
+ "dimx": 2,
+ "dimz": 2,
+ "buildings": [
+  [
+   "ashfall:substation_mission_00",
+   "ashfall:substation_mission_01"
+  ],
+  [
+   "ashfall:substation_mission_10",
+   "ashfall:substation_mission_11"
+  ]
+ ]
+}

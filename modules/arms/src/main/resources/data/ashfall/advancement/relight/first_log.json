@@ -1,0 +1,29 @@
+{
+	"parent": "ashfall:relight/root",
+	"criteria": {
+		"relay_log": {
+			"trigger": "ashfall:relay_logs",
+			"conditions": {
+				"count": {
+					"min": 1
+				}
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:power_relay"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.first_log.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.first_log.description"
+		}
+	},
+	"requirements": [
+		[
+			"relay_log"
+		]
+	]
+}

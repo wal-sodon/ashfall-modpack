@@ -1,0 +1,14 @@
+{
+	"layers": {
+		"humanoid": [
+			{
+				"texture": "ashfall:scavenger"
+			}
+		],
+		"humanoid_leggings": [
+			{
+				"texture": "ashfall:scavenger"
+			}
+		]
+	}
+}

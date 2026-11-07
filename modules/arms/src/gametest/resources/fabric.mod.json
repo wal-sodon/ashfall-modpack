@@ -1,0 +1,64 @@
+{
+	"schemaVersion": 1,
+	"id": "ashfall_arms_test",
+	"version": "${version}",
+	"name": "Ashfall: Arms gametests",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"xyz.toesinthesand.ashfall.arms.test.ChargerTestItems"
+		],
+		"fabric-client-gametest": [
+			"xyz.toesinthesand.ashfall.arms.test.ArmsVisualClientTest",
+			"xyz.toesinthesand.ashfall.arms.test.LandmarkTourClientTest",
+			"xyz.toesinthesand.ashfall.arms.test.WreckSitesClientTest",
+			"xyz.toesinthesand.ashfall.arms.test.HavensVisualClientTest",
+			"xyz.toesinthesand.ashfall.arms.test.StoryVisualClientTest",
+			"xyz.toesinthesand.ashfall.arms.test.AdminScreensClientTest",
+			"xyz.toesinthesand.ashfall.arms.test.MissionVisualClientTest",
+			"xyz.toesinthesand.ashfall.arms.test.SurvivorVisualClientTest",
+			"xyz.toesinthesand.ashfall.arms.test.WeaponHandlingVisualClientTest"
+		],
+		"fabric-gametest": [
+			"xyz.toesinthesand.ashfall.arms.test.ArmsSmokeTest",
+			"xyz.toesinthesand.ashfall.arms.test.SupplyDropGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.RadioJobGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.StrongboxGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.ArmsContentTest",
+			"xyz.toesinthesand.ashfall.arms.test.ChargerGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.ArmsGunsTest",
+			"xyz.toesinthesand.ashfall.arms.test.ArmsBoltTest",
+			"xyz.toesinthesand.ashfall.arms.test.ArmsNoiseStimuliTest",
+			"xyz.toesinthesand.ashfall.arms.test.ArmsMobGunTest",
+			"xyz.toesinthesand.ashfall.arms.test.BossDropsGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.GridGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.StoryGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.PlasmaBladeGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.WeaponsmithBenchGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.BreachGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.DecayGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.FinaleGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.EndingGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.MobDropsAdminGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.ZombieLoadBenchmark",
+			"xyz.toesinthesand.ashfall.arms.test.MissionGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.TravelGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.PetFriendlyFireGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.SurvivorGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.SurvivorHooksGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.SurvivorWorkGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.SurvivorRulesGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.SurvivorHoldoutGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.SurvivorTargetingGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.TraderGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.WeaponHandlingGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.StunModeGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.FlamethrowerGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.ArcChargeGameTest",
+			"xyz.toesinthesand.ashfall.arms.test.RecipeBookGameTest"
+		]
+	},
+	"depends": {
+		"ashfall_arms": "*"
+	}
+}

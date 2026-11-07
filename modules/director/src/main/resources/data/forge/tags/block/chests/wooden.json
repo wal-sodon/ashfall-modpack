@@ -1,0 +1,33 @@
+{
+	"replace": false,
+	"values": [
+		{
+			"id": "#lootr:chests",
+			"required": false
+		},
+		{
+			"id": "#lootr:trapped_chests",
+			"required": false
+		},
+		{
+			"id": "#lootr:copper_chests",
+			"required": false
+		},
+		{
+			"id": "#lootr:exposed_copper_chests",
+			"required": false
+		},
+		{
+			"id": "#lootr:weathered_copper_chests",
+			"required": false
+		},
+		{
+			"id": "#lootr:oxidized_copper_chests",
+			"required": false
+		},
+		{
+			"id": "lootr:inventory",
+			"required": false
+		}
+	]
+}

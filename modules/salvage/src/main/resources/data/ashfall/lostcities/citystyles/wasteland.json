@@ -1,0 +1,11 @@
+{
+	"inherit": "lcmt:citystyle_standard",
+	"explosionchance": 1.0,
+	"buildingsettings": {
+		"minfloors": 1,
+		"maxfloors": 3,
+		"mincellars": 0,
+		"maxcellars": 1,
+		"buildingchance": 0.15
+	}
+}

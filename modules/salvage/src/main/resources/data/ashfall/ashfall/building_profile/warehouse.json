@@ -1,0 +1,52 @@
+{
+	"match": [
+		{
+			"building": "warehouse|industrial|storage_tank|hangar"
+		},
+		{
+			"lc_building": "*:building?",
+			"lc_zone": "river_arts"
+		},
+		{
+			"lc_multibuilding": "ashfall:kiln_warehouse"
+		}
+	],
+	"arnis_uses": [
+		"Warehouse",
+		"Factory",
+		"Barn"
+	],
+	"priority": 20,
+	"tier": 1,
+	"loot_table": "ashfall:buildings/warehouse",
+	"containers": {
+		"per_100m2": 2.0,
+		"min": 2,
+		"max": 12,
+		"blocks": [
+			{
+				"block": "minecraft:chest",
+				"weight": 1
+			},
+			{
+				"block": "minecraft:barrel",
+				"weight": 3
+			}
+		]
+	},
+	"refill": {
+		"enabled": true,
+		"delay_ticks": 72000,
+		"no_player_radius": 32,
+		"quiet_ticks": 6000
+	},
+	"population": {
+		"per_100m2": 0.4,
+		"entities": {
+			"minecraft:zombie": 70,
+			"minecraft:husk": 30
+		}
+	},
+	"safe_candidate": false,
+	"relay_chance": 0.15
+}

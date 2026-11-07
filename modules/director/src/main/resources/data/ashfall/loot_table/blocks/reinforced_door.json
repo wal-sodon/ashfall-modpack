@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:block",
+	"pools": [
+		{
+			"condition": {
+				"type": "minecraft:survives_explosion"
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"condition": {
+						"type": "minecraft:match_block",
+						"blocks": "ashfall:reinforced_door",
+						"state": {
+							"half": "lower"
+						}
+					},
+					"name": "ashfall:reinforced_door"
+				}
+			],
+			"rolls": 1
+		}
+	],
+	"random_sequence": "ashfall:blocks/reinforced_door"
+}

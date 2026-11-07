@@ -1,0 +1,59 @@
+# Phase 4.5 playtest, part 2 (headless, no player), on world-p45 after part 1 and the siege-day fix.
+# Downtown is BROKEN after part 1. Checks: re-repair state by command, then a Breach on clock day 11 (game time is
+# still day 1) now runs at the clock day's tier and brings special infected; the stalker hides in the dark.
+until Done \(
+cmd ashfall grid status
+cmd forceload add -32 -112 159 79
+wait 20
+# Baseline: 144 force-loaded city chunks, no zombies.
+cmd kill @e[type=#minecraft:zombies]
+wait 15
+cmd spark tps
+cmd time set 258000
+cmd ashfall horde status
+cmd ashfall grid set downtown reclaimed
+cmd ashfall grid status
+cmd ashfall horde breach downtown
+wait 6
+cmd ashfall grid status
+cmd execute if entity @e[tag=ashfall_siege]
+cmd execute if entity @e[type=ashfall:crawler,tag=ashfall_siege]
+cmd execute if entity @e[type=ashfall:bloated,tag=ashfall_siege]
+cmd execute if entity @e[type=ashfall:spitter,tag=ashfall_siege]
+cmd execute if entity @e[type=ashfall:screamer,tag=ashfall_siege]
+cmd execute if entity @e[type=ashfall:stalker,tag=ashfall_siege]
+cmd execute if entity @e[type=ashfall:brute,tag=ashfall_siege]
+# Clear the waves to see the later ones roll specials too, then hold at dawn.
+cmd kill @e[tag=ashfall_siege]
+wait 5
+cmd ashfall grid status
+cmd execute if entity @e[type=#minecraft:zombies,tag=ashfall_siege,type=!minecraft:zombie]
+cmd kill @e[tag=ashfall_siege]
+wait 5
+cmd ashfall grid status
+cmd execute if entity @e[type=#minecraft:zombies,tag=ashfall_siege,type=!minecraft:zombie]
+cmd time set 263500
+wait 5
+cmd ashfall grid status
+cmd kill @e[type=#minecraft:zombies]
+# The stalker in the dark (midnight, open street, no player near): it should hide (Invisible).
+cmd time set 258000
+cmd execute positioned 64 0 -60 positioned over motion_blocking_no_leaves run summon ashfall:stalker ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_special"]}
+wait 5
+cmd execute if entity @e[type=ashfall:stalker,nbt={Invisible:1b}]
+cmd execute as @e[type=ashfall:stalker] at @s run data get entity @s Pos
+cmd time set 6000
+wait 3
+cmd execute if entity @e[type=ashfall:stalker,nbt={Invisible:1b}]
+cmd kill @e[tag=p45_special]
+# Horde-only load after the re-path floor: three waves (30) aimed at the substation, measured after 40 s.
+cmd time set 258000
+cmd execute positioned 64 80 -16 run ashfall horde wave at ~ ~ ~
+cmd execute positioned 64 80 -16 run ashfall horde wave at ~ ~ ~
+cmd execute positioned 64 80 -16 run ashfall horde wave at ~ ~ ~
+wait 40
+cmd ashfall horde status
+cmd spark tps
+cmd kill @e[type=#minecraft:zombies]
+cmd forceload remove all
+wait 3

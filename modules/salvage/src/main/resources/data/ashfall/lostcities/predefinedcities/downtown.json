@@ -1,0 +1,41 @@
+{
+	"dimension": "minecraft:overworld",
+	"chunkx": 0,
+	"chunkz": 0,
+	"radius": 256,
+	"citystyle": "ashfall:downtown",
+	"buildings": [
+		{
+			"building": "ashfall:substation_downtown",
+			"chunkx": 3,
+			"chunkz": -2,
+			"multi": true,
+			"preventruins": true
+		},
+		{
+			"building": "ashfall:police_station",
+			"chunkx": -4,
+			"chunkz": 1,
+			"multi": true,
+			"preventruins": true
+		}
+	],
+	"streets": [
+		{
+			"chunkx": 3,
+			"chunkz": 0
+		},
+		{
+			"chunkx": 4,
+			"chunkz": 0
+		},
+		{
+			"chunkx": -4,
+			"chunkz": 2
+		},
+		{
+			"chunkx": -3,
+			"chunkz": 2
+		}
+	]
+}

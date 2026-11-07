@@ -1,0 +1,13 @@
+{
+	"zones": ["wasteland"],
+	"region_chunks": 16,
+	"chance": 0.25,
+	"salt": 1600,
+	"templates": [
+		{ "template": "ashfall:crash_site_small", "weight": 2 },
+		{ "template": "ashfall:crash_site_pod", "weight": 1 },
+		{ "template": "ashfall:crash_site_debris", "weight": 3 }
+	],
+	"guards": { "min": 1, "max": 2, "radius": 6 },
+	"avoid_fixed": 64
+}

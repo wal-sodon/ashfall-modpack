@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "ashfall_salvage_test",
+	"version": "${version}",
+	"name": "Ashfall: Salvage gametests",
+	"environment": "*",
+	"entrypoints": {
+		"fabric-client-gametest": [
+			"xyz.toesinthesand.ashfall.salvage.test.BuildingTypesClientTest"
+		],
+		"fabric-gametest": [
+			"xyz.toesinthesand.ashfall.salvage.test.SalvageSmokeTest",
+			"xyz.toesinthesand.ashfall.salvage.test.AtlasProcessorTest",
+			"xyz.toesinthesand.ashfall.salvage.test.LootZoneGameTest",
+			"xyz.toesinthesand.ashfall.salvage.test.LootZoneAdminGameTest",
+			"xyz.toesinthesand.ashfall.salvage.test.CityZoneGameTest",
+			"xyz.toesinthesand.ashfall.salvage.test.LostCitiesAtlasGameTest",
+			"xyz.toesinthesand.ashfall.salvage.test.LandmarkGameTest",
+			"xyz.toesinthesand.ashfall.salvage.test.CrashSiteGameTest",
+			"xyz.toesinthesand.ashfall.salvage.test.SatchelGameTest",
+			"xyz.toesinthesand.ashfall.salvage.test.StreetPropsGameTest",
+			"xyz.toesinthesand.ashfall.salvage.test.BicycleGameTest",
+			"xyz.toesinthesand.ashfall.salvage.test.TorchBurnoutGameTest"
+		]
+	},
+	"mixins": ["ashfall_salvage_test.mixins.json"],
+	"depends": {
+		"ashfall_salvage": "*"
+	}
+}

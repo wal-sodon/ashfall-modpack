@@ -1,0 +1,290 @@
+{
+	"every_nights": 6,
+	"jitter_nights": 1,
+	"first_night": 7,
+	"night_start": 12000,
+	"dawn": 23000,
+	"day_tiers": [
+		{
+			"from_day": 1,
+			"tier": 1
+		},
+		{
+			"from_day": 14,
+			"tier": 2
+		},
+		{
+			"from_day": 28,
+			"tier": 3
+		},
+		{
+			"from_day": 45,
+			"tier": 4
+		},
+		{
+			"from_day": 65,
+			"tier": 5
+		},
+		{
+			"from_day": 90,
+			"tier": 6
+		}
+	],
+	"unlocks": [
+		{
+			"day": 1,
+			"variant": "ashfall:walker"
+		},
+		{
+			"day": 1,
+			"variant": "ashfall:husk"
+		},
+		{
+			"day": 7,
+			"variant": "ashfall:runner"
+		},
+		{
+			"day": 16,
+			"variant": "ashfall:armored"
+		},
+		{
+			"day": 30,
+			"variant": "ashfall:patient"
+		}
+	],
+	"tiers": [
+		{
+			"tier": 1,
+			"waves": [
+				{
+					"size": 6,
+					"delay_seconds": 20,
+					"spawns": {
+						"ashfall:walker": 8,
+						"ashfall:husk": 1,
+						"ashfall:runner": 2
+					},
+					"loot_table": "ashfall:horde/wave_common"
+				},
+				{
+					"size": 8,
+					"delay_seconds": 120,
+					"spawns": {
+						"ashfall:walker": 6,
+						"ashfall:runner": 3
+					},
+					"loot_table": "ashfall:horde/wave_common"
+				}
+			]
+		},
+		{
+			"tier": 2,
+			"waves": [
+				{
+					"size": 8,
+					"delay_seconds": 20,
+					"spawns": {
+						"ashfall:walker": 7,
+						"ashfall:husk": 1,
+						"ashfall:runner": 3
+					},
+					"loot_table": "ashfall:horde/wave_common"
+				},
+				{
+					"size": 8,
+					"delay_seconds": 120,
+					"spawns": {
+						"ashfall:walker": 5,
+						"ashfall:runner": 4,
+						"ashfall:armored": 1
+					},
+					"loot_table": "ashfall:horde/wave_common"
+				},
+				{
+					"size": 10,
+					"delay_seconds": 150,
+					"spawns": {
+						"ashfall:walker": 5,
+						"ashfall:runner": 3,
+						"ashfall:armored": 2
+					},
+					"loot_table": "ashfall:horde/wave_scrap"
+				}
+			]
+		},
+		{
+			"tier": 3,
+			"waves": [
+				{
+					"size": 10,
+					"delay_seconds": 20,
+					"spawns": {
+						"ashfall:walker": 6,
+						"ashfall:runner": 4
+					},
+					"loot_table": "ashfall:horde/wave_common"
+				},
+				{
+					"size": 10,
+					"delay_seconds": 120,
+					"spawns": {
+						"ashfall:walker": 4,
+						"ashfall:runner": 4,
+						"ashfall:armored": 2
+					},
+					"loot_table": "ashfall:horde/wave_scrap"
+				},
+				{
+					"size": 12,
+					"delay_seconds": 150,
+					"spawns": {
+						"ashfall:walker": 4,
+						"ashfall:runner": 4,
+						"ashfall:armored": 3,
+						"ashfall:patient": 1
+					},
+					"loot_table": "ashfall:horde/wave_scrap"
+				}
+			]
+		},
+		{
+			"tier": 4,
+			"waves": [
+				{
+					"size": 12,
+					"delay_seconds": 20,
+					"spawns": {
+						"ashfall:walker": 5,
+						"ashfall:runner": 5
+					},
+					"loot_table": "ashfall:horde/wave_common"
+				},
+				{
+					"size": 12,
+					"delay_seconds": 120,
+					"spawns": {
+						"ashfall:walker": 4,
+						"ashfall:runner": 4,
+						"ashfall:armored": 3,
+						"ashfall:patient": 1
+					},
+					"loot_table": "ashfall:horde/wave_scrap"
+				},
+				{
+					"size": 14,
+					"delay_seconds": 150,
+					"spawns": {
+						"ashfall:walker": 3,
+						"ashfall:runner": 5,
+						"ashfall:armored": 4,
+						"ashfall:patient": 2
+					},
+					"loot_table": "ashfall:horde/wave_salvage"
+				}
+			]
+		},
+		{
+			"tier": 5,
+			"waves": [
+				{
+					"size": 14,
+					"delay_seconds": 20,
+					"spawns": {
+						"ashfall:walker": 4,
+						"ashfall:runner": 6
+					},
+					"loot_table": "ashfall:horde/wave_scrap"
+				},
+				{
+					"size": 14,
+					"delay_seconds": 120,
+					"spawns": {
+						"ashfall:walker": 3,
+						"ashfall:runner": 5,
+						"ashfall:armored": 4,
+						"ashfall:patient": 2
+					},
+					"loot_table": "ashfall:horde/wave_scrap"
+				},
+				{
+					"size": 16,
+					"delay_seconds": 150,
+					"spawns": {
+						"ashfall:walker": 2,
+						"ashfall:runner": 5,
+						"ashfall:armored": 5,
+						"ashfall:patient": 3
+					},
+					"loot_table": "ashfall:horde/wave_salvage"
+				},
+				{
+					"size": 12,
+					"delay_seconds": 180,
+					"spawns": {
+						"ashfall:runner": 6,
+						"ashfall:armored": 4
+					},
+					"loot_table": "ashfall:horde/wave_salvage"
+				}
+			]
+		},
+		{
+			"tier": 6,
+			"waves": [
+				{
+					"size": 16,
+					"delay_seconds": 20,
+					"spawns": {
+						"ashfall:walker": 3,
+						"ashfall:runner": 6,
+						"ashfall:armored": 2
+					},
+					"loot_table": "ashfall:horde/wave_scrap"
+				},
+				{
+					"size": 16,
+					"delay_seconds": 120,
+					"spawns": {
+						"ashfall:walker": 2,
+						"ashfall:runner": 5,
+						"ashfall:armored": 5,
+						"ashfall:patient": 3
+					},
+					"loot_table": "ashfall:horde/wave_salvage"
+				},
+				{
+					"size": 16,
+					"delay_seconds": 150,
+					"spawns": {
+						"ashfall:runner": 6,
+						"ashfall:armored": 6,
+						"ashfall:patient": 3
+					},
+					"loot_table": "ashfall:horde/wave_salvage"
+				},
+				{
+					"size": 16,
+					"delay_seconds": 180,
+					"spawns": {
+						"ashfall:runner": 6,
+						"ashfall:armored": 6,
+						"ashfall:patient": 4
+					},
+					"loot_table": "ashfall:horde/wave_salvage"
+				}
+			]
+		}
+	],
+	"spawn": {
+		"radius_min": 40,
+		"radius_max": 64,
+		"group_spread": 4,
+		"haven_radius": 96,
+		"max_alive_per_player": 60
+	},
+	"breach": {
+		"every_days": 7,
+		"first_day": 7,
+		"warning_seconds": 150
+	}
+}

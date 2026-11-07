@@ -1,0 +1,29 @@
+# Phase 3 playtest, part 3 (headless): after the reach and spawn-height fixes, a River Arts siege must hurt the
+# core. World-p3c after parts 1-2 (River Arts reclaimed): set it back to energized, run the siege, watch the core
+# health and where the wave stands, then win it by clearing the waves.
+until Done \(
+cmd forceload add -896 48 -817 127
+wait 20
+cmd time set 6000
+cmd ashfall grid set river_arts energized
+cmd ashfall safezone list
+cmd time set 12000
+wait 10
+cmd ashfall grid status
+cmd execute as @e[tag=ashfall_siege] run data get entity @s Pos
+wait 15
+cmd ashfall grid status
+cmd execute as @e[tag=ashfall_siege] run data get entity @s Pos
+cmd spark tps
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd ashfall grid status
+cmd ashfall safezone list
+cmd forceload remove all
+wait 3

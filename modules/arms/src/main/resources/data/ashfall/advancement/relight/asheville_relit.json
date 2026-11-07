@@ -1,0 +1,26 @@
+{
+	"parent": "ashfall:relight/grid_80",
+	"criteria": {
+		"black_start": {
+			"trigger": "ashfall:story_ending"
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:resonance_crystal"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.asheville_relit.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.asheville_relit.description"
+		},
+		"frame": "challenge",
+		"hidden": true
+	},
+	"requirements": [
+		[
+			"black_start"
+		]
+	]
+}

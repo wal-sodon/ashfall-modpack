@@ -1,0 +1,6 @@
+# Arnis worlds ship with mob spawning off and peaceful difficulty; turn zombies back on.
+until Done \(
+cmd gamerule minecraft:spawn_mobs true
+cmd gamerule minecraft:spawn_monsters true
+cmd difficulty normal
+cmd gamerule minecraft:spawn_mobs

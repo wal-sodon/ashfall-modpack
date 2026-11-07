@@ -1,0 +1,5 @@
+{
+	"slot": "core",
+	"energy_per_shot": 0.7,
+	"requires_district": "south_slope"
+}

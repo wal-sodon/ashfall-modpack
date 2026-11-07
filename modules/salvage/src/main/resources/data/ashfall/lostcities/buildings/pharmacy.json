@@ -1,0 +1,32 @@
+{
+ "filler": "#",
+ "palette": {
+  "palette": [
+   {
+    "char": "#",
+    "block": "minecraft:light_gray_concrete"
+   }
+  ]
+ },
+ "allowDoors": false,
+ "allowFillers": false,
+ "overrideFloors": true,
+ "minfloors": 2,
+ "maxfloors": 2,
+ "mincellars": 0,
+ "maxcellars": 0,
+ "parts": [
+  {
+   "part": "ashfall:landmarks/pharmacy/pharmacy_f0",
+   "floor": 0
+  },
+  {
+   "part": "ashfall:landmarks/pharmacy/pharmacy_f1",
+   "floor": 1
+  },
+  {
+   "part": "ashfall:landmarks/pharmacy/pharmacy_top",
+   "floor": 2
+  }
+ ]
+}

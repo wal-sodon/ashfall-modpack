@@ -1,0 +1,369 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:stone_bricks"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:spruce_planks"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:spruce_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:bricks"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:spruce_door[facing=north,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:birch_planks"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:barrel[facing=south,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/generic"
+    }
+   },
+   {
+    "char": ")",
+    "block": "minecraft:gray_carpet"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:chest[facing=south,type=right,waterlogged=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/home"
+    }
+   },
+   {
+    "char": "+",
+    "block": "minecraft:chest[facing=south,type=left,waterlogged=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/home"
+    }
+   },
+   {
+    "char": ",",
+    "block": "minecraft:barrel[facing=south,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/home"
+    }
+   },
+   {
+    "char": "-",
+    "block": "minecraft:barrel[facing=south,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/fuel"
+    }
+   },
+   {
+    "char": ".",
+    "block": "minecraft:spruce_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:crafting_table"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:spruce_door[facing=east,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:smithing_table"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:spruce_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:fletching_table"
+   },
+   {
+    "char": "4",
+    "block": "minecraft:spruce_slab[type=top,waterlogged=false]"
+   },
+   {
+    "char": "5",
+    "block": "minecraft:red_carpet"
+   },
+   {
+    "char": "6",
+    "block": "minecraft:bookshelf"
+   },
+   {
+    "char": "7",
+    "block": "minecraft:dark_oak_planks"
+   },
+   {
+    "char": "8",
+    "block": "minecraft:barrel[facing=south,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/grocery"
+    }
+   },
+   {
+    "char": "9",
+    "block": "minecraft:smooth_quartz"
+   },
+   {
+    "char": ":",
+    "block": "minecraft:potted_dead_bush"
+   },
+   {
+    "char": ";",
+    "block": "minecraft:barrel[facing=west,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/home"
+    }
+   },
+   {
+    "char": "<",
+    "block": "minecraft:brown_carpet"
+   },
+   {
+    "char": "=",
+    "block": "minecraft:dark_oak_stairs[facing=west,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": ">",
+    "block": "minecraft:cauldron"
+   },
+   {
+    "char": "?",
+    "block": "minecraft:spruce_slab[type=bottom,waterlogged=false]"
+   },
+   {
+    "char": "@",
+    "block": "minecraft:spruce_stairs[facing=west,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "A",
+    "block": "minecraft:smoker[facing=west,lit=false]"
+   },
+   {
+    "char": "B",
+    "block": "minecraft:spruce_trapdoor[facing=west,half=bottom,open=true,powered=false,waterlogged=false]"
+   },
+   {
+    "char": "C",
+    "block": "minecraft:dark_oak_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "D",
+    "block": "minecraft:spruce_trapdoor[facing=east,half=bottom,open=true,powered=false,waterlogged=false]"
+   },
+   {
+    "char": "E",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": "F",
+    "block": "minecraft:spruce_door[facing=south,half=lower,hinge=right,open=false,powered=false]"
+   },
+   {
+    "char": "G",
+    "block": "minecraft:spruce_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "H",
+    "block": "minecraft:spruce_door[facing=north,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "I",
+    "block": "minecraft:iron_bars[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "J",
+    "block": "minecraft:spruce_door[facing=east,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "K",
+    "block": "minecraft:spruce_fence[east=false,north=true,south=false,west=false]"
+   },
+   {
+    "char": "L",
+    "block": "minecraft:note_block"
+   },
+   {
+    "char": "M",
+    "block": "minecraft:black_concrete"
+   },
+   {
+    "char": "N",
+    "block": "minecraft:iron_bars[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "O",
+    "block": "minecraft:lever[face=wall,facing=west,powered=false]"
+   },
+   {
+    "char": "P",
+    "block": "minecraft:spruce_door[facing=south,half=upper,hinge=right,open=false,powered=false]"
+   },
+   {
+    "char": "Q",
+    "block": "minecraft:spruce_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "R",
+    "block": "minecraft:oak_shelf[facing=south,powered=false,side_chain=unconnected,waterlogged=false]"
+   },
+   {
+    "char": "S",
+    "block": "minecraft:spruce_fence[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "T",
+    "block": "minecraft:lightning_rod[facing=up,powered=false]"
+   },
+   {
+    "char": "U",
+    "block": "minecraft:spruce_shelf[facing=south,powered=false,side_chain=unconnected,waterlogged=false]"
+   },
+   {
+    "char": "V",
+    "block": "minecraft:spruce_shelf[facing=west,powered=false,side_chain=unconnected,waterlogged=false]"
+   },
+   {
+    "char": "W",
+    "block": "minecraft:spruce_fence[east=false,north=false,south=true,west=false]"
+   },
+   {
+    "char": "X",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "! #############!",
+   "! #############!",
+   "! #############!",
+   "!$#############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "%%%%%%&%%%%%%%%%",
+   "%###'()(' *+,- %",
+   "% ##' ).'     /%",
+   "% ##' ) 0     1%",
+   "% #2' ) '     3%",
+   "%       '44.   %",
+   "%'''''55'''''''%",
+   "%677 '55'889999%",
+   "%6  :'55'     ;%",
+   "% <<  550     ;%",
+   "%=<<  55' 2   >%",
+   "% ?? '55'@44. A%",
+   "% << '55'@44. 9%",
+   "% << '55'  $  9%",
+   "%BCCD'  '     E%",
+   "%%%%%%FG%%%%%%%%"
+  ],
+  [
+   "%%%%%%H%%%%II%%%",
+   "%###'   '      %",
+   "% ##'   '      %",
+   "% #2'   J      %",
+   "% K '   '      %",
+   "%       'L     %",
+   "%'''''  '''''''%",
+   "%6MM '  '      %",
+   "%6   '  '      %",
+   "%       J      N",
+   "N       '      N",
+   "N    '  '      N",
+   "N    '  '      %",
+   "%    '  '      %",
+   "%    '  '    OE%",
+   "%%II%%PQ%%IIII%%"
+  ],
+  [
+   "%%%%%%%%%%%II%%%",
+   "%###'   ' RRRR %",
+   "% #2'   '      %",
+   "% S '   '      %",
+   "% K '   '      %",
+   "%       'T     %",
+   "%'''''  '''''''%",
+   "%6   '  'UUUUU %",
+   "%6   '  '     V%",
+   "%       '     VN",
+   "N       '     VN",
+   "N    '  '     VN",
+   "N    '  '     V%",
+   "%    '  '     V%",
+   "%    '  '      %",
+   "%%II%%%%%%IIII%%"
+  ],
+  [
+   "%%%%%%%%%%%%%%%%",
+   "%   '   ' RRRR %",
+   "%$W '   '      %",
+   "% S '   '      %",
+   "% K '   '      %",
+   "%       '      %",
+   "%'''''  '''''''%",
+   "%    '  '      %",
+   "%    '  '      %",
+   "%    '  '      %",
+   "%    '  '      %",
+   "%    '  '      %",
+   "%    '  '      %",
+   "%    '  '      %",
+   "%    '  '      %",
+   "%%%%%%%%%%%%%%%%"
+  ],
+  [
+   "%%%%%%%%%%%%%%%%",
+   "%   '   '      %",
+   "% W '   '      %",
+   "%$S '   '   X  %",
+   "% K '   '      %",
+   "%       '      %",
+   "%'''''  '''''''%",
+   "%    '  '      %",
+   "%    '  '      %",
+   "%    '  '      %",
+   "%  X '  '      %",
+   "%    '  '  X   %",
+   "%    '  '      %",
+   "%    '  '      %",
+   "%    '  '      %",
+   "%%%%%%%%%%%%%%%%"
+  ]
+ ]
+}

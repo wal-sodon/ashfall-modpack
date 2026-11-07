@@ -1,0 +1,8 @@
+# Ashfall: only the keys the pack changes. Open Parties and Claims fills every other key with its default on first
+# start, so this file never pins stale values from an older OPAC version.
+[serverConfig]
+	[serverConfig.claims]
+		[serverConfig.claims.protection]
+			# Right-click use of Ashfall gear (books, Field Radio, medical items, food and water, blasters) inside any
+			# claim, including the safehouse. Edit the item tag #ashfall:claim_usable instead of this list.
+			itemUseProtectionExceptionList = ["minecraft:firework_rocket", "#ashfall:claim_usable"]

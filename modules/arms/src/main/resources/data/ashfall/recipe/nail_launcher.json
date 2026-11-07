@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"pattern": [
+		"SSW",
+		" EB"
+	],
+	"key": {
+		"S": "ashfall:scrap_metal",
+		"W": "ashfall:wire_spool",
+		"E": "ashfall:scrap_electronics",
+		"B": "ashfall:battery"
+	},
+	"result": {
+		"id": "ashfall:nail_launcher",
+		"count": 1
+	}
+}

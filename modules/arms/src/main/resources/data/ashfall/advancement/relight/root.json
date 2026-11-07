@@ -1,0 +1,32 @@
+{
+	"criteria": {
+		"field_radio": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:field_radio"
+					}
+				]
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:field_radio"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.root.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.root.description"
+		},
+		"announce_to_chat": false,
+		"background": "minecraft:block/polished_deepslate"
+	},
+	"requirements": [
+		[
+			"field_radio"
+		]
+	]
+}

@@ -1,0 +1,37 @@
+{
+	// Ashfall: Contagion is the base infection effect; Ashfall's director owns the stages, the chances
+	// and the death timer (data/ashfall/ashfall/infection/stages.json). So Contagion's own zombie-hit roll
+	// is off (both chances 0: the director rolls by zombie variant and zone instead), its random symptoms
+	// are off (each stage has its own), and no food cures it (Antibiotics are the only medicine).
+	"infectionDuration": 600,
+	"baseInfectionChance": 0,
+	"minimumInfectionChance": 0,
+	"armorLowersInfectionChance": true,
+	"enableRandomSymptoms": false,
+	"infiniteWeaknessAndSlowness": false,
+	"randomSymptomsDuration": 30,
+	"randomSymptomsChance": 3,
+	"immunityDuration": 120,
+	"milkCuresInfection": false,
+	"totemPreventsDyingFromInfection": true,
+	"ironGolemAttacksInfected": false,
+	"allowPlayersToInfectPlayers": false,
+	"allowPlayersToInfectVillagers": false,
+	"allowZombiesToInfectVillagers": false,
+	"villagerZombieConversion": true,
+	"enableAirborneInfection": false,
+	"allowAirborneInfectionForVillagers": false,
+	"villagerFleeFromInfectiousEntities": true,
+	"allowZombiesToSpawnInfectious": false,
+	"chanceForZombieToSpawnInfectious": 155,
+	"airborneInfectionRadius": 6,
+	"airborneMaxChance": 50,
+	"contagiousFleshDropChance": 0.075,
+	"contagiousFleshLootingBonus": 0.025,
+	"goldenAppleCuresInfection": false,
+	"enchantedGoldenAppleCuresInfection": false,
+	"enableDebugMessages": false,
+	"displayCurrentInfectionProtection": false,
+	"deltaX": 0,
+	"deltaY": 0
+}

@@ -1,0 +1,9 @@
+# Phase 2 playtest, part 3: place an unvisited ridge crash site from the console (key lookup at its own chunk,
+# surface found after loading the footprint), then read back where it landed.
+until Done \(
+cmd ashfall site place crash:ashfall:ridge:114,-5
+wait 3
+cmd execute positioned 1832 80 -72 run ashfall site list 32
+cmd execute positioned 1832 80 -72 run ashfall city info
+cmd ashfall site place crash:ashfall:ridge:114,-5
+wait 2

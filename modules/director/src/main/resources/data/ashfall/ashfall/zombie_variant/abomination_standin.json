@@ -1,0 +1,14 @@
+{
+	"weight": 0,
+	"min_day": 1,
+	"attributes": {
+		"minecraft:max_health": 300.0,
+		"minecraft:movement_speed": 0.24,
+		"minecraft:attack_damage": 13.0,
+		"minecraft:attack_knockback": 2.0,
+		"minecraft:follow_range": 40.0,
+		"minecraft:knockback_resistance": 0.9,
+		"minecraft:spawn_reinforcements": 0.0,
+		"minecraft:scale": 2.0
+	}
+}

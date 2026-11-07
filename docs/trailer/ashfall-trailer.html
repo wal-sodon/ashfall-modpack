@@ -1,0 +1,370 @@
+<title>Ashfall Trailer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Saira+Condensed:wght@500;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: one 16:9 screen, letterboxed on dark ground, with a transport bar under it. Shots run on a timeline driven by
+   one clock, so play, pause and replay stay in sync with the synthesized score. Deliberately single-theme (a film). */
+:root {
+	color-scheme: dark;
+	--ground: #0a0b0c;
+	--ink: #e9e4d8;
+	--muted: #8d887d;
+	--sodium: #e8902a;
+	--blood: #c0352b;
+	--stun: #5fd4ff;
+	--rule: #2a2b2c;
+	--display: "Saira Stencil One", "Arial Black", Impact, sans-serif;
+	--cond: "Saira Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+	--mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+html, body { height: 100%; }
+body {
+	background: var(--ground); color: var(--ink); font-family: var(--cond);
+	display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+	padding-block: 16px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+	box-sizing: border-box;
+}
+.screen {
+	position: relative; width: 100%; max-width: 1120px; aspect-ratio: 16 / 9; overflow: hidden; background: #000;
+	container-type: inline-size; border: 1px solid var(--rule);
+}
+.layer { position: absolute; inset: 0; opacity: 0; will-change: opacity; }
+.shot { position: absolute; inset: -4%; background-size: cover; background-position: center; image-rendering: pixelated;
+	filter: grayscale(.6) sepia(.18) brightness(.55) contrast(1.2); will-change: transform; }
+.shot.red { filter: grayscale(.8) sepia(.4) hue-rotate(-30deg) saturate(2.2) brightness(.45) contrast(1.3); }
+.shot.warm { filter: grayscale(.35) sepia(.45) brightness(.62) contrast(1.15); }
+.vignette { position: absolute; inset: 0; pointer-events: none;
+	background: radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,.78) 100%); }
+#grain { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .07; mix-blend-mode: soft-light; pointer-events: none; image-rendering: pixelated; }
+.bars::before, .bars::after { content: ""; position: absolute; left: 0; right: 0; height: 7%; background: #000; z-index: 3; }
+.bars::before { top: 0; } .bars::after { bottom: 0; }
+
+/* type on screen */
+.cap { position: absolute; left: 7%; right: 7%; bottom: 13%; z-index: 4; }
+.kicker { font: 500 1.35cqw/1 var(--mono); letter-spacing: .28em; color: var(--sodium); text-transform: uppercase; }
+.head { font: 4.6cqw/1 var(--display); letter-spacing: .02em; margin-top: .8cqw; text-wrap: balance; }
+.line { font: 500 1.9cqw/1.35 var(--cond); color: var(--ink); margin-top: 1cqw; max-width: 46ch; text-wrap: balance; opacity: .92; }
+.center { inset: 0; bottom: auto; top: 0; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.center .line { max-width: 40ch; }
+.type { font: 500 2.4cqw/1.4 var(--mono); letter-spacing: .12em; color: var(--ink); white-space: pre; }
+.type .cursor { display: inline-block; width: .6em; background: var(--sodium); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.siren { position: absolute; inset: 0; z-index: 2; background: radial-gradient(ellipse at 50% 120%, rgba(192,53,43,.55), transparent 70%); opacity: 0; }
+.wordmark { font: 12cqw/.9 var(--display); letter-spacing: .04em; color: var(--ink); }
+.wordmark span { color: var(--sodium); }
+.roles { display: flex; flex-wrap: wrap; gap: .8cqw 1.4cqw; justify-content: center; margin-top: 1.6cqw; }
+.roles b { font: 700 1.9cqw/1 var(--cond); letter-spacing: .14em; text-transform: uppercase; border: .14cqw solid var(--sodium);
+	padding: .6cqw 1.1cqw; color: var(--ink); }
+.small { font: 500 1.35cqw/1.5 var(--mono); color: var(--muted); letter-spacing: .08em; margin-top: 2cqw; }
+#build { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
+
+/* poster + transport */
+.poster { position: absolute; inset: 0; z-index: 6; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 10%; background: linear-gradient(transparent 60%, rgba(0,0,0,.45)); }
+.play { font: 700 1.05rem/1 var(--cond); letter-spacing: .2em; text-transform: uppercase; color: #120c05; background: var(--sodium);
+	border: 0; padding: .95rem 1.6rem; cursor: pointer; display: flex; gap: .7rem; align-items: center; }
+.play:hover { filter: brightness(1.08); }
+.play:focus-visible, .ctl:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.play svg { width: .9rem; height: .9rem; fill: currentColor; }
+.transport { width: 100%; max-width: 1120px; display: flex; align-items: center; gap: 12px; font: 500 .8rem/1 var(--mono); color: var(--muted); }
+.ctl { background: none; border: 1px solid var(--rule); color: var(--ink); font: 500 .78rem/1 var(--mono); padding: .5rem .75rem; cursor: pointer; letter-spacing: .06em; }
+.ctl[aria-pressed="true"] { color: var(--sodium); border-color: var(--sodium); }
+.track { flex: 1; height: 4px; background: var(--rule); position: relative; min-width: 0; }
+.track i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--sodium); }
+.time { font-variant-numeric: tabular-nums; min-width: 5.5em; text-align: right; }
+@media (max-width: 480px) { .transport { flex-wrap: wrap; } .track { flex-basis: 100%; order: -1; } }
+</style>
+
+<div class="screen bars" id="screen" aria-label="Ashfall trailer">
+	<!-- 0–6 cold open -->
+	<div class="layer" data-in="0" data-out="6.4">
+		<div class="shot" style="background-image:url(shots/safehouse.png)" data-kb="0,2,1.06,-2,-1,1.16"></div>
+		<div class="cap center"><div class="type" id="typed"></div></div>
+	</div>
+	<!-- 6–11 scavenge -->
+	<div class="layer" data-in="6" data-out="8.8">
+		<div class="shot" style="background-image:url(shots/bldg-office.jpg)" data-kb="-2,1,1.05,2,-1,1.14"></div>
+	</div>
+	<div class="layer" data-in="8.6" data-out="11.3">
+		<div class="shot warm" style="background-image:url(shots/bldg-workshop-inside.jpg)" data-kb="2,0,1.12,-2,0,1.04"></div>
+	</div>
+	<div class="layer" data-in="6.2" data-out="11.1" style="z-index:5">
+		<div class="cap"><div class="kicker">Scavenge</div><div class="head">A dead city, building by building</div>
+			<div class="line">Every building is filled with its own loot, and its own dead. Some hide a Strongbox, and one of the zombies inside carries the key.</div></div>
+	</div>
+	<!-- 11–15 survive -->
+	<div class="layer" data-in="11" data-out="15.3">
+		<div class="shot" style="background-image:url(shots/thirst.png)" data-kb="0,0,1.04,0,-2,1.12"></div>
+		<div class="cap"><div class="kicker">Survive</div><div class="head">Thirst. Infection. Noise.</div>
+			<div class="line">Boil your water. Treat the bite before it turns you. Every shot carries, and every torch burns out.</div></div>
+	</div>
+	<!-- 15–25 build -->
+	<div class="layer" data-in="15" data-out="25.3">
+		<canvas id="build" width="640" height="360"></canvas>
+		<div class="cap"><div class="kicker" id="buildStep">Build · 1 of 4</div><div class="head" id="buildHead">Place a Bunker Core</div>
+			<div class="line" id="buildLine">It claims 80 by 80 blocks for you and your party. Your beds only work here.</div></div>
+	</div>
+	<!-- 25–31 horde night -->
+	<div class="layer" data-in="25" data-out="31.3">
+		<div class="shot red" style="background-image:url(shots/police.png)" data-kb="0,0,1.04,0,1,1.18"></div>
+		<div class="siren" id="siren"></div>
+		<div class="cap"><div class="kicker" style="color:var(--blood)">Horde night</div><div class="head">Every six nights, the siren</div>
+			<div class="line">Wave after wave comes for your core, and they break whatever they can reach.</div></div>
+	</div>
+	<!-- 31–38 fight -->
+	<div class="layer" data-in="31" data-out="34.8">
+		<div class="shot" style="background-image:url(shots/stun-mode.jpg);filter:grayscale(.35) brightness(.7) contrast(1.15)" data-kb="0,0,1.04,0,0,1.12"></div>
+		<div class="cap"><div class="kicker" style="color:var(--stun)">Fight back</div><div class="head">Blasters, quiet blades, stun shots</div>
+			<div class="line">Energy weapons that heat up and run dry. Switch to stun and freeze a zombie in silence.</div></div>
+	</div>
+	<div class="layer" data-in="34.6" data-out="38.3">
+		<div class="shot" style="background-image:url(shots/flamethrower-firing.jpg);filter:grayscale(.2) sepia(.2) brightness(.72) contrast(1.2)" data-kb="1,0,1.12,-1,0,1.03"></div>
+		<div class="cap"><div class="kicker">Fight back</div><div class="head">Or burn the crowd down</div>
+			<div class="line">The Flamethrower runs on Lighter Fluid and never sets your walls alight.</div></div>
+	</div>
+	<!-- 38–43 survivors -->
+	<div class="layer" data-in="38" data-out="43.3">
+		<div class="shot" style="background-image:url(shots/safehouse.png)" data-kb="2,-1,1.18,-2,1,1.08"></div>
+		<div class="cap center"><div class="kicker">You are not the last</div><div class="head">Find survivors. Give them work.</div>
+			<div class="roles"><b>Guard</b><b>Scavenger</b><b>Medic</b><b>Mechanic</b><b>Trader</b></div>
+			<div class="line">They eat from your lockers, mend your walls and hold the line at night.</div></div>
+	</div>
+	<!-- 43–50 relight -->
+	<div class="layer" data-in="43" data-out="46.8">
+		<div class="shot" style="background-image:url(shots/hospital.png)" data-kb="0,2,1.06,0,-2,1.16"></div>
+	</div>
+	<div class="layer" data-in="46.6" data-out="50.3">
+		<div class="shot warm" id="relit" style="background-image:url(shots/generator.png)" data-kb="0,0,1.14,0,1,1.04"></div>
+	</div>
+	<div class="layer" data-in="43.2" data-out="50.1" style="z-index:5">
+		<div class="cap"><div class="kicker">The mission</div><div class="head">Relight Asheville</div>
+			<div class="line">Link the relays, hold the substation through a siege and turn a district's lights back on, one district at a time.</div></div>
+	</div>
+	<!-- 50–55 patient zero -->
+	<div class="layer" data-in="50" data-out="55.3">
+		<div class="shot red" style="background-image:url(shots/ward.png)" data-kb="0,0,1.04,0,0,1.2"></div>
+		<div class="cap center"><div class="kicker" style="color:var(--blood)">Under the hospital</div><div class="head">Patient Zero is waiting</div>
+			<div class="line">Three bosses. Three crystals. One Black Start. Then decide: sever the Heart, or bind it.</div></div>
+	</div>
+	<!-- 55–60 title -->
+	<div class="layer" data-in="55" data-out="61" id="title">
+		<div class="shot" style="background-image:url(shots/safehouse.png);filter:grayscale(.7) brightness(.3) contrast(1.2)" data-kb="0,0,1.1,0,0,1.14"></div>
+		<div class="cap center"><div class="wordmark">ASH<span>FALL</span></div>
+			<div class="line">A zombie-city survival modpack for Minecraft 26.3</div>
+			<div class="small">Free on GitHub · walsodon-hash/Ashfall-Modpack</div></div>
+	</div>
+	<div class="vignette"></div>
+	<canvas id="grain" width="160" height="90"></canvas>
+	<div class="poster" id="poster"><button class="play" id="playBtn" type="button"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0 9 5 1 10z"/></svg>Play trailer · 1:00</button></div>
+</div>
+<div class="transport">
+	<button class="ctl" id="pauseBtn" type="button">Pause</button>
+	<button class="ctl" id="soundBtn" type="button" aria-pressed="true">Sound on</button>
+	<div class="track" aria-hidden="true"><i id="bar"></i></div>
+	<span class="time" id="time">0:00 / 1:00</span>
+	<button class="ctl" id="replayBtn" type="button">Replay</button>
+</div>
+
+<script>
+(() => {
+	const LENGTH = 60;
+	const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+	const layers = [...document.querySelectorAll(".layer")].map(el => ({
+		el, a: +el.dataset.in, b: +el.dataset.out,
+		shots: [...el.querySelectorAll("[data-kb]")].map(s => ({ s, kb: s.dataset.kb.split(",").map(Number) }))
+	}));
+	const $ = id => document.getElementById(id);
+	const typed = $("typed"), siren = $("siren"), bar = $("bar"), time = $("time");
+	const OPEN = "ASHEVILLE HAS GONE DARK.\n\nTHE GRID FAILED DISTRICT BY DISTRICT.\nTHE DEAD STAYED.";
+
+	// ---- build scene: a Bunker Core, a wall going up, wear, repair (Ashfall's own block textures)
+	const cv = $("build"), cx = cv.getContext("2d");
+	cx.imageSmoothingEnabled = false;
+	const tex = {};
+	for (const n of ["reinforced_planks", "barricade_front", "bunker_core_side", "graffiti_danger"]) {
+		tex[n] = new Image(); tex[n].src = "tex/" + n + ".png";
+	}
+	const STEPS = [
+		[0, "Build · 1 of 4", "Place a Bunker Core", "It claims 80 by 80 blocks for you and your party. Your beds only work here."],
+		[2.6, "Build · 2 of 4", "Wall it in", "Reinforced Planks, Barricades and doors. Zombies can't break them outright."],
+		[5.2, "Build · 3 of 4", "They wear it down", "Every hit adds wear. A horde on one spot gets through in seconds."],
+		[7.6, "Build · 4 of 4", "Repair it, or lose it", "Planks and Nails, or Scrap Metal. Mechanic survivors patch the walls for you."],
+	];
+	let lastStep = -1;
+	const COLS = 9, ROWS = 4, S = 44, X0 = (640 - COLS * S) / 2, Y0 = 70;
+	function crack(x, y, amt, seed) {
+		cx.strokeStyle = "rgba(10,8,6,.85)"; cx.lineWidth = 2;
+		let r = seed;
+		const rnd = () => (r = (r * 9301 + 49297) % 233280) / 233280;
+		const lines = Math.floor(amt * 6);
+		for (let i = 0; i < lines; i++) {
+			let px = x + S / 2 + (rnd() - .5) * 10, py = y + S / 2 + (rnd() - .5) * 10;
+			cx.beginPath(); cx.moveTo(px, py);
+			for (let k = 0; k < 3; k++) { px += (rnd() - .5) * S * .8; py += (rnd() - .5) * S * .8; cx.lineTo(px, py); }
+			cx.stroke();
+		}
+	}
+	function drawBuild(t) {
+		const step = t < 2.6 ? 0 : t < 5.2 ? 1 : t < 7.6 ? 2 : 3;
+		if (step !== lastStep) {
+			lastStep = step;
+			$("buildStep").textContent = STEPS[step][1]; $("buildHead").textContent = STEPS[step][2]; $("buildLine").textContent = STEPS[step][3];
+		}
+		cx.fillStyle = "#0d0e10"; cx.fillRect(0, 0, 640, 360);
+		// claim outline
+		const claim = Math.min(1, t / 1.6);
+		cx.strokeStyle = "rgba(232,144,42," + (.25 + .35 * claim) + ")"; cx.setLineDash([6, 6]); cx.lineWidth = 2;
+		const w = 520 * claim, h = 260 * claim;
+		cx.strokeRect(320 - w / 2, 190 - h / 2 - 20, w, h); cx.setLineDash([]);
+		// the core drops in
+		const drop = Math.min(1, t / .8), coreY = Y0 + ROWS * S - S - (1 - drop) * 120;
+		if (tex.bunker_core_side.complete) cx.drawImage(tex.bunker_core_side, X0 + 4 * S, coreY, S, S);
+		// wall rises block by block (left and right of the core, then rows above)
+		const built = t < 2.6 ? 0 : Math.min(COLS * ROWS, Math.floor((t - 2.6) / 2.2 * COLS * ROWS));
+		let n = 0;
+		for (let r = ROWS - 1; r >= 0; r--) {
+			for (let c = 0; c < COLS; c++) {
+				if (r === ROWS - 1 && c === 4) continue;
+				if (n++ >= built) continue;
+				const x = X0 + c * S, y = Y0 + r * S;
+				const img = (r === ROWS - 1 && (c === 0 || c === COLS - 1)) ? tex.barricade_front : tex.reinforced_planks;
+				if (img.complete) cx.drawImage(img, x, y, S, S);
+				// wear on the middle-left panel during step 3, cleared by the repair
+				const target = (c === 2 || c === 3) && r >= 1;
+				if (target && t > 5.2) {
+					const wear = t < 7.6 ? Math.min(1, (t - 5.2) / 2.2) : Math.max(0, 1 - (t - 7.6) / .9);
+					if (wear > 0) { crack(x, y, wear, c * 31 + r * 7); cx.fillStyle = "rgba(192,53,43," + (.28 * wear) + ")"; cx.fillRect(x, y, S, S); }
+				}
+			}
+		}
+		if (t > 3 && tex.graffiti_danger.complete) { cx.globalAlpha = .9; cx.drawImage(tex.graffiti_danger, X0 + 6 * S, Y0 + S, S, S); cx.globalAlpha = 1; }
+		// shapes of the dead pressing in during the wear step
+		if (t > 5.2 && t < 8.6) {
+			const p = Math.min(1, (t - 5.2) / 1.2);
+			cx.fillStyle = "rgba(18,24,16,.95)";
+			for (let i = 0; i < 6; i++) {
+				const zx = 40 + i * 98 + Math.sin(t * 3 + i) * 4, zy = 300 - p * 38;
+				cx.fillRect(zx, zy, 16, 34); cx.fillRect(zx + 2, zy - 14, 12, 12); cx.fillRect(zx + 14, zy + 4, 12, 5);
+			}
+		}
+		// repair flash
+		if (t > 7.6 && t < 8.8) {
+			const a = 1 - (t - 7.6) / 1.2;
+			cx.fillStyle = "rgba(232,144,42," + (.35 * a) + ")"; cx.fillRect(X0 + 2 * S, Y0 + S, 2 * S, 3 * S - S);
+			cx.fillStyle = "rgba(232,144,42," + a + ")"; cx.font = "700 22px 'JetBrains Mono', monospace"; cx.fillText("−45 wear", X0 + 2 * S, Y0 + S - 10);
+		}
+	}
+
+	// ---- grain
+	const gc = $("grain").getContext("2d"), gimg = gc.createImageData(160, 90);
+	function grain() {
+		for (let i = 0; i < gimg.data.length; i += 4) { const v = Math.random() * 255; gimg.data[i] = gimg.data[i + 1] = gimg.data[i + 2] = v; gimg.data[i + 3] = 255; }
+		gc.putImageData(gimg, 0, 0);
+	}
+
+	// ---- render one frame at time t (seconds)
+	function render(t) {
+		for (const L of layers) {
+			const fade = .45;
+			let o = 0;
+			if (t >= L.a - .001 && t <= L.b) o = Math.min(1, (t - L.a) / fade, (L.b - t) / fade);
+			if (L.a === 0) o = t <= L.b ? Math.min(1, t < .8 ? t / .8 : 1, (L.b - t) / fade) : 0;
+			if (L.el.id === "title" && t >= LENGTH - .01) o = 1;
+			L.el.style.opacity = Math.max(0, o);
+			if (o > 0) {
+				const p = Math.max(0, Math.min(1, (t - L.a) / (L.b - L.a)));
+				for (const { s, kb } of L.shots) {
+					const k = reduce ? 0 : p;
+					const x = kb[0] + (kb[3] - kb[0]) * k, y = kb[1] + (kb[4] - kb[1]) * k, sc = kb[2] + (kb[5] - kb[2]) * k;
+					s.style.transform = `translate(${x}%, ${y}%) scale(${sc})`;
+				}
+			}
+		}
+		const tt = Math.max(0, Math.min(5.6, t - .6));
+		const chars = Math.floor(tt / 5 * OPEN.length);
+		typed.innerHTML = "";
+		typed.append(OPEN.slice(0, Math.min(OPEN.length, chars)));
+		if (t < 6.2) { const c = document.createElement("span"); c.className = "cursor"; c.textContent = " "; typed.append(c); }
+		if (t >= 15 && t <= 25.3) drawBuild(t - 15);
+		siren.style.opacity = t >= 25 && t <= 31.3 ? (.45 + .45 * Math.sin((t - 25) * Math.PI * 1.1)) : 0;
+		bar.style.width = (Math.min(1, t / LENGTH) * 100) + "%";
+		const s = Math.floor(Math.min(t, LENGTH));
+		time.textContent = (s >= 60 ? "1:00" : `0:${String(s).padStart(2, "0")}`) + " / 1:00";
+	}
+
+	// ---- score: synthesized, scheduled against the same clock
+	let ac = null, master = null, soundOn = true;
+	function score(offset) {
+		if (!ac) { ac = new (window.AudioContext || window.webkitAudioContext)(); master = ac.createGain(); master.connect(ac.destination); }
+		if (ac.state === "suspended") ac.resume();
+		master.gain.cancelScheduledValues(ac.currentTime);
+		master.gain.setValueAtTime(soundOn ? .55 : 0, ac.currentTime);
+		const t0 = ac.currentTime - offset, nodes = [];
+		const at = s => t0 + s;
+		const future = s => at(s) > ac.currentTime - .01;
+		// drone: two detuned saws through a slow low-pass sweep
+		const lp = ac.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 180; lp.Q.value = 6; lp.connect(master);
+		const dg = ac.createGain(); dg.gain.value = 0; dg.connect(lp);
+		for (const f of [55, 55.4, 82.4]) { const o = ac.createOscillator(); o.type = "sawtooth"; o.frequency.value = f; o.connect(dg); o.start(); nodes.push(o); }
+		dg.gain.setValueAtTime(0, ac.currentTime); dg.gain.linearRampToValueAtTime(.16, Math.max(ac.currentTime, at(3)));
+		dg.gain.setValueAtTime(.16, Math.max(ac.currentTime, at(55))); dg.gain.linearRampToValueAtTime(0, Math.max(ac.currentTime + .1, at(60)));
+		lp.frequency.setValueAtTime(140, ac.currentTime); lp.frequency.linearRampToValueAtTime(900, Math.max(ac.currentTime, at(50)));
+		// hits on the cuts
+		const hit = (s, gain = .9, freq = 60) => {
+			if (!future(s)) return;
+			const o = ac.createOscillator(), g = ac.createGain(); o.type = "sine";
+			o.frequency.setValueAtTime(freq * 2, at(s)); o.frequency.exponentialRampToValueAtTime(freq * .5, at(s) + .6);
+			g.gain.setValueAtTime(gain, at(s)); g.gain.exponentialRampToValueAtTime(.001, at(s) + 1.1);
+			o.connect(g); g.connect(master); o.start(at(s)); o.stop(at(s) + 1.2); nodes.push(o);
+			const n = ac.createBufferSource(), b = ac.createBuffer(1, ac.sampleRate * .4, ac.sampleRate), d = b.getChannelData(0);
+			for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, 3);
+			const ng = ac.createGain(); ng.gain.value = gain * .35; n.buffer = b; n.connect(ng); ng.connect(master); n.start(at(s)); nodes.push(n);
+		};
+		[6, 11, 15, 25, 31, 38, 43, 50].forEach(s => hit(s, .7));
+		[17.6, 20.2, 22.6].forEach(s => hit(s, .35, 90));
+		hit(55, 1.2, 40);
+		// siren, horde night
+		if (future(31)) {
+			const o = ac.createOscillator(), g = ac.createGain(); o.type = "triangle";
+			const s0 = Math.max(25, offset);
+			for (let s = 25; s < 31; s += 1.8) { o.frequency.setValueAtTime(420, at(s)); o.frequency.linearRampToValueAtTime(760, at(s) + .9); o.frequency.linearRampToValueAtTime(420, at(s) + 1.8); }
+			g.gain.setValueAtTime(0, at(s0)); g.gain.linearRampToValueAtTime(.08, at(s0) + .4); g.gain.setValueAtTime(.08, at(30.4)); g.gain.linearRampToValueAtTime(0, at(31.2));
+			o.connect(g); g.connect(master); o.start(Math.max(ac.currentTime, at(s0))); o.stop(at(31.3)); nodes.push(o);
+		}
+		return nodes;
+	}
+	let nodes = [];
+	function stopScore() { for (const n of nodes) { try { n.stop(); } catch (e) {} } nodes = []; }
+
+	// ---- clock
+	let playing = false, start = 0, pos = LENGTH, raf = 0, lastGrain = 0;
+	function frame(now) {
+		if (playing) {
+			pos = (now - start) / 1000;
+			if (pos >= LENGTH) { pos = LENGTH; playing = false; stopScore(); $("pauseBtn").textContent = "Play"; }
+		}
+		render(pos);
+		if (!reduce && now - lastGrain > 70) { grain(); lastGrain = now; }
+		raf = requestAnimationFrame(frame);
+	}
+	function play(from) {
+		pos = from; start = performance.now() - from * 1000; playing = true;
+		$("poster").hidden = true; $("pauseBtn").textContent = "Pause";
+		stopScore();
+		try { nodes = score(from); } catch (e) { nodes = []; }
+	}
+	function pause() { playing = false; stopScore(); $("pauseBtn").textContent = "Play"; }
+	$("playBtn").addEventListener("click", () => play(0));
+	$("replayBtn").addEventListener("click", () => play(0));
+	$("pauseBtn").addEventListener("click", () => playing ? pause() : play(pos >= LENGTH ? 0 : pos));
+	$("soundBtn").addEventListener("click", e => {
+		soundOn = !soundOn; e.currentTarget.setAttribute("aria-pressed", soundOn); e.currentTarget.textContent = soundOn ? "Sound on" : "Sound off";
+		if (master) master.gain.setValueAtTime(soundOn ? .55 : 0, ac.currentTime);
+	});
+	document.addEventListener("keydown", e => {
+		if (e.code === "Space" && e.target === document.body) { e.preventDefault(); playing ? pause() : play(pos >= LENGTH ? 0 : pos); }
+	});
+	render(LENGTH);
+	raf = requestAnimationFrame(frame);
+})();
+</script>

@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "misc",
+	"ingredients": [
+		"ashfall:scrap_electronics"
+	],
+	"result": {
+		"id": "ashfall:wire_spool",
+		"count": 2
+	}
+}

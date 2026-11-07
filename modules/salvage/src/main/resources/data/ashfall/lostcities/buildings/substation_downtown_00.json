@@ -1,0 +1,36 @@
+{
+ "filler": "#",
+ "palette": {
+  "palette": [
+   {
+    "char": "#",
+    "block": "minecraft:gray_concrete"
+   }
+  ]
+ },
+ "allowDoors": false,
+ "allowFillers": false,
+ "overrideFloors": true,
+ "minfloors": 3,
+ "maxfloors": 3,
+ "mincellars": 0,
+ "maxcellars": 0,
+ "parts": [
+  {
+   "part": "ashfall:landmarks/substation_downtown/substation_downtown_00_f0",
+   "floor": 0
+  },
+  {
+   "part": "ashfall:landmarks/substation_downtown/substation_downtown_00_f1",
+   "floor": 1
+  },
+  {
+   "part": "ashfall:landmarks/substation_downtown/substation_downtown_00_f2",
+   "floor": 2
+  },
+  {
+   "part": "ashfall:landmarks/substation_downtown/substation_downtown_00_top",
+   "floor": 3
+  }
+ ]
+}

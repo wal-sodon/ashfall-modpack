@@ -1,0 +1,164 @@
+# Phase 6 playtest, part 1 (headless, no player) on world-p6 after part 0 placed the Wreck hull (socket 2304 64 -101).
+# The whole arc by op commands: four districts reclaimed, the hull opening at Grid 80 %, the finale abandoned with
+# nobody near, then run unattended through the Surge, the Feedback (vents, both Relay Breakers held to closing) and
+# the Heart (pylons, the Choir) to the ending vote. Run 1 closes the vote from the console with Bind; run 2 lets a
+# vote nobody can answer fall to its Sever default. Then each ending's profile and /ashfall story reset.
+until Done \(
+cmd forceload add 2220 -180 2380 -20
+cmd forceload add -32 -112 159 79
+wait 60
+cmd time set 258000
+cmd ashfall grid status
+cmd ashfall finale status
+cmd ashfall director status
+# Relay before any ending (outside every district): its own 8/tick generation only.
+cmd setblock 2360 200 -40 ashfall:power_relay
+wait 3
+cmd data get block 2360 200 -40 energy
+# The hull stays sealed below 80 %.
+cmd ashfall grid set river_arts reclaimed
+cmd ashfall grid set south_slope reclaimed
+cmd ashfall grid set downtown reclaimed
+wait 4
+cmd ashfall finale status
+cmd ashfall grid set mission reclaimed
+wait 5
+cmd ashfall grid status
+cmd ashfall finale status
+cmd execute if block 2304 64 -101 ashfall:uplink_socket
+# Nobody near: the run is abandoned (abandon_seconds 20).
+cmd ashfall finale start
+wait 26
+cmd ashfall finale status
+cmd ashfall finale abort
+cmd ashfall finale status
+# Run 1, unattended.
+cmd kill @e[type=#minecraft:zombies]
+cmd ashfall finale unattended on
+cmd spark tps
+cmd ashfall finale start
+wait 44
+cmd execute if entity @e[tag=ashfall_finale]
+cmd ashfall finale status
+wait 42
+cmd execute if entity @e[tag=ashfall_finale]
+cmd execute if entity @e[tag=ashfall_finale,distance=..4,x=2304,y=64,z=-101]
+cmd ashfall finale status
+cmd spark tps
+cmd ashfall director status
+cmd kill @e[tag=ashfall_finale]
+cmd ashfall finale phase feedback
+wait 3
+cmd ashfall finale status
+cmd execute positioned 2284 64 -101 if block ~ ~-24 ~ air
+wait 20
+cmd execute if entity @e[tag=ashfall_finale,type=!minecraft:zombie]
+cmd ashfall finale status
+cmd kill @e[tag=ashfall_finale]
+wait 20
+cmd ashfall finale status
+cmd kill @e[tag=ashfall_finale]
+wait 20
+cmd ashfall finale status
+cmd kill @e[tag=ashfall_finale]
+wait 22
+cmd ashfall finale status
+cmd kill @e[tag=ashfall_finale]
+wait 5
+cmd ashfall finale status
+cmd execute if block 2296 64 -103 ashfall:heart_pylon
+cmd execute if block 2296 64 -99 ashfall:heart_pylon
+cmd execute if block 2310 64 -103 ashfall:heart_pylon
+cmd execute if block 2310 64 -99 ashfall:heart_pylon
+cmd execute if entity @e[type=ashfall:choir]
+cmd execute as @e[type=ashfall:choir] run data get entity @s Health
+cmd setblock 2296 64 -103 air destroy
+cmd setblock 2296 64 -99 air destroy
+cmd setblock 2310 64 -103 air destroy
+wait 3
+cmd ashfall finale status
+cmd setblock 2310 64 -99 air destroy
+wait 3
+cmd ashfall finale status
+cmd execute if entity @e[type=ashfall:choir]
+cmd ashfall ending status
+cmd ashfall ending set bind
+wait 2
+cmd ashfall ending status
+cmd ashfall grid status
+cmd ashfall director status
+cmd setblock 2362 200 -40 ashfall:power_relay
+wait 3
+cmd data get block 2362 200 -40 energy
+cmd ashfall story reset
+wait 2
+cmd ashfall ending status
+cmd ashfall finale status
+cmd ashfall grid status
+# Run 2: straight to the Heart; nobody can vote, so two silent rounds default to Sever.
+cmd kill @e[tag=ashfall_finale]
+cmd ashfall finale start
+cmd ashfall finale phase heart
+wait 3
+cmd ashfall finale status
+cmd setblock 2296 64 -103 air destroy
+cmd setblock 2296 64 -99 air destroy
+cmd setblock 2310 64 -103 air destroy
+cmd setblock 2310 64 -99 air destroy
+wait 3
+cmd ashfall ending status
+wait 66
+cmd ashfall ending status
+cmd ashfall grid status
+cmd ashfall director status
+cmd setblock 2364 200 -40 ashfall:power_relay
+wait 3
+cmd data get block 2364 200 -40 energy
+cmd ashfall finale start
+cmd ashfall story reset
+wait 2
+cmd ashfall director status
+cmd ashfall finale status
+cmd ashfall ending status
+cmd ashfall finale unattended off
+cmd kill @e[tag=ashfall_finale]
+# Admin data paths from the console: a loot zone and mob drop overrides.
+cmd setblock 2330 200 -60 minecraft:chest
+cmd setblock 2333 200 -60 minecraft:chest
+cmd setblock 2336 200 -60 minecraft:barrel
+cmd execute positioned 2333 200 -60 run lootzone create p6zone 6 minecraft:chest ashfall_cache:kiln_office regen true delay 1200
+cmd lootzone info p6zone
+cmd data get block 2330 200 -60 Items
+cmd data get block 2336 200 -60 Items
+cmd lootzone edit p6zone table ashfall_cache:hospital_supply
+cmd lootzone edit p6zone type any
+cmd lootzone edit p6zone regen false
+cmd lootzone edit p6zone radius 8
+cmd lootzone refill p6zone
+cmd data get block 2336 200 -60 Items
+cmd lootzone list
+cmd lootzone export
+cmd lootzone delete p6zone
+cmd lootzone list
+cmd mobdrops add minecraft:husk minecraft:notanitem 0.5
+cmd mobdrops add minecraft:husk minecraft:emerald 1 2 2 true
+wait 5
+cmd mobdrops list
+cmd kill @e[type=minecraft:item]
+cmd summon minecraft:husk 2330 202 -60 {NoAI:1b,PersistenceRequired:1b}
+cmd kill @e[type=minecraft:husk]
+wait 2
+cmd execute if entity @e[type=minecraft:item,nbt={Item:{id:"minecraft:emerald"}}]
+cmd execute as @e[type=minecraft:item] run data get entity @s Item
+cmd mobdrops remove minecraft:husk 9
+cmd mobdrops reset minecraft:husk
+wait 5
+cmd mobdrops list
+cmd kill @e[type=minecraft:item]
+cmd summon minecraft:husk 2330 202 -60 {NoAI:1b,PersistenceRequired:1b}
+cmd kill @e[type=minecraft:husk]
+wait 2
+cmd execute if entity @e[type=minecraft:item,nbt={Item:{id:"minecraft:emerald"}}]
+cmd kill @e[type=minecraft:item]
+cmd forceload remove all
+wait 3

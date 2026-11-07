@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"S": "ashfall:scrap_metal",
+		"E": "ashfall:scrap_electronics",
+		"T": "ashfall:duct_tape",
+		"I": "ashfall:alloy_plate"
+	},
+	"pattern": [
+		"SSE",
+		"TI ",
+		"S  "
+	],
+	"result": {
+		"id": "ashfall:spark_pistol"
+	}
+}

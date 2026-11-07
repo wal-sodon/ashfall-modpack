@@ -1,0 +1,209 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:polished_andesite"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:light_gray_concrete"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:iron_bars[east=true,north=false,south=false,west=false]"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:iron_bars[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:iron_block"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:barrel[facing=up,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/fuel"
+    }
+   },
+   {
+    "char": "(",
+    "block": "minecraft:barrel[facing=up,open=false]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:anvil[facing=east]"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:grindstone[face=floor,facing=south]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:barrel[facing=south,open=false]"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:barrel[facing=south,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/fuel"
+    }
+   },
+   {
+    "char": "-",
+    "block": "minecraft:spruce_door[facing=east,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:barrel[facing=north,open=false]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:barrel[facing=north,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/fuel"
+    }
+   },
+   {
+    "char": "0",
+    "block": "minecraft:spruce_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:spruce_door[facing=east,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:spruce_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "               #",
+   "               #",
+   "  $%%%%%%%%%&  #",
+   "               #",
+   "             ' #",
+   "             ( #",
+   "               #",
+   "################",
+   ")*#++,++,++,++,#",
+   "  #            #",
+   "  -            #",
+   "  #./. ././././#",
+   "  ####0#########",
+   "               #",
+   "               #",
+   "0###############"
+  ],
+  [
+   "               #",
+   "               #",
+   "  $%%%%%%%%%&  #",
+   "               #",
+   "               #",
+   "               #",
+   "               #",
+   "################",
+   "  #            #",
+   "  #            #",
+   "  1            #",
+   "  #            #",
+   "  ####2#########",
+   "               #",
+   "               #",
+   "2###############"
+  ],
+  [
+   "               #",
+   "               #",
+   "               #",
+   "               #",
+   "               #",
+   "               #",
+   "               #",
+   "################",
+   "  #            #",
+   "  #            #",
+   "  #            #",
+   "  #            #",
+   "  ##############",
+   "               #",
+   "               #",
+   "################"
+  ],
+  [
+   "               #",
+   "               #",
+   "               #",
+   "               #",
+   "               #",
+   "               #",
+   "               #",
+   "################",
+   "  #            #",
+   "  #            #",
+   "  #            #",
+   "  #            #",
+   "################",
+   "               #",
+   "               #",
+   "################"
+  ],
+  [
+   "               #",
+   "               #",
+   "               #",
+   "               #",
+   "               #",
+   "               #",
+   "               #",
+   "################",
+   "  #            #",
+   "  #     3      #",
+   "  #            #",
+   "  #            #",
+   "################",
+   "               #",
+   "               #",
+   "################"
+  ]
+ ]
+}

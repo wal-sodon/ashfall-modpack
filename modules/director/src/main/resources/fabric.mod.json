@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "ashfall_director",
+	"version": "${version}",
+	"name": "Ashfall: Director",
+	"description": "Zombie spawning, senses and targeting, havens, and hooks into the reused zombie mods.",
+	"authors": ["toesinthesand"],
+	"license": "MIT",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["xyz.toesinthesand.ashfall.director.AshfallDirector"],
+		"client": ["xyz.toesinthesand.ashfall.director.client.AshfallDirectorClient"],
+		"jade": [
+			"xyz.toesinthesand.ashfall.director.compat.jade.WearJadePlugin",
+			"xyz.toesinthesand.ashfall.director.client.compat.jade.WearJadeClientPlugin"
+		]
+	},
+	"mixins": [
+		"ashfall_director.mixins.json",
+		"ashfall_director.zbb.mixins.json",
+		{ "config": "ashfall_director.client.mixins.json", "environment": "client" }
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*",
+		"ashfall_salvage": "*"
+	}
+}

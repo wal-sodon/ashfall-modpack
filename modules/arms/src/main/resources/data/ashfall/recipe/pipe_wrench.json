@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"pattern": [
+		"S S",
+		" S ",
+		" T "
+	],
+	"key": {
+		"S": "ashfall:scrap_metal",
+		"T": "ashfall:duct_tape"
+	},
+	"result": {
+		"id": "ashfall:pipe_wrench",
+		"count": 1
+	}
+}

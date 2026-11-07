@@ -1,0 +1,29 @@
+{
+	"parent": "ashfall:relight/mission_energized",
+	"criteria": {
+		"reclaimed": {
+			"trigger": "ashfall:district",
+			"conditions": {
+				"district": "mission",
+				"state": "reclaimed"
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:power_relay"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.mission_reclaimed.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.mission_reclaimed.description"
+		},
+		"frame": "goal"
+	},
+	"requirements": [
+		[
+			"reclaimed"
+		]
+	]
+}

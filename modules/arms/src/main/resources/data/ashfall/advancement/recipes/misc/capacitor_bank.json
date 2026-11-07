@@ -1,0 +1,43 @@
+{
+	"parent": "minecraft:recipes/root",
+	"criteria": {
+		"has_energy_cell": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:energy_cell"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_grid_coupler": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:grid_coupler"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_the_recipe": {
+			"conditions": {
+				"recipes": "ashfall:capacitor_bank"
+			},
+			"trigger": "minecraft:recipe_unlocked"
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_energy_cell",
+			"has_grid_coupler"
+		]
+	],
+	"rewards": {
+		"recipes": [
+			"ashfall:capacitor_bank"
+		]
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"I": "ashfall:alloy_plate",
+		"C": "ashfall:cloth",
+		"T": "ashfall:duct_tape"
+	},
+	"pattern": [
+		"ICI",
+		"CT "
+	],
+	"result": {
+		"id": "ashfall:dampener"
+	}
+}

@@ -1,0 +1,32 @@
+{
+ "filler": "#",
+ "palette": {
+  "palette": [
+   {
+    "char": "#",
+    "block": "minecraft:cobblestone"
+   }
+  ]
+ },
+ "allowDoors": false,
+ "allowFillers": false,
+ "overrideFloors": true,
+ "minfloors": 2,
+ "maxfloors": 2,
+ "mincellars": 0,
+ "maxcellars": 0,
+ "parts": [
+  {
+   "part": "ashfall:landmarks/substation_south_slope/substation_south_slope_11_f0",
+   "floor": 0
+  },
+  {
+   "part": "ashfall:landmarks/substation_south_slope/substation_south_slope_11_f1",
+   "floor": 1
+  },
+  {
+   "part": "ashfall:landmarks/substation_south_slope/substation_south_slope_11_top",
+   "floor": 2
+  }
+ ]
+}

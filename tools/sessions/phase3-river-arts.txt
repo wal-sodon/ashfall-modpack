@@ -1,0 +1,60 @@
+# Phase 3 playtest, part 1 (headless, no player): one whole district loop at River Arts, DARK -> RECLAIMED.
+# Fresh world (level-name world-p3c, seed ashfall-p3). The core is found by loading the substation landmark
+# (map marker -864, 80), the loop is driven with /ashfall grid set, the siege runs for real and is won by
+# clearing its waves with /kill. Then: relight, the reduced darkness weight, and free charging.
+until Done \(
+cmd ashfall grid status
+cmd execute positioned -864 80 80 run ashfall city zone
+cmd execute positioned -824 80 80 run ashfall city zone
+# Load the substation (5x5 chunks around the marker) plus a spot for the free-charging check.
+cmd forceload add -896 48 -817 127
+cmd forceload add -832 64 -817 95
+wait 20
+cmd ashfall atlas status
+cmd ashfall grid status
+# The loop by command: repaired (couplers in), then energized (cells in, hold done, relays linked).
+cmd ashfall grid set river_arts repaired
+cmd ashfall grid set river_arts energized
+cmd ashfall grid status
+# A Field Charger in River Arts but outside the compound, no cell: it must stay idle until the district is lit.
+cmd setblock -824 200 80 ashfall:field_charger
+cmd item replace block -824 200 80 container.0 with ashfall:cell_pack_standard[team_reborn_energy:energy=0]
+# Warning (150 s before nightfall), then nightfall: the siege starts and the first wave spawns.
+cmd time set 9500
+wait 5
+cmd time set 12000
+wait 10
+cmd ashfall grid status
+cmd execute if entity @e[tag=ashfall_siege]
+cmd spark tps
+# The charger must still be idle (no cell energy, district not lit yet).
+cmd data get block -824 200 80
+# Let the first wave walk through the forced-open security door to the core and hit it (not long enough to
+# destroy it: 8 zombies at 2 HP/s each would take 25 s).
+wait 15
+cmd ashfall grid status
+cmd execute as @e[tag=ashfall_siege] run data get entity @s Pos
+cmd spark tps
+# Win: clear each wave; the next comes once two or fewer are left.
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd ashfall grid status
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd ashfall grid status
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd ashfall grid status
+cmd ashfall safezone list
+cmd ashfall atlas status
+# Reclaimed: darkness weight in the district vs. outside it, free charging, the reward cache.
+cmd execute positioned -824 80 80 run ashfall director status
+cmd execute positioned 64 80 -16 run ashfall director status
+wait 10
+cmd data get block -824 200 80 Items
+cmd data get block -824 200 80
+cmd spark tps
+cmd forceload remove all
+wait 3

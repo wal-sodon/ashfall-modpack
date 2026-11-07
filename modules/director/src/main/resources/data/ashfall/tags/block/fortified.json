@@ -1,0 +1,31 @@
+{
+	"values": [
+		"minecraft:iron_block",
+		"minecraft:iron_bars",
+		"minecraft:iron_door",
+		"minecraft:iron_trapdoor",
+		"minecraft:obsidian",
+		"minecraft:crying_obsidian",
+		"minecraft:reinforced_deepslate",
+		"minecraft:copper_door",
+		"minecraft:exposed_copper_door",
+		"minecraft:weathered_copper_door",
+		"minecraft:oxidized_copper_door",
+		"minecraft:waxed_copper_door",
+		"minecraft:waxed_exposed_copper_door",
+		"minecraft:waxed_weathered_copper_door",
+		"minecraft:waxed_oxidized_copper_door",
+		"minecraft:copper_trapdoor",
+		"minecraft:exposed_copper_trapdoor",
+		"minecraft:weathered_copper_trapdoor",
+		"minecraft:oxidized_copper_trapdoor",
+		"minecraft:waxed_copper_trapdoor",
+		"minecraft:waxed_exposed_copper_trapdoor",
+		"minecraft:waxed_weathered_copper_trapdoor",
+		"minecraft:waxed_oxidized_copper_trapdoor",
+		"ashfall:reinforced_planks",
+		"ashfall:barricade",
+		"ashfall:reinforced_door",
+		"ashfall:bunker_core"
+	]
+}

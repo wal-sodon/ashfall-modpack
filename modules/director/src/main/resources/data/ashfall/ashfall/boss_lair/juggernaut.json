@@ -1,0 +1,15 @@
+{
+	"name": "boss.ashfall.juggernaut",
+	"anchor": { "site": "ashfall:wreck_hull" },
+	"boss": { "variant": "ashfall:juggernaut" },
+	"glowing": false,
+	"particle": "minecraft:large_smoke",
+	"bossbar": { "color": "purple", "overlay": "notched_10" },
+	"trigger_radius": 36,
+	"bar_radius": 64,
+	"respawn": { "after_ending_days": 10 },
+	"drops": {
+		"guaranteed": [ { "item": "ashfall:resonance_crystal", "count": 1 } ],
+		"loot_table": "ashfall:entities/boss/juggernaut"
+	}
+}

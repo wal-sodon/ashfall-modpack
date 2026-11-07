@@ -1,0 +1,25 @@
+{
+	"weight": 8,
+	"min_day": 12,
+	"zone_multiplier": {
+		"montford": 0.0,
+		"downtown": 1.5,
+		"mission": 1.2
+	},
+	"max_alive_per_player": 2,
+	"siege_multiplier": 1.5,
+	"attributes": {
+		"minecraft:max_health": 14.0,
+		"minecraft:movement_speed": 0.26,
+		"minecraft:attack_damage": 2.0,
+		"minecraft:follow_range": 48.0,
+		"minecraft:spawn_reinforcements": 0.0
+	},
+	"tuning": {
+		"scream_radius": 48,
+		"scream_cooldown_seconds": 20,
+		"buff_radius": 16,
+		"buff_seconds": 8,
+		"buff_amplifier": 1
+	}
+}

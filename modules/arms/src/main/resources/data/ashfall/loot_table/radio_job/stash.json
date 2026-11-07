@@ -1,0 +1,134 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 4,
+				"max": 6
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:canned_food",
+					"weight": 6,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 2,
+							"max": 4
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bottled_water",
+					"weight": 6,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 2,
+							"max": 4
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bandage",
+					"weight": 4,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:antibiotics",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:duct_tape",
+					"weight": 3,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:lighter_fluid",
+					"weight": 2
+				}
+			]
+		},
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 1,
+				"max": 2
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_electronics",
+					"weight": 5,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:wire_spool",
+					"weight": 3,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:battery",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:alloy_plate",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:weapon_parts",
+					"weight": 2
+				}
+			]
+		}
+	]
+}

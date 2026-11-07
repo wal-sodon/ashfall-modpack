@@ -1,0 +1,45 @@
+{
+	"match": [
+		{
+			"shop": "electronics|mobile_phone|computer|hifi|radiotechnics|appliance"
+		},
+		{
+			"lc_multibuilding": "*:center"
+		}
+	],
+	"arnis_uses": [
+		"Shop(Electronics)"
+	],
+	"priority": 60,
+	"tier": 3,
+	"loot_table": "ashfall:buildings/electronics",
+	"containers": {
+		"per_100m2": 1.2,
+		"min": 1,
+		"max": 4,
+		"blocks": [
+			{
+				"block": "minecraft:chest",
+				"weight": 3
+			},
+			{
+				"block": "minecraft:barrel",
+				"weight": 1
+			}
+		]
+	},
+	"refill": {
+		"enabled": true,
+		"delay_ticks": 168000,
+		"no_player_radius": 32,
+		"quiet_ticks": 6000
+	},
+	"population": {
+		"per_100m2": 0.6,
+		"entities": {
+			"minecraft:zombie": 100
+		}
+	},
+	"safe_candidate": false,
+	"relay_chance": 0.15
+}

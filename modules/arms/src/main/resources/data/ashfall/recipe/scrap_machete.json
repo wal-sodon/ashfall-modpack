@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"pattern": [
+		"  S",
+		" SG",
+		"C  "
+	],
+	"key": {
+		"S": "ashfall:scrap_metal",
+		"G": "ashfall:glass_shard",
+		"C": "ashfall:cloth"
+	},
+	"result": {
+		"id": "ashfall:scrap_machete",
+		"count": 1
+	}
+}

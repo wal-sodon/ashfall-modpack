@@ -1,0 +1,76 @@
+{
+	"weight": 10,
+	"min_day": 16,
+	"attributes": {
+		"minecraft:max_health": 20.0,
+		"minecraft:movement_speed": 0.22
+	},
+	"equipment": {
+		"min": 0,
+		"max": 2,
+		"drop_chance": 0.085,
+		"sets": [
+			{
+				"weight": 2,
+				"slots": {
+					"head": [
+						"minecraft:iron_helmet",
+						"minecraft:chainmail_helmet"
+					],
+					"chest": [
+						"minecraft:iron_chestplate",
+						"minecraft:chainmail_chestplate"
+					],
+					"legs": [
+						"minecraft:chainmail_leggings"
+					],
+					"feet": [
+						"minecraft:iron_boots"
+					]
+				}
+			},
+			{
+				"weight": 2,
+				"slots": {
+					"head": [
+						"minecraft:chainmail_helmet"
+					],
+					"chest": [
+						"minecraft:chainmail_chestplate"
+					],
+					"feet": [
+						"minecraft:iron_boots",
+						"minecraft:chainmail_boots"
+					],
+					"mainhand": [
+						"minecraft:iron_shovel",
+						"minecraft:iron_pickaxe"
+					]
+				}
+			},
+			{
+				"weight": 1,
+				"slots": {
+					"head": [
+						"ashfall:riot_helmet"
+					],
+					"chest": [
+						"ashfall:riot_vest"
+					],
+					"legs": [
+						"ashfall:riot_leggings"
+					],
+					"feet": [
+						"ashfall:riot_boots"
+					]
+				}
+			}
+		]
+	},
+	"building_bias": {
+		"ashfall:police": 4.0,
+		"ashfall:police_armory": 4.0,
+		"ashfall:fire_station": 4.0,
+		"ashfall:government": 4.0
+	}
+}

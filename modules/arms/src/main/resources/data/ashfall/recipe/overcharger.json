@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"L": "ashfall:focusing_lens",
+		"E": "ashfall:energy_cell",
+		"W": "ashfall:weapon_parts",
+		"R": "ashfall:wire_spool"
+	},
+	"pattern": [
+		"WLW",
+		"RER",
+		"WLW"
+	],
+	"result": {
+		"id": "ashfall:overcharger"
+	}
+}

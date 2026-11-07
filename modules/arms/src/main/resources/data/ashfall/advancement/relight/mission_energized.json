@@ -1,0 +1,28 @@
+{
+	"parent": "ashfall:relight/mission_repaired",
+	"criteria": {
+		"energized": {
+			"trigger": "ashfall:district",
+			"conditions": {
+				"district": "mission",
+				"state": "energized"
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:energy_cell"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.mission_energized.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.mission_energized.description"
+		}
+	},
+	"requirements": [
+		[
+			"energized"
+		]
+	]
+}

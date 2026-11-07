@@ -1,0 +1,77 @@
+{
+	"dimension": "ashfall_test:lc_city",
+	"chunkx": 60,
+	"chunkz": -60,
+	"radius": 256,
+	"citystyle": "ashfall:residential",
+	"buildings": [
+		{
+			"building": "ashfall:safehouse",
+			"chunkx": 0,
+			"chunkz": 0,
+			"preventruins": true
+		},
+		{
+			"building": "ashfall:pharmacy",
+			"chunkx": 2,
+			"chunkz": 0,
+			"preventruins": true
+		},
+		{
+			"building": "ashfall:police_station",
+			"chunkx": 4,
+			"chunkz": 0,
+			"multi": true,
+			"preventruins": true
+		},
+		{
+			"building": "ashfall:substation_downtown",
+			"chunkx": 7,
+			"chunkz": 0,
+			"multi": true,
+			"preventruins": true
+		},
+		{
+			"building": "ashfall:hospital",
+			"chunkx": 0,
+			"chunkz": 3,
+			"multi": true,
+			"preventruins": true
+		},
+		{
+			"building": "ashfall:kiln_warehouse",
+			"chunkx": 4,
+			"chunkz": 3,
+			"multi": true,
+			"preventruins": true
+		},
+		{
+			"building": "ashfall:substation_river_arts",
+			"chunkx": 7,
+			"chunkz": 3,
+			"multi": true,
+			"preventruins": true
+		},
+		{
+			"building": "ashfall:substation_south_slope",
+			"chunkx": 0,
+			"chunkz": 6,
+			"multi": true,
+			"preventruins": true
+		},
+		{
+			"building": "ashfall:substation_mission",
+			"chunkx": 3,
+			"chunkz": 6,
+			"multi": true,
+			"preventruins": true
+		},
+		{
+			"building": "ashfall:police_precinct",
+			"chunkx": 2,
+			"chunkz": 2,
+			"multi": true,
+			"preventruins": true
+		}
+	]
+}

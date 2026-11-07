@@ -1,0 +1,12 @@
+{
+	"required": false,
+	"package": "xyz.toesinthesand.ashfall.director.compat.zbb.mixin",
+	"plugin": "xyz.toesinthesand.ashfall.director.compat.ZbbMixinPlugin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"BlockDamageCalculatorMixin",
+		"BreakActionMixin",
+		"BuildActionMixin"
+	],
+	"injectors": { "defaultRequire": 1 }
+}

@@ -1,0 +1,28 @@
+{
+	"parent": "ashfall:relight/downtown_repaired",
+	"criteria": {
+		"energized": {
+			"trigger": "ashfall:district",
+			"conditions": {
+				"district": "downtown",
+				"state": "energized"
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:energy_cell"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.downtown_energized.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.downtown_energized.description"
+		}
+	},
+	"requirements": [
+		[
+			"energized"
+		]
+	]
+}

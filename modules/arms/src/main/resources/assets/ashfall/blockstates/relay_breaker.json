@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"triggered=true": {
+			"model": "ashfall:block/relay_breaker"
+		},
+		"triggered=false": {
+			"model": "ashfall:block/relay_breaker_closed"
+		}
+	}
+}

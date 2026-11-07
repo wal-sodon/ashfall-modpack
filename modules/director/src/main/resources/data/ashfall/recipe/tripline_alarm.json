@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "redstone",
+	"pattern": [
+		"SRS",
+		"NTN"
+	],
+	"key": {
+		"S": "ashfall:scrap_metal",
+		"R": "minecraft:redstone",
+		"N": "minecraft:iron_nugget",
+		"T": "minecraft:string"
+	},
+	"result": {
+		"id": "ashfall:tripline_alarm",
+		"count": 1
+	}
+}

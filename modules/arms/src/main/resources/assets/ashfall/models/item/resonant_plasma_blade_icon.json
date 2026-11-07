@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:item/handheld",
+	"textures": {
+		"layer0": "ashfall:item/resonant_plasma_blade_icon"
+	}
+}

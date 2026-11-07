@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "building",
+	"key": {
+		"A": "ashfall:alloy_plate",
+		"S": "ashfall:scrap_metal",
+		"P": "#ashfall:bunker_core_power"
+	},
+	"pattern": [
+		"ASA",
+		"SPS",
+		"ASA"
+	],
+	"result": {
+		"id": "ashfall:bunker_core"
+	}
+}

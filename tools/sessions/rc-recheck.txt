@@ -1,0 +1,45 @@
+# 1.0.0-rc1 recheck on world-rc after rc-arc.txt (story reset, Grid 80 %, the spent Uplink waiting in the socket):
+#   1. the Mutant Zombie's own loot table is empty (the Abomination must not drop the Hulk Hammer);
+#   2. where the Surge's waves go: 4 stand-ins, distance bands from the socket and the nearest positions, to see
+#      whether they reach the Uplink (in rc-arc the Uplink took no zombie damage in 2 minutes of Surge).
+until Done \(
+cmd forceload add 2220 -180 2380 -20
+wait 20
+cmd kill @e[type=item]
+cmd loot spawn 2360 200 -40 loot mutantmonsters:entities/mutant_zombie
+cmd execute if entity @e[type=item,x=2350,y=190,z=-50,dx=20,dy=20,dz=20]
+cmd loot spawn 2360 200 -40 loot ashfall:entities/boss/abomination
+cmd execute as @e[type=item,x=2350,y=190,z=-50,dx=20,dy=20,dz=20] run data get entity @s Item
+cmd kill @e[type=item]
+cmd ashfall finale status
+cmd ashfall finale unattended 4
+cmd ashfall finale start
+until Finale: wave of
+wait 40
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..4]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..8]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..16]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..32]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale]
+cmd execute positioned 2304 65 -101 as @e[tag=ashfall_finale,sort=nearest,limit=6] run data get entity @s Pos
+cmd ashfall finale status
+wait 60
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..4]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..8]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..16]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..32]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale]
+cmd execute positioned 2304 65 -101 as @e[tag=ashfall_finale,sort=nearest,limit=10] run data get entity @s Pos
+cmd execute positioned 2304 65 -101 as @e[tag=ashfall_finale,sort=furthest,limit=4] run data get entity @s Pos
+cmd ashfall finale status
+cmd ashfall horde status
+wait 60
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..4]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..16]
+cmd execute positioned 2304 65 -101 as @e[tag=ashfall_finale,sort=nearest,limit=10] run data get entity @s Pos
+cmd ashfall finale status
+cmd ashfall finale abort
+cmd ashfall finale unattended off
+cmd kill @e[tag=ashfall_finale]
+cmd forceload remove all
+wait 3

@@ -1,0 +1,127 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 1,
+				"max": 2
+			},
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 35
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:cloth",
+					"weight": 10,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:battery",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:duct_tape",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_metal",
+					"weight": 3,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:matches",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bottled_water",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:focusing_lens",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:gold_nugget",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:book",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:painting",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:amethyst_shard",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:clock",
+					"weight": 1
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:buildings/museum"
+}

@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:smelting",
+	"category": "food",
+	"group": "bottled_water",
+	"cookingtime": 200,
+	"experience": 0.1,
+	"ingredient": "ashfall:dirty_water",
+	"result": {
+		"id": "ashfall:bottled_water"
+	}
+}

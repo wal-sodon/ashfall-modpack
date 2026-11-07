@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:block",
+	"pools": [
+		{
+			"rolls": 1,
+			"condition": {
+				"type": "minecraft:survives_explosion"
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:tripline_alarm"
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:blocks/tripline_alarm"
+}

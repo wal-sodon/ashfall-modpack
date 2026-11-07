@@ -1,0 +1,28 @@
+{
+	"parent": "ashfall:relight/grid_coupler",
+	"criteria": {
+		"repaired": {
+			"trigger": "ashfall:district",
+			"conditions": {
+				"district": "mission",
+				"state": "repaired"
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:battery"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.mission_repaired.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.mission_repaired.description"
+		}
+	},
+	"requirements": [
+		[
+			"repaired"
+		]
+	]
+}

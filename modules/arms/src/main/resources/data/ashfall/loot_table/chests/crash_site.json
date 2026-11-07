@@ -1,0 +1,183 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"rolls": 1,
+			"condition": {
+				"type": "minecraft:random_chance",
+				"chance": 0.7
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:focusing_lens",
+					"weight": 1,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 1,
+								"max": 2
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 2,
+				"max": 4
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_electronics",
+					"weight": 6,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 1,
+								"max": 4
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:weapon_parts",
+					"weight": 2,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 1,
+								"max": 2
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:battery",
+					"weight": 2,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 1,
+								"max": 2
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_nugget",
+					"weight": 3,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 3,
+								"max": 9
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:amethyst_shard",
+					"weight": 2,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 1,
+								"max": 3
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:riot_helmet",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:riot_vest",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:riot_leggings",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:riot_boots",
+					"weight": 1
+				}
+			]
+		},
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 0,
+				"max": 2
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:energy_cell",
+					"weight": 1,
+					"modifier": [
+						{
+							"type": "minecraft:set_components",
+							"components": {
+								"team_reborn_energy:energy": 240
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"condition": {
+				"type": "minecraft:random_chance",
+				"chance": 0.05
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:resonance_crystal",
+					"weight": 1
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"condition": {
+				"type": "minecraft:random_chance",
+				"chance": 0.06
+			},
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"value": "ashfall:blasters/rare"
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:chests/crash_site"
+}

@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"S": "ashfall:scrap_metal",
+		"I": "ashfall:alloy_plate",
+		"E": "ashfall:scrap_electronics",
+		"B": "ashfall:battery",
+		"T": "ashfall:duct_tape"
+	},
+	"pattern": [
+		"SIE",
+		"BIT",
+		"S  "
+	],
+	"result": {
+		"id": "ashfall:volt_sidearm"
+	}
+}

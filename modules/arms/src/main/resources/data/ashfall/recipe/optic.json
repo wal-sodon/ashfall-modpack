@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"I": "ashfall:alloy_plate",
+		"G": "minecraft:glass_pane",
+		"E": "ashfall:scrap_electronics",
+		"T": "ashfall:duct_tape"
+	},
+	"pattern": [
+		"III",
+		"GEG",
+		" T "
+	],
+	"result": {
+		"id": "ashfall:optic"
+	}
+}

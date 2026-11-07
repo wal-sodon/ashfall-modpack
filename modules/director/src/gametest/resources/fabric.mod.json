@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "ashfall_director_test",
+	"version": "${version}",
+	"name": "Ashfall: Director gametests",
+	"environment": "*",
+	"entrypoints": {
+		"fabric-gametest": [
+			"xyz.toesinthesand.ashfall.director.test.DirectorSmokeTest",
+			"xyz.toesinthesand.ashfall.director.test.HavenGameTest",
+			"xyz.toesinthesand.ashfall.director.test.HydrationGameTest",
+			"xyz.toesinthesand.ashfall.director.test.InfectionGameTest",
+			"xyz.toesinthesand.ashfall.director.test.SensesGameTest",
+			"xyz.toesinthesand.ashfall.director.test.SpawnDirectorGameTest",
+			"xyz.toesinthesand.ashfall.director.test.BossLairGameTest",
+			"xyz.toesinthesand.ashfall.director.test.HordeGameTest",
+			"xyz.toesinthesand.ashfall.director.test.SpecialInfectedGameTest",
+			"xyz.toesinthesand.ashfall.director.test.TrapsGameTest",
+			"xyz.toesinthesand.ashfall.director.test.GraffitiGameTest",
+			"xyz.toesinthesand.ashfall.director.test.PetsGameTest",
+			"xyz.toesinthesand.ashfall.director.test.FortifyWearGameTest"
+		],
+		"fabric-client-gametest": [
+			"xyz.toesinthesand.ashfall.director.test.ZombieLoadClientBenchmark",
+			"xyz.toesinthesand.ashfall.director.test.BandageClientGameTest"
+		]
+	},
+	"depends": {
+		"ashfall_director": "*"
+	}
+}

@@ -1,0 +1,41 @@
+{
+	"dimension": "minecraft:overworld",
+	"chunkx": -57,
+	"chunkz": 6,
+	"radius": 256,
+	"citystyle": "ashfall:river_arts",
+	"buildings": [
+		{
+			"building": "ashfall:substation_river_arts",
+			"chunkx": 2,
+			"chunkz": -2,
+			"multi": true,
+			"preventruins": true
+		},
+		{
+			"building": "ashfall:kiln_warehouse",
+			"chunkx": -3,
+			"chunkz": 1,
+			"multi": true,
+			"preventruins": true
+		}
+	],
+	"streets": [
+		{
+			"chunkx": 2,
+			"chunkz": 0
+		},
+		{
+			"chunkx": 3,
+			"chunkz": 0
+		},
+		{
+			"chunkx": -3,
+			"chunkz": 3
+		},
+		{
+			"chunkx": -2,
+			"chunkz": 3
+		}
+	]
+}

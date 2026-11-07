@@ -1,0 +1,16 @@
+Sound effects in this folder are derived from "Sci-Fi Sounds" (1.0) by Kenney (www.kenney.nl),
+licensed under Creative Commons Zero (CC0): http://creativecommons.org/publicdomain/zero/1.0/
+
+Changes: downmixed to mono, normalised, tails trimmed; hums, reload and dry-click sounds cut from
+longer files with fades (see the arms spec, docs/specs/hydration-and-arms-v1.md).
+
+fire/small_*      laserSmall_000-004
+fire/large_*      laserLarge_000-004
+fire/retro_*      laserRetro_000-004
+impact/metal_*    impactMetal_000-004
+impact/crunch_*   explosionCrunch_000-002 (first 0.32 s)
+overheat/forcefield_*  forceField_000-002
+reload/computer_* computerNoise_000-003 (first 0.9 s)
+hum/relay_*       spaceEngineLow_000, _003, _004 (2.3 s slices)
+hum/charger_*     engineCircular_001-003 (2.3 s slices)
+empty/click_*     impactMetal_002, impactMetal_004, doorOpen_000 (first 70 ms, fast decay)

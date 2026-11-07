@@ -1,0 +1,200 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:stone_bricks"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:stone_brick_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:iron_bars[east=true,north=true,south=true,west=true]"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:bricks"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:glass_pane[east=true,north=false,south=true,west=true]"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:glass_pane[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:spruce_planks"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:iron_bars[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:iron_bars[east=false,north=true,south=false,west=false]"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:light_gray_concrete"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:lever[face=floor,facing=south,powered=false]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:spruce_fence[east=true,north=false,south=false,west=false]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:spruce_fence[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:spruce_fence[east=false,north=false,south=true,west=true]"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:spruce_fence[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:iron_block"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "! !!!!!!!!!!!!!!",
+   "! !!!!!!!!!!!!!!",
+   "! !!!!!!!!!!!!!!",
+   "!#!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!$!!!!$!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!          !",
+   "!!!!!          !"
+  ],
+  [
+   "%%%&'%%%%''%%%%%",
+   "%(((            ",
+   "% ) (           ",
+   "* ) (           ",
+   "* + (           ",
+   "%   (           ",
+   "%               ",
+   "%               ",
+   "%      ,,   ,,  ",
+   "*      ,,   ,,  ",
+   "*      ,,   ,,  ",
+   "%       -    -  ",
+   "%               ",
+   "%    .////////0 ",
+   "%             1 ",
+   "*             1 "
+  ],
+  [
+   "%%%&'%%%%''%%%%%",
+   "%(((            ",
+   "%   (           ",
+   "*   (           ",
+   "*   (           ",
+   "%   (           ",
+   "%               ",
+   "%               ",
+   "%      ,,   ,,  ",
+   "*      ,,   ,,  ",
+   "*      ,,   ,,  ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "*               "
+  ],
+  [
+   "%%%&'%%%%''%%%%%",
+   "%(((            ",
+   "%   (           ",
+   "*   (           ",
+   "*   (           ",
+   "%   (           ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "*      2    2   ",
+   "*               ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "*               "
+  ],
+  [
+   "%%%&'%%%%''%%%%%",
+   "%(((            ",
+   "%   (           ",
+   "*   (           ",
+   "*   (           ",
+   "%   (           ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "*               ",
+   "*               ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "*               "
+  ],
+  [
+   "%%%%%%%%%%%%%%%%",
+   "%(((            ",
+   "%   (           ",
+   "%   (           ",
+   "%   (     3     ",
+   "%   (           ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "%               "
+  ]
+ ]
+}

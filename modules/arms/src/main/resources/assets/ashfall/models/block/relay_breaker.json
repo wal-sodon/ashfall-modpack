@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "ashfall:block/relay_breaker_top",
+		"side": "ashfall:block/relay_breaker_side_tripped"
+	}
+}

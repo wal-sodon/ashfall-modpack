@@ -1,0 +1,9 @@
+{
+	"entity": "minecraft:drowned",
+	"weight": 100,
+	"min_day": 1,
+	"environment": "water",
+	"attributes": {
+		"minecraft:max_health": 20.0
+	}
+}

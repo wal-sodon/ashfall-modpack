@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "redstone",
+	"key": {
+		"E": "ashfall:scrap_electronics",
+		"G": "minecraft:glass",
+		"R": "ashfall:wire_spool"
+	},
+	"pattern": [
+		" R ",
+		"RER",
+		" G "
+	],
+	"result": {
+		"id": "minecraft:redstone_lamp"
+	}
+}

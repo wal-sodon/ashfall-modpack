@@ -1,0 +1,14 @@
+{
+ "dimx": 2,
+ "dimz": 2,
+ "buildings": [
+  [
+   "ashfall:substation_river_arts_00",
+   "ashfall:substation_river_arts_01"
+  ],
+  [
+   "ashfall:substation_river_arts_10",
+   "ashfall:substation_river_arts_11"
+  ]
+ ]
+}

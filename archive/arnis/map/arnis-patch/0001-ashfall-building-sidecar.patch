@@ -1,0 +1,207 @@
+diff --git a/src/ashfall_sidecar.rs b/src/ashfall_sidecar.rs
+new file mode 100644
+index 0000000..ee1a9e8
+--- /dev/null
++++ b/src/ashfall_sidecar.rs
+@@ -0,0 +1,110 @@
++//! Ashfall patch: records every building shell and every furnished interior unit so the Ashfall
++//! post-processor (a Fabric mod) can place loot, zones and spawns by the use Arnis furnished,
++//! without re-deriving Arnis's classification or projection. Written to
++//! `<world>/ashfall/buildings.json` just before the world is saved.
++//!
++//! Cell sets are run-length encoded as `[z, x_start, x_end]` rows (inclusive). A building
++//! processed in several tiles is recorded once per tile; the reader merges records by OSM id.
++
++use serde::Serialize;
++use std::collections::{BTreeMap, HashMap};
++use std::path::Path;
++use std::sync::Mutex;
++
++/// Tags worth keeping for classification and naming downstream.
++const KEPT_TAGS: &[&str] = &[
++    "building", "name", "amenity", "shop", "healthcare", "office", "tourism", "leisure", "craft",
++    "military", "emergency", "religion", "building:levels", "building:use", "man_made", "ruins",
++];
++
++#[derive(Serialize)]
++struct Shell {
++    id: u64,
++    tags: BTreeMap<String, String>,
++    /// Absolute Y of each floor slab.
++    floors: Vec<i32>,
++    base_y: i32,
++    top_y: i32,
++    rows: Vec<[i32; 3]>,
++}
++
++#[derive(Serialize)]
++struct Unit {
++    id: u64,
++    floor: usize,
++    floor_y: i32,
++    top_y: i32,
++    /// Arnis's `Use`, Debug-formatted: "Home", "Shop(Pharmacy)", "Food(Cafe)", ...
++    #[serde(rename = "use")]
++    use_: String,
++    rows: Vec<[i32; 3]>,
++}
++
++#[derive(Serialize)]
++struct Sidecar<'a> {
++    format: u32,
++    arnis_version: &'a str,
++    shells: &'a [Shell],
++    units: &'a [Unit],
++}
++
++static SHELLS: Mutex<Vec<Shell>> = Mutex::new(Vec::new());
++static UNITS: Mutex<Vec<Unit>> = Mutex::new(Vec::new());
++
++fn rows(cells: &[(i32, i32)]) -> Vec<[i32; 3]> {
++    let mut sorted: Vec<(i32, i32)> = cells.iter().map(|&(x, z)| (z, x)).collect();
++    sorted.sort_unstable();
++    sorted.dedup();
++    let mut out: Vec<[i32; 3]> = Vec::new();
++    for (z, x) in sorted {
++        match out.last_mut() {
++            Some(row) if row[0] == z && row[2] + 1 == x => row[2] = x,
++            _ => out.push([z, x, x]),
++        }
++    }
++    out
++}
++
++pub fn record_shell(
++    id: u64,
++    tags: &HashMap<String, String>,
++    footprint: &[(i32, i32)],
++    floors: &[i32],
++    base_y: i32,
++    top_y: i32,
++) {
++    let kept = KEPT_TAGS
++        .iter()
++        .filter_map(|k| tags.get(*k).map(|v| (k.to_string(), v.clone())))
++        .collect();
++    let shell = Shell { id, tags: kept, floors: floors.to_vec(), base_y, top_y, rows: rows(footprint) };
++    SHELLS.lock().unwrap().push(shell);
++}
++
++pub fn record_unit(id: u64, floor: usize, floor_y: i32, top_y: i32, use_: impl std::fmt::Debug, cells: &[(i32, i32)]) {
++    let unit = Unit { id, floor, floor_y, top_y, use_: format!("{use_:?}"), rows: rows(cells) };
++    UNITS.lock().unwrap().push(unit);
++}
++
++pub fn write(world_dir: &Path) -> std::io::Result<()> {
++    let shells = SHELLS.lock().unwrap();
++    let units = UNITS.lock().unwrap();
++    let dir = world_dir.join("ashfall");
++    std::fs::create_dir_all(&dir)?;
++    let sidecar = Sidecar { format: 1, arnis_version: env!("CARGO_PKG_VERSION"), shells: &shells, units: &units };
++    let file = std::io::BufWriter::new(std::fs::File::create(dir.join("buildings.json"))?);
++    serde_json::to_writer(file, &sidecar)?;
++    println!("Ashfall sidecar: {} shells, {} units", shells.len(), units.len());
++    Ok(())
++}
++
++#[cfg(test)]
++mod tests {
++    use super::rows;
++
++    #[test]
++    fn rows_merge_contiguous_runs() {
++        let cells = [(1, 0), (2, 0), (3, 0), (5, 0), (1, 1)];
++        assert_eq!(rows(&cells), vec![[0, 1, 3], [0, 5, 5], [1, 1, 1]]);
++    }
++}
+diff --git a/src/data_processing.rs b/src/data_processing.rs
+index c5e7d35..839d54e 100644
+--- a/src/data_processing.rs
++++ b/src/data_processing.rs
+@@ -1815,6 +1815,13 @@ pub fn generate_world_with_options(
+         }
+     }
+ 
++    // Ashfall patch: building sidecar for the post-processor.
++    if world_format == WorldFormat::JavaAnvil {
++        if let Err(e) = crate::ashfall_sidecar::write(&output_path) {
++            eprintln!("Ashfall sidecar not written: {e}");
++        }
++    }
++
+     // Save world
+     if let Err(e) = editor.save() {
+         // The panels were waiting for the pack this save was going to make a
+diff --git a/src/element_processing/buildings.rs b/src/element_processing/buildings.rs
+index 546d587..88acb68 100644
+--- a/src/element_processing/buildings.rs
++++ b/src/element_processing/buildings.rs
+@@ -8152,6 +8152,20 @@ pub fn generate_buildings(
+             }
+         }
+ 
++        // Ashfall patch: record the shell for the post-processor, furnished or not.
++        {
++            let abs = abs_terrain_offset;
++            let floors: Vec<i32> = storey_levels.iter().map(|y| y + abs).collect();
++            crate::ashfall_sidecar::record_shell(
++                element.id,
++                &element.tags,
++                &cached_floor_area,
++                &floors,
++                start_y_offset + abs,
++                start_y_offset + effective_building_height + abs,
++            );
++        }
++
+         // Generate interior features
+         if let Some(plan) = &interior_plan {
+             let floor_levels = if open_hall {
+@@ -8195,6 +8209,7 @@ pub fn generate_buildings(
+                     scale: args.scale,
+                     floor_block: config.floor_block,
+                     seed: group_seed,
++                    osm_id: element.id,
+                 },
+             );
+         }
+diff --git a/src/element_processing/subprocessor/interior/mod.rs b/src/element_processing/subprocessor/interior/mod.rs
+index 16897cd..69688d8 100644
+--- a/src/element_processing/subprocessor/interior/mod.rs
++++ b/src/element_processing/subprocessor/interior/mod.rs
+@@ -48,6 +48,8 @@ pub struct InteriorRequest<'a> {
+     /// The slab between storeys, which a light may replace.
+     pub floor_block: Block,
+     pub seed: u64,
++    /// Ashfall patch: OSM id of the building, for the sidecar.
++    pub osm_id: u64,
+ }
+ 
+ /// Per-storey settings shared by the furnishers.
+@@ -169,6 +171,14 @@ pub fn generate_building_interior(editor: &mut WorldEditor, req: &InteriorReques
+                 }
+             } else {
+                 for (unit, zone) in units.iter().zip(zones) {
++                    crate::ashfall_sidecar::record_unit(
++                        req.osm_id,
++                        i,
++                        floor_y,
++                        top,
++                        unit.use_,
++                        &c.cells_any(zone),
++                    );
+                     furnish(&mut c, zone, unit.use_, &ctx);
+                 }
+                 c.focus(0);
+diff --git a/src/main.rs b/src/main.rs
+index 522fdbe..b45e8bc 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -1,6 +1,7 @@
+ #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+ 
+ mod args;
++mod ashfall_sidecar;
+ mod bedrock_block_map;
+ mod bench;
+ mod biome;

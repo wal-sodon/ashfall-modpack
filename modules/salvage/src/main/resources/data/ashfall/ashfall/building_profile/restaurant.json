@@ -1,0 +1,52 @@
+{
+	"match": [
+		{
+			"amenity": "restaurant|cafe|fast_food|food_court|ice_cream"
+		},
+		{
+			"lc_building": "*:building5|*:building6",
+			"lc_zone": "south_slope"
+		},
+		{
+			"lc_multibuilding": "*:highway_restaurant"
+		},
+		{
+			"lc_building": "*highway*restaurant*"
+		}
+	],
+	"arnis_uses": [
+		"Food"
+	],
+	"priority": 30,
+	"tier": 1,
+	"loot_table": "ashfall:buildings/restaurant",
+	"containers": {
+		"per_100m2": 1.0,
+		"min": 1,
+		"max": 4,
+		"blocks": [
+			{
+				"block": "minecraft:chest",
+				"weight": 3
+			},
+			{
+				"block": "minecraft:barrel",
+				"weight": 1
+			}
+		]
+	},
+	"refill": {
+		"enabled": true,
+		"delay_ticks": 96000,
+		"no_player_radius": 32,
+		"quiet_ticks": 6000
+	},
+	"population": {
+		"per_100m2": 0.7,
+		"entities": {
+			"minecraft:zombie": 100
+		}
+	},
+	"safe_candidate": false,
+	"relay_chance": 0.02
+}

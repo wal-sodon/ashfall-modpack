@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"pattern": [
+		" S ",
+		"CTC",
+		"CCC"
+	],
+	"key": {
+		"S": "minecraft:string",
+		"C": "ashfall:cloth",
+		"T": "ashfall:duct_tape"
+	},
+	"result": {
+		"id": "ashfall:satchel"
+	}
+}

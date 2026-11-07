@@ -1,0 +1,171 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:gray_concrete"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:yellow_concrete"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:light_gray_concrete"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:barrel[facing=east,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/generic"
+    }
+   },
+   {
+    "char": "'",
+    "block": "minecraft:oak_fence[east=false,north=false,south=false,west=false]"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:iron_bars[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:black_stained_glass"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:iron_bars[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!#####!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!#####!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!$$$$$$$"
+  ],
+  [
+   "%       %       ",
+   "%               ",
+   "%         ###   ",
+   "%         ###   ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "%       %       ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "%               ",
+   "%&              ",
+   "%           '   ",
+   "%%%%%%%%%       "
+  ],
+  [
+   "%       %       ",
+   "(               ",
+   "(          )    ",
+   "(          )    ",
+   "(               ",
+   "(               ",
+   "(               ",
+   "%       %       ",
+   "(               ",
+   "(               ",
+   "(               ",
+   "(               ",
+   "(               ",
+   "(           '   ",
+   "(               ",
+   "%*******%       "
+  ],
+  [
+   "%       %       ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "%       %       ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "%       %       "
+  ],
+  [
+   "%       %       ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "%       %       ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "%       %       "
+  ],
+  [
+   "%       %       ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "              + ",
+   "%       %       ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "%       %       "
+  ]
+ ]
+}

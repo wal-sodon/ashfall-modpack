@@ -1,0 +1,64 @@
+{
+	"hit_interval_ticks": 20,
+	"reach": 3.5,
+	"repair_points": 45,
+	"repair_cooldown_ticks": 20,
+	"warn_below": 0.5,
+	"immune": ["ashfall:bunker_core", "minecraft:reinforced_deepslate"],
+	"default": {
+		"points": 120,
+		"downgrade": { "block": "minecraft:cobblestone" },
+		"repair": ["ashfall:scrap_metal"]
+	},
+	"blocks": [
+		{
+			"match": ["ashfall:barricade"],
+			"points": 60,
+			"downgrade": { "drop": "minecraft:oak_planks", "count": 2 },
+			"repair": ["#minecraft:planks", "ashfall:nails", "ashfall:nails"]
+		},
+		{
+			"match": ["ashfall:reinforced_planks"],
+			"points": 120,
+			"downgrade": { "block": "minecraft:oak_planks" },
+			"repair": ["#minecraft:planks", "ashfall:nails", "ashfall:nails"]
+		},
+		{
+			"match": [
+				"minecraft:copper_door", "minecraft:exposed_copper_door", "minecraft:weathered_copper_door", "minecraft:oxidized_copper_door",
+				"minecraft:waxed_copper_door", "minecraft:waxed_exposed_copper_door", "minecraft:waxed_weathered_copper_door",
+				"minecraft:waxed_oxidized_copper_door",
+				"minecraft:copper_trapdoor", "minecraft:exposed_copper_trapdoor", "minecraft:weathered_copper_trapdoor",
+				"minecraft:oxidized_copper_trapdoor", "minecraft:waxed_copper_trapdoor", "minecraft:waxed_exposed_copper_trapdoor",
+				"minecraft:waxed_weathered_copper_trapdoor", "minecraft:waxed_oxidized_copper_trapdoor"
+			],
+			"points": 120,
+			"downgrade": { "drop": "ashfall:scrap_metal", "count": 2 },
+			"repair": ["ashfall:scrap_metal"]
+		},
+		{
+			"match": ["ashfall:reinforced_door", "minecraft:iron_door", "minecraft:iron_trapdoor"],
+			"points": 180,
+			"downgrade": { "drop": "ashfall:scrap_metal", "count": 0 },
+			"repair": ["ashfall:scrap_metal"]
+		},
+		{
+			"match": ["minecraft:iron_bars"],
+			"points": 180,
+			"downgrade": { "block": "minecraft:cobblestone" },
+			"repair": ["ashfall:scrap_metal"]
+		},
+		{
+			"match": ["minecraft:iron_block"],
+			"points": 240,
+			"downgrade": { "block": "minecraft:cobblestone" },
+			"repair": ["ashfall:scrap_metal"]
+		},
+		{
+			"match": ["minecraft:obsidian", "minecraft:crying_obsidian"],
+			"points": 480,
+			"downgrade": { "block": "minecraft:cobblestone" },
+			"repair": ["ashfall:scrap_metal"]
+		}
+	]
+}

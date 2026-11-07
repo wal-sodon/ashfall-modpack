@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"C": "ashfall:resonance_crystal",
+		"L": "ashfall:focusing_lens",
+		"E": "ashfall:scrap_electronics",
+		"M": "ashfall:scrap_metal",
+		"B": "ashfall:battery",
+		"T": "ashfall:duct_tape"
+	},
+	"pattern": [
+		" C ",
+		"ELE",
+		"MBT"
+	],
+	"result": {
+		"id": "ashfall:plasma_blade"
+	}
+}

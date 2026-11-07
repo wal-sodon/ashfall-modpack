@@ -1,0 +1,8 @@
+{
+	"variants": {
+		"power=0": { "model": "ashfall:block/substation_core" },
+		"power=1": { "model": "ashfall:block/substation_core_lit" },
+		"power=2": { "model": "ashfall:block/substation_core_lit" },
+		"power=3": { "model": "ashfall:block/substation_core_lit" }
+	}
+}

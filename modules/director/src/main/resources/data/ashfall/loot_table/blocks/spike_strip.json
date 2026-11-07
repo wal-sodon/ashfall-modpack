@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:block",
+	"pools": [
+		{
+			"rolls": 1,
+			"condition": {
+				"type": "minecraft:survives_explosion"
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:spike_strip"
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:blocks/spike_strip"
+}

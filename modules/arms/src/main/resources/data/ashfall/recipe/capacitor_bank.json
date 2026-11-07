@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"key": {
+		"E": "ashfall:energy_cell",
+		"C": "ashfall:grid_coupler"
+	},
+	"pattern": [
+		"EEE",
+		"ECE",
+		"EEE"
+	],
+	"result": {
+		"id": "ashfall:capacitor_bank"
+	}
+}

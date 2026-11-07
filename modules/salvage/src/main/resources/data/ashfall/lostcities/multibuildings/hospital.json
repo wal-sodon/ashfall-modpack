@@ -1,0 +1,18 @@
+{
+ "dimx": 3,
+ "dimz": 2,
+ "buildings": [
+  [
+   "ashfall:hospital_00",
+   "ashfall:hospital_01"
+  ],
+  [
+   "ashfall:hospital_10",
+   "ashfall:hospital_11"
+  ],
+  [
+   "ashfall:hospital_20",
+   "ashfall:hospital_21"
+  ]
+ ]
+}

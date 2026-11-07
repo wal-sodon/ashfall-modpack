@@ -1,0 +1,30 @@
+{
+	"id": "ridge",
+	"kind": "ridge",
+	"district_index": 0,
+	"tier": 5,
+	"priority": 90,
+	"shape": {
+		"type": "box",
+		"min_x": 1700,
+		"min_z": -900,
+		"max_x": 2600,
+		"max_z": 900
+	},
+	"city": false,
+	"ruin_chance": 0.0,
+	"damage_scale": 1.0,
+	"population_scale": 0.0,
+	"landmarks": [
+		"ashfall:wreck_hull"
+	],
+	"key_relay_targets": [],
+	"sites": [
+		{
+			"id": "ashfall:wreck_hull",
+			"template": "ashfall:wreck_hull",
+			"x": 2300,
+			"z": -100
+		}
+	]
+}

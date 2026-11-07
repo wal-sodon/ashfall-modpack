@@ -1,0 +1,49 @@
+# Phase 4.5 playtest, part 3 (headless, no player), on world-p45 after part 2, with the Breach-timing fix.
+# 1. A late (midnight) Breach now ends at this dawn. 2. A Plasma Blade with no charge charges for free in a
+# Field Charger inside reclaimed Downtown, and not while Downtown is unlit. 3. Light probes for the stalker.
+until Done \(
+cmd forceload add -32 -112 159 79
+wait 20
+cmd kill @e[type=#minecraft:zombies]
+cmd time set 258000
+cmd ashfall grid set downtown reclaimed
+cmd ashfall horde breach downtown
+wait 5
+cmd ashfall grid status
+# Dawn of day 11 is clock 263000.
+cmd time set 262900
+wait 3
+cmd ashfall grid status
+cmd time set 263100
+wait 3
+cmd ashfall grid status
+cmd kill @e[type=#minecraft:zombies]
+# 2. Blade charging.
+cmd time set 270000
+cmd setblock 104 200 -24 ashfall:field_charger
+cmd item replace block 104 200 -24 container.0 with ashfall:plasma_blade
+wait 15
+cmd data get block 104 200 -24
+cmd ashfall grid set downtown energized
+cmd setblock 104 200 -20 ashfall:field_charger
+cmd item replace block 104 200 -20 container.0 with ashfall:plasma_blade
+wait 15
+cmd data get block 104 200 -20
+cmd ashfall grid set downtown reclaimed
+cmd kill @e[type=#minecraft:zombies]
+# 3. Light at midnight where the stalker stood in part 2 (72 113 -48), on the street, and in a sealed stone box.
+cmd time set 258000
+wait 3
+cmd execute positioned 72 113 -48 if predicate {condition:"minecraft:location_check",predicate:{light:{light:{min:0,max:5}}}}
+cmd execute positioned 72 113 -48 if predicate {condition:"minecraft:location_check",predicate:{light:{light:{min:6,max:15}}}}
+cmd execute positioned 72 113 -48 if predicate {condition:"minecraft:location_check",predicate:{light:{light:{min:12,max:15}}}}
+cmd fill 120 200 40 124 204 44 minecraft:stone hollow
+wait 2
+cmd execute positioned 122 202 42 if predicate {condition:"minecraft:location_check",predicate:{light:{light:{min:0,max:5}}}}
+cmd summon ashfall:stalker 122 201 42 {PersistenceRequired:1b,Tags:["p45_special"]}
+wait 5
+cmd execute if entity @e[type=ashfall:stalker,nbt={Invisible:1b}]
+cmd kill @e[tag=p45_special]
+cmd fill 120 200 40 124 204 44 minecraft:air
+cmd forceload remove all
+wait 3

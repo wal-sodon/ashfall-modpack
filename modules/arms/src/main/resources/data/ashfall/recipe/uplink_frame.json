@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"key": {
+		"R": "ashfall:resonance_crystal",
+		"L": "ashfall:focusing_lens",
+		"C": "ashfall:grid_coupler"
+	},
+	"pattern": [
+		"LRL",
+		"CRC",
+		"LRL"
+	],
+	"result": {
+		"id": "ashfall:uplink_frame"
+	}
+}

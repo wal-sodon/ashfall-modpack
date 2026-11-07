@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"group": "cell_pack",
+	"key": {
+		"C": "ashfall:wire_spool",
+		"R": "ashfall:wire_spool",
+		"E": "ashfall:scrap_electronics",
+		"I": "ashfall:alloy_plate"
+	},
+	"pattern": [
+		"CRC",
+		"IEC",
+		" R "
+	],
+	"result": {
+		"id": "ashfall:cell_pack_standard"
+	}
+}

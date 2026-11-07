@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "ashfall:block/bunker_core_top",
+		"side": "ashfall:block/bunker_core_side"
+	}
+}

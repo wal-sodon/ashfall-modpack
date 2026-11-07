@@ -1,0 +1,36 @@
+{
+ "filler": "#",
+ "palette": {
+  "palette": [
+   {
+    "char": "#",
+    "block": "minecraft:light_gray_concrete"
+   }
+  ]
+ },
+ "allowDoors": false,
+ "allowFillers": false,
+ "overrideFloors": true,
+ "minfloors": 2,
+ "maxfloors": 2,
+ "mincellars": 1,
+ "maxcellars": 1,
+ "parts": [
+  {
+   "part": "ashfall:landmarks/police_station/police_station_00_c1",
+   "floor": -1
+  },
+  {
+   "part": "ashfall:landmarks/police_station/police_station_00_f0",
+   "floor": 0
+  },
+  {
+   "part": "ashfall:landmarks/police_station/police_station_00_f1",
+   "floor": 1
+  },
+  {
+   "part": "ashfall:landmarks/police_station/police_station_00_top",
+   "floor": 2
+  }
+ ]
+}

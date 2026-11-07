@@ -1,0 +1,13 @@
+{
+	"events": {
+		"minecraft:block_open": { "radius": 10 },
+		"minecraft:block_close": { "radius": 10 },
+		"minecraft:block_destroy": { "radius": 12 },
+		"minecraft:container_open": { "radius": 6 },
+		"minecraft:explode": { "radius": 96 },
+		"minecraft:eat": { "radius": 4, "players_only": true },
+		"minecraft:drink": { "radius": 4, "players_only": true },
+		"minecraft:step": { "radius": 8, "players_only": true, "sprinting_only": true, "sample": 3, "scavenger_muffle": 0.15 },
+		"minecraft:projectile_land": { "radius": 8 }
+	}
+}

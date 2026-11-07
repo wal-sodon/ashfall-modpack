@@ -1,0 +1,46 @@
+{
+	"match": [
+		{
+			"lc_building": "*:building?",
+			"lc_zone": "montford|suburbs|wasteland|south_slope"
+		},
+		{
+			"lc_building": "*:cabin"
+		}
+	],
+	"arnis_uses": [
+		"Home"
+	],
+	"priority": 0,
+	"tier": 1,
+	"loot_table": "ashfall:buildings/home",
+	"containers": {
+		"per_100m2": 0.6,
+		"min": 0,
+		"max": 3,
+		"blocks": [
+			{
+				"block": "minecraft:chest",
+				"weight": 3
+			},
+			{
+				"block": "minecraft:barrel",
+				"weight": 1
+			}
+		]
+	},
+	"refill": {
+		"enabled": true,
+		"delay_ticks": 72000,
+		"no_player_radius": 32,
+		"quiet_ticks": 6000
+	},
+	"population": {
+		"per_100m2": 0.4,
+		"entities": {
+			"minecraft:zombie": 100
+		}
+	},
+	"safe_candidate": false,
+	"relay_chance": 0.02
+}

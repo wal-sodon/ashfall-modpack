@@ -1,0 +1,23 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+		"particle": "ashfall:block/barricade_front",
+		"front": "ashfall:block/barricade_front",
+		"side": "ashfall:block/barricade_side",
+		"top": "ashfall:block/barricade_top"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 5],
+			"to": [16, 16, 11],
+			"faces": {
+				"north": { "texture": "#front" },
+				"south": { "texture": "#front" },
+				"east": { "uv": [5, 0, 11, 16], "texture": "#side" },
+				"west": { "uv": [5, 0, 11, 16], "texture": "#side" },
+				"up": { "uv": [0, 5, 16, 11], "texture": "#top" },
+				"down": { "uv": [0, 5, 16, 11], "texture": "#top", "cullface": "down" }
+			}
+		}
+	]
+}

@@ -1,0 +1,18 @@
+{
+	"name": "boss.ashfall.patient_zero",
+	"anchor": { "landmark": "ashfall:hospital", "chunk": [44, 39], "size": [3, 2] },
+	"boss": { "variant": "ashfall:patient_zero" },
+	"glowing": true,
+	"particle": "minecraft:sneeze",
+	"bossbar": { "color": "green", "overlay": "notched_10" },
+	"trigger_radius": 20,
+	"bar_radius": 40,
+	"sealed": true,
+	"seal_radius": 16,
+	"respawn": { "after_ending_days": 10 },
+	"drops": {
+		"guaranteed": [ { "item": "ashfall:resonance_crystal", "count": 1 } ],
+		"loot_table": "ashfall:entities/boss/patient_zero"
+	},
+	"summon": { "variant": "ashfall:patient", "every_ticks": 300, "count": 2, "max_alive": 6, "radius": 5 }
+}

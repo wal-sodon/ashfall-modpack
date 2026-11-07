@@ -1,0 +1,297 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:green_concrete"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:smooth_quartz"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:light_gray_concrete"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:spruce_door[facing=north,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:birch_planks"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:barrel[facing=south,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/pharmacy"
+    }
+   },
+   {
+    "char": ")",
+    "block": "minecraft:barrel[facing=south,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/generic"
+    }
+   },
+   {
+    "char": "*",
+    "block": "minecraft:potted_cactus"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:barrel[facing=east,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/pharmacy"
+    }
+   },
+   {
+    "char": ",",
+    "block": "minecraft:birch_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:chest[facing=south,type=right,waterlogged=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/pharmacy"
+    }
+   },
+   {
+    "char": ".",
+    "block": "minecraft:chest[facing=south,type=left,waterlogged=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/pharmacy"
+    }
+   },
+   {
+    "char": "/",
+    "block": "minecraft:cauldron"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:birch_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:green_carpet"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:barrel[facing=up,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/pharmacy"
+    }
+   },
+   {
+    "char": "3",
+    "block": "minecraft:barrel[facing=up,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/generic"
+    }
+   },
+   {
+    "char": "4",
+    "block": "minecraft:birch_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "5",
+    "block": "minecraft:potted_dead_bush"
+   },
+   {
+    "char": "6",
+    "block": "minecraft:glass_pane[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "7",
+    "block": "minecraft:birch_door[facing=south,half=lower,hinge=right,open=false,powered=false]"
+   },
+   {
+    "char": "8",
+    "block": "minecraft:spruce_door[facing=north,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "9",
+    "block": "minecraft:birch_shelf[facing=south,powered=false,side_chain=unconnected,waterlogged=false]"
+   },
+   {
+    "char": ":",
+    "block": "minecraft:birch_fence[east=false,north=true,south=false,west=false]"
+   },
+   {
+    "char": ";",
+    "block": "minecraft:birch_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "<",
+    "block": "minecraft:birch_shelf[facing=east,powered=false,side_chain=unconnected,waterlogged=false]"
+   },
+   {
+    "char": "=",
+    "block": "minecraft:birch_shelf[facing=west,powered=false,side_chain=unconnected,waterlogged=false]"
+   },
+   {
+    "char": ">",
+    "block": "minecraft:glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "?",
+    "block": "minecraft:light_weighted_pressure_plate[power=0]"
+   },
+   {
+    "char": "@",
+    "block": "minecraft:dropper[facing=up,triggered=false]"
+   },
+   {
+    "char": "A",
+    "block": "minecraft:birch_door[facing=south,half=upper,hinge=right,open=false,powered=false]"
+   },
+   {
+    "char": "B",
+    "block": "minecraft:birch_fence[east=false,north=true,south=true,west=true]"
+   },
+   {
+    "char": "C",
+    "block": "minecraft:birch_fence[east=false,north=false,south=true,west=false]"
+   },
+   {
+    "char": "D",
+    "block": "minecraft:smooth_quartz_slab[type=bottom,waterlogged=false]"
+   },
+   {
+    "char": "E",
+    "block": "minecraft:birch_fence[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "F",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "$$$$$$$$$$$$$%$$",
+   "$&&&'()()()()  $",
+   "$&&&'         *$",
+   "$&&&'         #$",
+   "$+&,'-.       /$",
+   "$              $",
+   "$''''#######'0'$",
+   "$    111111    $",
+   "$+ ''      ''  $",
+   "$  ''  23  ''  $",
+   "$+ ''  32  ''  $",
+   "$  '' 1111 ''  $",
+   "$     1111     $",
+   "$     1111###  $",
+   "$     1111 4  5$",
+   "$66666$70$66666$"
+  ],
+  [
+   "$$$$$$$$$$$$$8$$",
+   "$&&&'99999999  $",
+   "$&&&'          $",
+   "$&&,'          $",
+   "$ : '          $",
+   "$              $",
+   "$''''       ';'$",
+   "$<            =$",
+   "$< =<      =<  >",
+   "$< =<      =<  >",
+   "$< =<      =<  >",
+   "$< =<      =<  >",
+   "$<             >",
+   "$          ?@  $",
+   "$              $",
+   "$66666$A;$66666$"
+  ],
+  [
+   "$$$$$$$$$$$$$$$$",
+   "$&&&'99999999  $",
+   "$&&,'          $",
+   "$&B '          $",
+   "$ : '          $",
+   "$              $",
+   "$'''''''''''' '$",
+   "$<            =$",
+   "$< =<      =<  >",
+   "$< =<      =<  >",
+   "$< =<      =<  >",
+   "$< =<      =<  >",
+   "$<             >",
+   "$              $",
+   "$              $",
+   "$66666666666666$"
+  ],
+  [
+   "$$$$$$$$$$$$$$$$",
+   "$   '99999999  $",
+   "$4C '          $",
+   "$&B '          $",
+   "$ : '          $",
+   "$              $",
+   "$'''''''''''' '$",
+   "$              $",
+   "$  DD      DD  $",
+   "$  DD      DD  $",
+   "$  DD      DD  $",
+   "$  DD      DD  $",
+   "$              $",
+   "$              $",
+   "$              $",
+   "$$$$$$$$$$$$$$$$"
+  ],
+  [
+   "$$$$$$$$$$$$$$$$",
+   "$   '          $",
+   "$ C '          $",
+   "$4E '    F     $",
+   "$ : '          $",
+   "$              $",
+   "$'''''''''''' '$",
+   "$              $",
+   "$      F       $",
+   "$              $",
+   "$           F  $",
+   "$              $",
+   "$      F       $",
+   "$              $",
+   "$              $",
+   "$$$$$$$$$$$$$$$$"
+  ]
+ ]
+}

@@ -1,0 +1,7 @@
+{
+	"required": true,
+	"package": "xyz.toesinthesand.ashfall.arms.client.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": ["OpticZoomMixin", "ScopeHandsMixin", "ScopeMouseMixin"],
+	"injectors": { "defaultRequire": 1 }
+}

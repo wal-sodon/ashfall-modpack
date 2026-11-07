@@ -1,0 +1,46 @@
+{
+	"match": [
+		{
+			"craft": "brewery|distillery|winery"
+		},
+		{
+			"building": "brewery"
+		},
+		{
+			"lc_building": "*:building3",
+			"lc_zone": "south_slope"
+		}
+	],
+	"priority": 58,
+	"tier": 2,
+	"loot_table": "ashfall:buildings/brewery",
+	"containers": {
+		"per_100m2": 1.5,
+		"min": 1,
+		"max": 8,
+		"blocks": [
+			{
+				"block": "minecraft:chest",
+				"weight": 1
+			},
+			{
+				"block": "minecraft:barrel",
+				"weight": 4
+			}
+		]
+	},
+	"refill": {
+		"enabled": true,
+		"delay_ticks": 96000,
+		"no_player_radius": 32,
+		"quiet_ticks": 6000
+	},
+	"population": {
+		"per_100m2": 0.5,
+		"entities": {
+			"minecraft:zombie": 100
+		}
+	},
+	"safe_candidate": false,
+	"relay_chance": 0.02
+}

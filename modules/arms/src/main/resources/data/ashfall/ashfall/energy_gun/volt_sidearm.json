@@ -1,0 +1,16 @@
+{
+	"damage": 6,
+	"rpm": 240,
+	"energy_per_shot": 1.5,
+	"heat_per_shot": 15,
+	"cool_per_second": 30,
+	"noise_radius": 32,
+	"bolt_speed": 4.5,
+	"spread": 1.0,
+	"bolt_color": "#ffb33c",
+	"heat_capacity": 100,
+	"headshot_multiplier": 1.75,
+	"range": 96,
+	"draw_ticks": 6,
+	"stun_energy_multiplier": 3
+}

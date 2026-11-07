@@ -1,0 +1,13 @@
+{
+	"values": [
+		"minecraft:lava",
+		"minecraft:in_fire",
+		"minecraft:on_fire",
+		{ "id": "minecraft:campfire", "required": false },
+		"minecraft:hot_floor",
+		"minecraft:in_wall",
+		"minecraft:falling_anvil",
+		"minecraft:falling_block",
+		"minecraft:falling_stalactite"
+	]
+}

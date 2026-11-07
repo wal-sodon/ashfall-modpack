@@ -1,0 +1,19 @@
+{
+	"entity": "minecraft:zombie",
+	"drops": [
+		{
+			"item": "ashfall:scrap_electronics",
+			"chance": 0.03,
+			"killed_by_player": true,
+			"min": 1,
+			"max": 1
+		},
+		{
+			"item": "ashfall:bandage",
+			"chance": 0.02,
+			"killed_by_player": true,
+			"min": 1,
+			"max": 1
+		}
+	]
+}

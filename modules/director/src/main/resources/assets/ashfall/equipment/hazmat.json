@@ -1,0 +1,14 @@
+{
+	"layers": {
+		"humanoid": [
+			{
+				"texture": "ashfall:hazmat"
+			}
+		],
+		"humanoid_leggings": [
+			{
+				"texture": "ashfall:hazmat"
+			}
+		]
+	}
+}

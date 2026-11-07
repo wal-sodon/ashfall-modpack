@@ -1,0 +1,28 @@
+{
+	"parent": "ashfall:relight/root",
+	"criteria": {
+		"defeated": {
+			"trigger": "ashfall:boss_defeated",
+			"conditions": {
+				"boss": "ashfall:juggernaut"
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:storm_repeater"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.boss_juggernaut.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.boss_juggernaut.description"
+		},
+		"frame": "goal"
+	},
+	"requirements": [
+		[
+			"defeated"
+		]
+	]
+}

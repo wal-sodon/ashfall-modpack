@@ -1,0 +1,31 @@
+{
+	"weight": 0,
+	"min_day": 1,
+	"attributes": {
+		"minecraft:max_health": 520.0,
+		"minecraft:movement_speed": 0.21,
+		"minecraft:attack_damage": 17.0,
+		"minecraft:attack_knockback": 1.8,
+		"minecraft:follow_range": 48.0,
+		"minecraft:knockback_resistance": 1.0,
+		"minecraft:spawn_reinforcements": 0.0,
+		"minecraft:armor_toughness": 6.0,
+		"minecraft:scale": 1.6
+	},
+	"equipment": {
+		"min": 5,
+		"max": 5,
+		"drop_chance": 0.0,
+		"sets": [
+			{
+				"slots": {
+					"head": ["minecraft:netherite_helmet"],
+					"chest": ["minecraft:netherite_chestplate"],
+					"legs": ["minecraft:netherite_leggings"],
+					"feet": ["minecraft:diamond_boots"],
+					"mainhand": ["minecraft:netherite_axe"]
+				}
+			}
+		]
+	}
+}

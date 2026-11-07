@@ -1,0 +1,100 @@
+{
+	"palette": {
+		"#": "minecraft:polished_deepslate",
+		".": "minecraft:air",
+		"C": "minecraft:chest[facing=north,type=single,waterlogged=false]",
+		"O": "minecraft:weathered_cut_copper",
+		"a": "minecraft:amethyst_block",
+		"c": "minecraft:coarse_dirt",
+		"d": "minecraft:rooted_dirt",
+		"i": "minecraft:iron_block",
+		"k": "minecraft:blackstone",
+		"o": "minecraft:oxidized_cut_copper",
+		"t": "minecraft:deepslate_tiles",
+		"v": "minecraft:iron_bars"
+	},
+	"sink": 2,
+	"layers": [
+		[
+			"           ",
+			"     k     ",
+			"   dddkd   ",
+			"  ddddddk  ",
+			"  ddddddd  ",
+			" kkdkdkdkd ",
+			"  dkdkdkk  ",
+			"  ddddddd  ",
+			"   kddkd   ",
+			"     d     ",
+			"           "
+		],
+		[
+			"   kcccc   ",
+			"  ckc.kck  ",
+			" cc.....cc ",
+			"cc.......cc",
+			"kc.......cc",
+			"c.........c",
+			"cka......cc",
+			"cc....a..cc",
+			" cc.....ck ",
+			"  cck.ckc  ",
+			"   kcccc   "
+		],
+		[
+			"     c c   ",
+			"  c   c c  ",
+			" cc        ",
+			"   o  i    ",
+			" c ##    cc",
+			"   #t      ",
+			"   t#    cc",
+			" c  C   O  ",
+			"        c  ",
+			"  c   cc   ",
+			"   cccc    "
+		],
+		[
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"     t#    ",
+			"     ##    ",
+			"     #t    ",
+			"           ",
+			"           ",
+			"           ",
+			"           "
+		],
+		[
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"       #   ",
+			"       t   ",
+			"       #   ",
+			"           ",
+			"           ",
+			"           ",
+			"           "
+		],
+		[
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"       v   ",
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"           "
+		]
+	],
+	"loot": {
+		"C": "ashfall:chests/crash_site"
+	}
+}

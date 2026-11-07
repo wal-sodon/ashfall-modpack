@@ -1,0 +1,14 @@
+{
+	"damage": 9,
+	"unpowered_damage": 2,
+	"energy_per_swing": 1,
+	"crystal_integrity": 600,
+	"wear_per_hit": 1,
+	"max_targets": 3,
+	"extra_target_multiplier": 0.6,
+	"extra_target_exhaustion": 1.0,
+	"noise_radius": 6,
+	"light": 12,
+	"pylon_damage_multiplier": 2.0,
+	"pylon_mining_speed": 12
+}

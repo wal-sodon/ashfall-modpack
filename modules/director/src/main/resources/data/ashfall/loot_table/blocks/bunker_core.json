@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:block",
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bunker_core"
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:blocks/bunker_core"
+}

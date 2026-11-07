@@ -1,0 +1,44 @@
+{
+	"entity": "minecraft:zombie_villager",
+	"weight": 2,
+	"min_day": 1,
+	"attributes": {
+		"minecraft:max_health": 20.0,
+		"minecraft:movement_speed": 0.23
+	},
+	"building_bias": {
+		"ashfall:hospital": 15.0,
+		"ashfall:clinic": 15.0
+	},
+	"zone_bias": {
+		"mission": 5.0
+	},
+	"equipment": {
+		"min": 0,
+		"max": 1,
+		"drop_chance": 0.085,
+		"sets": [
+			{
+				"weight": 1,
+				"slots": {
+					"head": [
+						"ashfall:hazmat_mask"
+					],
+					"chest": [
+						"ashfall:hazmat_suit"
+					],
+					"legs": [
+						"ashfall:hazmat_leggings"
+					],
+					"feet": [
+						"ashfall:hazmat_boots"
+					]
+				}
+			},
+			{
+				"weight": 4,
+				"slots": {}
+			}
+		]
+	}
+}

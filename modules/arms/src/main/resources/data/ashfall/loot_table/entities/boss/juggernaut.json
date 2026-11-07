@@ -1,0 +1,135 @@
+{
+	"type": "minecraft:entity",
+	"pools": [
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 4,
+				"max": 6
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:energy_cell",
+					"weight": 1,
+					"modifier": [
+						{
+							"type": "minecraft:set_components",
+							"components": {
+								"team_reborn_energy:energy": 240
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"condition": {
+				"type": "minecraft:random_chance",
+				"chance": 0.6
+			},
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"value": "ashfall:blasters/rare"
+				}
+			]
+		},
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 2,
+				"max": 3
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:focusing_lens",
+					"weight": 3,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 1,
+								"max": 2
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:weapon_parts",
+					"weight": 3,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 3,
+								"max": 5
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:cell_pack_heavy",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:netherite_scrap",
+					"weight": 1,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 1,
+								"max": 2
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_electronics",
+					"weight": 3,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 3,
+								"max": 6
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:riot_helmet",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:riot_vest",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:riot_leggings",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:riot_boots",
+					"weight": 2
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:entities/boss/juggernaut"
+}

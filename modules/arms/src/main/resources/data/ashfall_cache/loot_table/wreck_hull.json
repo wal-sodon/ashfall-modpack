@@ -1,0 +1,93 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:written_book",
+					"modifier": {
+						"type": "ashfall:relay_document",
+						"log": "ashfall:site/hull"
+					}
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:focusing_lens"
+				}
+			]
+		},
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 1,
+				"max": 2
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:energy_cell",
+					"weight": 3,
+					"modifier": {
+						"type": "minecraft:set_components",
+						"components": {
+							"team_reborn_energy:energy": 240
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_electronics",
+					"weight": 3,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:weapon_parts",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"condition": {
+				"type": "minecraft:random_chance",
+				"chance": 0.5
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:lancer_longrifle",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:storm_repeater",
+					"weight": 1
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall_cache:wreck_hull"
+}

@@ -1,0 +1,329 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:green_concrete"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:light_gray_concrete"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:birch_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:birch_fence[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:barrel[facing=east,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/office"
+    }
+   },
+   {
+    "char": "(",
+    "block": "minecraft:spruce_slab[type=top,waterlogged=false]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:cauldron"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:white_stained_glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:dark_oak_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:white_stained_glass_pane[east=false,north=true,south=false,west=false]"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:birch_fence[east=false,north=true,south=false,west=false]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:bookshelf"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:birch_door[facing=north,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:gray_carpet"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:birch_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:smooth_quartz"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:barrel[facing=up,open=false]"
+   },
+   {
+    "char": "4",
+    "block": "minecraft:barrel[facing=west,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/pharmacy"
+    }
+   },
+   {
+    "char": "5",
+    "block": "minecraft:barrel[facing=east,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/pharmacy"
+    }
+   },
+   {
+    "char": "6",
+    "block": "minecraft:birch_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "7",
+    "block": "minecraft:barrel[facing=west,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/clinic"
+    }
+   },
+   {
+    "char": "8",
+    "block": "minecraft:barrel[facing=east,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/clinic"
+    }
+   },
+   {
+    "char": "9",
+    "block": "minecraft:birch_stairs[facing=west,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": ":",
+    "block": "minecraft:birch_slab[type=top,waterlogged=false]"
+   },
+   {
+    "char": ";",
+    "block": "minecraft:barrel[facing=west,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/grocery"
+    }
+   },
+   {
+    "char": "<",
+    "block": "minecraft:chest[facing=north,type=single,waterlogged=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/clinic"
+    }
+   },
+   {
+    "char": "=",
+    "block": "minecraft:red_concrete"
+   },
+   {
+    "char": ">",
+    "block": "minecraft:lime_concrete"
+   },
+   {
+    "char": "?",
+    "block": "minecraft:barrel[facing=east,open=false]"
+   },
+   {
+    "char": "@",
+    "block": "minecraft:birch_trapdoor[facing=south,half=bottom,open=true,powered=false,waterlogged=false]"
+   },
+   {
+    "char": "A",
+    "block": "minecraft:tripwire_hook[attached=false,facing=south,powered=false]"
+   },
+   {
+    "char": "B",
+    "block": "minecraft:birch_trapdoor[facing=west,half=bottom,open=true,powered=false,waterlogged=false]"
+   },
+   {
+    "char": "C",
+    "block": "minecraft:birch_door[facing=north,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "D",
+    "block": "minecraft:birch_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "E",
+    "block": "minecraft:spruce_shelf[facing=east,powered=false,side_chain=unconnected,waterlogged=false]"
+   },
+   {
+    "char": "F",
+    "block": "minecraft:birch_planks"
+   },
+   {
+    "char": "G",
+    "block": "minecraft:spruce_shelf[facing=west,powered=false,side_chain=unconnected,waterlogged=false]"
+   },
+   {
+    "char": "H",
+    "block": "minecraft:glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "I",
+    "block": "minecraft:lever[face=wall,facing=west,powered=false]"
+   },
+   {
+    "char": "J",
+    "block": "minecraft:glass_pane[east=false,north=true,south=true,west=true]"
+   },
+   {
+    "char": "K",
+    "block": "minecraft:glass_pane[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "L",
+    "block": "minecraft:glass_pane[east=true,north=true,south=false,west=true]"
+   },
+   {
+    "char": "M",
+    "block": "minecraft:birch_slab[type=bottom,waterlogged=false]"
+   },
+   {
+    "char": "N",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "! #############!",
+   "! #############!",
+   "! #############!",
+   "!$#############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!##############!",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "################",
+   "# % &' (( &) *)#",
+   "# % &  +  &  , #",
+   "# - &    .&   )#",
+   "#   &&&/&&&&/&&#",
+   "#000           #",
+   "#&&&&1&&&&&&1&&#",
+   "#         &   2#",
+   "#  3  3   &   2#",
+   "#  4  5   &   2#",
+   "#  3  3   & 6 )#",
+   "#  7  8   &9: &#",
+   "#  4  5   &9:  #",
+   "#  7  8   & $ ;#",
+   "#       < &==  #",
+   "#######>>#######"
+  ],
+  [
+   "################",
+   "#   &?    &@ *A#",
+   "#   &     &  , #",
+   "#   &    .&   B#",
+   "#   &&&C&&&&C&&#",
+   "#              #",
+   "#&&&&D&&&&&&D&&#",
+   "#E        &    #",
+   "#E F  F  G&    #",
+   "HE 3  3  G&    H",
+   "HE F  F  G&    H",
+   "HE 3  3  G&  I&J",
+   "HE F  F  G&    H",
+   "#E 3  3  G&    #",
+   "#E       G&==  #",
+   "##KKK#>>>>#LLK##"
+  ],
+  [
+   "################",
+   "#   &     &    #",
+   "#   &     &    #",
+   "#   &     &    #",
+   "#   &&&&&&&&&&&#",
+   "#              #",
+   "#&&&&&&&&&&&&&&#",
+   "#E        &    #",
+   "#E M  M  G&    #",
+   "HE M  M  G&    H",
+   "HE M  M  G&    H",
+   "HE M  M  G&    H",
+   "HE M  M  G&    H",
+   "#E M  M  G&    #",
+   "#E       G&    #",
+   "##KKK#>>>>#KKK##"
+  ],
+  [
+   "################",
+   "#   &          #",
+   "#   &          #",
+   "#   &          #",
+   "#   &&&&&&&&&&&#",
+   "#              #",
+   "#&&&&&&&&&&&&&&#",
+   "#         &    #",
+   "#         &    #",
+   "#         &    #",
+   "#         &    #",
+   "#         &    #",
+   "#         &    #",
+   "#         &    #",
+   "#         &    #",
+   "#######>>#######"
+  ],
+  [
+   "################",
+   "#   &          #",
+   "#   &  N       #",
+   "#   &          #",
+   "#   &&&&&&&&&&&#",
+   "#              #",
+   "#&&&&&&&&&&&&&&#",
+   "#         &    #",
+   "#         &    #",
+   "#         & N  #",
+   "#   N     &    #",
+   "#         &    #",
+   "#      N  &    #",
+   "#         &    #",
+   "#         &    #",
+   "################"
+  ]
+ ]
+}

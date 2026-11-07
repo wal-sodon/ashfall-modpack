@@ -1,0 +1,143 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 1,
+				"max": 2
+			},
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 25
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bottled_water",
+					"weight": 10,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:canned_food",
+					"weight": 5,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_metal",
+					"weight": 5,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:duct_tape",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:lighter_fluid",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:matches",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:cloth",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:glass_bottle",
+					"weight": 4,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 4
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:wheat",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 4
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:sugar",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:bucket",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_nugget",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:buildings/brewery"
+}

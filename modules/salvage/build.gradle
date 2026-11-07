@@ -1,0 +1,16 @@
+plugins {
+	id 'net.fabricmc.fabric-loom'
+}
+
+ext.mod_id = 'ashfall_salvage'
+apply from: rootProject.file('gradle/module.gradle')
+
+dependencies {
+	// The Lost Cities: compile-only (the pack supplies it), every use is behind FabricLoader.isModLoaded.
+	// Gametests run WITH it (plus FCAP and the Lights Off assets) so they can build Lost Cities levels.
+	compileOnly "maven.modrinth:the-lost-cities:${rootProject.lost_cities_version}"
+	compileOnly "maven.modrinth:forge-config-api-port:${rootProject.lost_cities_fcap_version}"
+	gametestImplementation "maven.modrinth:the-lost-cities:${rootProject.lost_cities_version}"
+	gametestImplementation "maven.modrinth:forge-config-api-port:${rootProject.lost_cities_fcap_version}"
+	gametestRuntimeOnly "maven.modrinth:lost-cities-modern-tweaks-nolighting:${rootProject.lcmt_nolighting_version}"
+}

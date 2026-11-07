@@ -1,0 +1,164 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:light_blue_terracotta"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:gray_concrete"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:quartz_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:light_gray_concrete"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:iron_bars[east=false,north=false,south=true,west=false]"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:iron_bars[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:iron_bars[east=false,north=true,south=false,west=false]"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:smooth_quartz_slab[type=bottom,waterlogged=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "################",
+   "################",
+   "################",
+   "################",
+   "################",
+   "################",
+   "################",
+   "################",
+   "################",
+   "################",
+   "###### #########",
+   "###### #########",
+   "###### #########",
+   "######$#########",
+   "################"
+  ],
+  [
+   "%%%%%%%%%%%%%%%%",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "     %%%%%%%%%  ",
+   "     %    &&&%  ",
+   "     % '  &&&%  ",
+   "     % (  &&&%  ",
+   "     % )  &&&%  ",
+   "     %       %  ",
+   "     %       %  "
+  ],
+  [
+   "****************",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "     %%%%%%%%%  ",
+   "     %    &&&%  ",
+   "     %    &&&%  ",
+   "     %    &&&%  ",
+   "     %    &&&%  ",
+   "     %       %  ",
+   "     %       %  "
+  ],
+  [
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "     %%%%%%%%%  ",
+   "     %    &&&%  ",
+   "     %    &&&%  ",
+   "     %    &&&%  ",
+   "     %    &&&%  ",
+   "     %       %  ",
+   "     %       %  "
+  ],
+  [
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "     *********  ",
+   "     *********  ",
+   "     *********  ",
+   "     *********  ",
+   "     *********  ",
+   "     *********  ",
+   "     *********  "
+  ],
+  [
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                "
+  ]
+ ]
+}

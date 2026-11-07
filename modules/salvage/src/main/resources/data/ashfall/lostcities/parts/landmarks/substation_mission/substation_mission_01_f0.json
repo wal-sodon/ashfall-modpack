@@ -1,0 +1,234 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:polished_andesite"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:light_gray_concrete"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:iron_block"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:iron_bars[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:iron_bars[east=false,north=false,south=false,west=true]"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:barrel[facing=up,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/fuel"
+    }
+   },
+   {
+    "char": "(",
+    "block": "minecraft:barrel[facing=up,open=false]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:spruce_door[facing=north,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:barrel[facing=south,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/workshop"
+    }
+   },
+   {
+    "char": "+",
+    "block": "minecraft:crafting_table"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:smooth_stone"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:spruce_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:stone_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:spruce_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:spruce_door[facing=south,half=lower,hinge=right,open=false,powered=false]"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:spruce_door[facing=north,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:iron_trapdoor[facing=south,half=bottom,open=true,powered=false,waterlogged=false]"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:iron_bars[east=false,north=true,south=false,west=false]"
+   },
+   {
+    "char": "4",
+    "block": "minecraft:spruce_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "5",
+    "block": "minecraft:spruce_door[facing=south,half=upper,hinge=right,open=false,powered=false]"
+   },
+   {
+    "char": "6",
+    "block": "minecraft:iron_bars[east=false,north=true,south=true,west=true]"
+   },
+   {
+    "char": "7",
+    "block": "minecraft:stone_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "8",
+    "block": "minecraft:iron_bars[east=false,north=false,south=true,west=false]"
+   },
+   {
+    "char": "9",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   },
+   {
+    "char": ":",
+    "block": "minecraft:iron_bars[east=false,north=true,south=true,west=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "#               ",
+   "#               ",
+   "#  $%%%%%%%%%&  ",
+   "#               ",
+   "# '             ",
+   "# (             ",
+   "#               ",
+   "##############)#",
+   "#    *$$$*$$$* +",
+   "#,,,#           ",
+   "#,,,#   -  -    ",
+   "#,,,#           ",
+   "# ,.####/#####  ",
+   "#               ",
+   "#               ",
+   "###############0"
+  ],
+  [
+   "#               ",
+   "#               ",
+   "#  $%%%%%%%%%&  ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "##############1#",
+   "#    222222222  ",
+   "#,,,#           ",
+   "#,,,#           ",
+   "#,,.#           ",
+   "# 3 ####4#####  ",
+   "#               ",
+   "#               ",
+   "###############5"
+  ],
+  [
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "################",
+   "#               ",
+   "#,,,#           ",
+   "#,,.#           ",
+   "#,6 #           ",
+   "# 3 ##########  ",
+   "#               ",
+   "#               ",
+   "################"
+  ],
+  [
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "################",
+   "#               ",
+   "#   #           ",
+   "#78 #           ",
+   "#,6 #           ",
+   "# 3 ############",
+   "#               ",
+   "#               ",
+   "################"
+  ],
+  [
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "################",
+   "#               ",
+   "#   #     9     ",
+   "# 8 #           ",
+   "#7: #           ",
+   "# 3 ############",
+   "#              9",
+   "#               ",
+   "################"
+  ]
+ ]
+}

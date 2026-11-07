@@ -1,0 +1,47 @@
+{
+	"id": "south_slope",
+	"kind": "district",
+	"district_index": 2,
+	"tier": 2,
+	"priority": 100,
+	"shape": {
+		"type": "disc",
+		"x": 100,
+		"z": 800,
+		"r": 300
+	},
+	"city": true,
+	"citystyle": "ashfall:south_slope",
+	"ruin_chance": 0.12,
+	"damage_scale": 1.0,
+	"population_scale": 1.0,
+	"landmarks": [
+		"ashfall:substation_south_slope"
+	],
+	"key_relay_targets": [
+		[
+			0,
+			700
+		],
+		[
+			200,
+			700
+		],
+		[
+			250,
+			900
+		],
+		[
+			0,
+			950
+		],
+		[
+			-100,
+			800
+		],
+		[
+			150,
+			1000
+		]
+	]
+}

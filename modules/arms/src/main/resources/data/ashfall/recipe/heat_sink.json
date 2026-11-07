@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"C": "ashfall:wire_spool",
+		"M": "ashfall:scrap_metal",
+		"W": "ashfall:weapon_parts"
+	},
+	"pattern": [
+		"CCC",
+		"MWM",
+		"CCC"
+	],
+	"result": {
+		"id": "ashfall:heat_sink"
+	}
+}

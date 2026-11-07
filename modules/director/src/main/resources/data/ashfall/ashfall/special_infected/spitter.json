@@ -1,0 +1,27 @@
+{
+	"weight": 15,
+	"min_day": 10,
+	"zone_multiplier": {
+		"montford": 0.2,
+		"mission": 2.0,
+		"south_slope": 1.2
+	},
+	"max_alive_per_player": 3,
+	"siege_multiplier": 2.0,
+	"attributes": {
+		"minecraft:max_health": 18.0,
+		"minecraft:movement_speed": 0.22,
+		"minecraft:attack_damage": 2.5,
+		"minecraft:follow_range": 40.0,
+		"minecraft:spawn_reinforcements": 0.0
+	},
+	"tuning": {
+		"spit_range": 16,
+		"spit_min_range": 3,
+		"spit_cooldown_seconds": 3.5,
+		"spit_damage": 3,
+		"spit_poison_seconds": 4,
+		"spit_infection_chance": 0.05,
+		"spit_speed": 1.4
+	}
+}

@@ -1,0 +1,50 @@
+{
+	"match": [
+		{
+			"tourism": "museum|gallery"
+		},
+		{
+			"amenity": "theatre|cinema|arts_centre"
+		},
+		{
+			"lc_multibuilding": "*:multi5",
+			"lc_zone": "river_arts"
+		}
+	],
+	"arnis_uses": [
+		"Museum",
+		"Auditorium"
+	],
+	"priority": 35,
+	"tier": 2,
+	"loot_table": "ashfall:buildings/museum",
+	"containers": {
+		"per_100m2": 0.4,
+		"min": 0,
+		"max": 3,
+		"blocks": [
+			{
+				"block": "minecraft:chest",
+				"weight": 3
+			},
+			{
+				"block": "minecraft:barrel",
+				"weight": 1
+			}
+		]
+	},
+	"refill": {
+		"enabled": true,
+		"delay_ticks": 72000,
+		"no_player_radius": 32,
+		"quiet_ticks": 6000
+	},
+	"population": {
+		"per_100m2": 0.6,
+		"entities": {
+			"minecraft:zombie": 100
+		}
+	},
+	"safe_candidate": false,
+	"relay_chance": 0.02
+}

@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "building",
+	"key": {
+		"S": "ashfall:glass_shard"
+	},
+	"pattern": [
+		"SS",
+		"SS"
+	],
+	"result": {
+		"id": "minecraft:glass"
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "ashfall:block/substation_core_top",
+		"side": "ashfall:block/substation_core_side_lit"
+	}
+}

@@ -1,0 +1,204 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:cyan_terracotta"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:light_gray_concrete"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:polished_andesite"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:stone_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:iron_block"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:iron_bars[east=false,north=false,south=true,west=false]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:iron_bars[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:iron_bars[east=false,north=true,south=false,west=false]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:iron_door[facing=west,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:glass_pane[east=true,north=false,south=true,west=true]"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:observer[facing=south,powered=false]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:stone_button[face=wall,facing=east,powered=false]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:iron_door[facing=west,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:stone_button[face=wall,facing=west,powered=false]"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:glass_pane[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:glass_pane[east=true,north=true,south=false,west=true]"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:lever[face=wall,facing=south,powered=false]"
+   },
+   {
+    "char": "4",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!               ",
+   "!               ",
+   "!               ",
+   "!               ",
+   "!               ",
+   "!               ",
+   "!               ",
+   "!###############",
+   "!$$$$$$$$$$$$$$$",
+   "! $$$$$$$$$$$$$$",
+   "! $$$$$$$$$$$$$$",
+   "! $$$$$$$$$$$$$$",
+   "!%$$$$$$$$$$$$$$",
+   "!$$$$$$$$$$$$$$$",
+   "!$$$$$$$$$$$$$$$",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "&               ",
+   "#               ",
+   "#               ",
+   "&               ",
+   "&               ",
+   "#               ",
+   "#               ",
+   "################",
+   "#    #''''''''''",
+   "# ( ##          ",
+   "# ) ##          ",
+   "# * ##          ",
+   "#   ##          ",
+   "#    +          ",
+   "#    ###########",
+   "################"
+  ],
+  [
+   "&               ",
+   "#               ",
+   "#               ",
+   "&               ",
+   "&               ",
+   "#               ",
+   "#               ",
+   "######,,,,,,,,,,",
+   "#    #----------",
+   "#   ##          ",
+   "#   ##          ",
+   "#   ##          ",
+   "#   ##.         ",
+   "#    /          ",
+   "#   0###########",
+   "###11##22##22##2"
+  ],
+  [
+   "&               ",
+   "#               ",
+   "#               ",
+   "&               ",
+   "&               ",
+   "#               ",
+   "#               ",
+   "######1111111111",
+   "#    #          ",
+   "#   ##3  3  3  3",
+   "#   ##          ",
+   "#   ##          ",
+   "#   ##          ",
+   "#    #          ",
+   "#    ###########",
+   "###11##22##22##2"
+  ],
+  [
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "######1111111111",
+   "#    #          ",
+   "#   ##          ",
+   "#   ##          ",
+   "#   ##          ",
+   "#   ##          ",
+   "#    #          ",
+   "#    ###########",
+   "################"
+  ],
+  [
+   "#               ",
+   "#               ",
+   "#               ",
+   "#               ",
+   "#           4   ",
+   "#               ",
+   "#               ",
+   "################",
+   "#    #          ",
+   "#   ##          ",
+   "#   ##          ",
+   "#   ##          ",
+   "#   ##          ",
+   "#    #          ",
+   "#    ###########",
+   "################"
+  ]
+ ]
+}

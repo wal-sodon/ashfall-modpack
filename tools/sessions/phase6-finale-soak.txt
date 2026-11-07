@@ -1,0 +1,53 @@
+# Phase 6 playtest, part 2 (headless) on world-p6: the finale at its mob cap. The world datapack ashfall-p6-soak
+# (made for this session, in world-p6/datapacks) sends 40-zombie waves (before party scaling) every 8 s, gives the
+# Surge a 600 s buffer and turns Uplink damage off, so an unattended Surge reaches its cap and stays there.
+# First run (solo stand-in) found the cap stuck at 60, the horde scheduler's per-player cap counted at the Uplink;
+# after the fix this runs with 2 stand-in players and should reach the finale's 120. spark tps at the cap, then the
+# datapack is disabled again. Also: a loot zone's containers hold their table until opened.
+until Done \(
+cmd datapack enable "file/ashfall-p6-soak"
+wait 3
+cmd forceload add 2220 -180 2380 -20
+cmd forceload add -32 -112 159 79
+wait 40
+cmd time set 258000
+cmd kill @e[type=#minecraft:zombies]
+wait 10
+cmd spark tps
+cmd ashfall finale unattended 2
+cmd ashfall finale start
+wait 30
+cmd execute if entity @e[tag=ashfall_finale]
+cmd spark tps
+wait 30
+cmd execute if entity @e[tag=ashfall_finale]
+cmd execute if entity @e[type=#minecraft:zombies]
+cmd ashfall finale status
+cmd spark tps
+wait 30
+cmd execute if entity @e[tag=ashfall_finale]
+cmd execute if entity @e[tag=ashfall_finale,distance=..12,x=2304,y=64,z=-101]
+cmd spark tps
+wait 60
+cmd execute if entity @e[tag=ashfall_finale]
+cmd execute if entity @e[tag=ashfall_finale,distance=..12,x=2304,y=64,z=-101]
+cmd ashfall horde status
+cmd spark tps
+cmd ashfall finale phase feedback
+wait 45
+cmd execute if entity @e[tag=ashfall_finale]
+cmd execute if entity @e[tag=ashfall_finale,type=!minecraft:zombie]
+cmd spark tps
+cmd ashfall finale abort
+cmd ashfall finale unattended off
+cmd kill @e[tag=ashfall_finale]
+cmd datapack disable "file/ashfall-p6-soak"
+wait 5
+cmd setblock 2330 200 -64 minecraft:chest
+cmd execute positioned 2330 200 -64 run lootzone create p6zone2 2 minecraft:chest ashfall_cache:kiln_office
+cmd data get block 2330 200 -64
+cmd lootzone delete p6zone2
+wait 10
+cmd spark tps
+cmd forceload remove all
+wait 3

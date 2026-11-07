@@ -1,0 +1,19 @@
+{
+	"entity": "ashfall:bloated",
+	"drops": [
+		{
+			"item": "ashfall:bandage",
+			"chance": 0.02,
+			"killed_by_player": true,
+			"min": 1,
+			"max": 1
+		},
+		{
+			"item": "ashfall:energy_cell",
+			"chance": 0.08,
+			"killed_by_player": true,
+			"min": 1,
+			"max": 1
+		}
+	]
+}

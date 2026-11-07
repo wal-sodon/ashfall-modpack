@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "ashfall:block/uplink_socket_top",
+		"side": "ashfall:block/uplink_socket_side"
+	}
+}

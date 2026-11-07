@@ -1,0 +1,14 @@
+{
+ "dimx": 2,
+ "dimz": 2,
+ "buildings": [
+  [
+   "ashfall:substation_south_slope_00",
+   "ashfall:substation_south_slope_01"
+  ],
+  [
+   "ashfall:substation_south_slope_10",
+   "ashfall:substation_south_slope_11"
+  ]
+ ]
+}

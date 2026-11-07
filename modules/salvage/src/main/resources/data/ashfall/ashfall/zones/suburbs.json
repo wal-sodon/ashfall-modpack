@@ -1,0 +1,20 @@
+{
+	"id": "suburbs",
+	"kind": "filler",
+	"district_index": 0,
+	"tier": 1,
+	"priority": 50,
+	"shape": {
+		"type": "disc",
+		"x": 0,
+		"z": 0,
+		"r": 1600
+	},
+	"city": true,
+	"citystyle": "ashfall:residential",
+	"ruin_chance": 0.15,
+	"damage_scale": 1.0,
+	"population_scale": 1.0,
+	"landmarks": [],
+	"key_relay_targets": []
+}

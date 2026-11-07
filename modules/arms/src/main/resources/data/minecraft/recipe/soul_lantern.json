@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"key": {
+		"E": "ashfall:scrap_electronics",
+		"S": "#minecraft:soul_fire_base_blocks",
+		"X": "minecraft:iron_nugget"
+	},
+	"pattern": [
+		"XXX",
+		"XEX",
+		"XSX"
+	],
+	"result": {
+		"id": "minecraft:soul_lantern"
+	}
+}

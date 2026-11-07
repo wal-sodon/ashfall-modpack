@@ -1,0 +1,20 @@
+{
+	"type": "ashfall:flamethrower",
+	"category": "equipment",
+	"pattern": [
+		"TSS",
+		"LWS",
+		"TP "
+	],
+	"key": {
+		"T": "ashfall:duct_tape",
+		"S": "ashfall:scrap_metal",
+		"L": "ashfall:lighter_fluid",
+		"W": "ashfall:wire_spool",
+		"P": "ashfall:weapon_parts"
+	},
+	"result": {
+		"id": "ashfall:flamethrower",
+		"count": 1
+	}
+}

@@ -1,0 +1,206 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:stone_bricks"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:blackstone"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:basalt[axis=y]"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:polished_blackstone"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:reinforced_deepslate"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:bricks"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:blast_furnace[facing=south,lit=false]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:barrel[facing=west,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/workshop"
+    }
+   },
+   {
+    "char": "*",
+    "block": "minecraft:cauldron"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:barrel[facing=up,open=false]"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:barrel[facing=west,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/warehouse"
+    }
+   },
+   {
+    "char": "-",
+    "block": "minecraft:cobweb"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:bone_block[axis=y]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:iron_block"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:spruce_slab[type=top,waterlogged=false]"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:spruce_shelf[facing=west,powered=false,side_chain=unconnected,waterlogged=false]"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:iron_bars[east=true,north=true,south=true,west=true]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "#!!!!!!!###!!!!!",
+   "#!!!!!!!###!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "$%!!!!!!!!!!!!!!",
+   "%%$%!!!!!!!!!!!!",
+   "%$%%!!!!!!!!!!!!",
+   "$%%$%!!!!!!!!!!!",
+   "%%$%%!!!!!!!!!!!",
+   "&$%%$!!!!!!!!!!!",
+   "$%%$%!!!!!!!!!!!",
+   "%%$%!!!!!!!!!!!!"
+  ],
+  [
+   "''''''''''''''''",
+   "''     '''''   '",
+   " '     ' ( ' ) '",
+   " '     '*  ' + '",
+   " '     '   ' , '",
+   "             + '",
+   "             ) '",
+   "-            + '",
+   "             , '",
+   "   *         + '",
+   "             ) '",
+   "   -           '",
+   "     .        /'",
+   "               '",
+   "             ) '",
+   "    *        + '"
+  ],
+  [
+   "''''''''''''''''",
+   "''     '''''   '",
+   " '     '   ' + '",
+   " '     '   ' + '",
+   " '     '   ' + '",
+   "             + '",
+   "             + '",
+   "             + '",
+   "             + '",
+   "             + '",
+   "             + '",
+   "               '",
+   "              /'",
+   "               '",
+   "             + '",
+   "             + '"
+  ],
+  [
+   "''''''''''''''''",
+   "''     '''''   '",
+   " '     '   ' 0 '",
+   " '     '   ' 0 1",
+   " '     '   ' 0 1",
+   "             0 '",
+   "             0 '",
+   "             0 '",
+   "             0 1",
+   "             0 1",
+   "             0 '",
+   "               '",
+   "              /'",
+   "               1",
+   "             0 1",
+   "             0 '"
+  ],
+  [
+   "''''''''''''''''",
+   "''     '''''   '",
+   "''     '''''  2'",
+   "''     '''''  21",
+   "''     '''''  21",
+   "              2'",
+   "              2'",
+   "              2'",
+   "              21",
+   "              21",
+   "              2'",
+   "              2'",
+   "              2'",
+   "              21",
+   "              21",
+   "              2'"
+  ],
+  [
+   "''''''''''''''''",
+   "'       '''    '",
+   "'       '3'   2'",
+   "'       '''   21",
+   "              21",
+   "              2'",
+   "              2'",
+   "              2'",
+   "              21",
+   "              21",
+   "              2'",
+   "              2'",
+   "              2'",
+   "              21",
+   "              21",
+   "              2'"
+  ]
+ ]
+}

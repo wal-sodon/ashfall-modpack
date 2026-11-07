@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "equipment",
+	"ingredients": [
+		"minecraft:glass_bottle",
+		"ashfall:scrap_metal"
+	],
+	"result": {
+		"id": "ashfall:bottle_lure",
+		"count": 1
+	}
+}

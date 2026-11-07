@@ -1,0 +1,61 @@
+# Phase 2 playtest, part 2 (headless, same world-p2): command placement of an unvisited crash site (surface
+# fix), boss drops on solid ground, and the horde siren across an Undead Nights schedule (horde every 5 days).
+until Done \(
+cmd undeadnights status
+cmd ashfall site place crash:ashfall:ridge:114,-5
+cmd execute positioned 1832 80 -72 run ashfall site list 32
+# Bosses away from their lairs, on the surface: drops must include one Resonance Crystal each.
+cmd forceload add 2384 -16 2415 15
+wait 8
+cmd execute positioned 2400 300 0 positioned over motion_blocking_no_leaves run ashfall boss spawn ashfall:juggernaut here
+wait 8
+cmd ashfall boss list
+cmd kill @e[tag=ashfall_boss]
+wait 6
+cmd execute as @e[type=item,x=2384,y=-64,z=-16,dx=32,dy=400,dz=32] run data get entity @s Item
+cmd kill @e[type=item]
+cmd execute positioned 2400 300 0 positioned over motion_blocking_no_leaves run ashfall boss spawn ashfall:abomination here
+wait 8
+cmd kill @e[tag=ashfall_boss]
+wait 15
+cmd execute as @e[type=item,x=2384,y=-64,z=-16,dx=32,dy=400,dz=32] run data get entity @s Item
+cmd ashfall boss list
+cmd forceload remove all
+# Siren: step through dusk on each day. The warning window is 150 s (3000 ticks) before nightfall (12000).
+cmd time set 33500
+wait 3
+cmd time set 35950
+wait 6
+cmd undeadnights status
+cmd time set 57500
+wait 3
+cmd time set 59950
+wait 6
+cmd undeadnights status
+cmd time set 81500
+wait 3
+cmd time set 83950
+wait 6
+cmd undeadnights status
+cmd time set 105500
+wait 3
+cmd time set 107950
+wait 6
+cmd undeadnights status
+cmd time set 129500
+wait 3
+cmd time set 131950
+wait 6
+cmd undeadnights status
+cmd time set 153500
+wait 3
+cmd time set 155950
+wait 6
+cmd undeadnights status
+cmd time set 177500
+wait 3
+cmd time set 179950
+wait 6
+cmd undeadnights status
+cmd spark tps
+wait 3

@@ -1,0 +1,44 @@
+{
+ "filler": "#",
+ "palette": {
+  "palette": [
+   {
+    "char": "#",
+    "block": "minecraft:white_concrete"
+   }
+  ]
+ },
+ "allowDoors": false,
+ "allowFillers": false,
+ "overrideFloors": true,
+ "minfloors": 3,
+ "maxfloors": 3,
+ "mincellars": 2,
+ "maxcellars": 2,
+ "parts": [
+  {
+   "part": "ashfall:landmarks/hospital/hospital_01_c2",
+   "floor": -2
+  },
+  {
+   "part": "ashfall:landmarks/hospital/hospital_01_c1",
+   "floor": -1
+  },
+  {
+   "part": "ashfall:landmarks/hospital/hospital_01_f0",
+   "floor": 0
+  },
+  {
+   "part": "ashfall:landmarks/hospital/hospital_01_f1",
+   "floor": 1
+  },
+  {
+   "part": "ashfall:landmarks/hospital/hospital_01_f2",
+   "floor": 2
+  },
+  {
+   "part": "ashfall:landmarks/hospital/hospital_01_top",
+   "floor": 3
+  }
+ ]
+}

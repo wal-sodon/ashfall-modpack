@@ -1,0 +1,384 @@
+# 1.0.0-rc1 headless arc run (no player) on a NEW world, seed ashfall-rc (run on world-rc, and after the fixes on
+# world-rc2).
+# The whole "Relight Asheville" arc by op commands, in the order a party plays it:
+#   1. zones and landmarks answer; Chunky pregenerates radius 400 around Downtown; the atlas pass runs over it;
+#   2. a scheduled horde night (day 5 on this seed) is forced by setting the clock into it, and its waves are aimed
+#      at Downtown from the console (horde nights aim at players, and nobody is online);
+#   3. each district goes DARK -> REPAIRED -> ENERGIZED by command, then holds a real siege at nightfall whose
+#      waves are cleared with /kill until it is RECLAIMED (River Arts day 6, South Slope day 8, Downtown day 9,
+#      Mission day 10; day 7 is skipped because it is a Breach day);
+#   4. the Wreck hull is placed before Mission and must unseal at Grid 80 %;
+#   5. the three bosses are spawned at their lairs and killed, counting Resonance Crystal drops;
+#   6. the Black Start with 4 stand-in players: Surge (spark), Feedback (both breakers held), Heart (pylons);
+#   7. the vote is closed from the console (Sever), the ending's profile is checked, the story is reset; a second,
+#      shortened run ends in Bind; a final reset.
+# Clock: day N starts at (N-1)*24000; the siren warns at 9500 and nightfall is 12000.
+until Done \(
+# ---- 1. World, zones, landmarks ---------------------------------------------------------------------------------
+cmd ashfall director status
+cmd ashfall atlas status
+cmd ashfall grid status
+cmd ashfall finale status
+cmd ashfall horde status
+cmd execute positioned 0 80 0 run ashfall city zone
+cmd execute positioned -900 80 100 run ashfall city zone
+cmd execute positioned 100 80 800 run ashfall city zone
+cmd execute positioned 750 80 650 run ashfall city zone
+cmd execute positioned -150 80 -800 run ashfall city zone
+cmd execute positioned 2300 80 -100 run ashfall city zone
+cmd execute positioned 3000 80 0 run ashfall city zone
+# Landmarks at their fixed chunks (city info reads the Lost Cities plan, loaded or not).
+cmd execute positioned -152 80 -792 run ashfall city info
+cmd execute positioned -120 80 -792 run ashfall city info
+cmd execute positioned -56 80 24 run ashfall city info
+cmd execute positioned 56 80 -24 run ashfall city info
+cmd execute positioned -872 80 72 run ashfall city info
+cmd execute positioned -952 80 120 run ashfall city info
+cmd execute positioned 88 80 792 run ashfall city info
+cmd execute positioned 712 80 632 run ashfall city info
+cmd execute positioned 776 80 632 run ashfall city info
+cmd execute positioned 2300 80 -100 run ashfall site list 64
+# Chunky pregeneration, radius 400 around Downtown, then the atlas pass over the same radius.
+cmd chunky world minecraft:overworld
+cmd chunky center 0 0
+cmd chunky radius 400
+cmd chunky start
+until Task finished
+cmd ashfall atlas processall 400
+until City processall finished
+cmd ashfall atlas status
+cmd spark tps
+# ---- 2. A scheduled horde night ---------------------------------------------------------------------------------
+cmd forceload add -32 -112 159 79
+wait 30
+cmd ashfall grid status
+# Day 5, midnight: this seed's first horde night (status must say it is running).
+cmd time set 114000
+wait 2
+cmd ashfall horde status
+cmd execute positioned 64 80 -16 run ashfall director status
+cmd execute positioned 64 80 -16 run ashfall horde wave at ~ ~ ~
+wait 3
+cmd execute positioned 64 80 -16 run ashfall horde wave at ~ ~ ~
+wait 20
+cmd execute if entity @e[type=#minecraft:zombies,tag=!ashfall_siege]
+cmd ashfall horde status
+cmd spark tps
+cmd kill @e[type=#minecraft:zombies]
+cmd forceload remove -32 -112 159 79
+wait 3
+# ---- 3a. River Arts (day 6) -------------------------------------------------------------------------------------
+cmd forceload add -912 32 -817 127
+wait 20
+cmd ashfall grid status
+cmd ashfall grid set river_arts repaired
+cmd ashfall grid set river_arts energized
+cmd ashfall grid status
+cmd time set 129500
+wait 5
+cmd time set 132000
+until Grid: river_arts siege wave 1/
+cmd ashfall horde status
+wait 20
+cmd ashfall grid status
+cmd execute if entity @e[tag=ashfall_siege]
+cmd spark tps
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+until Grid: river_arts reclaimed
+wait 3
+cmd ashfall grid status
+cmd ashfall safezone list
+cmd execute positioned -864 80 80 run ashfall director status
+# Abomination: Kiln & Co. Salvage, next door.
+cmd forceload add -960 112 -929 143
+wait 8
+cmd ashfall boss list
+cmd ashfall boss spawn ashfall:abomination
+wait 3
+cmd ashfall boss list
+cmd kill @e[tag=ashfall_boss]
+wait 8
+cmd execute if entity @e[type=item,nbt={Item:{id:"ashfall:resonance_crystal"}}]
+cmd execute as @e[type=item,x=-976,y=-64,z=96,dx=64,dy=400,dz=64] run data get entity @s Item
+cmd kill @e[type=item]
+cmd forceload remove all
+wait 3
+# ---- 3b. South Slope (day 8) ------------------------------------------------------------------------------------
+cmd forceload add 48 752 143 847
+wait 20
+cmd ashfall grid set south_slope repaired
+cmd ashfall grid set south_slope energized
+cmd ashfall grid status
+cmd time set 177500
+wait 5
+cmd time set 180000
+until Grid: south_slope siege wave 1/
+wait 20
+cmd ashfall grid status
+cmd execute if entity @e[tag=ashfall_siege]
+cmd spark tps
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+until Grid: south_slope reclaimed
+wait 3
+cmd ashfall grid status
+cmd forceload remove all
+wait 3
+# ---- 3c. Downtown (day 9) ---------------------------------------------------------------------------------------
+cmd forceload add 16 -64 111 31
+wait 20
+cmd ashfall grid set downtown repaired
+cmd ashfall grid set downtown energized
+cmd ashfall grid status
+cmd time set 201500
+wait 5
+cmd time set 204000
+until Grid: downtown siege wave 1/
+wait 20
+cmd ashfall grid status
+cmd execute if entity @e[tag=ashfall_siege]
+cmd spark tps
+# Let a second wave join the first (it comes on its 120 s timer while the first is alive) for a heavier sample.
+until Grid: downtown siege wave 2/
+wait 15
+cmd execute if entity @e[tag=ashfall_siege]
+cmd ashfall grid status
+cmd spark tps
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+until Grid: downtown reclaimed
+wait 3
+cmd ashfall grid status
+cmd forceload remove all
+wait 3
+# ---- 4. The Wreck hull, placed while sealed ----------------------------------------------------------------------
+cmd forceload add 2220 -180 2380 -20
+wait 40
+cmd ashfall site place fixed:ashfall:wreck_hull
+wait 5
+cmd ashfall finale status
+cmd ashfall site list 64
+# ---- 3d. Mission (day 10): Grid 80 % opens the hull ------------------------------------------------------------
+cmd forceload add 736 592 831 687
+wait 20
+cmd ashfall grid set mission repaired
+cmd ashfall grid set mission energized
+cmd ashfall grid status
+cmd ashfall boss list
+cmd time set 225500
+wait 5
+cmd time set 228000
+until Grid: mission siege wave 1/
+wait 20
+cmd ashfall grid status
+cmd execute if entity @e[tag=ashfall_siege]
+cmd spark tps
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+wait 4
+cmd kill @e[tag=ashfall_siege]
+until Grid: mission reclaimed
+wait 8
+cmd ashfall grid status
+cmd ashfall finale status
+cmd ashfall boss list
+# Patient Zero: the deep ward opened with Mission.
+cmd forceload remove 736 592 831 687
+cmd forceload add 704 624 751 655
+wait 8
+cmd ashfall boss spawn ashfall:patient_zero
+wait 5
+cmd ashfall boss list
+cmd kill @e[tag=ashfall_boss]
+wait 8
+cmd execute if entity @e[type=item,nbt={Item:{id:"ashfall:resonance_crystal"}}]
+cmd execute as @e[type=item,x=690,y=-64,z=610,dx=80,dy=400,dz=60] run data get entity @s Item
+cmd kill @e[type=item]
+cmd forceload remove 704 624 751 655
+# Juggernaut at the hull.
+cmd ashfall boss spawn ashfall:juggernaut
+wait 3
+cmd ashfall boss list
+cmd kill @e[tag=ashfall_boss]
+wait 8
+cmd execute if entity @e[type=item,nbt={Item:{id:"ashfall:resonance_crystal"}}]
+cmd execute as @e[type=item,x=2250,y=-64,z=-150,dx=100,dy=400,dz=100] run data get entity @s Item
+cmd kill @e[type=item]
+cmd ashfall boss list
+# ---- 6. The Black Start, 4 stand-in players ----------------------------------------------------------------------
+cmd kill @e[type=#minecraft:zombies]
+cmd setblock 2360 200 -40 ashfall:power_relay
+wait 3
+cmd data get block 2360 200 -40 energy
+cmd ashfall finale unattended 4
+cmd ashfall finale start
+wait 3
+cmd ashfall finale status
+cmd ashfall director status
+until Finale: wave of
+wait 60
+cmd execute if entity @e[tag=ashfall_finale]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..7]
+cmd ashfall finale status
+cmd spark tps
+wait 40
+cmd execute if entity @e[tag=ashfall_finale]
+cmd execute positioned 2304 65 -101 if entity @e[tag=ashfall_finale,distance=..7]
+cmd ashfall finale status
+cmd spark tps
+# Console stand-ins for the party's hands: feed two cells (the Surge moves again) and patch the Uplink back up.
+cmd kill @e[tag=ashfall_finale,type=!ashfall:choir]
+cmd ashfall finale feed 2
+cmd ashfall finale patch 6
+wait 20
+cmd ashfall finale status
+cmd ashfall finale phase feedback
+wait 3
+cmd ashfall finale status
+wait 17
+cmd execute if entity @e[tag=ashfall_finale,type=!minecraft:zombie]
+cmd ashfall finale status
+cmd spark tps
+cmd kill @e[tag=ashfall_finale,type=!ashfall:choir]
+cmd ashfall finale patch 2
+wait 10
+cmd kill @e[tag=ashfall_finale,type=!ashfall:choir]
+cmd ashfall finale patch 2
+wait 10
+cmd ashfall finale status
+cmd kill @e[tag=ashfall_finale,type=!ashfall:choir]
+cmd ashfall finale patch 2
+wait 10
+cmd kill @e[tag=ashfall_finale,type=!ashfall:choir]
+cmd ashfall finale patch 2
+wait 10
+cmd ashfall finale status
+cmd kill @e[tag=ashfall_finale,type=!ashfall:choir]
+cmd ashfall finale patch 2
+wait 10
+cmd kill @e[tag=ashfall_finale,type=!ashfall:choir]
+cmd ashfall finale patch 2
+wait 10
+cmd kill @e[tag=ashfall_finale,type=!ashfall:choir]
+cmd ashfall finale patch 2
+wait 10
+cmd kill @e[tag=ashfall_finale,type=!ashfall:choir]
+cmd ashfall finale patch 2
+until feedback phase ended
+wait 5
+cmd ashfall finale status
+cmd execute if entity @e[type=ashfall:choir]
+cmd execute as @e[type=ashfall:choir] run data get entity @s Health
+# The Heart: break every pylon (they stand at socket offsets; fill finds them wherever the socket landed).
+cmd fill 2290 40 -106 2316 110 -96 air replace ashfall:heart_pylon
+until heart phase ended
+until Ending vote started
+wait 2
+cmd ashfall finale status
+cmd ashfall grid status
+cmd ashfall ending status
+# ---- 7. The vote, closed from the console: Sever ------------------------------------------------------------------
+cmd ashfall ending set sever
+wait 3
+cmd ashfall ending status
+cmd ashfall director status
+cmd execute if entity @e[type=ashfall:choir]
+cmd setblock 2362 200 -40 ashfall:power_relay
+wait 3
+cmd data get block 2362 200 -40 energy
+cmd ashfall finale start
+cmd ashfall story reset
+wait 3
+cmd ashfall ending status
+cmd ashfall finale status
+cmd ashfall grid status
+cmd ashfall director status
+# Replay, shortened, ending in Bind.
+cmd kill @e[tag=ashfall_finale]
+cmd ashfall finale start
+cmd ashfall finale phase heart
+wait 3
+cmd ashfall finale status
+cmd fill 2290 40 -106 2316 110 -96 air replace ashfall:heart_pylon
+until Ending vote started
+wait 2
+cmd ashfall ending set bind
+wait 3
+cmd ashfall ending status
+cmd ashfall director status
+cmd ashfall boss list
+cmd ashfall horde status
+cmd setblock 2364 200 -40 ashfall:power_relay
+wait 3
+cmd data get block 2364 200 -40 energy
+cmd ashfall story reset
+wait 3
+cmd ashfall ending status
+cmd ashfall finale status
+cmd ashfall grid status
+cmd ashfall director status
+cmd ashfall finale unattended off
+cmd kill @e[tag=ashfall_finale]
+cmd kill @e[type=#minecraft:zombies]
+cmd forceload remove all
+cmd spark tps
+wait 5

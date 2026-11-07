@@ -1,0 +1,108 @@
+{
+	"offers": [
+		{
+			"buy": {
+				"id": "ashfall:canned_food",
+				"count": 3
+			},
+			"sell": {
+				"id": "ashfall:bandage",
+				"count": 2
+			},
+			"max_uses": 6
+		},
+		{
+			"buy": {
+				"id": "ashfall:duct_tape",
+				"count": 4
+			},
+			"buy_b": {
+				"id": "ashfall:scrap_electronics",
+				"count": 2
+			},
+			"sell": {
+				"id": "ashfall:antibiotics",
+				"count": 1
+			},
+			"max_uses": 2
+		},
+		{
+			"buy": {
+				"id": "ashfall:scrap_metal",
+				"count": 8
+			},
+			"buy_b": {
+				"id": "ashfall:battery",
+				"count": 2
+			},
+			"sell": {
+				"id": "ashfall:energy_cell",
+				"count": 1
+			},
+			"max_uses": 1
+		},
+		{
+			"buy": {
+				"id": "ashfall:cloth",
+				"count": 3
+			},
+			"sell": {
+				"id": "ashfall:nails",
+				"count": 16
+			},
+			"max_uses": 4
+		},
+		{
+			"buy": {
+				"id": "ashfall:scrap_metal",
+				"count": 2
+			},
+			"sell": {
+				"id": "minecraft:cooked_beef",
+				"count": 2
+			},
+			"max_uses": 4
+		},
+		{
+			"buy": {
+				"id": "ashfall:wire_spool",
+				"count": 3
+			},
+			"sell": {
+				"id": "ashfall:battery",
+				"count": 1
+			},
+			"max_uses": 3
+		},
+		{
+			"buy": {
+				"id": "ashfall:scrap_metal",
+				"count": 6
+			},
+			"buy_b": {
+				"id": "ashfall:duct_tape",
+				"count": 4
+			},
+			"sell": {
+				"id": "ashfall:weapon_parts",
+				"count": 1
+			},
+			"max_uses": 2
+		},
+		{
+			"buy": {
+				"id": "ashfall:scrap_metal",
+				"count": 10
+			},
+			"buy_b": {
+				"id": "ashfall:weapon_parts",
+				"count": 2
+			},
+			"sell": {
+				"id": "ashfall:riot_vest",
+				"count": 1
+			},
+			"max_uses": 1
+		}
+	]
+}

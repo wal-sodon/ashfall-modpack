@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:campfire_cooking",
+	"category": "food",
+	"group": "bottled_water",
+	"cookingtime": 600,
+	"experience": 0.1,
+	"ingredient": "ashfall:dirty_water",
+	"result": {
+		"id": "ashfall:bottled_water"
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"markers": [
+		{ "kind": "safehouse", "x": -152, "z": -792 },
+		{ "kind": "substation", "district": "river_arts", "x": -864, "z": 80 },
+		{ "kind": "substation", "district": "south_slope", "x": 96, "z": 800 },
+		{ "kind": "substation", "district": "downtown", "x": 64, "z": -16 },
+		{ "kind": "substation", "district": "mission", "x": 784, "z": 640 },
+		{ "kind": "hull", "x": 2300, "z": -100 }
+	]
+}

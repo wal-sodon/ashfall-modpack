@@ -1,0 +1,13 @@
+{
+	"zones": ["ridge"],
+	"region_chunks": 10,
+	"chance": 0.4,
+	"salt": 2300,
+	"templates": [
+		{ "template": "ashfall:crash_site_small", "weight": 3 },
+		{ "template": "ashfall:crash_site_pod", "weight": 2 },
+		{ "template": "ashfall:crash_site_debris", "weight": 2 }
+	],
+	"guards": { "min": 1, "max": 3, "radius": 7 },
+	"avoid_fixed": 64
+}

@@ -1,0 +1,77 @@
+{
+	"palette": {
+		"#": "minecraft:polished_deepslate",
+		"C": "minecraft:chest[facing=north,type=single,waterlogged=false]",
+		"O": "minecraft:weathered_cut_copper",
+		"T": "minecraft:cracked_deepslate_tiles",
+		"a": "minecraft:amethyst_block",
+		"c": "minecraft:coarse_dirt",
+		"d": "minecraft:rooted_dirt",
+		"i": "minecraft:iron_block",
+		"k": "minecraft:blackstone",
+		"o": "minecraft:oxidized_cut_copper",
+		"t": "minecraft:deepslate_tiles",
+		"v": "minecraft:iron_bars"
+	},
+	"sink": 2,
+	"layers": [
+		[
+			"               ",
+			"               ",
+			"               ",
+			"               ",
+			"               ",
+			"               ",
+			"               ",
+			"               ",
+			"               "
+		],
+		[
+			"               ",
+			"          ccccc",
+			"     ckcccckcdc",
+			"cdcdcdccccccccc",
+			"dkdcccdcccccdck",
+			"cdccdkcccckcccc",
+			"     cccdcckccc",
+			"          ckkdd",
+			"               "
+		],
+		[
+			"               ",
+			"               ",
+			"            i  ",
+			"   T   t     # ",
+			"  #   #   #  C#",
+			"     o   O     ",
+			"        #  a   ",
+			"               ",
+			"               "
+		],
+		[
+			"               ",
+			"               ",
+			"               ",
+			"             t ",
+			"      t   v    ",
+			"               ",
+			"               ",
+			"               ",
+			"               "
+		],
+		[
+			"               ",
+			"               ",
+			"               ",
+			"               ",
+			"               ",
+			"               ",
+			"               ",
+			"               ",
+			"               "
+		]
+	],
+	"loot": {
+		"C": "ashfall:chests/crash_site"
+	}
+}

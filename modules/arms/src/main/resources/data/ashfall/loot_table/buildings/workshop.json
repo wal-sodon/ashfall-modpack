@@ -1,0 +1,264 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 1,
+				"max": 2
+			},
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 25
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_metal",
+					"weight": 5,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:duct_tape",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:lighter_fluid",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:battery",
+					"weight": 5,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:cloth",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:matches",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_electronics",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:weapon_parts",
+					"weight": 8
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_nugget",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 2,
+							"max": 6
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:coal",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_ingot",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:stone_axe",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_damage",
+						"damage": {
+							"type": "minecraft:uniform",
+							"min": 0.15,
+							"max": 0.6
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_axe",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_damage",
+						"damage": {
+							"type": "minecraft:uniform",
+							"min": 0.15,
+							"max": 0.6
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_shovel",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_damage",
+						"damage": {
+							"type": "minecraft:uniform",
+							"min": 0.15,
+							"max": 0.6
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:shears",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_damage",
+						"damage": {
+							"type": "minecraft:uniform",
+							"min": 0.15,
+							"max": 0.6
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:flint_and_steel",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_damage",
+						"damage": {
+							"type": "minecraft:uniform",
+							"min": 0.15,
+							"max": 0.6
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:bucket",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:wire_spool",
+					"weight": 4,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:alloy_plate",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scavenger_hood",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scavenger_jacket",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scavenger_trousers",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scavenger_boots",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:nails",
+					"weight": 3,
+					"modifier": {
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 4,
+							"max": 12
+						},
+						"type": "minecraft:set_count"
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:pipe_wrench",
+					"weight": 1,
+					"modifier": {
+						"damage": {
+							"type": "minecraft:uniform",
+							"min": 0.3,
+							"max": 0.8
+						},
+						"type": "minecraft:set_damage"
+					}
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:buildings/workshop"
+}

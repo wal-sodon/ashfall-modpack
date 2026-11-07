@@ -1,0 +1,196 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:gray_concrete"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:light_gray_concrete"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:smooth_stone"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:red_concrete"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:black_concrete"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:stone_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:iron_bars[east=true,north=false,south=true,west=true]"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:iron_bars[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:iron_bars[east=true,north=true,south=true,west=false]"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:black_stained_glass"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:iron_bars[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:iron_bars[east=false,north=true,south=false,west=false]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:iron_bars[east=false,north=true,south=true,west=true]"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:stone_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:iron_bars[east=false,north=false,south=true,west=false]"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!#!!#!!#!!#!",
+   "!!!!!#!!#!!#!!#!",
+   "!!!!!#!!#!!#!!#!",
+   "!!!!!#!!#!!#!!#!",
+   "!!!!!#!!#!!#!!#!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!#####!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!#####!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "$$$$$$$$$$$$$$$$",
+   "$%%%$ &&    ''  ",
+   "$%%%$ &&    ''  ",
+   "$%%%$ &&    ''  ",
+   "$ %($           ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$       $       ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               "
+  ],
+  [
+   "$))))***$*******",
+   "+%%%$           ",
+   "+%%%$ ,,    ,,  ",
+   "+%%($           ",
+   "- . $           ",
+   "-               ",
+   "-               ",
+   "-               ",
+   "$       $       ",
+   "-               ",
+   "-               ",
+   "-               ",
+   "-               ",
+   "-               ",
+   "-               ",
+   "-               "
+  ],
+  [
+   "$       $       ",
+   " %%%$           ",
+   " %%($           ",
+   " %/ $           ",
+   "  . $           ",
+   "                ",
+   "                ",
+   "                ",
+   "$       $       ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                "
+  ],
+  [
+   "$       $       ",
+   "    $           ",
+   " 01 $           ",
+   " %/ $           ",
+   "  . $           ",
+   "                ",
+   "                ",
+   "                ",
+   "$       $       ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                "
+  ],
+  [
+   "$       $       ",
+   "    $           ",
+   "  1 $           ",
+   " 0- $           ",
+   "  . $           ",
+   "                ",
+   "                ",
+   "                ",
+   "$       $       ",
+   "                ",
+   "      2         ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                "
+  ]
+ ]
+}

@@ -1,0 +1,12 @@
+{
+	"entity": "ashfall:crawler",
+	"drops": [
+		{
+			"item": "ashfall:scrap_electronics",
+			"chance": 0.03,
+			"killed_by_player": true,
+			"min": 1,
+			"max": 1
+		}
+	]
+}

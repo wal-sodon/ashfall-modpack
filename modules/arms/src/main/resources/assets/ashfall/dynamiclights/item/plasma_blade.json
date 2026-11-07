@@ -1,0 +1,9 @@
+{
+	"match": {
+		"items": "ashfall:plasma_blade",
+		"components": {
+			"ashfall:blade_lit": {}
+		}
+	},
+	"luminance": 12
+}

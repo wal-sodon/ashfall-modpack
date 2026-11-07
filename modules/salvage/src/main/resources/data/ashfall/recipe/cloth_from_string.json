@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "misc",
+	"group": "cloth",
+	"ingredients": [
+		"minecraft:string",
+		"minecraft:string",
+		"minecraft:string",
+		"minecraft:string"
+	],
+	"result": {
+		"id": "ashfall:cloth"
+	}
+}

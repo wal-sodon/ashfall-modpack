@@ -1,0 +1,32 @@
+# Gradle / IDE
+.gradle/
+build/
+out/
+*.iml
+.idea/
+.vscode/
+run/
+runs/
+
+# Local tool caches (Arnis source/build, packwiz binary, servers)
+.cache/
+
+# Retired Arnis map: generated worlds and OSM downloads (large; reproducible via archive/arnis/tools/map-pipeline.sh)
+archive/arnis/map/out/
+archive/arnis/map/osm/
+archive/arnis/map/upgrade/
+
+# Pack exports
+pack/*.mrpack
+dist/
+
+# Runtime logs from gametest/dev runs
+logs/
+crash-reports/
+
+# OS / editor / Python junk
+.DS_Store
+Thumbs.db
+*.swp
+__pycache__/
+*.pyc

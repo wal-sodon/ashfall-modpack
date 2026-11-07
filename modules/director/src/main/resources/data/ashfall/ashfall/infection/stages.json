@@ -1,0 +1,65 @@
+{
+	"stages": [
+		{
+			"stage": 1,
+			"starts_at_seconds": 0
+		},
+		{
+			"stage": 2,
+			"starts_at_seconds": 300,
+			"hunger_exhaustion_per_tick": 0.005,
+			"thirst_exhaustion_per_tick": 0.008
+		},
+		{
+			"stage": 3,
+			"starts_at_seconds": 720,
+			"hunger_exhaustion_per_tick": 0.006,
+			"thirst_exhaustion_per_tick": 0.01,
+			"effects": [
+				{ "effect": "minecraft:slowness", "amplifier": 0, "duration_seconds": 1.5, "chance": 1.0 },
+				{ "effect": "minecraft:weakness", "amplifier": 0, "duration_seconds": 1.5, "chance": 1.0 },
+				{ "effect": "minecraft:nausea", "amplifier": 0, "duration_seconds": 8, "chance": 0.02 }
+			]
+		},
+		{
+			"stage": 4,
+			"starts_at_seconds": 1200,
+			"hunger_exhaustion_per_tick": 0.008,
+			"thirst_exhaustion_per_tick": 0.012,
+			"effects": [
+				{ "effect": "minecraft:slowness", "amplifier": 1, "duration_seconds": 1.5, "chance": 1.0 },
+				{ "effect": "minecraft:weakness", "amplifier": 1, "duration_seconds": 1.5, "chance": 1.0 },
+				{ "effect": "minecraft:mining_fatigue", "amplifier": 0, "duration_seconds": 1.5, "chance": 1.0 },
+				{ "effect": "minecraft:nausea", "amplifier": 0, "duration_seconds": 10, "chance": 0.05 }
+			]
+		}
+	],
+	"death_after_seconds": 480,
+	"sources": {
+		"zombie_hit_chance": 0.06,
+		"variant_chance": {
+			"walker": 0.06,
+			"runner": 0.06,
+			"armored": 0.04,
+			"husk": 0.06,
+			"drowned": 0.08,
+			"patient": 0.2,
+			"crawler": 0.06,
+			"bloated": 0.1,
+			"screamer": 0.05,
+			"spitter": 0.06,
+			"brute": 0.08,
+			"stalker": 0.1
+		},
+		"zone_multiplier": {
+			"mission": 1.5
+		},
+		"armor_reduction_per_point": 0.02,
+		"max_chance": 0.75
+	},
+	"treatments": {
+		"bandage_heal": 3.0,
+		"bandage_pause_seconds": 60,
+		"antibiotics_pause_seconds": 180
+	}
+}

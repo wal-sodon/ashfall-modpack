@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"filled=false": {
+			"model": "ashfall:block/rain_collector"
+		},
+		"filled=true": {
+			"model": "ashfall:block/rain_collector_filled"
+		}
+	}
+}

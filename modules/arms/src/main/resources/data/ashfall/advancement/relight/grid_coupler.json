@@ -1,0 +1,31 @@
+{
+	"parent": "ashfall:relight/root",
+	"criteria": {
+		"grid_coupler": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": "#ashfall:grid_coupler"
+					}
+				]
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:scrap_electronics"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.grid_coupler.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.grid_coupler.description"
+		}
+	},
+	"requirements": [
+		[
+			"grid_coupler"
+		]
+	]
+}

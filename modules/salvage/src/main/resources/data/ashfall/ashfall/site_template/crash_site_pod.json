@@ -1,0 +1,111 @@
+{
+	"palette": {
+		".": "minecraft:air",
+		"C": "minecraft:chest[facing=north,type=single,waterlogged=false]",
+		"a": "minecraft:amethyst_block",
+		"c": "minecraft:coarse_dirt",
+		"d": "minecraft:rooted_dirt",
+		"g": "minecraft:tinted_glass",
+		"k": "minecraft:blackstone",
+		"o": "minecraft:oxidized_cut_copper",
+		"p": "minecraft:polished_blackstone",
+		"w": "minecraft:cobweb"
+	},
+	"sink": 2,
+	"layers": [
+		[
+			"           ",
+			"     k     ",
+			"   dddkd   ",
+			"  ddddkkd  ",
+			"  ddddddk  ",
+			" kdkddkddd ",
+			"  ddkdddd  ",
+			"  kdddddd  ",
+			"   ddddd   ",
+			"     d     ",
+			"           "
+		],
+		[
+			"   ccccc   ",
+			"  ccc.cck  ",
+			" kc.....ck ",
+			"kc.......cc",
+			"cc.......kc",
+			"c..gpppg..c",
+			"cc.......cc",
+			"kc.......cc",
+			" cc.....cc ",
+			"  kcc.kcc  ",
+			"   ckccc   "
+		],
+		[
+			"    cc     ",
+			"   c       ",
+			" c      c  ",
+			"c         c",
+			"  gooogooc ",
+			"c ga.C..o  ",
+			"c gooogwo c",
+			"cc  ...    ",
+			"        cc ",
+			"           ",
+			"       c   "
+		],
+		[
+			"           ",
+			"           ",
+			"           ",
+			"   oogoo   ",
+			"  o.....o  ",
+			"  o.....o  ",
+			"  o.....o  ",
+			"   o...o   ",
+			"           ",
+			"           ",
+			"           "
+		],
+		[
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"  oogooog  ",
+			"  o.....g  ",
+			"  oogooog  ",
+			"           ",
+			"           ",
+			"           ",
+			"           "
+		],
+		[
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"   gooog   ",
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"           "
+		],
+		[
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"           ",
+			"           "
+		]
+	],
+	"loot": {
+		"C": "ashfall:chests/crash_site"
+	}
+}

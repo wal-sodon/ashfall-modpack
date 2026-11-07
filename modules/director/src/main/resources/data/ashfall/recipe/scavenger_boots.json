@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"C": "ashfall:cloth",
+		"T": "ashfall:duct_tape",
+		"S": "ashfall:scrap_metal"
+	},
+	"pattern": [
+		"C C",
+		"STC"
+	],
+	"result": {
+		"id": "ashfall:scavenger_boots"
+	}
+}

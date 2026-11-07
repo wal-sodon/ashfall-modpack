@@ -1,0 +1,198 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 1,
+				"max": 2
+			},
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 25
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:cloth",
+					"weight": 4,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bandage",
+					"weight": 8,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bottled_water",
+					"weight": 8,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:canned_food",
+					"weight": 3,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:duct_tape",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:antibiotics",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_electronics",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_axe",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_damage",
+						"damage": {
+							"type": "minecraft:uniform",
+							"min": 0.15,
+							"max": 0.6
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:bucket",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:water_bucket",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:lead",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:leather_chestplate",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_damage",
+						"damage": {
+							"type": "minecraft:uniform",
+							"min": 0.15,
+							"max": 0.6
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:shears",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_damage",
+						"damage": {
+							"type": "minecraft:uniform",
+							"min": 0.15,
+							"max": 0.6
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_ingot",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:hazmat_mask",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:hazmat_suit",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:hazmat_leggings",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:hazmat_boots",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:tag",
+					"items": "#ashfall:big_bags",
+					"expand": true,
+					"weight": 2
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"condition": {
+				"type": "minecraft:random_chance",
+				"chance": 0.03
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:flamethrower",
+					"modifier": {
+						"type": "minecraft:set_components",
+						"components": {
+							"ashfall:fuel": 160
+						}
+					}
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:buildings/fire_station"
+}

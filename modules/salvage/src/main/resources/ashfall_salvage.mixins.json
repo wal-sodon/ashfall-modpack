@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "xyz.toesinthesand.ashfall.salvage.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"ChunkGeneratorStructureMixin",
+		"ChunkMapAccessor",
+		"MinecraftServerSpawnMixin",
+		"TorchBlockMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

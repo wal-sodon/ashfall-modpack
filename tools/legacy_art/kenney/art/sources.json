@@ -1,0 +1,222 @@
+{
+  "_meta": {
+    "root": ".cache/assets",
+    "note": "Paths in 'file' are relative to /Users/wal/projects/mod/.cache/assets. All sources are CC0 1.0. Kenney GLBs reference the shared palette texture in the Textures/ folder next to them (colormap.png for Food/Survival, variation-a.png for Blaster Kit). Poly Pizza model URLs are https://poly.pizza/m/<id>. 'materials' lists the material names found on import, which is where the recolor hints apply.",
+    "style": "Render every model with the same Blender camera/lighting rig and the realistic material overrides below, so the mixed-source models look like one set."
+  },
+  "energy_cell": {
+    "pack": "Poly Pizza / Dipper98 'Sci Fi Wall Power Cell'",
+    "file": "poly-pizza/scifi-power-cell_dipper98.glb",
+    "license": "CC0",
+    "url": "https://poly.pizza/m/GzgXYpEvEM",
+    "author": "Dipper98",
+    "materials": ["Blue", "Ground"],
+    "recolor": "'Ground' -> dark gunmetal (#2a2d31, metallic 0.8, roughness 0.4); 'Blue' tubes -> emissive cyan #3cdcff, strength 4-6",
+    "notes": "10 meshes, a box housing with vertical glowing tubes. It is wall-mounted (flat back), so turn it 3/4 to the camera. It fits a 'sci-fi power cell' better than any battery model."
+  },
+  "scrap_electronics": {
+    "pack": "Poly Pizza / iPoly3D 'Electronics Board'",
+    "file": "poly-pizza/electronics-board_ipoly3d.glb",
+    "license": "CC0",
+    "url": "https://poly.pizza/m/mKoBjuxV4R",
+    "author": "iPoly3D",
+    "materials": ["Green", "Material.003", "black", "conduct"],
+    "recolor": "'Green' -> darker, dirtier PCB green #2f5a2a with grime/scorch; 'conduct' -> worn gold. Optional broken look: boolean-cut a jagged corner off the board, or tilt it and darken one edge as burnt",
+    "notes": "A flat board with chips and a gold edge connector. Lay it diagonally across the icon."
+  },
+  "weapon_parts": {
+    "pack": "Poly Pizza / Quaternius 'Collectible Gear' + 'Spring' + Kenney Blaster Kit",
+    "file": "poly-pizza/gear_quaternius.glb",
+    "compose": [
+      "poly-pizza/gear_quaternius.glb",
+      "poly-pizza/spring_quaternius.glb",
+      "blaster-kit/Models/GLB format/clip-small.glb"
+    ],
+    "license": "CC0",
+    "url": "https://poly.pizza/m/1tgrqxAQia",
+    "extra_urls": ["https://poly.pizza/m/vKySckBbyb", "https://kenney.nl/assets/blaster-kit"],
+    "author": "Quaternius; Kenney",
+    "materials": {"gear": ["Orange"], "spring": ["Metal", "Red"], "clip-small": ["colormap"]},
+    "recolor": "everything gunmetal/steel (#3a3e44 to #8a9099, metallic 0.9); remove the spring's red cap (hide the 'Red' mesh, or paint it steel); give the clip a dark gunmetal body with no glow",
+    "notes": "No single CC0 'gun components' model was found. Build a small pile: gear lying flat at the back, clip-small angled across it, spring in front. Normalize the scales first (gear ~0.4u, spring ~2.8u, clip ~0.26u)."
+  },
+  "focusing_lens": {
+    "pack": "Poly Pizza / MilkAndBanana 'Mirror'",
+    "file": "poly-pizza/mirror_milkandbanana.glb",
+    "license": "CC0",
+    "url": "https://poly.pizza/m/HIeVDCNgbA",
+    "author": "MilkAndBanana",
+    "materials": ["Solid"],
+    "recolor": "remove the handle (delete the verts below the oval head) so only a framed oval lens is left; frame -> brushed steel/brass; glass -> transmissive glass with a faint blue tint and a bright specular highlight",
+    "alt": "blaster-kit/Models/GLB format/scope-small.glb (Kenney): use as a gunmetal optic with a glowing glass end if the cropped mirror reads badly at 32px",
+    "notes": "This is a hand mirror with a single material, so split the head from the handle by position. Scale is large (41u tall), so normalize it."
+  },
+  "resonance_crystal": {
+    "pack": "Poly Pizza / iPoly3D 'Crystal'",
+    "file": "poly-pizza/crystal-cluster_ipoly3d.glb",
+    "license": "CC0",
+    "url": "https://poly.pizza/m/WzWPKHFMkL",
+    "author": "iPoly3D",
+    "materials": ["Material.004"],
+    "recolor": "violet #9a4dff, glassy (transmission 0.3, roughness 0.15) plus emission #b45aff at strength 2-3 so it glows",
+    "alt": "space-kit/Models/GLTF format/rock_crystals.glb (Kenney Space Kit)",
+    "notes": "Clustered spikes. It reads very well as a small icon."
+  },
+  "battery": {
+    "pack": "Poly Pizza / hat_my_guy 'Battery'",
+    "file": "poly-pizza/battery-aa_hat_my_guy.glb",
+    "license": "CC0",
+    "url": "https://poly.pizza/m/AnhRmF6bYL",
+    "author": "hat_my_guy",
+    "materials": ["Material.001", "Material.002", "Material.003"],
+    "recolor": "keep the copper/orange top and black body; add slight metallic to the terminals",
+    "notes": "AA cell with a '+' marking. Render it at a tilt (about 30 degrees) so it fills the 32x32 square. No CC0 9V model was found."
+  },
+  "cell_pack_small": {
+    "pack": "Kenney Blaster Kit",
+    "file": "blaster-kit/Models/GLB format/clip-small.glb",
+    "license": "CC0",
+    "url": "https://kenney.nl/assets/blaster-kit",
+    "author": "Kenney",
+    "materials": ["colormap"],
+    "recolor": "same repaint as the blasters: dark gunmetal body, with the toy-yellow strip -> emissive cyan #3cc8ff",
+    "notes": "Use the same material remap as the blaster repaint so the ammo matches the guns."
+  },
+  "cell_pack_standard": {
+    "pack": "Kenney Blaster Kit",
+    "file": "blaster-kit/Models/GLB format/clip-large.glb",
+    "license": "CC0",
+    "url": "https://kenney.nl/assets/blaster-kit",
+    "author": "Kenney",
+    "materials": ["colormap"],
+    "recolor": "gunmetal body, glowing accent strip -> emissive cyan #3cc8ff",
+    "notes": "Bounds are 0.06 x 0.15 x 0.256."
+  },
+  "cell_pack_heavy": {
+    "pack": "Kenney Blaster Kit",
+    "file": "blaster-kit/Models/GLB format/clip-large.glb",
+    "license": "CC0",
+    "url": "https://kenney.nl/assets/blaster-kit",
+    "author": "Kenney",
+    "materials": ["colormap"],
+    "recolor": "gunmetal body with a hazard band; glow in orange-amber #ffb33c, or brighter cyan, so it reads as a different tier",
+    "compose": "two clip-large side by side (bundled), or a single clip-large scaled 1.0 x 1.8 x 1.2 to make it wider and thicker",
+    "notes": "The kit has no third clip size, so make the heavy pack from clip-large."
+  },
+  "dampener": {
+    "pack": "Kenney Blaster Kit",
+    "file": "blaster-kit/Models/GLB format/silencer-larger.glb",
+    "license": "CC0",
+    "url": "https://kenney.nl/assets/blaster-kit",
+    "author": "Kenney",
+    "materials": ["colormap"],
+    "recolor": "matte black/gunmetal with a faint energy ring at the muzzle end",
+    "alt": "blaster-kit/Models/GLB format/silencer-small.glb",
+    "notes": "Lay it diagonally across the icon."
+  },
+  "bandage": {
+    "pack": "Kenney Survival Kit",
+    "file": "survival-kit/Models/GLB format/bedroll-packed.glb",
+    "license": "CC0",
+    "url": "https://kenney.nl/assets/survival-kit",
+    "author": "Kenney",
+    "materials": ["colormap"],
+    "recolor": "main roll -> off-white gauze #ece8dc (rough, fabric); straps -> pale tan or hidden. Shorten the length to about 0.6x so it reads as a gauze roll",
+    "notes": "The closest CC0 roll shape found. The CC0 searches turned up no bandage model (Poly Pizza bandages are CC-BY)."
+  },
+  "antibiotics": {
+    "pack": "Poly Pizza / Quaternius 'Pickup Jar'",
+    "file": "poly-pizza/pickup-jar_quaternius.glb",
+    "license": "CC0",
+    "url": "https://poly.pizza/m/jhvntkgHU3",
+    "author": "Quaternius",
+    "materials": ["Atlas"],
+    "recolor": "body -> translucent amber pharmacy plastic #c8761e; cap -> white; label -> plain white with a thin blue/grey stripe. NO red cross",
+    "notes": "Textured with an atlas, so recolor per atlas region or by face-material reassignment. It has a pill-bottle silhouette."
+  },
+  "canned_food": {
+    "pack": "Kenney Food Kit",
+    "file": "food-kit/Models/GLB format/can.glb",
+    "license": "CC0",
+    "url": "https://kenney.nl/assets/food-kit",
+    "author": "Kenney",
+    "materials": ["colormap"],
+    "recolor": "more realistic tin: metallic lids/rims (steel); label -> muted faded colour; optional light dents/grime",
+    "alt": "food-kit/Models/GLB format/can-small.glb",
+    "notes": "Use as is."
+  },
+  "bottled_water": {
+    "pack": "Poly Pizza / Quaternius 'Water Bottle'",
+    "file": "poly-pizza/water-bottle_quaternius.glb",
+    "license": "CC0",
+    "url": "https://poly.pizza/m/KpxDpidn1Z",
+    "author": "Quaternius",
+    "materials": ["Grey", "Plastic", "Red"],
+    "recolor": "'Plastic' -> clear PET (transmission 0.9, light blue tint #d8f0ff), 'Grey' cap -> blue #2f7de0, 'Red' label -> light blue/white label",
+    "alt": "food-kit/Models/GLB format/soda-bottle.glb",
+    "notes": "A realistic ribbed PET bottle shape."
+  },
+  "dirty_water": {
+    "pack": "Kenney Survival Kit",
+    "file": "survival-kit/Models/GLB format/bottle.glb",
+    "license": "CC0",
+    "url": "https://kenney.nl/assets/survival-kit",
+    "author": "Kenney",
+    "materials": ["colormap"],
+    "recolor": "glass -> green-brown translucent glass; contents -> murky brown-green #6b6a3a, low transmission; label -> torn/faded or hidden; cork -> dark",
+    "notes": "Glass bottle with a cork."
+  },
+  "cloth": {
+    "pack": "Poly Pizza / Isa Lousberg 'Towel Blue'",
+    "file": "poly-pizza/towel-blue_isa-lousberg.glb",
+    "license": "CC0",
+    "url": "https://poly.pizza/m/HE7whBjUwQ",
+    "author": "Isa Lousberg",
+    "materials": ["tiny_treats_1"],
+    "recolor": "replace the light blue with dirty beige/grey rag colour #9c8f78 and high roughness; optional fabric noise bump",
+    "notes": "A folded towel. Recoloured and darkened it reads as a cloth rag."
+  },
+  "duct_tape": {
+    "pack": "OpenGameArt / darkrose 'duct tape'",
+    "file": "oga-duct-tape/tape/tape.obj",
+    "license": "CC0",
+    "url": "https://opengameart.org/content/duct-tape",
+    "author": "darkrose",
+    "materials": ["Material.001"],
+    "texture": "oga-duct-tape/tape/tape.png",
+    "recolor": "use tape.png, or override: outer -> silver-grey cloth tape #9aa0a6 (metallic 0.3, roughness 0.5), inner core -> cardboard brown",
+    "notes": "Import the OBJ (do not open the .blend). The roll is flat (0.4 x 0.4 x 0.105), so render it at a 3/4 tilt to show the hole."
+  },
+  "scrap_metal": {
+    "pack": "Kenney Survival Kit",
+    "file": "survival-kit/Models/GLB format/metal-panel-screws-half.glb",
+    "license": "CC0",
+    "url": "https://kenney.nl/assets/survival-kit",
+    "author": "Kenney",
+    "materials": ["colormap"],
+    "recolor": "rusty corrugated steel: base #7a4a2a rust blended with patches of grey steel #8a8f94, high roughness; screws dark steel",
+    "alt": "survival-kit/Models/GLB format/metal-panel.glb",
+    "notes": "A corrugated sheet offcut with screws. Tilt it so the corrugation reads."
+  },
+  "matches": {
+    "pack": "Poly Pizza / Quaternius 'Matchbox'",
+    "file": "poly-pizza/matchbox_quaternius.glb",
+    "license": "CC0",
+    "url": "https://poly.pizza/m/22eU6FjNQ8",
+    "author": "Quaternius",
+    "materials": ["DarkYellow", "Match", "Red", "Yellow"],
+    "recolor": "box -> cardboard/khaki, match heads -> red; mostly use as is",
+    "notes": "An upright box with match sticks poking out of the top. Clear silhouette."
+  },
+  "lighter_fluid": {
+    "pack": "Poly Pizza / Quaternius 'Gas Can'",
+    "file": "poly-pizza/gas-can_quaternius.glb",
+    "license": "CC0",
+    "url": "https://poly.pizza/m/eS1OXGo51c",
+    "author": "Quaternius",
+    "materials": ["Black", "DarkRed", "Red"],
+    "recolor": "paint the can yellow-orange #e0a020 with a black cap to signal lighter fluid (or keep it red for a jerry-can look); add slight metallic and wear",
+    "alt": "https://poly.pizza/m/jRymgnHTTb (Quaternius Gas Can, red with white stripes, CC0, not downloaded)",
+    "notes": "A jerry-can shape. Lighter fluid is normally a small squeeze can, but no CC0 model of one was found."
+  }
+}

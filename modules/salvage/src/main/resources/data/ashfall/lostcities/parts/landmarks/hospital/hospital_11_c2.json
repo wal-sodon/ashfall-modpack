@@ -1,0 +1,228 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:deepslate_tiles"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:cracked_deepslate_tiles"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:reinforced_deepslate"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:stone"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:iron_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:cauldron"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:gray_bed[facing=north,occupied=false,part=head]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:cobweb"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:gray_bed[facing=north,occupied=false,part=foot]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:iron_chain[axis=y]"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:polished_deepslate"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:iron_door[facing=north,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:iron_bars[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:red_bed[facing=east,occupied=false,part=foot]"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:red_bed[facing=east,occupied=false,part=head]"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:bone_block[axis=x]"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:bone_block[axis=y]"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:stone_bricks"
+   },
+   {
+    "char": "4",
+    "block": "minecraft:iron_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "5",
+    "block": "minecraft:glass_pane[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "6",
+    "block": "minecraft:glass_pane[east=false,north=false,south=false,west=true]"
+   },
+   {
+    "char": "7",
+    "block": "minecraft:iron_door[facing=north,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "8",
+    "block": "minecraft:glass_pane[east=true,north=false,south=false,west=false]"
+   },
+   {
+    "char": "9",
+    "block": "minecraft:iron_bars[east=true,north=true,south=false,west=true]"
+   },
+   {
+    "char": ":",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!#####!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "################",
+   "################",
+   "################",
+   "################",
+   "################",
+   "################",
+   "################",
+   "#######$$#######",
+   "################",
+   "################",
+   "################",
+   "################",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "%%%%%     %%%%%%",
+   "%%%%%%%&&%%%%%%%",
+   "  '!          !'",
+   "() !          ) ",
+   "*  !          ! ",
+   " + ,,,,-,,,,, ! ",
+   "   ,+      +, ! ",
+   "...,    )   , !.",
+   "   ,        ,   ",
+   "   ,     /0 ,   ",
+   "   , )      ,   ",
+   "   ,      1 ,   ",
+   "   ,+22    +,   ",
+   "   ,,,,,,,,,,   ",
+   "%%%%%%%%%%%%%%%%",
+   "3333333333333333"
+  ],
+  [
+   "%%%%%     %%%%%%",
+   "%%%%%%%44%%%%%%%",
+   "   !          ! ",
+   "   !          ! ",
+   "   !          ! ",
+   "   ,55678555, ! ",
+   "   ,+      +, ! ",
+   "...,        , !.",
+   "   ,        ,   ",
+   "   ,        ,   ",
+   "   ,        ,   ",
+   "   ,        ,   ",
+   "   ,+      +,   ",
+   "   ,,,,,,,,,,   ",
+   "%%%%%%%%%%%%%%%%",
+   "3333333333333333"
+  ],
+  [
+   "%%%%%     %%%%%%",
+   "%%%%%..%%.9%%%%%",
+   "   !          ! ",
+   "   !          ! ",
+   "   !          ! ",
+   "   ,555,5555, ! ",
+   "   ,        , ! ",
+   "...,        , !.",
+   "   ,        ,   ",
+   "   ,        ,   ",
+   "   ,        ,   ",
+   "   ,        ,   ",
+   "   ,        ,   ",
+   "   ,,,,,,,,,,   ",
+   "%%%%%%%%%%%%%%%%",
+   "3333333333333333"
+  ],
+  [
+   "%%%%%     %%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "   !          ! ",
+   "   !          ! ",
+   "   !          ! ",
+   "   ,,,,,,,,,, ! ",
+   "   ,        , ! ",
+   "...,        , !.",
+   "   ,        ,   ",
+   "   ,        ,   ",
+   "   ,   :    ,   ",
+   "   ,        ,   ",
+   "   ,        ,   ",
+   "   ,,,,,,,,,,   ",
+   "%%%%%%%%%%%%%%%%",
+   "3333333333333333"
+  ],
+  [
+   "%%%%%%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%",
+   "3333333333333333"
+  ]
+ ]
+}

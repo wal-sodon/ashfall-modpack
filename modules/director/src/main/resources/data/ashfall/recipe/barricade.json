@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "building",
+	"key": {
+		"P": "#minecraft:planks",
+		"S": "ashfall:scrap_metal"
+	},
+	"pattern": [
+		"PSP",
+		"PSP"
+	],
+	"result": {
+		"id": "ashfall:barricade",
+		"count": 2
+	}
+}

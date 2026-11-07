@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"key": {
+		"W": "ashfall:wire_spool",
+		"C": "minecraft:copper_ingot",
+		"E": "ashfall:scrap_electronics",
+		"B": "ashfall:battery"
+	},
+	"pattern": [
+		" W ",
+		"CEC",
+		"CBC"
+	],
+	"result": {
+		"id": "ashfall:shortwave_set"
+	}
+}

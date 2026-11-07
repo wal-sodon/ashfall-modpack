@@ -1,0 +1,29 @@
+{
+	"parent": "ashfall:relight/river_arts_energized",
+	"criteria": {
+		"reclaimed": {
+			"trigger": "ashfall:district",
+			"conditions": {
+				"district": "river_arts",
+				"state": "reclaimed"
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:power_relay"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.river_arts_reclaimed.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.river_arts_reclaimed.description"
+		},
+		"frame": "goal"
+	},
+	"requirements": [
+		[
+			"reclaimed"
+		]
+	]
+}

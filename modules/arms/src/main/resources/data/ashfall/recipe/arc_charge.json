@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "equipment",
+	"ingredients": [
+		"ashfall:battery",
+		"ashfall:scrap_electronics",
+		"ashfall:duct_tape"
+	],
+	"result": {
+		"id": "ashfall:arc_charge",
+		"count": 2
+	}
+}

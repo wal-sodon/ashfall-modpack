@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"key": {
+		"A": "ashfall:alloy_plate",
+		"E": "ashfall:scrap_electronics",
+		"W": "ashfall:wire_spool",
+		"F": "ashfall:field_charger"
+	},
+	"pattern": [
+		"AEA",
+		"WFW",
+		"AEA"
+	],
+	"result": {
+		"id": "ashfall:rapid_charger"
+	}
+}

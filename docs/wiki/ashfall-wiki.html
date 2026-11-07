@@ -1,0 +1,1689 @@
+<title>Ashfall Field Manual</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;800&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a civil-defence field manual. Sticky section index on the left, one readable column of reference on the right; a sodium-streetlight amber marks what matters. */
+:root {
+	--bg: #f3f2ee;
+	--panel: #e8e6df;
+	--fg: #1f2226;
+	--muted: #5b5f66;
+	--rule: #cfccc2;
+	--accent: #b5650a;
+	--accent-ink: #ffffff;
+	--danger: #a8322a;
+	--code-bg: #e2dfd6;
+	--display: "Saira Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+	--body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+	--mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		--bg: #15181c; --panel: #1d2126; --fg: #e4e2dc; --muted: #9aa0a8; --rule: #2e333a;
+		--accent: #f0a23a; --accent-ink: #1a1305; --danger: #ef7a6e; --code-bg: #252a31; color-scheme: dark;
+	}
+}
+:root[data-theme="dark"] {
+	--bg: #15181c; --panel: #1d2126; --fg: #e4e2dc; --muted: #9aa0a8; --rule: #2e333a;
+	--accent: #f0a23a; --accent-ink: #1a1305; --danger: #ef7a6e; --code-bg: #252a31; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--bg); color: var(--fg); font: 16px/1.6 var(--body); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+
+.shell {
+	display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: 3rem;
+	max-width: 76rem; margin: 0 auto;
+	padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+	padding-block: 2rem 4rem;
+}
+nav.index { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 1.5rem); align-self: start; display: flex; flex-direction: column; gap: 1rem; }
+.brand { font: 800 2rem/1 var(--display); letter-spacing: .04em; text-transform: uppercase; }
+.brand span { color: var(--accent); }
+.brand small { display: block; font: 600 .8rem/1.4 var(--display); letter-spacing: .14em; color: var(--muted); margin-top: .35rem; }
+#q { width: 100%; padding: .55rem .7rem; font: inherit; font-size: .9rem; color: var(--fg); background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; }
+#q:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+nav.index ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .1rem; counter-reset: s; }
+nav.index li a { counter-increment: s; display: flex; gap: .6rem; padding: .3rem .5rem; border-radius: 4px; color: var(--fg); text-decoration: none; font-size: .92rem; }
+nav.index li a::before { content: counter(s, decimal-leading-zero); font: 500 .75rem/1.9 var(--mono); color: var(--muted); }
+nav.index li a:hover { background: var(--panel); }
+nav.index li a.on { background: var(--accent); color: var(--accent-ink); }
+nav.index li a.on::before { color: inherit; }
+.ver { font-size: .78rem; color: var(--muted); }
+
+main { min-width: 0; display: flex; flex-direction: column; gap: 3.5rem; }
+header.lead { border-bottom: 3px solid var(--fg); padding-bottom: 1.5rem; display: flex; flex-direction: column; gap: .75rem; }
+.eyebrow { font: 600 .8rem/1 var(--display); letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+h1 { font: 800 clamp(2.4rem, 6vw, 3.6rem)/1 var(--display); text-transform: uppercase; letter-spacing: .02em; margin: 0; text-wrap: balance; }
+.lead p { margin: 0; max-width: 62ch; font-size: 1.08rem; }
+section { display: flex; flex-direction: column; gap: 1rem; }
+section > h2 { font: 800 1.9rem/1.1 var(--display); text-transform: uppercase; letter-spacing: .03em; margin: 0; display: flex; align-items: baseline; gap: .75rem; text-wrap: balance; }
+section > h2 .n { font: 500 .85rem/1 var(--mono); color: var(--accent); }
+h3 { font: 600 1.25rem/1.2 var(--display); letter-spacing: .04em; text-transform: uppercase; margin: .75rem 0 0; }
+h4 { font: 600 1rem/1.2 var(--display); letter-spacing: .04em; text-transform: uppercase; margin: .75rem 0 0; }
+p, ul, ol.steps { margin: 0; max-width: 68ch; }
+ul, ol.steps { padding-left: 1.25rem; display: flex; flex-direction: column; gap: .35rem; }
+strong { font-weight: 700; }
+code, .coord { font: 500 .86em/1.4 var(--mono); background: var(--code-bg); padding: .1em .35em; border-radius: 3px; white-space: nowrap; }
+.coord { font-variant-numeric: tabular-nums; }
+
+.note { border-left: 4px solid var(--accent); background: var(--panel); padding: .8rem 1rem; max-width: 68ch; }
+.note.warn { border-color: var(--danger); }
+.note p + p { margin-top: .4rem; }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 4px; }
+table { border-collapse: collapse; width: 100%; font-size: .92rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: .5rem .75rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 600 .8rem/1.3 var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: var(--panel); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.num { text-align: right; white-space: nowrap; }
+th.num { text-align: right; }
+.grid-pat { font: 500 .82rem/1.25 var(--mono); white-space: pre; display: inline-block; background: var(--code-bg); padding: .25rem .45rem; border-radius: 3px; }
+
+.steps-list { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; counter-reset: st; max-width: 68ch; }
+.steps-list li { counter-increment: st; display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: .75rem; }
+.steps-list li::before { content: counter(st); font: 800 1.4rem/1.6rem var(--display); color: var(--accent-ink); background: var(--accent); text-align: center; border-radius: 3px; height: 1.6rem; }
+.steps-list b { display: block; }
+
+.tex { width: 32px; height: 32px; image-rendering: pixelated; vertical-align: middle; margin-right: .5rem; flex: none; }
+td .tex { margin-block: -.4rem; }
+.empty { display: none; color: var(--muted); }
+section.hide { display: none; }
+
+/* Paged wiki: one page shows at a time; while searching, every matching page shows. */
+main > section { display: none; }
+main > section.current { display: flex; }
+body.searching main > section.hit { display: flex; }
+body.searching #pager { display: none; }
+nav.index li.group { font: 600 .72rem/1 var(--display); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); padding: .9rem .5rem .3rem; }
+nav.index li.group:first-child { padding-top: 0; }
+.soon { display: flex; justify-content: space-between; gap: .5rem; padding: .3rem .5rem; font-size: .92rem; color: var(--muted); }
+.soon em { font: normal 600 .68rem/1.8 var(--display); letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--rule); border-radius: 3px; padding: 0 .35rem; }
+.pager { display: flex; justify-content: space-between; gap: 1rem; border-top: 1px solid var(--rule); padding-top: 1.25rem; }
+.pager a { display: flex; flex-direction: column; gap: .15rem; padding: .6rem .9rem; border: 1px solid var(--rule); border-radius: 4px; color: var(--fg); text-decoration: none; max-width: 48%; }
+.pager a:hover { border-color: var(--accent); }
+.pager a.next { margin-left: auto; text-align: right; }
+.pager small { font: 600 .72rem/1 var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+
+/* Visual aids: weapon cards with stat meters, figures drawn in SVG with the page tokens. */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: .75rem; max-width: 68rem; }
+.card { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: .85rem; display: flex; flex-direction: column; gap: .55rem; }
+.card-head { display: flex; align-items: center; gap: .65rem; }
+.card-head img { width: 48px; height: 48px; image-rendering: pixelated; flex: none; background: var(--bg); border-radius: 3px; padding: 4px; }
+.card-head b { display: block; font: 600 1.1rem/1.1 var(--display); letter-spacing: .04em; text-transform: uppercase; }
+.card-head small { color: var(--muted); font-size: .85rem; }
+.card p { font-size: .9rem; }
+.card p.get { margin-top: auto; color: var(--muted); font-size: .85rem; }
+.card p.get b { color: var(--fg); }
+.card p .tex { width: 24px; height: 24px; margin: -.2rem .3rem 0 0; }
+.meter { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr) 4.6rem; align-items: center; gap: .5rem; font-size: .82rem; }
+.meter > span:first-child { color: var(--muted); }
+.meter > span:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+.track { height: 8px; background: var(--code-bg); border-radius: 4px; position: relative; }
+.track i { position: absolute; inset: 0 auto 0 0; background: var(--accent); border-radius: 4px; }
+.track i.loud { background: var(--muted); }
+.track i.ink { background: var(--fg); opacity: .7; }
+.track i.far { background: var(--danger); }
+.track u { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--fg); opacity: .55; }
+.shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: .9rem; max-width: 68rem; }
+.shots img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--rule); border-radius: 4px; background: var(--panel); }
+.shots figcaption b { color: var(--fg); }
+figure { margin: 0; max-width: 68rem; display: flex; flex-direction: column; gap: .5rem; }
+figcaption { font-size: .85rem; color: var(--muted); max-width: 68ch; }
+.fig { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: .85rem; overflow-x: auto; }
+.fig svg { display: block; width: 100%; min-width: 480px; max-width: 680px; margin-inline: auto; height: auto; font: 13px var(--body); }
+.fig svg text { fill: var(--fg); }
+.fig svg .mut { fill: var(--muted); }
+.noise { display: grid; gap: .35rem; min-width: 300px; }
+.noise .meter { grid-template-columns: 11.5rem minmax(0, 1fr) 4.5rem; font-size: .88rem; }
+.noise .meter > span:first-child { color: var(--fg); }
+.noise .track { height: 12px; border-radius: 0 4px 4px 0; }
+.noise .track i { border-radius: 0 4px 4px 0; }
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.flow .st { border: 2px solid var(--accent); border-radius: 4px; padding: .45rem .7rem; background: var(--bg); }
+.flow .st b { display: block; font: 600 1rem/1.1 var(--display); letter-spacing: .06em; text-transform: uppercase; }
+.flow .st small { color: var(--muted); font-size: .8rem; }
+.flow .st.dark { border-color: var(--danger); }
+.flow .st.dark b { color: var(--danger); }
+.flow .arrow { color: var(--muted); font-size: .8rem; text-align: center; max-width: 10rem; }
+.flow .arrow::after { content: "→"; display: block; font-size: 1.3rem; line-height: 1; color: var(--fg); }
+.flow-back { margin-top: .6rem; font-size: .88rem; border-top: 1px dashed var(--rule); padding-top: .5rem; }
+.legend { display: flex; flex-wrap: wrap; gap: .4rem 1rem; font-size: .82rem; color: var(--muted); }
+.legend span::before { content: ""; display: inline-block; width: 14px; height: 0; border-top: 3px solid var(--accent); vertical-align: middle; margin-right: .35rem; }
+.legend span.dash::before { border-top: 3px dashed var(--muted); }
+.legend span.sw-f::before { height: 10px; border: 0; background: var(--accent); opacity: .25; }
+.legend span.sw-b::before { height: 10px; border: 0; background: var(--danger); opacity: .25; }
+
+@media (max-width: 860px) {
+	.shell { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding-block: 1rem 3rem; }
+	nav.index { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: .6rem; border-bottom: 1px solid var(--rule); gap: .5rem; }
+	.brand { font-size: 1.4rem; } .brand small, .ver { display: none; }
+	nav.index ol { flex-direction: row; overflow-x: auto; gap: .25rem; padding-bottom: .2rem; }
+	nav.index li a { white-space: nowrap; font-size: .85rem; }
+	nav.index li a::before { display: none; }
+	nav.index li.group, .soon { display: none; }
+	html { scroll-padding-top: 150px; }
+}
+</style>
+
+<div class="shell">
+<nav class="index" aria-label="Sections">
+	<div class="brand">Ash<span>fall</span><small>Player field manual</small></div>
+	<input id="q" type="search" placeholder="Search the manual…" aria-label="Search the manual">
+	<ol>
+		<li class="group">Starting out</li>
+		<li><a href="#home">Home</a></li>
+		<li><a href="#start">Getting started</a></li>
+		<li><a href="#survival">Survival basics</a></li>
+		<li><a href="#mission">The mission: relight Asheville</a></li>
+		<li><a href="#map">Map and landmarks</a></li>
+		<li class="group">Gearing up</li>
+		<li><a href="#finding">Where to find things</a></li>
+		<li><a href="#recipes">Key recipes</a></li>
+		<li><a href="#blasters">Weapons and ammo</a></li>
+		<li><a href="#armour">Armour</a></li>
+		<li><a href="#bases">Bases and co-op</a></li>
+		<li><a href="#survivors">Survivors</a></li>
+		<li class="group">Threats</li>
+		<li><a href="#alive">Infection, hordes and specials</a></li>
+		<li class="group">Endgame</li>
+		<li><a href="#districts">Reclaiming districts</a></li>
+		<li><a href="#bosses">Bosses and crystals</a></li>
+		<li><a href="#upgrades">Attachments</a></li>
+		<li><a href="#finale">The Black Start and endings</a></li>
+		<li><a href="#admin">Co-op and server admin</a></li>
+		<li class="group">Reference</li>
+		<li><a href="#stats">Block and item stats</a></li>
+		<li><a href="#all-recipes">All recipes</a></li>
+	</ol>
+	<p class="ver">Written for Ashfall 10.3.1, Minecraft 26.3 Fabric.</p>
+</nav>
+
+<main>
+<p class="empty" id="empty">Nothing in the manual matches that search.</p>
+<section id="home">
+	<header class="lead">
+		<div class="eyebrow">Asheville has gone dark</div>
+		<h1>Ashfall Field Manual</h1>
+		<p>Ashfall is a zombie-survival modpack for Minecraft 26.3. A crashed vessel, the Wreck, brought a virus and strange energy technology to Asheville. You start in a safehouse on the edge of the dead city. Your goal is to scavenge, arm up, retake the city one district at a time and turn the power back on.</p>
+	</header>
+	<h3>How to use this manual</h3>
+	<p>The pages run in the order you'll need them: starter pages first, endgame last. Use the sidebar or the Previous and Next buttons at the bottom of each page. The search box looks through every page.</p>
+	<h3>Your first ten minutes</h3>
+	<ol class="steps-list">
+		<li><div><b><img class="tex" src="img/field_radio.png" alt="" width="32" height="32">Get the Field Radio.</b> Upstairs in the safehouse radio room. See <a href="#start">Getting started</a>.</div></li>
+		<li><div><b>Learn what attracts zombies.</b> Noise, light and blood. See <a href="#survival">Survival basics</a>.</div></li>
+		<li><div><b><img class="tex" src="img/spark_pistol.png" alt="" width="32" height="32">Build a Spark Blaster.</b> Scrap Metal, Scrap Electronics, Duct Tape and an Alloy Plate. See <a href="#recipes">Key recipes</a>.</div></li>
+		<li><div><b>Follow the objective line.</b> It sits above your hotbar and always shows your next step.</div></li>
+	</ol>
+	<h3>What's in the manual</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Stage</th><th>Pages</th></tr>
+		<tr><td>Starting out</td><td><a href="#start">Getting started</a>, <a href="#survival">Survival basics</a>, <a href="#mission">The mission</a>, <a href="#map">Map and landmarks</a></td></tr>
+		<tr><td>Gearing up</td><td><a href="#finding">Where to find things</a>, <a href="#recipes">Key recipes</a>, <a href="#blasters">Weapons and ammo</a>, <a href="#armour">Armour</a>, <a href="#bases">Bases and co-op</a></td></tr>
+		<tr><td>Threats</td><td><a href="#alive">Infection, hordes and specials</a></td></tr>
+		<tr><td>Endgame</td><td><a href="#districts">Reclaiming districts</a>, <a href="#bosses">Bosses and crystals</a>, <a href="#upgrades">Attachments</a>, <a href="#finale">The Black Start and endings</a>, <a href="#admin">Co-op and server admin</a></td></tr>
+		<tr><td>Reference</td><td><a href="#stats">Block and item stats</a>, <a href="#all-recipes">All recipes</a></td></tr>
+	</table></div>
+</section>
+
+<section id="start">
+	<h2>Getting started</h2>
+	<p>You spawn in the front hall of the <strong>Montford safehouse</strong> at <span class="coord">-152, -792</span>. It is a safe zone: nothing spawns inside and zombies can't break in.</p>
+	<ol class="steps-list">
+		<li><div><b>Go upstairs to the radio room.</b> Take the stairs in the north-west corner up one floor. The radio room is the north-east room. The cache chest sits against its south wall, under the desk corner. Everyone gets their own copy.</div></li>
+		<li><div><b><img class="tex" src="img/field_radio.png" alt="" width="32" height="32">Take the Field Radio and read the notes.</b> The chest also holds the Survivor's Notes and 1–3 supplies. Right-click the radio for the grid report and to turn on the Grid HUD.</div></li>
+		<li><div><b>Raid the pharmacy next door.</b> It is two chunks east, at <span class="coord">-120, -792</span>, outside the safe zone. Look for bandages, batteries and sometimes antibiotics.</div></li>
+		<li><div><b>Get clean water.</b> Fill a bottle at any river or pond, then cook the Dirty Water in a furnace or campfire. Never drink it raw if you can help it.</div></li>
+		<li><div><b>Be indoors and dark by nightfall.</b> Darkness spawns more zombies, and they follow light and noise.</div></li>
+	</ol>
+	<h3>Controls</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Key</th><th>What it does</th></tr>
+		<tr><td>Right-click with a blaster</td><td>Fire. The Pulse Carbine and Storm Repeater keep firing while held.</td></tr>
+		<tr><td><code>R</code></td><td>Reload with the fullest matching Cell Pack in your inventory.</td></tr>
+		<tr><td><code>G</code></td><td>Grid Map: districts, the safehouse, substations, the Wreck, your Bunker and tuned relays.</td></tr>
+		<tr><td>Sneak with an Optic</td><td>Aim down the scope: 4× zoom, or 7× on the Lancer. Scroll switches to half zoom.</td></tr>
+		<tr><td>Sneak + right-click the radio</td><td>Just your objective and the way home.</td></tr>
+		<tr><td><code>/ashfall mission</code></td><td>The full checklist. <code>/ashfall mission book</code> replaces a lost briefing book.</td></tr>
+	</table></div>
+	<div class="note"><p><strong>Montford is gentle for the first 3 days.</strong> Fewer zombies spawn there, so use the time to loot the nearby houses for cloth, scrap, duct tape, electronics, batteries, food and water.</p></div>
+</section>
+
+<section id="survival">
+	<h2>Survival basics</h2>
+	<p>Zombies hunt with their senses. They react to <strong>noise</strong>, <strong>light</strong> and <strong>blood</strong>, and walk over to investigate whatever they notice. Staying quiet and dark keeps you alive.</p>
+	<h3>Noise</h3>
+	<div class="table-wrap"><table>
+		<tr><th>What you do</th><th class="num">Heard from (blocks)</th></tr>
+		<tr><td>Open or close a door, gate or trapdoor</td><td class="num">10</td></tr>
+		<tr><td>Break a block</td><td class="num">12</td></tr>
+		<tr><td>Open a container</td><td class="num">6</td></tr>
+		<tr><td>Eat or drink</td><td class="num">4</td></tr>
+		<tr><td>Sprint</td><td class="num">8 (less in Scavenger armour)</td></tr>
+		<tr><td>An arrow or thrown item lands</td><td class="num">8</td></tr>
+		<tr><td>Fire a blaster</td><td class="num">24 (Spark) to 64 (Lancer, Storm)</td></tr>
+		<tr><td>A Power Relay charging (every 2 s)</td><td class="num">48</td></tr>
+		<tr><td>An explosion</td><td class="num">96</td></tr>
+	</table></div>
+	<p>A Dampener on a blaster cuts its noise to 40%.</p>
+	<h3>Light</h3>
+	<ul>
+		<li><strong>At night,</strong> standing in or holding light of level 7 or more lets zombies notice you from 4 blocks per light level. A torch in your hand is seen from about 56 blocks.</li>
+		<li><strong>By day,</strong> only a bright room (level 10 or more, indoors) gives you away, and from less than a third as far.</li>
+		<li><strong>A zombie must see the light.</strong> Light behind a solid wall does nothing.</li>
+		<li><strong>Blackout curtains:</strong> wool, carpets, wool slabs and stairs, banners, closed doors and closed trapdoors all block a zombie's view. Glass does not. Hang wool over the windows of a lit room.</li>
+		<li><strong>Light only matters near players.</strong> Lamps in an empty base attract nothing.</li>
+	</ul>
+	<h3>Light burns out</h3>
+	<ul>
+		<li><strong>Torches</strong> you place last about 12 minutes, then go dark: a burnt-out torch is a charred stick with no light, so zombies see nothing either. Torches that came with the world never burn out, and nor do soul torches, copper torches or the one in your hand.</li>
+		<li><strong>Relight</strong> a burnt-out torch with Matches (8 uses), <img class="tex" src="img/lighter_fluid.png" alt="" width="32" height="32"><strong>Lighter Fluid</strong> (16 uses) or flint and steel: one use, another 12 minutes. Both salvage starters also light campfires, and Lighter Fluid still works as furnace fuel. Break a burnt-out torch for a stick.</li>
+		<li><strong>Campfires</strong> last about 5 minutes, or 10 with extra fuel. Rain puts them out.</li>
+		<li><strong>Electric lights last forever:</strong> lanterns and redstone lamps, crafted with Scrap Electronics. Use them in your base.</li>
+	</ul>
+	<h3>Blood</h3>
+	<p>At half health or below you leave a blood trail that zombies can follow. Heal up before you head home.</p>
+	<h3>Water and thirst</h3>
+	<p>The droplets above your hunger bar are your thirst. It drains 1.5× faster than hunger, faster still in hot biomes. At 3 droplets or fewer you stop healing, and at 0 you can't sprint and start taking damage.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Drink</th><th class="num">Thirst</th><th>Risk</th></tr>
+		<tr><td><img class="tex" src="img/bottled_water.png" alt="" width="32" height="32"><strong>Bottled Water</strong></td><td class="num">+8</td><td>None. You keep the bottle</td></tr>
+		<tr><td><strong>Dirty Water</strong></td><td class="num">+5</td><td>40% chance of nausea and an 8% chance of infection</td></tr>
+	</table></div>
+	<ul>
+		<li>Fill a glass bottle at any river or pond to get Dirty Water, then <strong>cook it</strong> in a furnace, smoker or campfire to make it clean.</li>
+		<li><img class="tex" src="img/rain_collector.png" alt="" width="32" height="32"><strong>Rain Collector</strong> (6 Scrap Metal, 2 Duct Tape, 1 Glass Shard): put empty glass bottles in, and while rain falls on it, it fills one with clean Bottled Water every minute. It holds 4. Empty hand takes the water out. <strong>It only goes inside your Bunker Core's area.</strong></li>
+		<li>Once River Arts is reclaimed, water from inside reclaimed districts comes up clean.</li>
+	</ul>
+	<h3>Where zombies come from</h3>
+	<ul>
+		<li><strong>The dark.</strong> The darker a spot, the more zombies spawn there, out of sight. Dark interiors stay dangerous even by day.</li>
+		<li><strong>Buildings.</strong> Each building has its own population, which spawns the first time someone comes near. Cleared buildings stay empty for 7 in-game days.</li>
+		<li><strong>Never</strong> inside claims (the safehouse, your Bunker Core area, reclaimed compounds) or within 16 blocks of your bed.</li>
+		<li>Only zombies spawn as hostile mobs: no creepers, skeletons, spiders or phantoms. Animals are normal.</li>
+	</ul>
+	<div class="table-wrap"><table>
+		<tr><th>Zombie</th><th>From day</th><th>Notes</th></tr>
+		<tr><td>Walker</td><td>1</td><td>20 HP, slow</td></tr>
+		<tr><td>Runner</td><td>7</td><td>14 HP, fast</td></tr>
+		<tr><td>Armoured</td><td>16</td><td>Police or worker gear; may wear Riot armour</td></tr>
+		<tr><td>Husk and Drowned</td><td>1</td><td>Drowned only in water</td></tr>
+		<tr><td>Patient</td><td>Hospitals and Mission</td><td>Bites infect far more often; may wear Hazmat</td></tr>
+	</table></div>
+	<p>Six special infected join from day 5. Zombies get tougher slowly: new types, bigger hordes and harder sieges come over about 90 days. See <a href="#alive">Infection, hordes and specials</a>.</p>
+	<h3>Zombies break and build</h3>
+	<ul>
+		<li>Zombies break blocks to reach you and pillar up with blocks of their own.</li>
+		<li><strong>Fortified</strong> blocks slow them down: Reinforced Planks, Barricades, Reinforced Doors, iron blocks, iron bars, iron and copper doors and trapdoors, and obsidian. Zombies can't break these outright. Their hits <strong>wear them down</strong> until the block gives way to a weaker one, which they then break as usual (see <a href="#wear">Wear and repair</a>). Bosses break fortified blocks outright. The Bunker Core never wears.</li>
+		<li>Broken blocks grow back after about 1.5 in-game days. Blocks zombies place vanish after 5 minutes.</li>
+	</ul>
+	<h3 id="bags">Bags</h3>
+	<p>There are two kinds of bag: a small <strong>Satchel</strong> you can sew yourself, and big <strong>Traveler's Backpacks</strong> you can only find.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Bag</th><th>How to get it</th><th>What it does</th></tr>
+		<tr><td><img class="tex" src="img/satchel.png" alt="" width="32" height="32"><strong>Satchel</strong></td><td>Craft: 5 Cloth, 1 Duct Tape, 1 String (<code>_S_ / CTC / CCC</code>). Sometimes found in homes, shops and schools</td><td>9 slots. Right-click to open</td></tr>
+		<tr><td><strong>Traveler's Backpack</strong></td><td>Loot only</td><td>Much more storage, fluid tanks and a sleeping bag. Can be worn on your back</td></tr>
+	</table></div>
+	<h4>Satchel</h4>
+	<ul>
+		<li><strong>Right-click</strong> to open it, from either hand. Hover over it to see what's inside.</li>
+		<li><strong>Contents stay in the bag.</strong> If you die, it drops with everything still inside, so you can pick it all back up in one go.</li>
+		<li><strong>No bags in bags.</strong> A Satchel won't take another Satchel, a shulker box or a Traveler's Backpack.</li>
+		<li>While it's open, the Satchel itself can't be moved, swapped or dropped.</li>
+		<li>Carry a few: each one is 9 extra slots for one inventory slot.</li>
+	</ul>
+	<h4>Traveler's Backpacks</h4>
+	<ul>
+		<li><strong>They can't be crafted.</strong> The basic backpack recipe is switched off, so the first one has to be found.</li>
+		<li><strong>Once you have one,</strong> the usual upgrades and themed versions still craft from it.</li>
+	</ul>
+	<div class="table-wrap"><table>
+		<tr><th>Where to look</th><th>Chance per container</th></tr>
+		<tr><td>Gyms, schools, hotels, stations, warehouses, police and fire stations</td><td>About 2%</td></tr>
+		<tr><td>Homes and other buildings</td><td>About 1%</td></tr>
+		<tr><td>Police armory</td><td>About 3%</td></tr>
+		<tr><td>Breach supply caches</td><td>Sometimes, as a reward</td></tr>
+	</table></div>
+	<p>Opening containers makes noise, so a backpack hunt through a big building can pull a crowd. Clear it first.</p>
+	<h3 id="bikes">Bicycles</h3>
+	<ul>
+		<li><img class="tex" src="img/bicycle.png" alt="" width="32" height="32"><strong>Can't be crafted.</strong> Look for one leaning against a building wall on a city street. They're rare.</li>
+		<li><strong>Ride it like a horse, no saddle needed:</strong> right-click to get on, steer with the mouse, <code>W</code> to pedal, <code>S</code> to back up slowly, sneak to get off.</li>
+		<li>Faster than sprinting and <strong>silent</strong>. It climbs kerbs and single steps but can't jump, and it's slow in water.</li>
+		<li><strong>Sneak + right-click</strong> (or hit it) to pick it up. Right-click a block with it to put it down again.</li>
+	</ul>
+	<h3 id="supply">Supply drops</h3>
+	<ul>
+		<li>Every 2 or 3 days, in the morning, chat announces a <strong>supply drop</strong> near one of 12 set points across the four districts. A green bar counts down <strong>10 minutes</strong>.</li>
+		<li>The crate lands when you get within about 100 blocks: loudly, with <strong>6 to 10 zombies</strong> around it. Smoke rises from it.</li>
+		<li>Inside: a charged Cell Pack or Energy Cell, food, water, bandages, parts, Arc Charges, and sometimes antibiotics, an attachment or a Grid Coupler.</li>
+		<li><strong>Miss the deadline and it's lost.</strong> The Field Radio shows the distance, direction and time left.</li>
+	</ul>
+	<h3 id="radio-jobs">Radio jobs</h3>
+	<p>Build a <strong>Shortwave Set</strong> (recipe on <a href="#recipes">Key recipes</a>) and put it in your base. From day 2, every morning it picks up <strong>2 calls</strong> about real buildings 150 to 600 blocks from a set. Right-click the set to hear them, and click <strong>[Accept]</strong> to take one. One job runs at a time, shared by the whole server, and you have <strong>one day</strong> to finish it.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Call</th><th>What you find</th><th>Done when</th></tr>
+		<tr><td><strong>Supplies</strong></td><td>A chest of supplies on the ground floor of a pharmacy, grocery, shop, house or workshop</td><td>You open the chest</td></tr>
+		<tr><td><strong>Nest</strong></td><td>A pack of zombies (7 to 15, more in harder districts) inside a school, office block, hotel or warehouse</td><td>Every one is dead. A reward chest then appears on the ground floor</td></tr>
+		<tr><td><strong>Distress call</strong></td><td>A red Distress Beacon on the top floor of a hotel, office block or house. It's loud: zombies hear it 40 blocks away</td><td>You stay within 6 blocks of the beacon for <strong>60 seconds</strong> while zombies come up the stairs. It turns into a reward chest, and the caller leaves a note. From day 7 the caller often comes with you: see <a href="#survivors">Survivors</a></td></tr>
+	</table></div>
+	<ul>
+		<li><strong>Rewards</strong> are food, water, bandages and parts, plus Cell Packs and attachments for nests and distress calls. Jobs in Downtown, the Mission and the ridge pay more.</li>
+		<li>The <strong>HUD line</strong> under your objective and an aqua diamond on the Grid Map point to the job. The Field Radio shows its distance, direction and time left.</li>
+		<li>Unanswered calls go quiet the next morning. A job that runs out of time is lost, and anything it left behind disappears.</li>
+	</ul>
+	<h3 id="graffiti">Graffiti marks</h3>
+	<p>Craft a <strong>Spray Can</strong> (2 Scrap Metal and any dye, 32 sprays) and mark walls for yourself and your party. Right-click the side of a block to spray; spraying over a mark replaces it. Sneak and right-click to change the symbol. Floors and ceilings can't be marked.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Symbol</th><th>Colour</th></tr>
+		<tr><td><strong>Cleared</strong></td><td>Green</td></tr>
+		<tr><td><strong>Danger</strong></td><td>Red</td></tr>
+		<tr><td><strong>Loot</strong></td><td>Yellow</td></tr>
+		<tr><td><strong>Safehouse</strong></td><td>Blue</td></tr>
+		<tr><td><strong>Arrows</strong> (up, down, left, right)</td><td>White</td></tr>
+	</table></div>
+	<ul>
+		<li><strong>Cleared marks keep watch.</strong> Spray one on a building that still has zombies inside and it gets an orange "?", with "You hear movement inside". It turns plain once the building is cleared, and greys out when the building refills after its 7 days.</li>
+		<li><strong>On the Grid Map</strong> (<code>G</code>), your Cleared, Danger, Loot and Safehouse marks show as small symbols, along with your party's. Hover one to read it.</li>
+		<li>A mark breaks with one hit, drops nothing, makes no noise and doesn't block anything.</li>
+	</ul>
+	<h3>Quiet weapons</h3>
+	<p>Guns are loud, but melee makes no noise at all. The scrap melee weapons, the Nail Launcher, the Bottle Lure and the Arc Charge are on <a href="#quiet">Weapons and ammo</a>.</p>
+	<h3>Sleeping</h3>
+	<p><strong>You can only sleep at home:</strong> beds (and backpack sleeping bags) work only inside your own or your party's Bunker Core claim. Anywhere else, safe zones included, the bed refuses and doesn't set your respawn point; with no core you can't sleep at all. A host can turn this off with <code>/gamerule ashfall:bunker_beds_only false</code>. At home, beds work as normal at night when no zombie is near, and set your respawn point. Sleeping counts as a day survived, so new threats arrive sooner. You can't sleep on a horde night or while a district siege is set for tonight.</p>
+	<ul>
+		<li><strong>Sleeping costs water and food.</strong> You wake up 3 droplets thirstier and 2 shanks hungrier, as if you'd stayed up all night.</li>
+		<li><strong>You can't sleep while you're thirsty or hungry:</strong> a bed refuses you with less than 3.5 droplets or 3.5 shanks left. Drink and eat before bed.</li>
+		<li>Lying down and getting up again (to set your respawn point) costs nothing. Only a night actually skipped does.</li>
+	</ul>
+</section>
+
+<section id="mission">
+	<h2>The mission: relight Asheville</h2>
+	<p>The objective line above your hotbar always names your next step with its distance and direction. The full chain:</p>
+	<ol class="steps-list">
+		<li><div><b>Find the Field Radio</b> in the safehouse radio room.</div></li>
+		<li><div><b>Arm yourself</b> with a Spark or Volt Blaster and a Cell Pack. See <a href="#recipes">Key recipes</a>.</div></li>
+		<li><div><b>Optional: place a Bunker Core</b> to claim a home base.</div></li>
+		<li><div><b>Reclaim four districts</b>, in any order. River Arts first is easiest; leave Mission for last.</div></li>
+		<li><div><b>Collect 3 Resonance Crystals</b> from the three story bosses, or from crash sites.</div></li>
+		<li><div><b>Craft the Grid Uplink</b> and run the <b>Black Start</b> finale at the Wreck hull.</div></li>
+		<li><div><b>Vote Sever or Bind</b>, then keep playing in the relit city.</div></li>
+	</ol>
+	<h3>Reclaiming a district</h3>
+	<p>The short version is below. Full details, siege tables and rewards are on <a href="#districts">Reclaiming districts</a>.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Step</th><th>What to do</th></tr>
+		<tr><td>1. Repair</td><td>Right-click the district's Substation Core with <strong>4 Grid Couplers</strong>.</td></tr>
+		<tr><td>2. Energize</td><td>Load <strong>4 fully charged Energy Cells</strong>, then hold the core for 5 minutes, staying within 32 blocks. It hums loudly and draws zombies, so fortify the doors first.</td></tr>
+		<tr><td>3. Link relays</td><td>Right-click the district's <strong>6 key Power Relays</strong> with a Grid Coupler. It isn't used up. The radio points to the nearest one.</td></tr>
+		<tr><td>4. Siege</td><td>At the next nightfall, waves attack the core. Clear them all, or keep players near the core until dawn.</td></tr>
+	</table></div>
+	<div class="note"><p><strong>Losing a siege costs time, not the district.</strong> You keep the couplers and relay links, but must load 4 fresh cells and redo the hold.</p></div>
+	<h3>The finale</h3>
+	<p>With all four districts reclaimed the Wreck hull opens. The Grid Uplink takes 3 Resonance Crystals, 4 Focusing Lenses, 8 Grid Couplers and 16 Energy Cells in total. Bring at least 16 more charged cells for the fight itself.</p>
+</section>
+
+<section id="map">
+	<h2>Map and landmarks</h2>
+	<p>Downtown sits at the centre of the map, <span class="coord">0, 0</span>. These buildings are in the same place in every world. Press <code>F3</code> for your coordinates.</p>
+	<p>City streets sit at two heights at most, one 6-block step apart, so you can walk across town without climbing cliffs. Hills still rise outside the city.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Landmark</th><th>District</th><th class="num">X, Z</th><th>From the safehouse</th></tr>
+		<tr><td><strong>Safehouse</strong> (spawn, Field Radio)</td><td>Montford</td><td class="num"><span class="coord">-152, -792</span></td><td>–</td></tr>
+		<tr><td><strong>Pharmacy</strong></td><td>Montford</td><td class="num"><span class="coord">-120, -792</span></td><td>Next door, east</td></tr>
+		<tr><td><strong>Police station</strong> (armory cache)</td><td>Downtown</td><td class="num"><span class="coord">-48, 24</span></td><td>~820 blocks south</td></tr>
+		<tr><td>Downtown substation</td><td>Downtown</td><td class="num"><span class="coord">64, -16</span></td><td>~800 blocks south</td></tr>
+		<tr><td><strong>Kiln &amp; Co. Salvage</strong> (Abomination)</td><td>River Arts</td><td class="num"><span class="coord">-944, 128</span></td><td>~1,200 blocks south-west</td></tr>
+		<tr><td>River Arts substation</td><td>River Arts</td><td class="num"><span class="coord">-864, 80</span></td><td>~1,100 blocks south-west</td></tr>
+		<tr><td>South Slope substation</td><td>South Slope</td><td class="num"><span class="coord">96, 800</span></td><td>~1,600 blocks south</td></tr>
+		<tr><td><strong>Hospital</strong> (Patient Zero)</td><td>Mission</td><td class="num"><span class="coord">728, 640</span></td><td>~1,700 blocks south-east</td></tr>
+		<tr><td>Mission substation</td><td>Mission</td><td class="num"><span class="coord">784, 640</span></td><td>Next to the hospital</td></tr>
+		<tr><td><strong>Wreck hull</strong> (Juggernaut, finale)</td><td>Beaucatcher ridge</td><td class="num"><span class="coord">2300, -100</span></td><td>Far east</td></tr>
+	</table></div>
+	<ul>
+		<li><strong>Districts by danger:</strong> Montford (start), River Arts and South Slope (tier 2), Downtown (tier 3), Mission (tier 4), the ridge past x 1700 (tier 5).</li>
+		<li><strong>Crash sites</strong> are scattered across the wasteland and the ridge, more than 1.6 km from Downtown.</li>
+		<li>Ordinary police stations, workshops, offices and shops are generated randomly, so they differ between worlds (see <a href="#buildings">Building types</a>). Only the Downtown police station has the armory cache.</li>
+	</ul>
+</section>
+
+<section id="finding">
+	<h2>Where to find things</h2>
+	<p>Building type decides the loot. Containers refill with new rolls about a week after they were opened, as long as nobody has been nearby. Percentages are the chance that one container has the item.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Item</th><th>Best sources</th></tr>
+		<tr><td><img class="tex" src="img/weapon_parts.png" alt="" width="32" height="32"><strong>Weapon Parts</strong></td><td>Kiln &amp; Co. office ~51%, police armory ~45%, police stations ~14%, workshops ~13%, town halls ~9%, supply drops ~50%. Also crash sites ~35%, bosses, district rewards. No recipe</td></tr>
+		<tr><td><img class="tex" src="img/antibiotics.png" alt="" width="32" height="32"><strong>Antibiotics</strong></td><td>Hospital cache ~60%, hospitals ~29%, pharmacies ~16%, clinics ~13%, homes ~2%. Also Patient Zero, horde drops and the Mission reward. No recipe</td></tr>
+		<tr><td><img class="tex" src="img/wire_spool.png" alt="" width="32" height="32"><strong>Wire Spools</strong></td><td>Homes, shops, offices, workshops, warehouses and electronics stores. Or craft from Scrap Electronics</td></tr>
+		<tr><td><img class="tex" src="img/scrap_metal.png" alt="" width="32" height="32"><strong>Scrap Metal</strong></td><td>Almost every building, horde drops and special infected</td></tr>
+		<tr><td><img class="tex" src="img/cell_pack_standard.png" alt="" width="32" height="32"><strong>Charged Cell Packs</strong></td><td>Rare. Small in homes, shops, offices and stations. Standard in electronics stores and warehouses. All three in police stations</td></tr>
+		<tr><td><img class="tex" src="img/energy_cell.png" alt="" width="32" height="32"><strong>Energy Cells</strong></td><td>Craft them. Brutes drop one 50% of the time, screamers 30%, bloated 8%</td></tr>
+		<tr><td><img class="tex" src="img/focusing_lens.png" alt="" width="32" height="32"><strong>Focusing Lenses</strong></td><td>Crash sites (70%), electronics stores, museums, the police armory, the South Slope reward, the Wreck hull, Patient Zero and the Juggernaut</td></tr>
+		<tr><td><img class="tex" src="img/resonance_crystal.png" alt="" width="32" height="32"><strong>Resonance Crystals</strong></td><td>One guaranteed from each story boss. Crash sites 5%</td></tr>
+		<tr><td><strong>Street loot</strong></td><td>Dumpsters (barrels) and street crates (chests) stand on about 1 in 8 city streets. Dumpsters are mostly junk and salvage; crates have food, water, tools and sometimes a Cell Pack. Each is a one-time find</td></tr>
+		<tr><td><img class="tex" src="img/bicycle.png" alt="" width="32" height="32"><strong>Bicycles</strong></td><td>Only found, never crafted: leaning against building walls on city streets. See <a href="#bikes">Bicycles</a></td></tr>
+		<tr><td><strong>Backpacks</strong></td><td>Traveler's Backpacks can't be crafted, only found (see <a href="#bags">Bags</a>): gyms, schools, hotels, stations, warehouses, police and fire stations ~2%, homes ~1%, the police armory, and Breach supply caches. Once you have one, the usual upgrades and themed versions still craft from it. The small <strong>Satchel</strong> (9 slots) is craftable and sometimes found in homes, shops and schools</td></tr>
+		<tr><td><img class="tex" src="img/glass_shard.png" alt="" width="32" height="32"><strong>Glass</strong></td><td>Break windows for Glass Shards, or smelt sand from riverbanks</td></tr>
+		<tr><td>Redstone</td><td>Offices, electronics stores, or mining deep underground. Only needed to power lamps now</td></tr>
+		<tr><td><img class="tex" src="img/arc_charge.png" alt="" width="32" height="32"><strong>Arc Charges</strong></td><td>Craft them (2 at a time). Supply drops ~20%, Strongboxes tier 2 and up ~5%, police stations ~3%</td></tr>
+	</table></div>
+	<h3 id="buildings">Building types</h3>
+	<p>Big buildings that span several chunks always have the same type: a factory is a workshop, a town hall is a government building, and so on. Ordinary one-chunk buildings take their type from the district they stand in, so the same block of flats is a home in Montford, an office Downtown and a warehouse in River Arts. These photos are from one world; yours will be arranged differently.</p>
+	<div class="shots">
+		<figure><img src="img/bldg-home.jpg" alt="A dark brown two-storey house with a porch" width="854" height="480" loading="lazy"><figcaption><b>Homes</b> are most one-chunk buildings in Montford, the suburbs, South Slope and the wasteland. Food, water, cloth, matches, batteries and the odd bandage.</figcaption></figure>
+		<figure><img src="img/bldg-shop.jpg" alt="A grey four-storey block with tall windows" width="854" height="480" loading="lazy"><figcaption><b>Shops</b> are one kind of tall block in Montford and the suburbs (like this one), plus open-air shopping centres. Food, batteries, tape, Wire Spools and some electronics.</figcaption></figure>
+		<figure><img src="img/bldg-office.jpg" alt="A long brick office block with rows of windows" width="854" height="480" loading="lazy"><figcaption><b>Offices</b> are the huge multi-chunk blocks anywhere, and every one-chunk building Downtown. Batteries, Scrap Electronics, Wire Spools, paper and redstone.</figcaption></figure>
+		<figure><img src="img/bldg-workshop.jpg" alt="A dark stone factory with tall glass panels" width="854" height="480" loading="lazy"><figcaption><b>Workshops</b> are the factories, the substations, and some small buildings in River Arts. About as good a renewable source of Weapon Parts as the police station, plus tape, scrap, nails and Wire Spools.</figcaption></figure>
+		<figure><img src="img/bldg-workshop-inside.jpg" alt="A factory floor lined with shelves of chests" width="854" height="480" loading="lazy"><figcaption>Inside a factory: shelves of containers on a wide floor, with galleries above.</figcaption></figure>
+		<figure><img src="img/bldg-police.jpg" alt="A grey two-storey building with blue stripes" width="854" height="480" loading="lazy"><figcaption><b>Police stations</b> are grey with blue stripes and turn up in every district except the wasteland, about as often as town halls. Weapon Parts, bandages, Cell Packs and riot armour. Only the one at <span class="coord">-48, 24</span> Downtown has the armory cache.</figcaption></figure>
+		<figure><img src="img/bldg-government.jpg" alt="A pink-brown civic building with a colonnade of windows" width="854" height="480" loading="lazy"><figcaption><b>Government buildings</b> are the town halls. Food, batteries, bandages, some Weapon Parts and riot armour.</figcaption></figure>
+		<figure><img src="img/bldg-pharmacy.jpg" alt="A grey shopfront with a green cross" width="854" height="480" loading="lazy"><figcaption><b>Pharmacies</b> have a green cross. This is the one next to the safehouse; others are larger multi-chunk stores. Bandages and antibiotics.</figcaption></figure>
+		<figure><img src="img/bldg-warehouse.jpg" alt="A dark brick block with small windows" width="854" height="480" loading="lazy"><figcaption><b>Warehouses</b> are most one-chunk buildings in River Arts. Tape, scrap, lighter fluid, Wire Spools, standard Cell Packs and backpacks.</figcaption></figure>
+		<figure><img src="img/bldg-electronics.jpg" alt="A wide dark building with full-height glass" width="854" height="480" loading="lazy"><figcaption><b>Electronics stores</b> are the wide two-chunk centres. Scrap Electronics, batteries, Wire Spools, Focusing Lenses and Cell Packs.</figcaption></figure>
+		<figure><img src="img/bldg-school.jpg" alt="A dark brown library with large windows" width="854" height="480" loading="lazy"><figcaption><b>Schools</b> are the libraries. Paper, books, food and the occasional backpack or Satchel.</figcaption></figure>
+	</div>
+	<h3 id="keys">Building keys and Strongboxes</h3>
+	<p>Some banks, police stations, offices, hotels, pharmacies and other high-value buildings (about 2 in 5) hide a locked <strong>Strongbox</strong> on one floor. It holds better loot than the shelves around it, more so in harder districts: supplies, valuables, attachments, Cell Packs, and in the toughest districts a small chance of a rare blaster.</p>
+	<ul>
+		<li><strong>The key:</strong> one zombie in that building carries a <strong>Building Key</strong> and drops it when it dies. The key's tooltip says which building it opens ("Key: Bank at X, Z"). Right-click the box with the right key to open it quietly; the key is used up.</li>
+		<li><strong>The Crowbar:</strong> no key? Hold right-click on the box with a Crowbar for 4 seconds to force it. It's loud (zombies hear it 48 blocks away) and costs 31 durability, so a new Crowbar forces about 8 boxes. The Crowbar is also a decent melee weapon (4.5 damage).</li>
+		<li>A locked Strongbox can't be broken, blown up, emptied by a hopper or broken by zombies. Once open it stays open, and you can mine it with a pickaxe and take it home as an 18-slot chest.</li>
+		<li>Each building gets one box, ever: it doesn't come back when the building refills.</li>
+	</ul>
+	<h3>Bosses</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Boss</th><th>Where</th><th>Notes</th></tr>
+		<tr><td><strong>The Abomination</strong></td><td>Kiln &amp; Co. foundry, River Arts</td><td>300 HP, big leaps. Can get back up unless it dies burning, so finish it with real fire (not the Flamethrower's)</td></tr>
+		<tr><td><strong>Patient Zero</strong></td><td>Sealed deep ward under the hospital</td><td>Unseals once Mission is reclaimed; until then its iron doors can't be broken, by players or zombies. Summons patients that infect at 20%. Bring antibiotics</td></tr>
+		<tr><td><strong>The Juggernaut</strong></td><td>Wreck hull, Beaucatcher ridge</td><td>360 HP, 14 damage, immune to knockback. Use Lancer or Arc headshots and don't trade blows</td></tr>
+	</table></div>
+</section>
+
+<section id="recipes">
+	<h2>Key recipes</h2>
+	<p>No energy gear needs mining. Two salvage parts stand in for iron, copper and redstone.</p>
+	<p>Every Ashfall recipe except the two <a href="#all-recipes">special ones</a> (socketing a crystal, fitting a Dampener) is in the vanilla <strong>recipe book</strong> (the green book in the crafting and furnace screens): it unlocks as soon as you pick up one of its key ingredients. Wooden ingredients take <strong>any wood</strong>: oak, spruce, bamboo, crimson and the rest all work.</p>
+	<h3>Salvage basics</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Result</th><th>Recipe</th></tr>
+		<tr><td><img class="tex" src="img/alloy_plate.png" alt="" width="32" height="32"><strong>Alloy Plate</strong></td><td>Smelt or blast 1 Scrap Metal</td></tr>
+		<tr><td><img class="tex" src="img/wire_spool.png" alt="" width="32" height="32"><strong>Wire Spool</strong> ×2</td><td>Shapeless: 1 Scrap Electronics (also found as loot)</td></tr>
+		<tr><td><img class="tex" src="img/glass_shard.png" alt="" width="32" height="32"><strong>Glass</strong></td><td>2×2 Glass Shards. Broken windows drop 2–4 shards, panes 0–2</td></tr>
+		<tr><td>Iron Nugget ×3</td><td>Shapeless: 2 Scrap Metal. 9 nuggets make an iron ingot</td></tr>
+		<tr><td><img class="tex" src="img/satchel.png" alt="" width="32" height="32"><strong>Satchel</strong></td><td><code>_S_ / CTC / CCC</code>: S String, C Cloth, T Duct Tape. A 9-slot bag: right-click to open. Bags can't go inside it</td></tr>
+		<tr><td><img class="tex" src="img/bandage.png" alt="" width="32" height="32">Bandage</td><td>Shapeless: 2 Cloth (Cloth comes from 4 String, or 1 Wool makes 3)</td></tr>
+		<tr><td><img class="tex" src="img/bottled_water.png" alt="" width="32" height="32">Bottled Water</td><td>Cook Dirty Water in a furnace, smoker or campfire</td></tr>
+	</table></div>
+	<h3>Blasters and power</h3>
+	<p>Key: S Scrap Metal, E Scrap Electronics, T Duct Tape, A Alloy Plate, W Wire Spool, B Battery, L Focusing Lens, P Weapon Parts. A dot is an empty slot.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Result</th><th>Pattern</th><th>Ingredients</th></tr>
+		<tr><td><img class="tex" src="img/spark_pistol.png" alt="" width="32" height="32"><strong>Spark Blaster</strong></td><td><span class="grid-pat">S S E
+T A .
+S . .</span></td><td>3 S, 1 E, 1 T, 1 A</td></tr>
+		<tr><td><img class="tex" src="img/volt_sidearm.png" alt="" width="32" height="32"><strong>Volt Blaster</strong></td><td><span class="grid-pat">S A E
+B A T
+S . .</span></td><td>2 S, 2 A, 1 E, 1 B, 1 T</td></tr>
+		<tr><td><img class="tex" src="img/pulse_carbine.png" alt="" width="32" height="32"><strong>Pulse Blaster Carbine</strong></td><td><span class="grid-pat">L P P
+A E A
+T . .</span></td><td>1 L, 2 P, 2 A, 1 E, 1 T</td></tr>
+		<tr><td><img class="tex" src="img/cell_pack_small.png" alt="" width="32" height="32"><strong>Small Cell Pack</strong></td><td><span class="grid-pat">W W W
+. E .</span></td><td>3 W, 1 E</td></tr>
+		<tr><td><img class="tex" src="img/cell_pack_standard.png" alt="" width="32" height="32">Standard Cell Pack</td><td><span class="grid-pat">W W W
+A E W
+. W .</span></td><td>5 W, 1 A, 1 E</td></tr>
+		<tr><td><img class="tex" src="img/cell_pack_heavy.png" alt="" width="32" height="32">Heavy Cell Pack</td><td><span class="grid-pat">W W W
+E A E
+W W W</span></td><td>6 W, 2 E, 1 A</td></tr>
+		<tr><td><img class="tex" src="img/energy_cell.png" alt="" width="32" height="32"><strong>Energy Cell</strong></td><td><span class="grid-pat">. W .
+W B W
+. W .</span></td><td>4 W, 1 B</td></tr>
+		<tr><td><img class="tex" src="img/field_charger_front.png" alt="" width="32" height="32"><strong>Field Charger</strong></td><td><span class="grid-pat">A W A
+E W B
+A W A</span></td><td>4 A, 3 W, 1 E, 1 B</td></tr>
+		<tr><td><img class="tex" src="img/rapid_charger_front.png" alt="" width="32" height="32"><strong>Rapid Charger</strong></td><td><span class="grid-pat">A E A
+W F W
+A E A</span></td><td>4 A, 2 E, 2 W, 1 Field Charger (F). Charges 3× as fast</td></tr>
+		<tr><td><img class="tex" src="img/grid_coupler.png" alt="" width="32" height="32">Grid Coupler</td><td>–</td><td>2 W, 1 E, 1 P, 1 B, 1 S. Check REI or the recipe book for the layout</td></tr>
+	</table></div>
+	<h3>Base building</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Result</th><th>Pattern</th><th>Ingredients</th></tr>
+		<tr><td><strong>Reinforced Planks</strong> ×4</td><td><span class="grid-pat">N P N
+P N P
+N P N</span></td><td>5 iron nuggets (N), 4 planks of any kind (P). Fortified</td></tr>
+		<tr><td><strong>Barricade</strong> ×2</td><td><span class="grid-pat">P S P
+P S P</span></td><td>4 planks of any kind, 2 Scrap Metal</td></tr>
+		<tr><td><img class="tex" src="img/reinforced_door.png" alt="" width="32" height="32"><strong>Reinforced Door</strong></td><td><span class="grid-pat">A A
+P P
+A A</span></td><td>4 Alloy Plate (A), 2 planks of any kind (P). Fortified, opens by hand</td></tr>
+		<tr><td>Redstone Lamp</td><td><span class="grid-pat">. W .
+W E W
+. G .</span></td><td>3 W, 1 E, 1 Glass (G). Never burns out</td></tr>
+		<tr><td>Lantern</td><td><span class="grid-pat">N N N
+N E N
+N N N</span></td><td>8 iron nuggets, 1 E. Never burns out</td></tr>
+		<tr><td><strong>Bunker Core</strong></td><td><span class="grid-pat">A S A
+S C S
+A S A</span></td><td>4 Alloy Plate (A), 4 Scrap Metal (S), 1 Energy Cell (C). 8 Scrap Metal in all, no iron</td></tr>
+		<tr><td><strong>Shortwave Set</strong></td><td><span class="grid-pat">. W .
+C E C
+C B C</span></td><td>1 Wire Spool (W), 4 copper ingots (C), 1 Scrap Electronics (E), 1 Battery (B). Picks up <a href="#radio-jobs">radio jobs</a></td></tr>
+		<tr><td>Weaponsmith Bench</td><td><span class="grid-pat">S E S
+T X T
+P . P</span></td><td>2 S, 1 E, 2 T, 1 crafting table (X), 2 planks (P)</td></tr>
+	</table></div>
+	<div class="note"><p><strong>Iron without mining:</strong> nuggets from Scrap Metal craft up into ingots (9 nuggets) and iron blocks (9 ingots). The Bunker Core no longer needs any: smelt Scrap Metal into Alloy Plate instead.</p></div>
+</section>
+
+<section id="blasters">
+	<h2>Weapons and ammo</h2>
+	<p>Every weapon is shown the same way, on the same scales, so you can compare any two. <strong>Damage</strong> is per hit (the Lancer's 28 fills the bar). <strong>Per minute</strong> is shots or swings (600 a minute fills it). <strong>Heard at</strong> is how far away zombies hear it, in blocks (64 fills it): amber is quiet enough for sneaking, red carries far. For scale, an iron sword does 6 damage at 96 swings a minute.</p>
+	<p>Recipes are on <a href="#all-recipes">All recipes</a>. "Rare loot" means crash sites, bosses and the Mission reward.</p>
+	<p><strong>Polished Arms (optional look):</strong> the pack includes a resource pack, <strong>Ashfall Polished Arms</strong>, that repaints every blaster, both Plasma Blades, the Flamethrower and the Arc Charge as dark machined gunmetal at twice the texture detail, with knurled rubber grips and no rust or tape. Shapes, glow colours and stats are unchanged. Turn it on in <strong>Options → Resource Packs</strong>; it is off by default.</p>
+
+	<h3>How far zombies hear it</h3>
+	<figure>
+		<div class="fig"><div class="noise" role="img" aria-label="Noise radius in blocks for every weapon, the Rattle Box and forcing a Strongbox, from silent scrap melee and stun shots up to 64 for the Lancer and Storm">
+			<div class="meter"><span>Scrap melee</span><span class="track"></span><span>silent</span></div>
+			<div class="meter"><span>Blaster in stun mode</span><span class="track"></span><span>silent</span></div>
+			<div class="meter"><span>Nail Launcher</span><span class="track"><i style="width:9.4%"></i></span><span>6</span></div>
+			<div class="meter"><span>Plasma Blade (per hit)</span><span class="track"><i style="width:9.4%"></i></span><span>6</span></div>
+			<div class="meter"><span>Spark Blaster</span><span class="track"><i class="far" style="width:37.5%"></i></span><span>24</span></div>
+			<div class="meter"><span>Volt Blaster</span><span class="track"><i class="far" style="width:50.0%"></i></span><span>32</span></div>
+			<div class="meter"><span>Rattle Box (for 30 s)</span><span class="track"><i class="far" style="width:50.0%"></i></span><span>32</span></div>
+			<div class="meter"><span>Bottle Lure*</span><span class="track"><i class="far" style="width:50.0%"></i></span><span>32</span></div>
+			<div class="meter"><span>Arc Charge*</span><span class="track"><i class="far" style="width:50.0%"></i></span><span>32</span></div>
+			<div class="meter"><span>Pulse Blaster Carbine</span><span class="track"><i class="far" style="width:62.5%"></i></span><span>40</span></div>
+			<div class="meter"><span>Flamethrower (while firing)</span><span class="track"><i class="far" style="width:62.5%"></i></span><span>40</span></div>
+			<div class="meter"><span>Ion Blaster Rifle</span><span class="track"><i class="far" style="width:75.0%"></i></span><span>48</span></div>
+			<div class="meter"><span>Crowbar (forcing a Strongbox)</span><span class="track"><i class="far" style="width:75.0%"></i></span><span>48</span></div>
+			<div class="meter"><span>Arc Blaster Magnum</span><span class="track"><i class="far" style="width:87.5%"></i></span><span>56</span></div>
+			<div class="meter"><span>Lancer Blaster Rifle</span><span class="track"><i class="far" style="width:100.0%"></i></span><span>64</span></div>
+			<div class="meter"><span>Storm Blaster Repeater</span><span class="track"><i class="far" style="width:100.0%"></i></span><span>64</span></div>
+		</div></div>
+		<figcaption>Radius in blocks for each shot or swing. Amber is quiet enough for sneaking; red carries far. A Dampener cuts a blaster's to 40%. The Flamethrower is heard every half second while the trigger is held. *Thrown: the noise is where it lands, not where you stand.</figcaption>
+	</figure>
+
+	<h3>Blasters</h3>
+	<p>Blasters use charge from a Cell Pack and build heat as they fire. Fill the heat bar and the blaster locks up for a few seconds with a loud hiss. Headshots deal 1.75× damage. Hover a blaster in game for its live stats. Blasters and the Flamethrower only work from your main hand: in the off hand they don't fire, reload or scope.</p>
+	<div class="cards">
+		<div class="card">
+			<div class="card-head"><img src="img/spark_pistol.png" alt="" width="48" height="48"><div><b>Spark Blaster</b><small>Pistol</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"><i class="ink" style="width:14.3%"></i></span><span>4</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"><i class="ink" style="width:50.0%"></i></span><span>300</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"><i class="far" style="width:37.5%"></i></span><span>24</span></div>
+			<p>Overheats after about 8 shots.<br>Small pack: 30 shots.</p>
+			<p class="get"><b>Get:</b> Craft</p>
+		</div>
+		<div class="card">
+			<div class="card-head"><img src="img/volt_sidearm.png" alt="" width="48" height="48"><div><b>Volt Blaster</b><small>Pistol</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"><i class="ink" style="width:21.4%"></i></span><span>6</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"><i class="ink" style="width:40.0%"></i></span><span>240</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"><i class="far" style="width:50.0%"></i></span><span>32</span></div>
+			<p>Overheats after about 6 shots.<br>Small pack: 20 shots.</p>
+			<p class="get"><b>Get:</b> Craft</p>
+		</div>
+		<div class="card">
+			<div class="card-head"><img src="img/pulse_carbine.png" alt="" width="48" height="48"><div><b>Pulse Blaster Carbine</b><small>Carbine · automatic</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"><i class="ink" style="width:25.0%"></i></span><span>7</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"><i class="ink" style="width:50.0%"></i></span><span>300</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"><i class="far" style="width:62.5%"></i></span><span>40</span></div>
+			<p>Overheats after about 11 shots.<br>Standard pack: 30 shots.</p>
+			<p class="get"><b>Get:</b> Craft (needs a Focusing Lens); Downtown reward</p>
+		</div>
+		<div class="card">
+			<div class="card-head"><img src="img/ion_rifle.png" alt="" width="48" height="48"><div><b>Ion Blaster Rifle</b><small>Rifle</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"><i class="ink" style="width:32.1%"></i></span><span>9</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"><i class="ink" style="width:33.3%"></i></span><span>200</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"><i class="far" style="width:75.0%"></i></span><span>48</span></div>
+			<p>Overheats after about 7 shots.<br>Standard pack: 20 shots.</p>
+			<p class="get"><b>Get:</b> Police armory, River Arts reward, rare loot</p>
+		</div>
+		<div class="card">
+			<div class="card-head"><img src="img/arc_magnum.png" alt="" width="48" height="48"><div><b>Arc Blaster Magnum</b><small>Magnum</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"><i class="ink" style="width:50.0%"></i></span><span>14</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"><i class="ink" style="width:15.0%"></i></span><span>90</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"><i class="far" style="width:87.5%"></i></span><span>56</span></div>
+			<p>Overheats after about 3 shots.<br>Small pack: 10 shots.</p>
+			<p class="get"><b>Get:</b> Police armory, Downtown reward, rare loot</p>
+		</div>
+		<div class="card">
+			<div class="card-head"><img src="img/lancer_longrifle.png" alt="" width="48" height="48"><div><b>Lancer Blaster Rifle</b><small>Rifle · 7× scope</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"><i class="ink" style="width:100.0%"></i></span><span>28</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"><i class="ink" style="width:6.7%"></i></span><span>40</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"><i class="far" style="width:100.0%"></i></span><span>64</span></div>
+			<p>Overheats after 2 shots.<br>Standard pack: 10 shots.</p>
+			<p class="get"><b>Get:</b> Police armory, Wreck hull, rare loot</p>
+		</div>
+		<div class="card">
+			<div class="card-head"><img src="img/storm_repeater.png" alt="" width="48" height="48"><div><b>Storm Blaster Repeater</b><small>Repeater · automatic</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"><i class="ink" style="width:21.4%"></i></span><span>6</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"><i class="ink" style="width:66.7%"></i></span><span>400</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"><i class="far" style="width:100.0%"></i></span><span>64</span></div>
+			<p>Overheats after about 14 shots.<br>Heavy pack: 60 shots.</p>
+			<p class="get"><b>Get:</b> Police armory, Wreck hull, rare loot</p>
+		</div>
+	</div>
+
+	<h3 id="stun">Stun mode</h3>
+	<p>The <strong>Spark</strong>, <strong>Volt</strong> and <strong>Ion</strong> blasters have a second fire mode. Press <kbd>C</kbd> while holding one to switch between Damage and Stun (the key is "Blaster Fire Mode" in Controls). The HUD shows a pale <strong>STUN</strong> tag next to the charge, and the tooltip shows the current mode.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Stun shot</th><th>Effect</th></tr>
+		<tr><td>Damage</td><td>None. The pale blue bolt holds the mob instead</td></tr>
+		<tr><td>Cost</td><td>3× the charge of a normal shot (Spark 3, Volt 4.5, Ion 9) and 1.5× the heat</td></tr>
+		<tr><td>Noise</td><td>Silent: no shot sound, no impact, nothing zombies can hear. Overheating is still loud</td></tr>
+		<tr><td><img class="tex" src="img/stunned.png" alt="" width="32" height="32">Hold</td><td>3 s for ordinary mobs, 1.5 s for special infected, half a second for bosses. A held mob can't move, attack, pick a target or sense anything</td></tr>
+		<tr><td>Lockout</td><td>Once a stun wears off, that mob shrugs off stuns for 3 s, so one pistol can't hold a crowd forever</td></tr>
+		<tr><td>Never stunned</td><td>Players, your dogs and survivors</td></tr>
+	</table></div>
+	<p>The thrown <a href="#arc-charge">Arc Charge</a> applies the same stun to everything within 5 blocks, with the same holds and lockout, but it is loud.</p>
+	<div class="shots">
+		<figure><img src="img/stun-mode.jpg" alt="A zombie standing still in front of a Spark Blaster, the HUD reading 27/30 STUN" width="854" height="480" loading="lazy"><figcaption>A Spark Blaster in stun mode just after one shot: 3 charge gone, the STUN tag after it, and a zombie held in place.</figcaption></figure>
+	</div>
+
+	<h3 id="flamethrower">Flamethrower</h3>
+	<div class="cards">
+		<div class="card">
+			<div class="card-head"><img src="img/flamethrower.png" alt="" width="48" height="48"><div><b>Flamethrower</b><small>Cone of fire · very heavy</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"><i class="ink" style="width:3.6%"></i></span><span>1</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"><i class="ink" style="width:50.0%"></i></span><span>300</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"><i class="far" style="width:62.5%"></i></span><span>40</span></div>
+			<p>Hits every mob in the cone 5 times a second and sets them burning for 4 s. Tank: 16 s of fire.</p>
+			<p class="get"><b>Get:</b> Craft; fire stations, gas stations, Strongboxes</p>
+		</div>
+	</div>
+	<div class="shots">
+		<figure><img src="img/flamethrower-firing.jpg" alt="A cone of flames engulfing a zombie, the HUD showing Fuel 15.3 s" width="854" height="480" loading="lazy"><figcaption>Under a second into a full tank. The fuel line under the HUD counts down in seconds.</figcaption></figure>
+	</div>
+	<ul>
+		<li><strong>Use:</strong> hold right-click. The flame reaches 6 blocks in a 25° cone and stops at walls. Every mob in it takes 1 damage 5 times a second (hurt cooldowns don't apply, so a whole crowd burns at once) and burns for 4 s. No knockback.</li>
+		<li><strong>Never burns blocks.</strong> It places no fire. It does light unlit campfires and candles in the cone, but leaves torches alone.</li>
+		<li><strong>Fuel:</strong> the tank holds 16 s of fire. Press <kbd>R</kbd> to pour in one <img class="tex" src="img/lighter_fluid.png" alt="" width="32" height="32">Lighter Fluid, most-used can first: half a second of fire per use left in the can, so a full 16-use can adds 8 s. A can that doesn't fit pours only what fits and keeps the rest. Refuelling takes a second. The fuel shows on the item bar and in the HUD.</li>
+		<li><strong>Recipe:</strong> Duct Tape, Scrap Metal, a Wire Spool, Weapon Parts and a can of Lighter Fluid (see <a href="#all-recipes">All recipes</a>). The new flamethrower starts with the can's fuel.</li>
+		<li><strong>Found</strong> flamethrowers are half full: fire stations, gas stations, and tier 3 to 5 Strongboxes.</li>
+		<li><strong>Noise and light:</strong> heard from 40 blocks every half second while firing. At night or indoors the flame is also a bright light that zombies see.</li>
+		<li>It never hurts players, your dogs or survivors.</li>
+		<li>Its burn doesn't stop a Mutant Zombie (the Abomination) getting back up: that takes real fire, such as lava, a fire block or Flint and Steel.</li>
+	</ul>
+
+	<h3 id="weight">Weight and draw time</h3>
+	<p>The weapon in your main hand slows you down by its weight class; the rest of your hotbar weighs nothing. Firing an automatic slows you further on top. Bringing a blaster or the Flamethrower into your hand takes a moment before it can fire or reload (the hotbar shows the sweep and the HUD says READYING). Swapping straight from one gun to another adds 0.2 s to put the first away. Melee weapons are ready at once.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Weight</th><th class="num">Speed</th><th>Weapons</th></tr>
+		<tr><td>Light</td><td class="num">−3%</td><td>Spark, Volt, Arc Magnum, Crowbar, Scrap Machete</td></tr>
+		<tr><td>Medium</td><td class="num">−7%</td><td>Pipe Wrench, Nail Launcher, Pulse Carbine, Ion Rifle, Plasma Blade, Resonant Plasma Blade</td></tr>
+		<tr><td>Heavy</td><td class="num">−10%</td><td>Rebar Spear, Lancer</td></tr>
+		<tr><td>Very heavy</td><td class="num">−15%</td><td>Storm Repeater, Flamethrower</td></tr>
+	</table></div>
+	<div class="table-wrap"><table>
+		<tr><th>Draw time</th><th>Weapons</th></tr>
+		<tr><td>0.3 s</td><td>Spark, Volt, Arc Magnum</td></tr>
+		<tr><td>0.5 s</td><td>Pulse Carbine, Ion Rifle</td></tr>
+		<tr><td>0.7 s</td><td>Lancer</td></tr>
+		<tr><td>0.9 s</td><td>Storm Repeater, Flamethrower</td></tr>
+	</table></div>
+	<p>Drawing never cuts short a reload or overheat that is already running.</p>
+
+	<h3>Cell Packs</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Pack</th><th class="num">Charge</th><th>Shots per full pack</th></tr>
+		<tr><td><img class="tex" src="img/cell_pack_small.png" alt="" width="32" height="32">Small</td><td class="num">30</td><td>Spark 30 · Volt 20 · Arc 10</td></tr>
+		<tr><td><img class="tex" src="img/cell_pack_standard.png" alt="" width="32" height="32">Standard</td><td class="num">60</td><td>Pulse 30 · Ion 20 · Lancer 10</td></tr>
+		<tr><td><img class="tex" src="img/cell_pack_heavy.png" alt="" width="32" height="32">Heavy</td><td class="num">120</td><td>Storm 60</td></tr>
+	</table></div>
+	<ul>
+		<li><strong>Packs never wear out.</strong> Crafted packs come out empty, so recharge them as often as you like.</li>
+		<li><strong>Field Charger:</strong> slow, runs on Energy Cells, and only works inside a claim (the safehouse or your Bunker).</li>
+		<li><strong>Rapid Charger:</strong> an upgraded Field Charger (Field Charger + alloy, electronics and wire). Same rules and same cells, three times as fast.</li>
+		<li><strong>Power Relays</strong> on the streets charge fast, but hum every 2 seconds, which zombies hear from 48 blocks away.</li>
+		<li><strong>Attachments</strong> fit at the Weaponsmith Bench: Optic, Dampener (cuts noise to 40%), Heat Sink, Cell Regulator and Overcharger.</li>
+	</ul>
+
+	<h3 id="quiet">Quiet weapons</h3>
+	<p>Melee makes no noise at all, so these scrap weapons are for sneaking: clearing a building, or fixing a relay without bringing the street.</p>
+	<div class="cards">
+		<div class="card">
+			<div class="card-head"><img src="img/pipe_wrench.png" alt="" width="48" height="48"><div><b>Pipe Wrench</b><small>Slow and heavy · mace moves</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"><i class="ink" style="width:25.0%"></i></span><span>7</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"><i class="ink" style="width:14.0%"></i></span><span>84</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"></span><span>silent</span></div>
+			<p>Hits the hardest of the scrap weapons, so armour takes the least off each hit, though the faster Machete still kills a Brute a little sooner. 300 uses; repair with Scrap Metal in an anvil.</p>
+			<p class="get"><b>Get:</b> Craft; sometimes found worn in workshops</p>
+		</div>
+		<div class="card">
+			<div class="card-head"><img src="img/scrap_machete.png" alt="" width="48" height="48"><div><b>Scrap Machete</b><small>Fast · sword moves</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"><i class="ink" style="width:19.6%"></i></span><span>5.5</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"><i class="ink" style="width:20.0%"></i></span><span>120</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"></span><span>silent</span></div>
+			<p>The quickest swings, but only 150 uses. Repair with Scrap Metal.</p>
+			<p class="get"><b>Get:</b> Craft</p>
+		</div>
+		<div class="card">
+			<div class="card-head"><img src="img/rebar_spear.png" alt="" width="48" height="48"><div><b>Rebar Spear</b><small>Long reach · spear moves</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"><i class="ink" style="width:21.4%"></i></span><span>6</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"><i class="ink" style="width:12.0%"></i></span><span>72</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"></span><span>silent</span></div>
+			<p>Hit through a gap or over a barricade before they reach you. 220 uses. Repair with Scrap Metal.</p>
+			<p class="get"><b>Get:</b> Craft</p>
+		</div>
+		<div class="card">
+			<div class="card-head"><img src="img/nail_launcher.png" alt="" width="48" height="48"><div><b>Nail Launcher</b><small>Quiet ranged</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"><i class="ink" style="width:17.9%"></i></span><span>5</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"><i class="ink" style="width:16.7%"></i></span><span>100</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"><i style="width:9.4%"></i></span><span>6</span></div>
+			<p>Uses one Nail from your inventory per shot; 1 Scrap Metal makes 8. Breaks after 400 shots.</p>
+			<p class="get"><b>Get:</b> Craft; Nails also in workshops</p>
+		</div>
+		<div class="card">
+			<div class="card-head"><img src="img/bottle_lure.png" alt="" width="48" height="48"><div><b>Bottle Lure</b><small>Thrown distraction</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"></span><span>–</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"></span><span>–</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"><i class="far" style="width:50.0%"></i></span><span>32*</span></div>
+			<p>Shatters loudly where it lands, so zombies go there instead of to you. Stacks to 16.</p>
+			<p class="get"><b>Get:</b> Craft (a glass bottle and Scrap Metal)</p>
+		</div>
+		<div class="card">
+			<div class="card-head"><img src="img/arc_charge.png" alt="" width="48" height="48"><div><b>Arc Charge</b><small>Thrown stun grenade</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"></span><span>–</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"></span><span>–</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"><i class="far" style="width:50.0%"></i></span><span>32*</span></div>
+			<p>Sticks where it lands and goes off 1 s later, stunning every zombie within 5 blocks that it can see. Stacks to 8.</p>
+			<p class="get"><b>Get:</b> Craft (2 per Battery, Scrap Electronics and Duct Tape); police stations, supply drops, Strongboxes</p>
+		</div>
+	</div>
+
+	<h4>Using a Bottle Lure</h4>
+	<figure>
+		<div class="fig"><svg viewBox="0 0 600 250" role="img" aria-label="Top-down view: you throw the bottle past a group of zombies; the ones within 32 blocks of where it shatters walk to it, away from you.">
+			<circle cx="400" cy="125" r="110" fill="var(--accent)" fill-opacity=".1" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 5"/>
+			<text x="400" y="30" text-anchor="middle" class="mut">32 blocks</text>
+			<path d="M78 150 Q 240 10 392 118" fill="none" stroke="var(--fg)" stroke-width="2" stroke-dasharray="3 5"/>
+			<g stroke="var(--fg)" stroke-width="2.5"><path d="M392 112 l16 16 M408 112 l-16 16"/></g>
+			<text x="400" y="160" text-anchor="middle" font-weight="700">Shatters</text>
+			<circle cx="70" cy="160" r="11" fill="var(--accent)"/><text x="70" y="192" text-anchor="middle" font-weight="700">You</text>
+			<g fill="var(--danger)">
+				<rect x="290" y="110" width="14" height="14" rx="2"/><rect x="340" y="60" width="14" height="14" rx="2"/>
+				<rect x="480" y="70" width="14" height="14" rx="2"/><rect x="488" y="143" width="14" height="14" rx="2"/>
+			</g>
+			<g stroke="var(--danger)" stroke-width="2" fill="none" marker-end="url(#ah)">
+				<path d="M308 118 L378 121"/><path d="M356 78 L386 106"/><path d="M482 86 L418 113"/><path d="M486 147 L420 130"/>
+			</g>
+			<rect x="40" y="40" width="14" height="14" rx="2" fill="var(--muted)"/>
+			<text x="62" y="52" class="mut">Too far: doesn't react</text>
+			<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--danger)"/></marker></defs>
+		</svg></div>
+		<figcaption>Throw it past the zombies you want to move. Everything within 32 blocks of where it breaks walks to the spot, then you slip by or line up quiet hits.</figcaption>
+	</figure>
+
+	<h4 id="arc-charge">Using an Arc Charge</h4>
+	<ul>
+		<li><strong>Throw:</strong> right-click, like a Bottle Lure (half a second between throws). It sticks to the wall, floor or zombie it hits and crackles with sparks for 1 s.</li>
+		<li><strong>Burst:</strong> a flash and a loud zap. Every hostile mob within <strong>5 blocks</strong> with a clear line to the charge is <a href="#stun">stunned</a>: 3 s for ordinary zombies, 1.5 s for special infected, half a second for bosses. Walls and closed doors block it.</li>
+		<li><strong>Same rules as stun mode:</strong> a mob that was just stunned shrugs it off for 3 s. No damage, no knockback, and players, your dogs and survivors are never stunned.</li>
+		<li><strong>Loud:</strong> the bang is heard 32 blocks away, so anything outside the 5 blocks comes running. Use it to break contact or hold a doorway, not to sneak.</li>
+	</ul>
+
+	<h3 id="plasma">Plasma Blades</h3>
+	<p>A rare melee weapon for crowd control. It costs charge, hunger and crystal wear, so it doesn't replace blasters on a horde night.</p>
+	<div class="cards">
+		<div class="card">
+			<div class="card-head"><img src="img/plasma_blade.png" alt="" width="48" height="48"><div><b>Plasma Blade</b><small>Rare melee · hits up to 3</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"><i class="ink" style="width:32.1%"></i></span><span>9</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"><i class="ink" style="width:16.0%"></i></span><span>96</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"><i style="width:9.4%"></i></span><span>6</span></div>
+			<p>Holds 120 charge, 1 per swing that lands. Its crystal lasts 600 hits. Lights up (level 12), so zombies see it in the dark.</p>
+			<p class="get"><b>Get:</b> Craft (needs a Resonance Crystal)</p>
+		</div>
+		<div class="card">
+			<div class="card-head"><img src="img/resonant_plasma_blade.png" alt="" width="48" height="48"><div><b>Resonant Plasma Blade</b><small>Endgame melee · hits up to 3</small></div></div>
+			<div class="meter"><span>Damage</span><span class="track"><i class="ink" style="width:42.9%"></i></span><span>12</span></div>
+			<div class="meter"><span>Per minute</span><span class="track"><i class="ink" style="width:16.0%"></i></span><span>96</span></div>
+			<div class="meter"><span>Heard at</span><span class="track"><i style="width:9.4%"></i></span><span>6</span></div>
+			<p>A 2,400-hit crystal and light 14. Otherwise works like the Plasma Blade.</p>
+			<p class="get"><b>Get:</b> Bind ending reward</p>
+		</div>
+	</div>
+
+	<div class="table-wrap"><table>
+		<tr><th>Stat</th><th>Value</th></tr>
+		<tr><td>Damage</td><td>9 to the first target. The 2nd and 3rd take 60%, and each costs you extra hunger. A 4th takes nothing</td></tr>
+		<tr><td>Charge</td><td>Holds 120. Uses 1 per swing that lands, however many it hits. Recharge at a Field Charger or Power Relay</td></tr>
+		<tr><td>Crystal wear</td><td>The crystal lasts 600 hits (1 per target). Then the blade goes dull, but it's never destroyed</td></tr>
+		<tr><td>Unpowered</td><td>No charge or a dull crystal: a blunt hilt doing 2 damage</td></tr>
+		<tr><td>Light and noise</td><td>A lit blade is a light source (level 12) that zombies see in the dark. Each hit makes a small noise</td></tr>
+		<tr><td>Against crystal pylons</td><td>Breaks a finale pylon in about 10 s, against about 2 minutes with a pickaxe</td></tr>
+	</table></div>
+	<ul>
+		<li><strong>Recipe:</strong> a Resonance Crystal on top, a Focusing Lens between two Scrap Electronics in the middle, and Scrap Metal, a Battery and Duct Tape on the bottom row. A new blade has no charge.</li>
+		<li><img class="tex" src="img/resonance_crystal.png" alt="" width="32" height="32"><strong>Re-socket</strong> a dull blade by crafting it with a new Resonance Crystal. That keeps the charge, and only works on a worn crystal.</li>
+		<li>Swings use Better Combat movesets: two wide horizontal slashes and a stab.</li>
+		<li>The <strong>Resonant Plasma Blade</strong> (12 damage, a 2,400-hit crystal, light 14) is a reward of the Bind ending.</li>
+	</ul>
+</section>
+
+<section id="armour">
+	<h2>Armour</h2>
+	<p>Three Ashfall sets. Each piece shows its set's perk in its tooltip. Perks stack per piece, so a full set gets four times the effect. Hazmat and Riot are found, never crafted. Scavenger can also be crafted from salvage.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Set</th><th class="num">Head</th><th class="num">Chest</th><th class="num">Legs</th><th class="num">Feet</th><th class="num">Total</th><th class="num">Toughness</th><th class="num">Knockback res.</th><th class="num">Durability</th><th>Perk</th></tr>
+		<tr><td><img class="tex" src="img/scavenger_jacket.png" alt="" width="32" height="32"><strong>Scavenger</strong></td><td class="num">1</td><td class="num">3</td><td class="num">2</td><td class="num">1</td><td class="num">7</td><td class="num">0</td><td class="num">0</td><td class="num">×9</td><td>Running footsteps 15% quieter per piece (60% with the full set)</td></tr>
+		<tr><td><img class="tex" src="img/hazmat_suit.png" alt="" width="32" height="32"><strong>Hazmat</strong></td><td class="num">1</td><td class="num">4</td><td class="num">3</td><td class="num">1</td><td class="num">9</td><td class="num">0</td><td class="num">0</td><td class="num">×12</td><td>Every infection chance (bites, bloated clouds, spitter acid, Dirty Water) 15% lower per piece, 60% with the full set</td></tr>
+		<tr><td><img class="tex" src="img/riot_vest.png" alt="" width="32" height="32"><strong>Riot</strong></td><td class="num">2</td><td class="num">7</td><td class="num">5</td><td class="num">2</td><td class="num">16</td><td class="num">1</td><td class="num">10% per piece</td><td class="num">×20</td><td>The toughest set: more armour than iron, plus toughness and knockback resistance</td></tr>
+	</table></div>
+	<p>For comparison, vanilla iron is 15 armour and leather 7. Durability is the material multiplier: iron is ×15, leather ×5. Each armour point also cuts the chance of infection from a bite by 2%, on top of the Hazmat perk.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Piece</th><th>Scavenger</th><th>Hazmat</th><th>Riot</th></tr>
+		<tr><td>Head</td><td><img class="tex" src="img/scavenger_hood.png" alt="" width="32" height="32">Scavenger Hood</td><td><img class="tex" src="img/hazmat_mask.png" alt="" width="32" height="32">Hazmat Mask</td><td><img class="tex" src="img/riot_helmet.png" alt="" width="32" height="32">Riot Helmet</td></tr>
+		<tr><td>Chest</td><td><img class="tex" src="img/scavenger_jacket.png" alt="" width="32" height="32">Scavenger Jacket</td><td><img class="tex" src="img/hazmat_suit.png" alt="" width="32" height="32">Hazmat Suit</td><td><img class="tex" src="img/riot_vest.png" alt="" width="32" height="32">Riot Vest</td></tr>
+		<tr><td>Legs</td><td><img class="tex" src="img/scavenger_trousers.png" alt="" width="32" height="32">Scavenger Trousers</td><td><img class="tex" src="img/hazmat_leggings.png" alt="" width="32" height="32">Hazmat Leggings</td><td><img class="tex" src="img/riot_leggings.png" alt="" width="32" height="32">Riot Leggings</td></tr>
+		<tr><td>Feet</td><td><img class="tex" src="img/scavenger_boots.png" alt="" width="32" height="32">Scavenger Boots</td><td><img class="tex" src="img/hazmat_boots.png" alt="" width="32" height="32">Hazmat Boots</td><td><img class="tex" src="img/riot_boots.png" alt="" width="32" height="32">Riot Boots</td></tr>
+	</table></div>
+	<h3>Where to find it</h3>
+	<ul>
+		<li><strong>Scavenger:</strong> craft it from Cloth, Duct Tape and Scrap Metal (see <a href="#all-recipes">All recipes</a>). Also found in homes, shops, workshops, warehouses and horde drops. Walkers occasionally wear a piece.</li>
+		<li><strong>Hazmat:</strong> hospitals, clinics, pharmacies, fire stations, the hospital supply cache and Patient Zero. Patients sometimes wear a piece and can drop it.</li>
+		<li><strong>Riot:</strong> police stations, the police armory, government buildings, crash sites and the bosses. Armoured zombies occasionally wear it (about 1 in 5 of those with gear) and can drop it, and brutes have a 5% chance to drop a piece.</li>
+		<li>Repair Scavenger with Cloth, Hazmat with Cloth or Duct Tape, and Riot with Scrap Metal at an anvil.</li>
+	</ul>
+</section>
+
+<section id="bases">
+	<h2>Bases and co-op</h2>
+	<h3>The safehouse</h3>
+	<p>Anyone can open its doors, chests and barrels, use its furnaces and beds, read books, and use the Field Radio, medical items, food and blasters. Nobody can break or place blocks there.</p>
+	<h3>Your Bunker Core</h3>
+	<ul>
+		<li>Placing it claims an 80×80-block area for you or your party. Nothing spawns inside, and Field Chargers work.</li>
+		<li>Horde waves can still break plain blocks inside the claim. Build with fortified blocks: Reinforced Planks, barricades, Reinforced Doors, iron blocks, iron bars, and iron or copper doors and trapdoors. They wear down under attack, so repair them after a horde night (see <a href="#wear">Wear and repair</a>).</li>
+		<li>You respawn at your core first, then your bed, then the nearest safe zone. After respawning you get 10 seconds of protection, which ends when you attack.</li>
+		<li>Right-click the core with an empty hand to open the <strong>transit network</strong> (below).</li>
+	</ul>
+	<h3 id="traps">Traps and lures</h3>
+	<p>Three cheap base defences, made from Scrap Metal and iron nuggets (recipes on <a href="#all-recipes">All recipes</a>). Zombies can break all of them.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Block</th><th>What it does</th></tr>
+		<tr><td><strong>Rattle Box</strong></td><td>Right-click to wind it. For 30 seconds it rattles loud enough for zombies to hear it <strong>32 blocks</strong> away, then rings once. Use it to pull a crowd away from your base or onto spikes. 10 seconds to rewind.</td></tr>
+		<tr><td><strong>Tripline Alarm</strong></td><td>Hang it on a wall. When a zombie comes into the 5×5 area in front of it, it rings a bell that only players hear: you, wherever you are, and anyone within 96 blocks. The action bar says which way and how far ("Alarm tripped to the north-east, 40 m"). It also gives a redstone signal while a zombie is there. Zombies don't hear it.</td></tr>
+		<tr><td><strong>Spike Strip</strong></td><td>A thin bed of nails. Everything that walks over it slows down, and zombies take 2 damage a second. Players, pets and survivors are never hurt. Zombies still walk onto it. Each hit can wear it down, shown by missing nails and rust. Right-click with an iron nugget to repair it. Worn out, it breaks into Scrap Metal.</td></tr>
+	</table></div>
+	<h3 id="dogs">Dogs</h3>
+	<p><strong>Stray Dogs</strong> roam the residential zones (Montford and the suburbs). Tame one with <strong>Rotten Flesh</strong> or a bone: each piece has a 1 in 3 chance. Strays are rare: each part of the map only ever gets one, so a stray that dies or is tamed is not replaced. Ordinary wolves can be tamed the same way.</p>
+	<ul>
+		<li><strong>Guard:</strong> a tamed dog that isn't sitting attacks zombies it can see within 12 blocks of you. Its bite is light (2 damage), so it's a helper, not a weapon.</li>
+		<li><strong>Growl:</strong> a dog notices zombies within 16 blocks, even while sitting, and warns you if you're within 64 blocks: "Your dog growls: zombies to the north-east, 12 m". It waits 10 seconds between growls.</li>
+		<li><strong>Silent:</strong> dogs never make noise that draws zombies.</li>
+		<li><strong>Fast travel:</strong> your tamed dogs within 10 blocks come along, unless they're sitting, leashed or riding something.</li>
+		<li><strong>No friendly fire:</strong> Nothing you or your friends do can hurt a pet: weapons, explosions and traps all spare it. Zombies can still kill it.</li>
+		<li><strong>Friendly fire switch:</strong> the host can turn on the <strong>Friendly fire</strong> game rule (a button in the world's Game Rules screen, or <code>/gamerule ashfall:friendly_fire true</code>). With it on, players and their weapons can hurt pets, the Flamethrower burns other players, and Arc Charges stun pets. Survivors stay protected either way. It is off by default.</li>
+	</ul>
+	<h3>Fast travel: the transit network</h3>
+	<p>Travel instantly between your stops, paid for with <strong>Cell Pack charge</strong>.</p>
+	<ul>
+		<li><strong>Stops:</strong> the safehouse (and any other safe zone), your Bunker Core, and the substation of every district you've reclaimed. Reclaiming districts opens up the map.</li>
+		<li><strong>To travel,</strong> stand at a stop and right-click your Bunker Core or a reclaimed Substation Core, or type <code>/ashfall travel</code> (needed at the safehouse). Click a stop in chat.</li>
+		<li><strong>Warm-up:</strong> hold still for 3 seconds. Moving or taking damage cancels it, and nothing is charged.</li>
+		<li><strong>Cost:</strong> taken from loose Cell Packs in your inventory, emptiest first. Packs loaded in a blaster aren't touched. <strong>Trips leaving your Bunker Core cost double</strong>, because its Field Chargers refill packs for free.</li>
+		<li><strong>From the Grid Map:</strong> while standing at a stop, open the map (<code>G</code>) and click the safehouse, your Bunker or a reclaimed substation.</li>
+		<li><strong>Not allowed</strong> on horde nights, while a district siege is set or running, or while a zombie is hunting you.</li>
+		<li>You arrive with 5 seconds of protection.</li>
+	</ul>
+	<div class="table-wrap"><table>
+		<tr><th>Distance</th><th>Charge</th></tr>
+		<tr><td>up to 100 blocks</td><td class="num">15</td></tr>
+		<tr><td>300 blocks</td><td class="num">25</td></tr>
+		<tr><td>500 blocks</td><td class="num">35</td></tr>
+		<tr><td>600 blocks or more</td><td class="num">40 (the most)</td></tr>
+		<tr><td>Leaving your Bunker Core</td><td class="num">double the above</td></tr>
+	</table></div>
+	<p>A Small pack holds 30, a Standard 60 and a Heavy 120.</p>
+	<div class="note"><p><strong>Waypoints:</strong> Xaero's Minimap is included. Press <code>B</code> to mark a waypoint, such as a loot building or a district core, and it shows on your minimap and the world map (<code>M</code>).</p></div>
+	<h3>Playing together</h3>
+	<ul>
+		<li>Everyone installs the same pack version. The host opens the world to LAN; friends join from Multiplayer.</li>
+		<li>To play over the internet without port forwarding, the included <strong>e4mc</strong> mod gives the host a shareable address.</li>
+		<li>A downed friend can be revived: you have about 45 seconds to reach them and right-click.</li>
+		<li>Lootr caches give each player their own copy, so nobody has to share the good chests.</li>
+	</ul>
+</section>
+
+<section id="survivors">
+	<h2>Survivors</h2>
+	<p>Not everyone in Asheville has turned. Survivors are people you can rescue, bring home and put to work. Each has a name, their own look, and a nameplate showing their job: "Rae (Guard)".</p>
+	<h3>Finding them</h3>
+	<ul>
+		<li><strong>Distress calls:</strong> from <strong>day 7</strong>, when you finish a <a href="#radio-jobs">distress call</a> the caller is standing by the reward chest. They follow the nearest player within 24 blocks whose group still has room, so a full player standing closest doesn't cost a friend the rescue.</li>
+		<li><strong>Holdouts:</strong> from <strong>day 7</strong>, a house, hotel, office block, school or shop sometimes has someone hiding on an upper floor (a 6% chance the first time anyone comes near the building, so only buildings nobody visited before day 7; never landmarks or claimed land). Zombies can't find a holdout while they keep quiet. When you come within 12 blocks they call out to you, once, and from then on the building's zombies can hear them too, so clear the floors before you go up. Right-click them and click <strong>[Follow]</strong>: the first player to give an order takes them in. If your group already has 6 survivors, or the world is at its limit, they stay where they are.</li>
+		<li>Survivors never despawn. If they die, they're gone for good.</li>
+	</ul>
+	<h3>Giving orders</h3>
+	<p>Right-click a survivor to talk. They answer in chat with buttons you can click. Only their leader, and the leader's party, can give orders. You need to be within 16 blocks.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Button</th><th>What it does</th></tr>
+		<tr><td><strong>[Follow]</strong></td><td>Walks behind you, and hurries to catch up. They don't teleport: if you get more than 64 blocks ahead or change dimension, they wait where they are. They don't come along on fast travel.</td></tr>
+		<tr><td><strong>[Stay]</strong></td><td>Holds that spot. Inside your Bunker Core's area, it also settles them (below).</td></tr>
+		<tr><td><strong>[Settle here]</strong></td><td>Shown inside your own Bunker Core's area. Your core becomes their home, and they wander within 24 blocks of it.</td></tr>
+		<tr><td><strong>[Home]</strong></td><td>Sends a settled survivor back to live at their core.</td></tr>
+		<tr><td><strong>[Guard] / [Settler] / [Scavenger] / [Medic] / [Mechanic]</strong></td><td>Changes their job. Scavenger, Medic and Mechanic only show once the survivor has settled at a home.</td></tr>
+	</table></div>
+	<p>You can also type the orders: <code>/survivor &lt;id&gt; follow|stay|home|settle|role &lt;job&gt;</code>. Clicking a button does this for you.</p>
+	<h3>Jobs</h3>
+	<ul>
+		<li><strong>Settler</strong> (the default): has no job and runs away from zombies.</li>
+		<li><strong>Guard:</strong> fights zombies within 16 blocks of where they stand, and holds their ground rather than chasing a horde. To give a guard a melee weapon, sneak and right-click them with it (scrap weapons, swords or axes; guards turn down blasters and Plasma Blades). Sneak and right-click with an empty hand to take it back. A guard hits as hard as you would with the same weapon, but swings once a second, so with a sword they do about 60% of your damage. Guards have 30 health instead of 20 while on the job (back to 20 when they leave it). The weapon wears down as they use it. Guards won't take blasters: they only swing.</li>
+	</ul>
+	<p>The next three are <strong>base jobs</strong>. They only work while the survivor lives at home (settled, and sent [Home]). Everything they use comes from the <a href="#supply-locker">Supply Lockers</a> inside their own Bunker Core's area, and everything they bring back goes into those lockers. If the core is broken they lose their home and go back to being a Settler. Talk to them to hear how their work stands, for example "Out of bandages".</p>
+	<div class="table-wrap"><table>
+		<tr><th>Job</th><th>What it does</th><th>Takes from the lockers</th></tr>
+		<tr><td><strong>Scavenger</strong></td><td>Once a day, between 06:00 and 10:00, goes out into the city for half a day (about 10 minutes). While they're out they're gone from the base and you can't give them orders; talk shows when they're due back. They come back with about half a room's worth of loot from the kind of buildings near your base, and put it in the lockers. What doesn't fit, they carry until there's room. Sometimes they come back hurt (8%), and a few never come back (3%): their leader is told. They won't go out below half health or while bitten. Antibiotics are scarce out there: they bring back only about one in four of the doses they find.</td><td>1 food item per trip (the least filling one; not rotten flesh)</td></tr>
+		<tr><td><strong>Medic</strong></td><td>Every 5 seconds, treats people of its own group within 16 blocks of the core: its leader and their party, and the survivors they lead. Strangers and their survivors get nothing. First they cure a bitten survivor. Next, once a day per player, they hold an infected player's infection still for 3 minutes (it doesn't go back a stage). Otherwise they bandage whoever is most hurt, player or survivor, for 1.5 hearts.</td><td>Antibiotics (to cure a survivor), Bandages (for everything else)</td></tr>
+		<tr><td><strong>Mechanic</strong></td><td>Every 30 seconds, repairs the worn fortified block nearest the core in its claim by one set of materials, 45 wear (see <a href="#wear">Wear and repair</a>). If none needs it, they repair one worn Spike Strip in the core's area back to full. If none needs that, they repair one worn key relay of the grid, in the core's area or in your home's district, the same repair you'd do with a Wire Spool. They don't repair plain blocks that zombies broke.</td><td>The block's repair material per 45 wear (Scrap Metal, or a plank and 2 Nails); 1 Scrap Metal per Spike Strip; 1 Wire Spool and 1 Duct Tape per relay</td></tr>
+	</table></div>
+	<h3>Changing jobs</h3>
+	<ul>
+		<li><strong>New job, first day slow:</strong> a survivor works at <strong>half speed</strong> for one in-game day after you change their job. Talk to them and they'll say they're still learning. The job a survivor came with has no learning day.</li>
+		<li><strong>Not on horde nights:</strong> on a horde night, from the moment the siren warns until dawn, survivors refuse to change jobs: "Not now. They're coming." Follow, Stay and Home still work.</li>
+		<li>A scavenger who is out can't be given a new job until they're back.</li>
+	</ul>
+	<h3>Food</h3>
+	<ul>
+		<li>Every survivor you lead eats once a day, the least filling food first, until they've had enough. Living at home (settled and sent [Home]) they eat from the home's Supply Lockers.</li>
+		<li><strong>Away from home</strong> (following you, or told to [Stay] out in the city, home or not) they eat from <strong>your own inventory</strong> instead, as long as you're online and within 32 blocks. They never touch the home lockers while they're away. Keep some food on you on long trips: talk tells you when they're hungry.</li>
+		<li>A day's meal is <strong>5 hunger points</strong>, the same as one loaf of bread. A cooked steak (8) covers a day by itself; berries or melon slices (2 each) take 3. A core's first 3 settlers need 5 points each; from the 4th settler on, each needs <strong>10</strong> (away from home it's always 5).</li>
+		<li>Survivors refuse <strong>rotten flesh, spider eyes and poisonous potatoes</strong>, however hungry they are. Keep the rotten flesh for taming dogs. They also never take <strong>Bottled Water, golden apples or enchanted golden apples</strong>, so those are safe in a locker or your pockets.</li>
+		<li>If there isn't enough for their whole meal, they eat nothing and go <strong>hungry</strong>: their nameplate says "hungry" and they work at half speed. Hungry and new to a job, they work at a quarter speed.</li>
+		<li>After <strong>3 hungry days in a row</strong> a survivor leaves for good, and their leader is told. Leaving from home, they put their weapon and anything they carry in the lockers first; leaving from anywhere else, they drop them where they stand.</li>
+		<li>Holdouts still hiding and traders never eat. Days a survivor spends unloaded (nobody near) aren't counted: they eat once when they load again.</li>
+	</ul>
+	<h3 id="supply-locker"><img class="tex" src="img/supply_locker_front.png" alt="" width="32" height="32">Supply Locker</h3>
+	<p>A steel locker with 27 slots, like a chest. It can only be placed inside a Bunker Core's area. Make it from 7 Scrap Metal, a chest and an iron ingot (<a href="#all-recipes">All recipes</a>). When a guard stops being a guard, their weapon goes into the nearest Supply Locker at their home. If there's no room, they drop it at their feet. The base jobs and the daily meals take what they need from these lockers, and scavengers put their finds in them. Only lockers in loaded chunks of the core's area count. Carry On can't pick up a Supply Locker, so it stays in the bunker.</p>
+	<h3>Danger</h3>
+	<ul>
+		<li><strong>Zombies hunt survivors</strong> the way they hunt you: a zombie goes for whoever is nearest, you or a survivor, so survivors following you can be bitten while you fight. Once it has picked someone it only switches if another target is clearly closer. Special infected only hunt players.</li>
+		<li><strong>Bites:</strong> a zombie's hit can infect a survivor, with the same chance as for you. Their nameplate then says "bitten", and their leader is told. One in-game day later they turn into a zombie, still holding their weapon. A bitten survivor who dies of anything else also turns.</li>
+		<li><strong>Cure:</strong> right-click a bitten survivor with <strong>Antibiotics</strong>. One dose cures them completely.</li>
+		<li><strong>No friendly fire:</strong> nothing a player does can hurt a survivor: weapons, arrows, pets, explosions and Spike Strips all spare them. Survivors can't hurt each other either. They also shrug off lava, fire, suffocation and falling anvils or blocks, so nobody can use those on them. Only zombies (and other hostile mobs) can kill a survivor.</li>
+	</ul>
+	<h3>Limits</h3>
+	<ul>
+		<li>Each player and their party can have up to <strong>6 survivors</strong>, settled or following. A Bunker Core holds 6 settlers. The whole world allows 30 taken-in survivors; holdouts still hiding, unfound, don't count toward that.</li>
+		<li>When everyone near a finished distress call is at their group's limit, or the world is at its limit, the call leaves only the note, and chat says which limit it was.</li>
+		<li>While the world is at its limit, no new holdouts appear, and a holdout won't join anyone until there's room.</li>
+	</ul>
+	<h3 id="traders">Traders</h3>
+	<p>When you reclaim a district, a <strong>trader</strong> moves into its substation compound and stands near the Substation Core. The Grid Map marks each reclaimed substation with a gold dot. Right-click a trader to open the trading screen. You pay from your own inventory, and only one player can trade at a time. Traders take no orders, never eat and don't count toward any limit. They stay within 8 blocks of their spot, and zombies hunt them like any survivor.</p>
+	<div class="table-wrap"><table>
+		<tr><th>District</th><th>Sells (you pay → you get, trades per restock)</th></tr>
+		<tr><td><strong>Every district</strong></td><td>3 Canned Food → 2 Bandages (6). 4 Duct Tape + 2 Scrap Electronics → Antibiotics (2). 8 Scrap Metal + 2 Batteries → a full Energy Cell (1). 3 Cloth → 16 Nails (4). The Mission sells its medicine cheaper, see below</td></tr>
+		<tr><td><strong>River Arts</strong></td><td>2 Scrap Metal → 3 Cooked Salmon (4). 1 Cloth → 8 Wheat Seeds (4). 8 Scrap Metal + 4 Duct Tape → <strong>Optic</strong> (1)</td></tr>
+		<tr><td><strong>South Slope</strong></td><td>2 Scrap Metal → 3 Bread (4). 1 Cloth → 4 Carrots (4). 3 Batteries → a charged Standard Cell Pack (2). 10 Scrap Metal + 4 Scrap Electronics → <strong>Heat Sink</strong> (1)</td></tr>
+		<tr><td><strong>Downtown</strong></td><td>2 Scrap Metal → 2 Cooked Beef (4). 3 Wire Spools → 1 Battery (3). 6 Scrap Metal + 4 Duct Tape → Weapon Parts (2). 10 Scrap Metal + 2 Weapon Parts → <strong>Riot Vest</strong> (1)</td></tr>
+		<tr><td><strong>Mission</strong></td><td>2 Canned Food → 2 Bandages (8). 3 Duct Tape + 1 Scrap Electronics → Antibiotics (4). 1 Scrap Metal → 2 Apples (4). 4 Duct Tape + 6 Cloth → <strong>Hazmat Mask</strong> (1)</td></tr>
+	</table></div>
+	<ul>
+		<li><strong>Restock:</strong> every offer fills up again <strong>3 in-game days</strong> after the last restock. Days are counted on the day clock, so nights you sleep through count. A trader who has sold out every offer doesn't open the trading screen: they tell you how many days until the restock.</li>
+		<li><strong>Replacement:</strong> if a trader is killed or turns, a new one arrives <strong>2 in-game days</strong> later (day clock too), as long as the district is still reclaimed. Traders stay through blackouts and Breaches.</li>
+	</ul>
+</section>
+
+<section id="alive">
+	<h2>Infection, hordes and specials</h2>
+	<h3>Infection</h3>
+	<p>Zombie hits can infect you: about 6% per hit, less with armour (each armour point removes 2% of the chance), more in Mission. Dirty Water is an 8% risk per drink.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Stage</th><th>Starts after</th><th>Effect</th></tr>
+		<tr><td>1</td><td>0 min</td><td>A message only. <strong>One dose of antibiotics cures it</strong></td></tr>
+		<tr><td>2</td><td>5 min</td><td>Hunger and thirst drain faster</td></tr>
+		<tr><td>3</td><td>12 min</td><td>Slowness, Weakness, nausea</td></tr>
+		<tr><td>4</td><td>20 min</td><td>Worse slowness and weakness, Mining Fatigue</td></tr>
+		<tr><td>Death</td><td>28 min</td><td>You die like any other death: your gear drops where you fell</td></tr>
+	</table></div>
+	<ul>
+		<li><strong>Bandage:</strong> hold use like eating (1.6 s; letting go early wastes nothing but does nothing). Heals 1.5 hearts and pauses the infection for 60 s.</li>
+		<li><strong>Antibiotics:</strong> cure at stage 1. Later, each dose knocks it back one stage, so stage 4 needs four doses.</li>
+		<li>Milk does not cure it.</li>
+	</ul>
+	<h3>Horde nights</h3>
+	<p><strong>You can't sleep on a horde night</strong> (from sunset to dawn) <strong>or while a district siege is set for tonight.</strong> About every 6 nights from night 7, a siren sounds 150 seconds before dark. Waves spawn 40–64 blocks away and come for your Bunker Core, or for you. Horde nights get harder as days pass and as you relight districts.</p>
+	<h3>Special infected</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Special</th><th class="num">From day</th><th>Watch out for</th></tr>
+		<tr><td>Crawler</td><td class="num">5</td><td>Fits under one-block gaps. Look down</td></tr>
+		<tr><td>Bloated</td><td class="num">8</td><td>Bursts into an infectious cloud. Kill it at range</td></tr>
+		<tr><td>Spitter</td><td class="num">10</td><td>Acid from 3–16 blocks. Close inside 3 blocks or break line of sight</td></tr>
+		<tr><td>Screamer</td><td class="num">12</td><td>Shrieks to speed up nearby zombies. Kill it first</td></tr>
+		<tr><td>Stalker</td><td class="num">15</td><td>Invisible in the dark. Carry light and listen for the hiss</td></tr>
+		<tr><td>Brute</td><td class="num">20</td><td>60 HP, breaks blocks fast. Fortified walls hold</td></tr>
+	</table></div>
+</section>
+
+<section id="districts">
+	<h2>Reclaiming districts</h2>
+	<p>Each of the four districts has a dead <strong>Substation Core</strong> in a fortified control room. Relighting all four opens the finale. The Field Radio and the Grid Map (<code>G</code>) point to the nearest one you haven't reclaimed. Districts can be done in any order.</p>
+	<div class="table-wrap"><table>
+		<tr><th>District</th><th class="num">Tier</th><th>Substation</th><th class="num">X, Z</th><th>Reclaim reward</th></tr>
+		<tr><td><strong>River Arts</strong></td><td class="num">2</td><td>Riverside pump house</td><td class="num"><span class="coord">-864, 80</span></td><td><strong>City pump:</strong> clean water in reclaimed districts. Cache with an Ion Blaster Rifle</td></tr>
+		<tr><td><strong>South Slope</strong></td><td class="num">2</td><td>Brewery-yard substation</td><td class="num"><span class="coord">96, 800</span></td><td>Heat Sink and Cell Regulator fit at the Bench. Cache with a Heat Sink, plus a Dampener or Focusing Lens</td></tr>
+		<tr><td><strong>Downtown</strong></td><td class="num">3</td><td>Parking-deck substation</td><td class="num"><span class="coord">64, -16</span></td><td>Overcharger fits at the Bench. Cache with a Pulse Carbine or Arc Magnum</td></tr>
+		<tr><td><strong>Mission</strong></td><td class="num">4</td><td>Hospital generator plant</td><td class="num"><span class="coord">784, 640</span></td><td><strong>Patient Zero's ward unseals.</strong> Cache with antibiotics, a Heavy Cell Pack and a rare blaster</td></tr>
+	</table></div>
+	<div class="note"><p><strong>Suggested order:</strong> River Arts first, for clean water and an easier siege. Mission last: it's tier 4 and infection is worst there.</p></div>
+
+	<h3>Step 1: Repair</h3>
+	<p><img class="tex" src="img/grid_coupler.png" alt="" width="32" height="32">Right-click the core with <strong>4 Grid Couplers</strong>, one at a time. Each is used up. The core becomes <strong>Repaired</strong>.</p>
+	<h3>Step 2: Link 3 key relays</h3>
+	<ul>
+		<li><img class="tex" src="img/power_relay_front.png" alt="" width="32" height="32">Each district has <strong>6 key Power Relays</strong> around it. <strong>Link any 3</strong> by right-clicking them with a Grid Coupler. It isn't used up. Pick the ones nearest the core.</li>
+		<li><strong>Linking works as soon as the core is repaired.</strong> Do it by day, before loading any cells, so the noisy hold and the siege come on the same night.</li>
+		<li>You can still link during the hold, so in co-op one player can run relays while others hold the core.</li>
+		<li>The Field Radio names the nearest relay you haven't tuned into, and the Grid Map shows the ones you have.</li>
+	</ul>
+	<h3>Step 3: Energize</h3>
+	<ul>
+		<li><img class="tex" src="img/energy_cell.png" alt="" width="32" height="32">Right-click the core with <strong>4 fully charged Energy Cells</strong> (240 each).</li>
+		<li>The last cell starts a <strong>5-minute hold</strong>, shown on a boss bar. It only counts while a player is within 32 blocks.</li>
+		<li>The core hums every 4 seconds, loud enough to pull zombies from 144 blocks. Extra zombies keep arriving: 2 every 15 s, up to 8 at once.</li>
+		<li>Fortify the control-room doors <em>before</em> you load the last cell.</li>
+	</ul>
+	<h3>Step 4: Survive the siege</h3>
+	<p>With the hold done and 3 relays linked, the district is <strong>Energized</strong> and a <strong>District Siege</strong> starts at the next nightfall. The siren warns you 150 seconds ahead, and you can't sleep that night.</p>
+	<ul>
+		<li>Waves attack the core, coming in through the building's entrance. A new wave comes every 120 s, or sooner once 4 or fewer zombies are left.</li>
+		<li>Every zombie within about 6 blocks of the core takes 1 HP per second off it. Left alone, it falls in about 2.5 minutes.</li>
+		<li>Waves grow with the party: ×1.6 for 2 players, ×2.3 for 3 and ×2.8 for 4.</li>
+	</ul>
+	<div class="table-wrap"><table>
+		<tr><th>Siege tier</th><th>Waves × zombies (solo)</th><th class="num">Core HP</th></tr>
+		<tr><td>I</td><td>4 × 8</td><td class="num">1280</td></tr>
+		<tr><td>II</td><td>6 × 12</td><td class="num">1920</td></tr>
+		<tr><td>III</td><td>7 × 20</td><td class="num">3200</td></tr>
+		<tr><td>IV</td><td>6 × 22 (patients join)</td><td class="num">3520</td></tr>
+		<tr><td>V</td><td>6 × 24</td><td class="num">3840</td></tr>
+		<tr><td>VI</td><td>7 × 26</td><td class="num">4160</td></tr>
+	</table></div>
+	<p>The day tier rises on days 14, 28, 45, 65 and 90. The siege tier is the higher of the day tier and the grid tier, which goes up with every district you've already reclaimed. <strong>Your first siege</strong> counts the day tier as II at most, so taking your time doesn't make the first district harder (the district's own tier still applies, so Mission stays tier IV).</p>
+	<ul>
+		<li><strong>You win</strong> by clearing every wave, or by reaching dawn after players spent at least 4 minutes of the siege within 96 blocks of the core.</li>
+		<li><strong>If the core falls,</strong> it drops back to Repaired. You keep the couplers and relay links, but must load 4 fresh cells and redo the hold.</li>
+		<li>If nobody turned up, the siege moves to the next night instead of being lost.</li>
+	</ul>
+
+	<h3>What reclaiming gives</h3>
+	<ul>
+		<li><strong>+20% Grid</strong> for the whole world, up to 80% with all four.</li>
+		<li><strong>A safe compound:</strong> the core's chunk and the chunks around it become a safe zone.</li>
+		<li><strong>A transit stop:</strong> fast travel to and from the substation (see Bases).</li>
+		<li><strong>80% fewer zombies</strong> spawning from the dark across the district.</li>
+		<li><strong>Free charging:</strong> Field Chargers and Power Relays in the district need no cells.</li>
+		<li><strong>A reward cache</strong> at the core, one per player, plus the district's extra from the table above.</li>
+		<li><strong>A trader</strong> at the substation, with the district's own stock (see <a href="#traders">Traders</a>).</li>
+		<li><strong>The lights come back:</strong> dead lamps become Grid Lamps as you explore. Lit streets draw zombies at night.</li>
+		<li>Every later siege and horde night gets a tier harder.</li>
+	</ul>
+
+	<h3 id="decay">Keeping the power on</h3>
+	<p>A reclaimed district has to be kept up. Its linked relays wear down, and a district needs <strong>3 working relays</strong> to stay lit.</p>
+	<ul>
+		<li><strong>Wear:</strong> each linked relay loses 8% a day, starting 3 days after the district is reclaimed. Left alone, a relay lasts about 12 days.</li>
+		<li><strong>Horde nights:</strong> after each horde night, one reclaimed district takes the hit: 1–2 of its relays lose 30%.</li>
+		<li><strong>Flicker:</strong> with fewer than 3 working relays, the district flickers. Everyone is told, and you have <strong>2 days</strong> to fix it.</li>
+		<li><strong>Blackout:</strong> after that the district goes dark. It loses its safe compound, free power, Grid % and spawn reduction until fixed. <strong>No new siege:</strong> repair enough relays and it comes straight back.</li>
+		<li><strong>Repair:</strong> use a <strong>Wire Spool</strong> on a linked relay with <strong>Duct Tape</strong> in your inventory. Both are used up, and the relay is back to 100%.</li>
+		<li><strong>Check a relay:</strong> use a Grid Coupler on it to see its condition and how many relays work.</li>
+		<li><strong>Spares:</strong> once a district is reclaimed, you can link more of its 6 key relays with a Grid Coupler. Each spare is one more relay that has to fail before the lights do.</li>
+		<li>The <strong>Field Radio</strong> lists worn relays (30% or less), flickering districts with days left, and blackouts.</li>
+	</ul>
+
+	<h4>What happens when relays fail</h4>
+	<figure>
+		<div class="fig">
+			<div class="flow">
+				<div class="st"><b>Reclaimed</b><small>Lit, safe compound</small></div>
+				<div class="arrow">fewer than 3 working relays</div>
+				<div class="st"><b>Flickering</b><small>Still lit · 2 days to fix</small></div>
+				<div class="arrow">not fixed in time</div>
+				<div class="st dark"><b>Blackout</b><small>Dark, spawns as usual</small></div>
+			</div>
+			<p class="flow-back"><img class="tex" src="img/wire_spool.png" alt="" width="32" height="32"><strong>Wire Spool + Duct Tape</strong> on a relay → back to 100%. Get 3 relays working again and the district goes straight back to <strong>Reclaimed</strong>, with no siege.</p>
+		</div>
+	</figure>
+
+	<h4>One relay over time</h4>
+	<figure>
+		<div class="fig"><svg viewBox="0 0 600 270" role="img" aria-label="Relay condition by days since the district was reclaimed. It stays at 100% for 3 days, then loses 8% a day and reaches 0 around day 16. The district then flickers until day 18 and blacks out. A horde hit of 30% on day 7 brings it to 0 around day 12.">
+			<rect x="474" y="20" width="53" height="190" fill="var(--accent)" fill-opacity=".25"/>
+			<rect x="527" y="20" width="53" height="190" fill="var(--danger)" fill-opacity=".25"/>
+			<rect x="50" y="153" width="530" height="57" fill="var(--muted)" fill-opacity=".1"/>
+			<g stroke="var(--rule)" stroke-width="1"><path d="M50 20 H580 M50 115 H580"/></g>
+			<path d="M50 210 H580" stroke="var(--muted)" stroke-width="1.5"/>
+			<g class="mut" text-anchor="end"><text x="44" y="24">100%</text><text x="44" y="119">50%</text><text x="44" y="214">0</text></g>
+			<g class="mut" text-anchor="middle"><text x="50" y="230">0</text><text x="156" y="230">4</text><text x="262" y="230">8</text><text x="368" y="230">12</text><text x="474" y="230">16</text><text x="580" y="230">20</text></g>
+			<text x="315" y="256" text-anchor="middle" class="mut">Days since the district was reclaimed</text>
+			<path d="M50 20 H129.5 L235.5 80.8 V137.8 L361.4 210" fill="none" stroke="var(--muted)" stroke-width="2" stroke-dasharray="6 4"/>
+			<path d="M50 20 H129.5 L460.75 210 H580" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+			<circle cx="235.5" cy="137.8" r="4" fill="var(--muted)"><title>Horde night: −30%</title></circle>
+			<text x="90" y="14" text-anchor="middle" class="mut">Grace</text>
+			<text x="226" y="142" text-anchor="end" class="mut">Horde night −30%</text>
+			<text x="56" y="168" class="mut">Radio warns at 30% or less</text>
+			<text x="500" y="40" text-anchor="middle">Flicker</text>
+			<text x="553" y="40" text-anchor="middle">Dark</text>
+		</svg></div>
+		<div class="legend"><span>Wear only</span><span class="dash">Hit by a horde night</span><span class="sw-f">District flickers</span><span class="sw-b">Blackout</span></div>
+		<figcaption>Every linked relay wears at the same rate, so a district with only 3 linked relays goes dark about 18 days after it's reclaimed if nobody visits. One horde hit brings that forward by about 4 days. Spare relays buy time.</figcaption>
+	</figure>
+	<p>Admins tune this in <code>data/ashfall/ashfall/grid/decay.json</code>: about 4 wear per day is relaxed, 15 means daily upkeep, and <code>"enabled": false</code> turns decay off. <code>/ashfall grid relays &lt;district&gt; &lt;0-100&gt;</code> sets a district's relays for testing.</p>
+
+	<h3>Breaches</h3>
+	<ul>
+		<li>Every 7 days from day 7, a <strong>Breach</strong> hits a random reclaimed district. The siren names it 150 s before nightfall. A Breach never lands on a horde night, the night after one, or a District Siege night: it waits for the next free night.</li>
+		<li>It's a siege on that core. While it runs, the district loses its safe compound and free power.</li>
+		<li><strong>If the core is still standing at dawn,</strong> the Breach is held, even if you weren't there. <strong>Every held Breach leaves a supply cache at the core</strong> (each player gets their own roll): an Energy Cell, salvage and parts, sometimes a charged Standard pack or a Resonance Crystal.</li>
+		<li><strong>If it falls,</strong> the district goes <strong>Broken</strong>: dark again, no free power, no safe compound. Socket <strong>2 Grid Couplers</strong> to restore it at once. You keep your links, reward and Grid %.</li>
+	</ul>
+
+	<h3>Relay Logs</h3>
+	<p>Hold the Field Radio and use any Power Relay to tune in. You get a Relay Log book, one of 30 fragments telling what happened to Asheville. Each player collects their own, and they survive death. Three more documents are in the Kiln &amp; Co. office, the hospital supply room and the Wreck hull. Your logs fill your epilogue at the end.</p>
+</section>
+
+<section id="bosses">
+	<h2>Bosses and crystals</h2>
+	<p><img class="tex" src="img/resonance_crystal.png" alt="" width="32" height="32"><strong>Resonance Crystals</strong> power the endgame: Plasma Blades and the Grid Uplink, which needs 3. Each of the three story bosses drops <strong>one guaranteed crystal</strong>, and crash sites have a 5% chance. Each boss fights once per world, until the ending.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Boss</th><th>Where</th><th>Wakes when</th><th>Threat</th><th>Drops</th></tr>
+		<tr><td><strong>The Abomination</strong></td><td>Foundry of Kiln &amp; Co. Salvage, River Arts, around <span class="coord">-960, 112</span></td><td>You come within 28 blocks</td><td>300 HP, hard hits, big leaps</td><td>Crystal, Weapon Parts, cells, electronics, Riot armour chance</td></tr>
+		<tr><td><strong>Patient Zero</strong></td><td>Sealed deep ward under the Mission hospital, around <span class="coord">704, 624</span></td><td>Within 20 blocks, <strong>only after Mission is reclaimed</strong></td><td>260 HP, 9 damage, armour 6. Summons 2 patients every 15 s (up to 6)</td><td>Crystal, antibiotics, a Focusing Lens, Hazmat armour chance</td></tr>
+		<tr><td><strong>The Juggernaut</strong></td><td>Wreck hull, Beaucatcher ridge, around <span class="coord">2300, -100</span></td><td>You come within 36 blocks</td><td>360 HP, 14 damage, heavy armour, immune to knockback</td><td>Crystal, a Focusing Lens, Weapon Parts, Riot armour chance</td></tr>
+	</table></div>
+	<h3>How to beat them</h3>
+	<ul>
+		<li><strong>The Abomination:</strong> keep moving and keep your distance. It can get back up after a "death" unless it dies burning, so finish it with fire. Flamethrower fire doesn't count: lead it through fire or lava or light it with Flint and Steel, and kill it before it goes out.</li>
+		<li><strong>Patient Zero:</strong> its patients infect at 20%, so bring antibiotics and Hazmat armour. Kill the summons, or focus the boss hard.</li>
+		<li><strong>The Juggernaut:</strong> use high damage per shot and headshots (Lancer, Arc). Never trade blows up close.</li>
+	</ul>
+	<h3>The ridge and crash sites</h3>
+	<ul>
+		<li>The ridge, far east past x 1700, is tier 5: brutes, crash sites and the Wreck. Go well equipped.</li>
+		<li><strong>Crash sites</strong> are wrecks scattered across the ridge and the wasteland, more than 1.6 km from Downtown. Each has a few guards.</li>
+		<li><img class="tex" src="img/focusing_lens.png" alt="" width="32" height="32">Crash-site chests: a 70% chance of a Focusing Lens, plus scrap, batteries and cells, a 5% Resonance Crystal and a 6% rare blaster.</li>
+		<li>Once every story boss is down and you're still short of crystals, the objective line sends you to crash sites.</li>
+	</ul>
+	<h3>Focusing Lenses</h3>
+	<p>You need several for the endgame (the Uplink Frame takes 4). They come from crash sites, electronics stores, museums, the police armory, the South Slope reward, the Wreck hull, Patient Zero and the Juggernaut.</p>
+</section>
+
+<section id="upgrades">
+	<h2>Attachments</h2>
+	<h3>The Weaponsmith Bench</h3>
+	<ul>
+		<li><img class="tex" src="img/weaponsmith_bench_top.png" alt="" width="32" height="32">Craft a <strong>Weaponsmith Bench</strong> and use it like an anvil: blaster in one slot, attachment in the other, then take the result.</li>
+		<li>It stores nothing, so breaking it never loses items, and closing the screen gives the inputs back.</li>
+		<li>If nothing is offered, the screen says why: not a blaster, already fitted, or still locked.</li>
+		<li>Each blaster has one attachment per slot. Fitting into a full slot swaps the old attachment out and gives it back.</li>
+	</ul>
+	<div class="table-wrap"><table>
+		<tr><th>Attachment</th><th>Slot</th><th>Effect</th><th>Unlocked by</th><th>Where to get it</th></tr>
+		<tr><td><img class="tex" src="img/optic.png" alt="" width="32" height="32"><strong>Optic</strong></td><td>Optic</td><td>Sneak to aim: 4× scope (scroll for 2×), aim spread ×0.4</td><td>–</td><td>Craft; police armory (25%)</td></tr>
+		<tr><td><img class="tex" src="img/dampener.png" alt="" width="32" height="32"><strong>Dampener</strong></td><td>Muzzle</td><td>Noise ×0.4, volume ×0.45, damage ×0.9</td><td>–</td><td>Craft; South Slope reward</td></tr>
+		<tr><td><img class="tex" src="img/heat_sink.png" alt="" width="32" height="32"><strong>Heat Sink</strong></td><td>Cooling</td><td>Heat capacity ×1.35, cooling ×1.3</td><td>Reclaiming South Slope</td><td>Craft; South Slope reward</td></tr>
+		<tr><td><img class="tex" src="img/cell_regulator.png" alt="" width="32" height="32"><strong>Cell Regulator</strong></td><td>Core</td><td>Energy per shot ×0.7</td><td>Reclaiming South Slope</td><td>Craft</td></tr>
+		<tr><td><img class="tex" src="img/overcharger.png" alt="" width="32" height="32"><strong>Overcharger</strong></td><td>Core</td><td>Damage ×1.25, heat per shot ×1.2, energy per shot ×1.2</td><td>Reclaiming Downtown (or the Bind ending)</td><td>Craft</td></tr>
+	</table></div>
+	<ul>
+		<li><strong>The Cell Regulator and the Overcharger share the core slot,</strong> so pick one.</li>
+		<li>An attachment you find early waits for its district before the Bench will fit it.</li>
+		<li>A Dampener can also be fitted without the Bench: craft the blaster and the Dampener together.</li>
+		<li><strong>Scope:</strong> works in first person. The screen darkens around a round sight with a cyan reticle, and the heat bar and charge stay visible. The Lancer Blaster Rifle reaches 7×.</li>
+	</ul>
+	<p>Plasma Blades are on <a href="#plasma">Weapons and ammo</a>.</p>
+</section>
+
+<section id="finale">
+	<h2>The Black Start and endings</h2>
+	<p>With all four districts reclaimed (<strong>Grid 80%</strong>) the Wreck hull's hatch unseals, and everyone online is told. Inside is the <strong>Uplink Socket</strong>. Seating the Grid Uplink starts the <strong>Black Start</strong>, a 10–12 minute fight in three phases.</p>
+	<h3>Build the Grid Uplink</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Craft</th><th>Ingredients</th></tr>
+		<tr><td><img class="tex" src="img/uplink_frame.png" alt="" width="32" height="32"><strong>Uplink Frame</strong></td><td>4 Focusing Lenses, 3 Resonance Crystals, 2 Grid Couplers</td></tr>
+		<tr><td><img class="tex" src="img/capacitor_bank.png" alt="" width="32" height="32"><strong>Capacitor Bank</strong> (make 2)</td><td>8 Energy Cells around 1 Grid Coupler</td></tr>
+		<tr><td><img class="tex" src="img/grid_uplink.png" alt="" width="32" height="32"><strong>Grid Uplink</strong></td><td>The frame, 2 Capacitor Banks, 4 Grid Couplers</td></tr>
+	</table></div>
+	<p>In total: 3 crystals, 4 lenses, 8 couplers and 16 Energy Cells.</p>
+	<h3>Prepare</h3>
+	<ul>
+		<li><img class="tex" src="img/energy_cell.png" alt="" width="32" height="32"><strong>Energy Cells:</strong> bring 16 or more charged (14 is the bare minimum solo; 24 is comfortable). Each buys 45 s of Surge and your blasters burn a few more. Parties need a few extra.</li>
+		<li><img class="tex" src="img/grid_coupler.png" alt="" width="32" height="32"><strong>Grid Couplers</strong> to patch the Uplink, 200 HP each.</li>
+		<li>Charged <strong>Plasma Blades</strong> for the pylons.</li>
+		<li>Antibiotics, bandages, food, clean water and spare Cell Packs.</li>
+		<li>Fortify the hull approach if you like. Waves come from 40–64 blocks out along the ridge.</li>
+	</ul>
+	<div class="table-wrap"><table>
+		<tr><th>Role</th><th>Job</th></tr>
+		<tr><td><strong>Engineer</strong></td><td>Feeds cells and patches the Uplink with couplers</td></tr>
+		<tr><td><strong>Marksman</strong></td><td>Lancer or Storm: thins waves before they reach the socket</td></tr>
+		<tr><td><strong>Blade</strong></td><td>Breaks the pylons and fights the Choir</td></tr>
+		<tr><td><strong>Runner</strong></td><td>Carries antibiotics and Cell Packs, revives the downed, holds a Relay Breaker</td></tr>
+	</table></div>
+	<h3>The Uplink</h3>
+	<ul>
+		<li>While it runs it's the loudest and brightest thing in the game: a 192-block sound and a 128-block light every 4 seconds.</li>
+		<li>It has <strong>1200 HP</strong>. Every zombie within 6 blocks takes 1 HP per second, including zombies battering the outside of the hull wall next to it, so don't only guard the hatch.</li>
+		<li>Right-click it with a Grid Coupler to patch 200 HP.</li>
+	</ul>
+	<h3>Phase 1: Surge</h3>
+	<ul>
+		<li><strong>Goal:</strong> 450 seconds of powered time. The Uplink brings 60 s; <strong>each full Energy Cell adds 45 s</strong>, up to 600 s banked. If the buffer runs dry, progress stops.</li>
+		<li>Waves every 30 s. When it ends, River Arts and South Slope light up below the ridge (Grid 87%).</li>
+	</ul>
+	<h3>Phase 2: Feedback</h3>
+	<ul>
+		<li><strong>Goal:</strong> close both <strong>Relay Breakers</strong>, which rise 20 blocks either side of the socket. Each needs a living player within 3 blocks for 75 s. Both can run at once.</li>
+		<li>An unattended breaker keeps its progress for a short grace period (20 s solo, less in groups), then slips back.</li>
+		<li>Special infected pour out of two vents every 20 s, and a feedback arc hits the Uplink for 60 HP every 30 s.</li>
+		<li>Waves every 45 s. When it ends, Downtown lights up (Grid 94%).</li>
+	</ul>
+	<h3>Phase 3: The Heart</h3>
+	<ul>
+		<li><strong>Goal:</strong> break the <strong>four Heart pylons</strong>. A lit Plasma Blade takes about 10 s each; a pickaxe about 2 minutes.</li>
+		<li><strong>The Choir</strong> rises beside the Heart: a crystal giant with 420 HP, 12 damage and armour 10, immune to knockback. Kill it or keep it busy while someone works the pylons. It shatters when the last pylon falls.</li>
+		<li>Waves every 60 s. When it ends, Mission lights up, the Grid reaches 100%, and everyone who took part gets <strong>Asheville Relit</strong>.</li>
+	</ul>
+	<h3>Scaling and failing</h3>
+	<ul>
+		<li>Waves scale with the players near the socket: 13 zombies a wave solo, 18 for two, 22 for three, 25 for four.</li>
+		<li><strong>Failing costs time, not the run.</strong> The run pauses if the Uplink reaches 0 HP or nobody stays within 96 blocks for 20 s. You lose 60 s of Surge, or both breakers trip open again. Won phases and broken pylons stay done.</li>
+		<li>To resume, feed a cell or patch with a coupler once the Uplink is back to at least 50% HP. The boss bar says what's missing.</li>
+	</ul>
+	<h3>Sever or Bind</h3>
+	<p>When the Heart falls, everyone who took part gets clickable <strong>[Sever] [Bind]</strong> buttons in chat. The vote lasts 30 seconds, and a tie or silence defaults to Sever. Playing solo, you click and then confirm.</p>
+	<div class="table-wrap"><table>
+		<tr><th></th><th>Sever (the rebuild ending)</th><th>Bind (the veteran ending)</th></tr>
+		<tr><td>Infection</td><td><strong>Antibiotics cure at any stage</strong></td><td>Unchanged</td></tr>
+		<tr><td>Spawning</td><td>Ambient zombies ×0.4</td><td>Unchanged</td></tr>
+		<tr><td>Horde nights</td><td>Three times as rare</td><td>Grow every 7 days from tier IV, up to tier VI and ×1.5 size</td></tr>
+		<tr><td>Power</td><td>Every Power Relay charges free, anywhere</td><td>Unchanged</td></tr>
+		<tr><td>Gear</td><td>–</td><td>A Resonant Plasma Blade for each voter, and the Overcharger fits without Downtown</td></tr>
+		<tr><td>Havens</td><td>–</td><td>Bunker Cores protect 2 more chunks in every direction</td></tr>
+		<tr><td>New boss</td><td>–</td><td><strong>The Ascendant</strong>: climbs out of the hull 10 days after the ending, and every 10 days after each defeat. 520 HP, summons armoured zombies, drops 2 crystals</td></tr>
+	</table></div>
+	<p>Both endings give every voter a <strong>Field Report</strong> (days survived, districts lit, bosses killed, logs heard, deaths) and an <strong>Epilogue</strong> book with one page per Relay Log you collected.</p>
+	<h3>After the ending</h3>
+	<ul>
+		<li>The world carries on. Breaches still come every 7 days, and each one held pays out a supply cache.</li>
+		<li><strong>Aftershock crash sites</strong> can appear every 7 days, with crystals and rare blasters, so blades stay re-socketable.</li>
+		<li><strong>Bosses return</strong> 10 days after the ending, and 10 days after each later defeat.</li>
+		<li>Missed Relay Logs stay collectible. <code>/ashfall ending epilogue</code> prints a fresh epilogue; <code>/ashfall ending status</code> shows the world's ending.</li>
+		<li><strong>Replay:</strong> an operator can run <code>/ashfall story reset</code> to rearm the finale and pick the other ending. Districts, logs and rewards are kept.</li>
+	</ul>
+</section>
+
+<section id="admin">
+	<h2>Co-op and server admin</h2>
+	<h3>Installing</h3>
+	<ol class="steps">
+		<li>Import the <code>.mrpack</code> into <strong>Prism Launcher</strong> (Add Instance → Import) or the Modrinth App.</li>
+		<li>Give it <strong>6–8 GB</strong> of memory.</li>
+		<li>Create a <strong>new world</strong>. The city generates as you explore. To keep a world from an older version, copy its folder into the new instance's <code>saves</code>.</li>
+		<li>Optional: pregenerate to cut stutter. Run <code>/chunky radius 600</code>, then <code>/chunky start</code>.</li>
+	</ol>
+	<h3>Playing together</h3>
+	<ul>
+		<li>Ashfall is built for 2–4 players. <strong>Everyone needs the same pack version.</strong></li>
+		<li><strong>Same network:</strong> the host loads the world and picks Esc → <strong>Open to LAN</strong> (turn Allow Commands on for admin commands). Friends find it under Multiplayer.</li>
+		<li><strong>Over the internet:</strong> with <strong>e4mc</strong> (included), Open to LAN also prints a public address like <code>xxxx.e4mc.link</code>. Friends paste it into Direct Connect. No port forwarding needed.</li>
+		<li>The host's game is the server, so give it 6–8 GB and don't let the host's computer sleep.</li>
+		<li><strong>Parties</strong> (<code>/openpac-parties</code>) share one Bunker Core and claim, and a party's online members join its ending vote.</li>
+		<li>A downed player has about 45 s to be revived with a friend's right-click.</li>
+		<li>There's no voice chat in the pack. Talk on whatever your group already uses.</li>
+	</ul>
+	<h3 id="party-size">How the game scales with players</h3>
+	<div class="table-wrap"><table style="min-width: 680px">
+		<tr><th>What</th><th class="num">Solo</th><th class="num">2</th><th class="num">3</th><th class="num">4</th><th>Notes</th></tr>
+		<tr><td><strong>District siege waves</strong></td><td class="num">×1.0</td><td class="num">×1.6</td><td class="num">×2.3</td><td class="num">×2.8</td><td>Counts the players near the core</td></tr>
+		<tr><td><strong>Black Start waves</strong></td><td class="num">×0.6</td><td class="num">×0.8</td><td class="num">×1.0</td><td class="num">×1.15</td><td>The finale is tuned for 3</td></tr>
+		<tr><td><strong>Black Start time to reach breakers</strong></td><td class="num">×2</td><td class="num">×1.5</td><td class="num">×1</td><td class="num">×1</td><td>Gives a solo player time to run between them</td></tr>
+		<tr><td><strong>Black Start zombie limit</strong></td><td class="num">60</td><td class="num">120</td><td class="num">120</td><td class="num">120</td><td>60 per player, never more than 120</td></tr>
+		<tr><td><strong>Street zombies</strong></td><td colspan="4">30 per player on day 1, rising to 60 by day 120</td><td>Counted within 128 blocks of each player. Stay together and you share one limit; split up and each of you gets your own. Never more than 120 near one player or 150 in the world</td></tr>
+		<tr><td><strong>Special infected</strong></td><td colspan="4">Limits are per player</td><td>A group can face more spitters, brutes and others at once</td></tr>
+		<tr><td><strong>Horde nights</strong></td><td colspan="4">Every living player gets their own waves</td><td>They head for that player's Bunker Core, or for the player. At one shared base the waves converge there, but no more than 60 horde zombies gather near one spot</td></tr>
+	</table></div>
+	<ul>
+		<li><strong>Everyone gets their own:</strong> loot chests (Lootr), the safehouse starter cache, district rewards and Breach caches, Relay Logs and Epilogue pages, and a Resonant Plasma Blade for each Bind voter.</li>
+		<li><strong>Shared:</strong> the Bunker Core and claim (one per party), districts, Grid % and relay decay, supply drops (anyone can claim one), and the ending vote.</li>
+		<li><strong>Sleeping:</strong> everyone online has to be in bed to skip the night.</li>
+		<li><strong>Splitting up works well with 4:</strong> one pair repairs relays while the other explores. Each base gets its own horde waves, so leave someone home or fortify both.</li>
+	</ul>
+	<h3>Dedicated server</h3>
+	<ul>
+		<li>Quickest: <code>mrpack-install ./Ashfall-&lt;version&gt;.mrpack --server-dir ashfall-server</code> sets up a Fabric server with only the server-side mods.</li>
+		<li>Full steps, configs, the start command and pregeneration are in the pack's <code>docs/install-and-server.md</code>.</li>
+		<li>For a big pregen: <code>/chunky radius 1600</code>, <code>/chunky start</code>, then <code>/ashfall atlas processall</code>.</li>
+	</ul>
+	<h3>Useful commands</h3>
+	<p>Most need operator level 2 (<code>/op</code>, or Allow Commands in singleplayer and LAN). Ones marked <strong>Everyone</strong> work for all players.</p>
+	<div class="table-wrap"><table>
+		<tr><th>Command</th><th>What it does</th></tr>
+		<tr><td><code>/ashfall mission</code></td><td><strong>Everyone.</strong> Your checklist. <code>/ashfall mission book</code> replaces the briefing book</td></tr>
+		<tr><td><code>/ashfall respawn bunker|safezone|spawn</code></td><td><strong>Everyone.</strong> Change your respawn point once, within 20 s of respawning</td></tr>
+		<tr><td><code>/ashfall horde status</code></td><td>Today's day, the next horde night and its tier, the next Breach</td></tr>
+		<tr><td><code>/ashfall grid status</code></td><td>Every district's state and the Grid %</td></tr>
+		<tr><td><code>/ashfall infection clear &lt;player&gt;</code></td><td>Cure a player (<code>get</code> and <code>set</code> also exist)</td></tr>
+		<tr><td><code>/thirst set &lt;player&gt; &lt;0-20&gt;</code></td><td>Set a player's thirst</td></tr>
+		<tr><td><code>/ashfall boss list</code></td><td>Each boss lair's state and kills</td></tr>
+		<tr><td><code>/ashfall safezone add &lt;name&gt; [radius]</code></td><td>Make a safe zone around your chunk</td></tr>
+		<tr><td><code>/ashfall debug stimuli</code></td><td>Show the noise, light and blood around you as particles</td></tr>
+		<tr><td><code>/lootzone create … </code> and <code>/lootzone gui</code></td><td>Custom loot areas with their own tables and refill timers</td></tr>
+		<tr><td><code>/mobdrops gui</code></td><td>Edit what mobs drop. Saved in the world's <code>ashfall_overrides</code> datapack</td></tr>
+		<tr><td><code>/ashfall finale status</code></td><td>The Black Start run: phase, buffer, Uplink HP, or why it's paused</td></tr>
+		<tr><td><code>/ashfall ending status</code></td><td><strong>Everyone.</strong> The world's ending and who took part</td></tr>
+	</table></div>
+	<h3>Game rules</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Rule</th><th>Default</th><th>What it does</th></tr>
+		<tr><td><code>ashfall:thirst</code></td><td>true</td><td>Thirst on or off</td></tr>
+		<tr><td><code>ashfall:director_spawning</code></td><td>true</td><td>All Ashfall zombie spawning</td></tr>
+		<tr><td><code>ashfall:director_ambient_cap_start</code></td><td>30</td><td>Zombies per player on day 1</td></tr>
+		<tr><td><code>ashfall:director_ambient_cap_max</code></td><td>60</td><td>Zombies per player from day 120 (rising evenly from day 1)</td></tr>
+		<tr><td><code>ashfall:objective</code></td><td>true</td><td>The story layer. Off: pure sandbox with no vote, titles or objective line</td></tr>
+	</table></div>
+	<h3>Common problems</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Problem</th><th>Fix</th></tr>
+		<tr><td>Lag while exploring or near many zombies</td><td>It's mostly new terrain generating. Give the game 6–8 GB and pregenerate with Chunky</td></tr>
+		<tr><td>A friend can't join</td><td>Everyone needs the same pack version. A "mismatched mod" message names the culprit</td></tr>
+		<tr><td>A Field Charger doesn't charge</td><td>It only works inside a claim: your Bunker Core area, the safehouse or a reclaimed district</td></tr>
+		<tr><td>Placing a Bunker Core fails</td><td>One core per party, or per player outside a party. Break the old one first</td></tr>
+		<tr><td>The finale keeps pausing</td><td>A living player must stay within 96 blocks of the socket</td></tr>
+		<tr><td>No city in a new world</td><td>The <code>ashfall</code> Lost Cities profile wasn't selected. Check <code>config/lostcities-server.toml</code></td></tr>
+	</table></div>
+</section>
+
+<section id="stats">
+	<h2>Block and item stats</h2>
+	<p>Hardness is how long a block takes to mine (vanilla planks are 2, stone 1.5, iron blocks 5). Blast resistance is how well it survives explosions (planks 3, stone 6, obsidian 1200). <strong>Fortified</strong> blocks can't be broken outright by zombies, only worn down (see <a href="#wear">Wear and repair</a>); bosses break them outright.</p>
+	<h3>Blocks</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Block</th><th class="num">Hardness</th><th class="num">Blast res.</th><th>Fortified</th><th class="num">Light</th><th>What it does</th></tr>
+		<tr><td><img class="tex" src="img/reinforced_planks.png" alt="" width="32" height="32"><strong>Reinforced Planks</strong></td><td class="num">4</td><td class="num">9</td><td>Yes</td><td class="num">0</td><td>A full building block for walls zombies can only wear down (120 points, then it becomes oak planks). Crafted 4 at a time.</td></tr>
+		<tr><td><img class="tex" src="img/barricade_front.png" alt="" width="32" height="32"><strong>Barricade</strong></td><td class="num">3.5</td><td class="num">8</td><td>Yes</td><td class="num">0</td><td>A thin plank-and-strap panel set across a door or window. Solid, so zombies can't squeeze past or climb over it. It faces the player who places it.</td></tr>
+		<tr><td><img class="tex" src="img/reinforced_door.png" alt="" width="32" height="32"><strong>Reinforced Door</strong></td><td class="num">5</td><td class="num">6</td><td>Yes</td><td class="num">0</td><td>An oak-and-alloy door that opens by hand, with metal sounds. Zombies can only wear it down (180 points), so it holds a doorway for about 3 minutes against one zombie. Needs a pickaxe to drop.</td></tr>
+		<tr><td><img class="tex" src="img/bunker_core_side.png" alt="" width="32" height="32"><strong>Bunker Core</strong></td><td class="num">5</td><td class="num">1200</td><td>Yes</td><td class="num">4</td><td>Claims an 80×80-block base for you or your party. Nothing spawns inside, Field Chargers work, and you respawn here first. Can't be pushed by pistons. One per party. Stacks to 1.</td></tr>
+		<tr><td><img class="tex" src="img/field_charger_front.png" alt="" width="32" height="32"><strong>Field Charger</strong></td><td class="num">3.5</td><td class="num">6</td><td>No</td><td class="num">7 while charging</td><td>4 charge slots and 1 Energy Cell slot, with an internal buffer of 960. Charges 5 energy per second per slot: a Small pack in 6 s, Standard in 12 s, Heavy in 24 s. Only works inside a claim. Needs a pickaxe to drop.</td></tr>
+		<tr><td><img class="tex" src="img/rapid_charger_front.png" alt="" width="32" height="32"><strong>Rapid Charger</strong></td><td class="num">3.5</td><td class="num">6</td><td>No</td><td class="num">9 while charging</td><td>The Field Charger at 3× speed: 15 energy per second per slot, so a Small pack in 2 s, Standard in 4 s, Heavy in 8 s. Same 4 slots, cell slot and claim rule. It uses cell energy no faster per pack charged.</td></tr>
+		<tr><td><img class="tex" src="img/power_relay_front.png" alt="" width="32" height="32"><strong>Power Relay</strong></td><td class="num">Unbreakable</td><td class="num">–</td><td>–</td><td class="num">3, or 10 charging</td><td>Fixed street charger that powers itself. 40 energy per second per slot, so packs fill in under 3 s. Hums every 2 s, which zombies hear from 48 blocks. Six key relays per district must be linked with a Grid Coupler.</td></tr>
+		<tr><td><img class="tex" src="img/weaponsmith_bench_top.png" alt="" width="32" height="32"><strong>Weaponsmith Bench</strong></td><td class="num">2.5</td><td class="num">6</td><td>No</td><td class="num">0</td><td>Fits and removes blaster attachments: Optic, Dampener, Heat Sink, Cell Regulator, Overcharger.</td></tr>
+		<tr><td><img class="tex" src="img/substation_core_side.png" alt="" width="32" height="32"><strong>Substation Core</strong></td><td class="num">Unbreakable</td><td class="num">–</td><td>–</td><td class="num">Rises with power</td><td>One per district. Socket 4 Grid Couplers, load 4 full Energy Cells, hold it for 5 minutes, then win the siege to reclaim the district.</td></tr>
+	</table></div>
+	<p>Other fortified blocks: iron blocks, iron bars, iron doors and trapdoors, copper doors and trapdoors, obsidian and crying obsidian.</p>
+	<h3 id="wear">Wear and repair</h3>
+	<p>Each zombie hitting a fortified block adds about 1 wear point a second, and several zombies add up. Cracks show how worn a block is. With Jade installed, looking at a worn block shows "Worn 40%". When a block's points run out, it gives way:</p>
+	<div class="table-wrap"><table>
+		<tr><th>Block</th><th class="num">Points</th><th>One zombie</th><th>About 10 zombies on one spot</th><th>Gives way to</th><th>Repair with</th></tr>
+		<tr><td>Barricade</td><td class="num">60</td><td>1 min</td><td>about 6 s</td><td>Breaks, drops 2 oak planks</td><td>Plank + 2 Nails</td></tr>
+		<tr><td>Reinforced Planks</td><td class="num">120</td><td>2 min</td><td>about 12 s</td><td>Oak planks</td><td>Plank + 2 Nails</td></tr>
+		<tr><td>Copper doors and trapdoors</td><td class="num">120</td><td>2 min</td><td>about 12 s</td><td>Breaks, drops 2 Scrap Metal</td><td>Scrap Metal</td></tr>
+		<tr><td>Reinforced Door, iron door and trapdoor</td><td class="num">180</td><td>3 min</td><td>about 18 s</td><td>Breaks, drops nothing</td><td>Scrap Metal</td></tr>
+		<tr><td>Iron bars</td><td class="num">180</td><td>3 min</td><td>about 18 s</td><td>Cobblestone</td><td>Scrap Metal</td></tr>
+		<tr><td>Iron block</td><td class="num">240</td><td>4 min</td><td>about 24 s</td><td>Cobblestone</td><td>Scrap Metal</td></tr>
+		<tr><td>Obsidian, crying obsidian</td><td class="num">480</td><td>8 min</td><td>about 48 s</td><td>Cobblestone</td><td>Scrap Metal</td></tr>
+	</table></div>
+	<ul>
+		<li><strong>Repairing:</strong> right-click a worn block while holding its repair material. Each use takes 45 wear off and uses one set of materials (for wood, one plank and 2 Nails; for metal and obsidian, one Scrap Metal). After a repair the material in your hand needs 1 second before it repairs again. A full repair of a Reinforced Door costs 4 Scrap Metal, the same as a new door.</li>
+		<li><strong>Wear stays on the block.</strong> Break a worn block and its item keeps the wear ("Worn 40%" in the tooltip, and it won't stack with unworn ones). Place it again and the wear comes back, on both halves of a door. A block pushed or pulled by a piston keeps its wear too. Breaking and re-placing is no free repair.</li>
+		<li><strong>Mechanics</strong> repair worn blocks in their Bunker Core's claim, nearest to the core first, using materials from the Supply Lockers: one set (45 wear) every 30 seconds, so they slow a wall's fall during a horde but can't hold it forever.</li>
+		<li>At dawn after a horde night, your Bunker Core tells you if any block in its claim is below half condition, and where the worst one is.</li>
+		<li>Zombies never wear or break anything in a safe zone. Strongboxes, Power Relays and Substation Cores stay unbreakable.</li>
+	</ul>
+	<h3>Items</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Item</th><th class="num">Stack</th><th>Stats and use</th></tr>
+		<tr><td><img class="tex" src="img/grid_coupler.png" alt="" width="32" height="32"><strong>Grid Coupler</strong></td><td class="num">16</td><td>Repairs a Substation Core: 4 per district, used up. Links key Power Relays without being used up. In the finale each one patches 200 HP of the Grid Uplink. Needed: 16 for the districts plus 8 for the Uplink.</td></tr>
+		<tr><td><img class="tex" src="img/energy_cell.png" alt="" width="32" height="32"><strong>Energy Cell</strong></td><td class="num">16</td><td>Holds 240 energy, enough for 8 Small or 2 Heavy packs. Fuels the Field Charger and powers substations (4 each). 16 go into the Grid Uplink, and each one buys 45 s of Surge in the finale.</td></tr>
+		<tr><td><img class="tex" src="img/cell_pack_small.png" alt="" width="32" height="32"><strong>Cell Packs</strong></td><td class="num">1</td><td>Small 30, Standard 60, Heavy 120 energy. They never wear out. Reload with R.</td></tr>
+		<tr><td><img class="tex" src="img/battery.png" alt="" width="32" height="32"><strong>Battery</strong></td><td class="num">16</td><td>Everyday salvage. Goes into Energy Cells, Volt Blasters, Grid Couplers, Field Chargers and Cell Regulators.</td></tr>
+		<tr><td><img class="tex" src="img/weapon_parts.png" alt="" width="32" height="32"><strong>Weapon Parts</strong></td><td class="num">64</td><td>Found only. Goes into Grid Couplers (1 each), the Pulse Carbine and the Heat Sink, Cell Regulator and Overcharger.</td></tr>
+		<tr><td><img class="tex" src="img/focusing_lens.png" alt="" width="32" height="32"><strong>Focusing Lens</strong></td><td class="num">16</td><td>Found only. The Pulse Carbine needs 1, the Overcharger 2 and the Uplink Frame 4.</td></tr>
+		<tr><td><img class="tex" src="img/resonance_crystal.png" alt="" width="32" height="32"><strong>Resonance Crystal</strong></td><td class="num">16</td><td>Epic and fireproof. Powers Plasma Blades (it wears down with hits) and the Uplink Frame (3). One guaranteed from each story boss.</td></tr>
+		<tr><td><img class="tex" src="img/capacitor_bank.png" alt="" width="32" height="32"><strong>Capacitor Bank</strong></td><td class="num">4</td><td>8 Energy Cells around a Grid Coupler. The Grid Uplink needs 2.</td></tr>
+		<tr><td><img class="tex" src="img/uplink_frame.png" alt="" width="32" height="32"><strong>Uplink Frame</strong></td><td class="num">1</td><td>4 Focusing Lenses, 3 Resonance Crystals and 2 Grid Couplers. Fireproof.</td></tr>
+		<tr><td><img class="tex" src="img/grid_uplink.png" alt="" width="32" height="32"><strong>Grid Uplink</strong></td><td class="num">1</td><td>The finale device: the frame, 2 Capacitor Banks and 4 Grid Couplers. Seat it in the Wreck hull's socket to start the Black Start. Fireproof.</td></tr>
+		<tr><td><img class="tex" src="img/field_radio.png" alt="" width="32" height="32"><strong>Field Radio</strong></td><td class="num">1</td><td>Right-click for the grid report, objective and way home. Sneak-use for just the objective and home.</td></tr>
+	</table></div>
+</section>
+
+<section id="all-recipes">
+	<h2>All recipes</h2>
+	<!-- recipes:start -->
+	<p>Every crafting and cooking recipe in the pack, generated from the mod's recipe files. A dot in a grid is an empty slot. "Any planks" means planks of any wood. Every recipe here is also in the vanilla recipe book, unlocked when you pick up one of its ingredients.</p>
+	<h3>Survival and salvage</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Result</th><th>Recipe</th><th>Ingredients</th></tr>
+		<tr><td><img class="tex" src="img/wire_spool.png" alt="" width="32" height="32"><strong>Wire Spool</strong> ×2</td><td>Shapeless</td><td>1 Scrap Electronics</td></tr>
+		<tr><td><img class="tex" src="img/bandage.png" alt="" width="32" height="32"><strong>Bandage</strong></td><td>Shapeless</td><td>2 Cloth</td></tr>
+		<tr><td><strong>Rain Collector</strong></td><td><span class="grid-pat">S . S
+S G S
+T S T</span></td><td>S Scrap Metal, G Glass Shard, T Duct Tape</td></tr>
+		<tr><td><img class="tex" src="img/spray_can.png" alt="" width="32" height="32"><strong>Spray Can</strong></td><td>Shapeless</td><td>2 Scrap Metal, 1 any dye</td></tr>
+		<tr><td><img class="tex" src="img/cloth.png" alt="" width="32" height="32"><strong>Cloth</strong></td><td>Shapeless</td><td>4 String</td></tr>
+		<tr><td><img class="tex" src="img/cloth.png" alt="" width="32" height="32"><strong>Cloth</strong> ×3</td><td>Shapeless</td><td>1 any wool</td></tr>
+		<tr><td><strong>Glass</strong></td><td><span class="grid-pat">S S
+S S</span></td><td>S Glass Shard</td></tr>
+		<tr><td><strong>Iron Nugget</strong> ×3</td><td>Shapeless</td><td>2 Scrap Metal</td></tr>
+		<tr><td><img class="tex" src="img/satchel.png" alt="" width="32" height="32"><strong>Satchel</strong></td><td><span class="grid-pat">. S .
+C T C
+C C C</span></td><td>S String, C Cloth, T Duct Tape</td></tr>
+		<tr><td><img class="tex" src="img/alloy_plate.png" alt="" width="32" height="32"><strong>Alloy Plate</strong></td><td>Cook</td><td>Scrap Metal in a blast furnace, furnace</td></tr>
+		<tr><td><img class="tex" src="img/bottled_water.png" alt="" width="32" height="32"><strong>Bottled Water</strong></td><td>Cook</td><td>Dirty Water in a campfire, furnace, smoker</td></tr>
+	</table></div>
+	<h3>Blasters and power</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Result</th><th>Recipe</th><th>Ingredients</th></tr>
+		<tr><td><strong>Bunker Core</strong></td><td><span class="grid-pat">A S A
+S P S
+A S A</span></td><td>A Alloy Plate, S Scrap Metal, P any bunker core power</td></tr>
+		<tr><td><img class="tex" src="img/cell_pack_heavy.png" alt="" width="32" height="32"><strong>Heavy Cell Pack</strong></td><td><span class="grid-pat">C R C
+E I E
+C R C</span></td><td>C Wire Spool, R Wire Spool, E Scrap Electronics, I Alloy Plate</td></tr>
+		<tr><td><img class="tex" src="img/cell_pack_small.png" alt="" width="32" height="32"><strong>Small Cell Pack</strong></td><td><span class="grid-pat">C R C
+. E .</span></td><td>C Wire Spool, R Wire Spool, E Scrap Electronics</td></tr>
+		<tr><td><img class="tex" src="img/cell_pack_standard.png" alt="" width="32" height="32"><strong>Standard Cell Pack</strong></td><td><span class="grid-pat">C R C
+I E C
+. R .</span></td><td>C Wire Spool, R Wire Spool, E Scrap Electronics, I Alloy Plate</td></tr>
+		<tr><td><img class="tex" src="img/energy_cell.png" alt="" width="32" height="32"><strong>Energy Cell</strong></td><td><span class="grid-pat">. C .
+C B C
+. C .</span></td><td>B Battery, C Wire Spool</td></tr>
+		<tr><td><strong>Field Charger</strong></td><td><span class="grid-pat">I C I
+E R B
+I C I</span></td><td>B Battery, C Wire Spool, E Scrap Electronics, I Alloy Plate, R Wire Spool</td></tr>
+		<tr><td><img class="tex" src="img/pulse_carbine.png" alt="" width="32" height="32"><strong>Pulse Blaster Carbine</strong></td><td><span class="grid-pat">L W W
+I E I
+T . .</span></td><td>L Focusing Lens, W Weapon Parts, I Alloy Plate, E Scrap Electronics, T Duct Tape</td></tr>
+		<tr><td><strong>Rapid Charger</strong></td><td><span class="grid-pat">A E A
+W F W
+A E A</span></td><td>A Alloy Plate, E Scrap Electronics, W Wire Spool, F Field Charger</td></tr>
+		<tr><td><img class="tex" src="img/spark_pistol.png" alt="" width="32" height="32"><strong>Spark Blaster</strong></td><td><span class="grid-pat">S S E
+T I .
+S . .</span></td><td>S Scrap Metal, E Scrap Electronics, T Duct Tape, I Alloy Plate</td></tr>
+		<tr><td><img class="tex" src="img/volt_sidearm.png" alt="" width="32" height="32"><strong>Volt Blaster</strong></td><td><span class="grid-pat">S I E
+B I T
+S . .</span></td><td>S Scrap Metal, I Alloy Plate, E Scrap Electronics, B Battery, T Duct Tape</td></tr>
+	</table></div>
+	<h3>Quiet weapons</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Result</th><th>Recipe</th><th>Ingredients</th></tr>
+		<tr><td><img class="tex" src="img/bottle_lure.png" alt="" width="32" height="32"><strong>Bottle Lure</strong></td><td>Shapeless</td><td>1 Glass Bottle, 1 Scrap Metal</td></tr>
+		<tr><td><img class="tex" src="img/crowbar.png" alt="" width="32" height="32"><strong>Crowbar</strong></td><td><span class="grid-pat">. . I
+. I .
+S . .</span></td><td>I Iron Ingot, S Scrap Metal</td></tr>
+		<tr><td><img class="tex" src="img/nail_launcher.png" alt="" width="32" height="32"><strong>Nail Launcher</strong></td><td><span class="grid-pat">S S W
+. E B</span></td><td>S Scrap Metal, W Wire Spool, E Scrap Electronics, B Battery</td></tr>
+		<tr><td><img class="tex" src="img/nails.png" alt="" width="32" height="32"><strong>Nails</strong> ×8</td><td>Shapeless</td><td>1 Scrap Metal</td></tr>
+		<tr><td><img class="tex" src="img/pipe_wrench.png" alt="" width="32" height="32"><strong>Pipe Wrench</strong></td><td><span class="grid-pat">S . S
+. S .
+. T .</span></td><td>S Scrap Metal, T Duct Tape</td></tr>
+		<tr><td><img class="tex" src="img/rebar_spear.png" alt="" width="32" height="32"><strong>Rebar Spear</strong></td><td><span class="grid-pat">. . S
+. S .
+S T .</span></td><td>S Scrap Metal, T Duct Tape</td></tr>
+		<tr><td><img class="tex" src="img/scrap_machete.png" alt="" width="32" height="32"><strong>Scrap Machete</strong></td><td><span class="grid-pat">. . S
+. S G
+C . .</span></td><td>S Scrap Metal, G Glass Shard, C Cloth</td></tr>
+	</table></div>
+	<h3>Flamethrower and grenades</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Result</th><th>Recipe</th><th>Ingredients</th></tr>
+		<tr><td><img class="tex" src="img/arc_charge.png" alt="" width="32" height="32"><strong>Arc Charge</strong> ×2</td><td>Shapeless</td><td>1 Battery, 1 Scrap Electronics, 1 Duct Tape</td></tr>
+		<tr><td><img class="tex" src="img/flamethrower.png" alt="" width="32" height="32"><strong>Flamethrower</strong></td><td><span class="grid-pat">T S S
+L W S
+T P .</span></td><td>T Duct Tape, S Scrap Metal, L Lighter Fluid, W Wire Spool, P Weapon Parts</td></tr>
+	</table></div>
+	<h3>Armour</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Result</th><th>Recipe</th><th>Ingredients</th></tr>
+		<tr><td><img class="tex" src="img/scavenger_boots.png" alt="" width="32" height="32"><strong>Scavenger Boots</strong></td><td><span class="grid-pat">C . C
+S T C</span></td><td>C Cloth, T Duct Tape, S Scrap Metal</td></tr>
+		<tr><td><img class="tex" src="img/scavenger_hood.png" alt="" width="32" height="32"><strong>Scavenger Hood</strong></td><td><span class="grid-pat">C C C
+C T C</span></td><td>C Cloth, T Duct Tape</td></tr>
+		<tr><td><img class="tex" src="img/scavenger_jacket.png" alt="" width="32" height="32"><strong>Scavenger Jacket</strong></td><td><span class="grid-pat">C S C
+C C C
+C T C</span></td><td>C Cloth, T Duct Tape, S Scrap Metal</td></tr>
+		<tr><td><img class="tex" src="img/scavenger_trousers.png" alt="" width="32" height="32"><strong>Scavenger Trousers</strong></td><td><span class="grid-pat">C C C
+C S C
+T . C</span></td><td>C Cloth, T Duct Tape, S Scrap Metal</td></tr>
+	</table></div>
+	<h3>Attachments and blades</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Result</th><th>Recipe</th><th>Ingredients</th></tr>
+		<tr><td><img class="tex" src="img/cell_regulator.png" alt="" width="32" height="32"><strong>Cell Regulator</strong></td><td><span class="grid-pat">R E R
+B W B
+R E R</span></td><td>E Scrap Electronics, B Battery, R Wire Spool, W Weapon Parts</td></tr>
+		<tr><td><img class="tex" src="img/dampener.png" alt="" width="32" height="32"><strong>Dampener</strong></td><td><span class="grid-pat">I C I
+C T .</span></td><td>I Alloy Plate, C Cloth, T Duct Tape</td></tr>
+		<tr><td><img class="tex" src="img/heat_sink.png" alt="" width="32" height="32"><strong>Heat Sink</strong></td><td><span class="grid-pat">C C C
+M W M
+C C C</span></td><td>C Wire Spool, M Scrap Metal, W Weapon Parts</td></tr>
+		<tr><td><img class="tex" src="img/optic.png" alt="" width="32" height="32"><strong>Optic</strong></td><td><span class="grid-pat">I I I
+G E G
+. T .</span></td><td>I Alloy Plate, G Glass Pane, E Scrap Electronics, T Duct Tape</td></tr>
+		<tr><td><img class="tex" src="img/overcharger.png" alt="" width="32" height="32"><strong>Overcharger</strong></td><td><span class="grid-pat">W L W
+R E R
+W L W</span></td><td>L Focusing Lens, E Energy Cell, W Weapon Parts, R Wire Spool</td></tr>
+		<tr><td><img class="tex" src="img/plasma_blade.png" alt="" width="32" height="32"><strong>Plasma Blade</strong></td><td><span class="grid-pat">. C .
+E L E
+M B T</span></td><td>C Resonance Crystal, L Focusing Lens, E Scrap Electronics, M Scrap Metal, B Battery, T Duct Tape</td></tr>
+		<tr><td><strong>Weaponsmith Bench</strong></td><td><span class="grid-pat">M E M
+T C T
+P . P</span></td><td>M Scrap Metal, E Scrap Electronics, T Duct Tape, C Crafting Table, P any planks</td></tr>
+	</table></div>
+	<h3>Building and light</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Result</th><th>Recipe</th><th>Ingredients</th></tr>
+		<tr><td><img class="tex" src="img/reinforced_door.png" alt="" width="32" height="32"><strong>Reinforced Door</strong></td><td><span class="grid-pat">A A
+P P
+A A</span></td><td>A Alloy Plate, P any planks</td></tr>
+		<tr><td><strong>Shortwave Set</strong></td><td><span class="grid-pat">. W .
+C E C
+C B C</span></td><td>W Wire Spool, C Copper Ingot, E Scrap Electronics, B Battery</td></tr>
+		<tr><td><strong>Supply Locker</strong></td><td><span class="grid-pat">S S S
+S C S
+S I S</span></td><td>S Scrap Metal, C Chest, I Iron Ingot</td></tr>
+		<tr><td><strong>Copper Lantern</strong></td><td><span class="grid-pat">X X X
+X E X
+X X X</span></td><td>E Scrap Electronics, X Copper Nugget</td></tr>
+		<tr><td><strong>Lantern</strong></td><td><span class="grid-pat">X X X
+X E X
+X X X</span></td><td>E Scrap Electronics, X Iron Nugget</td></tr>
+		<tr><td><strong>Redstone Lamp</strong></td><td><span class="grid-pat">. R .
+R E R
+. G .</span></td><td>E Scrap Electronics, G Glass, R Wire Spool</td></tr>
+		<tr><td><strong>Soul Lantern</strong></td><td><span class="grid-pat">X X X
+X E X
+X S X</span></td><td>E Scrap Electronics, S any soul fire base blocks, X Iron Nugget</td></tr>
+		<tr><td><strong>Barricade</strong> ×2</td><td><span class="grid-pat">P S P
+P S P</span></td><td>P any planks, S Scrap Metal</td></tr>
+		<tr><td><strong>Rattle Box</strong></td><td><span class="grid-pat">. N .
+S G S
+S S S</span></td><td>N Iron Nugget, S Scrap Metal, G Glass Shard</td></tr>
+		<tr><td><strong>Reinforced Planks</strong> ×4</td><td><span class="grid-pat">N P N
+P N P
+N P N</span></td><td>N Iron Nugget, P any planks</td></tr>
+		<tr><td><strong>Spike Strip</strong> ×2</td><td><span class="grid-pat">N N N
+S S S</span></td><td>N Iron Nugget, S Scrap Metal</td></tr>
+		<tr><td><strong>Tripline Alarm</strong></td><td><span class="grid-pat">S R S
+N T N</span></td><td>S Scrap Metal, R Redstone, N Iron Nugget, T String</td></tr>
+	</table></div>
+	<h3>Grid and endgame</h3>
+	<div class="table-wrap"><table>
+		<tr><th>Result</th><th>Recipe</th><th>Ingredients</th></tr>
+		<tr><td><img class="tex" src="img/capacitor_bank.png" alt="" width="32" height="32"><strong>Capacitor Bank</strong></td><td><span class="grid-pat">E E E
+E C E
+E E E</span></td><td>E Energy Cell, C Grid Coupler</td></tr>
+		<tr><td><img class="tex" src="img/grid_coupler.png" alt="" width="32" height="32"><strong>Grid Coupler</strong></td><td><span class="grid-pat">C S C
+W B M</span></td><td>B Battery, C Wire Spool, M Scrap Metal, S Scrap Electronics, W Weapon Parts</td></tr>
+		<tr><td><img class="tex" src="img/grid_uplink.png" alt="" width="32" height="32"><strong>Grid Uplink</strong></td><td><span class="grid-pat">C B C
+. F .
+C B C</span></td><td>F Uplink Frame, B Capacitor Bank, C Grid Coupler</td></tr>
+		<tr><td><img class="tex" src="img/uplink_frame.png" alt="" width="32" height="32"><strong>Uplink Frame</strong></td><td><span class="grid-pat">L R L
+C R C
+L R L</span></td><td>R Resonance Crystal, L Focusing Lens, C Grid Coupler</td></tr>
+	</table></div>
+	<p>Two special recipes: put a Resonance Crystal with a Plasma Blade to socket it, and put a Dampener with a blaster to fit it.</p>
+	<!-- recipes:end -->
+</section>
+<nav class="pager" id="pager" aria-label="Page"></nav>
+</main>
+</div>
+
+<script>
+(function () {
+	const links = [...document.querySelectorAll("nav.index li a")];
+	const pages = [...document.querySelectorAll("main > section")];
+	const byId = Object.fromEntries(pages.map(p => [p.id, p]));
+	const order = links.map(a => a.getAttribute("href").slice(1)).filter(id => byId[id]);
+	const title = id => byId[id].querySelector("h2, h1").textContent;
+	const q = document.getElementById("q");
+	const empty = document.getElementById("empty");
+	const pager = document.getElementById("pager");
+
+	function show(id, scroll) {
+		if (!byId[id]) id = "home";
+		pages.forEach(p => p.classList.toggle("current", p.id === id));
+		links.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + id));
+		const i = order.indexOf(id);
+		const prev = order[i - 1], next = order[i + 1];
+		pager.innerHTML = (prev ? `<a class="prev" href="#${prev}"><small>Previous</small>${title(prev)}</a>` : "")
+			+ (next ? `<a class="next" href="#${next}"><small>Next</small>${title(next)}</a>` : "");
+		if (scroll) window.scrollTo(0, 0);
+	}
+
+	// Links inside the manual switch pages; the address bar can't follow, so the page keeps its own state.
+	document.addEventListener("click", e => {
+		const a = e.target.closest('a[href^="#"]');
+		if (!a) return;
+		const id = a.getAttribute("href").slice(1);
+		if (!byId[id]) return;
+		e.preventDefault();
+		if (q.value) { q.value = ""; search(); }
+		show(id, true);
+		try { history.replaceState(null, "", "#" + id); } catch (err) {}
+	});
+
+	function search() {
+		const term = q.value.trim().toLowerCase();
+		document.body.classList.toggle("searching", !!term);
+		let shown = 0;
+		pages.forEach(p => {
+			const hit = !!term && p.textContent.toLowerCase().includes(term);
+			p.classList.toggle("hit", hit);
+			if (hit) shown++;
+		});
+		empty.style.display = term && !shown ? "block" : "none";
+	}
+	q.addEventListener("input", search);
+
+	show(location.hash.slice(1), false);
+})();
+</script>

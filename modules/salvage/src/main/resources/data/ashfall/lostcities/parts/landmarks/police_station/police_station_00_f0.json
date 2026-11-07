@@ -1,0 +1,306 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:blue_concrete"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:polished_andesite"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:dark_oak_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:gray_bed[facing=north,occupied=false,part=head]"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:cauldron"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:gray_concrete"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:dark_oak_planks"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:gray_bed[facing=north,occupied=false,part=foot]"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:iron_bars[east=false,north=false,south=false,west=true]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:iron_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:iron_bars[east=true,north=false,south=false,west=false]"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:iron_bars[east=true,north=true,south=false,west=true]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:dark_oak_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:gray_carpet"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:dark_oak_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:barrel[facing=south,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/office"
+    }
+   },
+   {
+    "char": "2",
+    "block": "minecraft:barrel[facing=east,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/police"
+    }
+   },
+   {
+    "char": "3",
+    "block": "minecraft:spruce_slab[type=top,waterlogged=false]"
+   },
+   {
+    "char": "4",
+    "block": "minecraft:smooth_quartz"
+   },
+   {
+    "char": "5",
+    "block": "minecraft:blue_carpet"
+   },
+   {
+    "char": "6",
+    "block": "minecraft:spruce_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "7",
+    "block": "minecraft:spruce_stairs[facing=west,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "8",
+    "block": "minecraft:dispenser[facing=north,triggered=false]"
+   },
+   {
+    "char": "9",
+    "block": "minecraft:potted_dead_bush"
+   },
+   {
+    "char": ":",
+    "block": "minecraft:light_blue_stained_glass_pane[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": ";",
+    "block": "minecraft:dark_oak_door[facing=south,half=lower,hinge=right,open=false,powered=false]"
+   },
+   {
+    "char": "<",
+    "block": "minecraft:light_gray_concrete"
+   },
+   {
+    "char": "=",
+    "block": "minecraft:birch_trapdoor[facing=south,half=bottom,open=true,powered=false,waterlogged=false]"
+   },
+   {
+    "char": ">",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": "?",
+    "block": "minecraft:iron_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "@",
+    "block": "minecraft:dark_oak_fence[east=false,north=true,south=false,west=false]"
+   },
+   {
+    "char": "A",
+    "block": "minecraft:dark_oak_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "B",
+    "block": "minecraft:light_blue_stained_glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "C",
+    "block": "minecraft:glass_pane[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "D",
+    "block": "minecraft:iron_bars[east=true,north=false,south=true,west=false]"
+   },
+   {
+    "char": "E",
+    "block": "minecraft:iron_bars[east=true,north=true,south=false,west=false]"
+   },
+   {
+    "char": "F",
+    "block": "minecraft:black_concrete"
+   },
+   {
+    "char": "G",
+    "block": "minecraft:light_blue_stained_glass_pane[east=true,north=true,south=false,west=true]"
+   },
+   {
+    "char": "H",
+    "block": "minecraft:dark_oak_door[facing=south,half=upper,hinge=right,open=false,powered=false]"
+   },
+   {
+    "char": "I",
+    "block": "minecraft:dark_oak_fence[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "J",
+    "block": "minecraft:iron_bars[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "K",
+    "block": "minecraft:dark_oak_fence[east=false,north=false,south=true,west=false]"
+   },
+   {
+    "char": "L",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!############ ##",
+   "!############ ##",
+   "!############ ##",
+   "!############$##",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "################",
+   "#% &'% &'% &'(((",
+   "#)  ')  ')  ' ((",
+   "#   '   '   ' ((",
+   "#*+,-*+,-*+,' (.",
+   "#///////////////",
+   "#///////////////",
+   "#''''0''''''' ''",
+   "#         ' 1   ",
+   "#2 .      '   . ",
+   "#2 333    '44444",
+   "#         '  555",
+   "#        6'7 555",
+   "#     8  6'7 555",
+   "#'''      '9 555",
+   "############::#;"
+  ],
+  [
+   "<<::<<<<<<<<<<<<",
+   "<  =>  =>  =>(((",
+   "<   >   >   > ((",
+   "<   >   >   > (.",
+   "<*?,-*?,-*?,> @ ",
+   "<               ",
+   "<               ",
+   "<>>>>A>>>>>>> >>",
+   "<         >     ",
+   "B         >     ",
+   "B         >CCCCC",
+   "B         >     ",
+   "B        D>     ",
+   "<        E>     ",
+   "<FFF      >     ",
+   "<<GG:<:::<<<::<H"
+  ],
+  [
+   "<<::<<<<<<<<<<<<",
+   "<   >   >   >(((",
+   "<   >   >   > (.",
+   "<   >   >   > I ",
+   "<JJJ-JJJ-JJJ> @ ",
+   "<               ",
+   "<               ",
+   "<>>>>>>>>>>>>>>>",
+   "<         >     ",
+   "B         >     ",
+   "B         >CCCCC",
+   "B         >     ",
+   "B         >     ",
+   "<         >     ",
+   "<>>>      >     ",
+   "<<GG:<:::<<<::<<"
+  ],
+  [
+   "<<<<<<<<<<<<<<<<",
+   "<   >   >   >   ",
+   "<   >   >   >$K ",
+   "<   >   >   > I ",
+   "<JJJ-JJJ-JJJ> @ ",
+   "<               ",
+   "<               ",
+   "<>>>>>>>>>>>>>>>",
+   "<         >     ",
+   "<         >     ",
+   "<         >CCCCC",
+   "<         >     ",
+   "<         >     ",
+   "<         >     ",
+   "<>>>      >     ",
+   "<<<<<<<<<<<<<<<<"
+  ],
+  [
+   "<<<<<<<<<<<<<<<<",
+   "<   >   >   >   ",
+   "<   >   >   > K ",
+   "<   >   >   >$I ",
+   "<>>>>>>>>>>>> @ ",
+   "<               ",
+   "<               ",
+   "<>>>>>>>>>>>>>>>",
+   "<         >     ",
+   "<         >     ",
+   "<         >>>>>>",
+   "<    L    >     ",
+   "<         >    L",
+   "<         >     ",
+   "<         >     ",
+   "<<<<<<<<<<<<<<<<"
+  ]
+ ]
+}

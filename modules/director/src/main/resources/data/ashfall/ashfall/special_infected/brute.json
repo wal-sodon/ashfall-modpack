@@ -1,0 +1,26 @@
+{
+	"weight": 6,
+	"min_day": 20,
+	"zone_multiplier": {
+		"montford": 0.0,
+		"wasteland": 2.5,
+		"ridge": 2.0,
+		"downtown": 1.2
+	},
+	"max_alive_per_player": 1,
+	"siege_multiplier": 2.5,
+	"attributes": {
+		"minecraft:max_health": 60.0,
+		"minecraft:movement_speed": 0.2,
+		"minecraft:attack_damage": 8.0,
+		"minecraft:attack_knockback": 2.0,
+		"minecraft:knockback_resistance": 0.8,
+		"minecraft:armor": 8.0,
+		"minecraft:armor_toughness": 2.0,
+		"minecraft:scale": 1.6,
+		"minecraft:spawn_reinforcements": 0.0
+	},
+	"tuning": {
+		"block_break_multiplier": 2.5
+	}
+}

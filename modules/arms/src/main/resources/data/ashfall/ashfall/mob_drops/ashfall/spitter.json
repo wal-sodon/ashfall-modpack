@@ -1,0 +1,12 @@
+{
+	"entity": "ashfall:spitter",
+	"drops": [
+		{
+			"item": "ashfall:scrap_electronics",
+			"chance": 0.05,
+			"killed_by_player": true,
+			"min": 1,
+			"max": 1
+		}
+	]
+}

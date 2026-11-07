@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"key": {
+		"F": "ashfall:uplink_frame",
+		"B": "ashfall:capacitor_bank",
+		"C": "ashfall:grid_coupler"
+	},
+	"pattern": [
+		"CBC",
+		" F ",
+		"CBC"
+	],
+	"result": {
+		"id": "ashfall:grid_uplink"
+	}
+}

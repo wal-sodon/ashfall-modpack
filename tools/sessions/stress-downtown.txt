@@ -1,0 +1,144 @@
+# M0 stress test at midnight: 120 zombies + 5 villagers (as targets) around Pack Square, downtown Asheville.
+# Coordinates come from ArnisProjection on the full map (Pack Square = 1853, 544).
+until Done \(
+cmd forceload add 1773 464 1933 624
+cmd time set midnight
+wait 20
+cmd spark tps
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon villager ~ ~ ~ {PersistenceRequired:1b,Invulnerable:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon villager ~ ~ ~ {PersistenceRequired:1b,Invulnerable:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon villager ~ ~ ~ {PersistenceRequired:1b,Invulnerable:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon villager ~ ~ ~ {PersistenceRequired:1b,Invulnerable:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon villager ~ ~ ~ {PersistenceRequired:1b,Invulnerable:1b,Tags:["ashfall_stress"]}
+cmd spreadplayers 1853 544 4 30 false @e[type=villager,tag=ashfall_stress]
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd execute positioned 1853 0 544 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["ashfall_stress"]}
+cmd spreadplayers 1853 544 3 75 false @e[type=zombie,tag=ashfall_stress]
+cmd execute if entity @e[type=zombie,tag=ashfall_stress]
+cmd execute if entity @e[type=villager,tag=ashfall_stress]
+wait 60
+cmd execute if entity @e[type=zombie,tag=ashfall_stress]
+cmd spark tps
+wait 60
+cmd execute if entity @e[type=zombie,tag=ashfall_stress]
+cmd spark tps
+cmd execute if entity @e[type=zombie,tag=ashfall_stress]
+cmd execute if entity @e[type=villager,tag=ashfall_stress]

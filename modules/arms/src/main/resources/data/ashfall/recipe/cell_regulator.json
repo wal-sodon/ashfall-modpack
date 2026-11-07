@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"E": "ashfall:scrap_electronics",
+		"B": "ashfall:battery",
+		"R": "ashfall:wire_spool",
+		"W": "ashfall:weapon_parts"
+	},
+	"pattern": [
+		"RER",
+		"BWB",
+		"RER"
+	],
+	"result": {
+		"id": "ashfall:cell_regulator"
+	}
+}

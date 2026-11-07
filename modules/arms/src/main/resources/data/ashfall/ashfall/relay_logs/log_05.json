@@ -1,0 +1,9 @@
+{
+	"number": 5,
+	"title": "Substation Harmonics",
+	"author": "Sam Okafor, Grid Engineering",
+	"pages": [
+		"Every substation in the city is carrying a slow ripple on top of the normal sixty hertz. About one beat every three seconds, steady as a clock.",
+		"My first thought was a bad generator. My second thought, which I am not putting in the official report, was a pulse."
+	]
+}

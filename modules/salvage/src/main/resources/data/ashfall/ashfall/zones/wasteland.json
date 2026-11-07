@@ -1,0 +1,24 @@
+{
+	"id": "wasteland",
+	"kind": "outskirts",
+	"district_index": 0,
+	"tier": 1,
+	"priority": 40,
+	"shape": {
+		"type": "ring",
+		"x": 0,
+		"z": 0,
+		"inner_r": 1600,
+		"r": 2600
+	},
+	"city": true,
+	"citystyle": "ashfall:wasteland",
+	"ruin_chance": 0.45,
+	"damage_scale": 1.5,
+	"population_scale": 0.0,
+	"landmarks": [],
+	"key_relay_targets": [],
+	"director": {
+		"darkness_scale": 1.3
+	}
+}

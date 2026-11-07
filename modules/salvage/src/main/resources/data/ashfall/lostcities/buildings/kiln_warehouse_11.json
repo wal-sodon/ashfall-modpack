@@ -1,0 +1,32 @@
+{
+ "filler": "#",
+ "palette": {
+  "palette": [
+   {
+    "char": "#",
+    "block": "minecraft:bricks"
+   }
+  ]
+ },
+ "allowDoors": false,
+ "allowFillers": false,
+ "overrideFloors": true,
+ "minfloors": 2,
+ "maxfloors": 2,
+ "mincellars": 0,
+ "maxcellars": 0,
+ "parts": [
+  {
+   "part": "ashfall:landmarks/kiln_warehouse/kiln_warehouse_11_f0",
+   "floor": 0
+  },
+  {
+   "part": "ashfall:landmarks/kiln_warehouse/kiln_warehouse_11_f1",
+   "floor": 1
+  },
+  {
+   "part": "ashfall:landmarks/kiln_warehouse/kiln_warehouse_11_top",
+   "floor": 2
+  }
+ ]
+}

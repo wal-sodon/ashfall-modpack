@@ -1,0 +1,80 @@
+{
+	"type": "minecraft:entity",
+	"pools": [
+		{
+			"rolls": 1,
+			"condition": {
+				"type": "minecraft:random_chance",
+				"chance": 0.45
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_metal",
+					"weight": 4,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 2,
+								"max": 4
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:duct_tape",
+					"weight": 3,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 1,
+								"max": 2
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bandage",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:canned_food",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:antibiotics",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scavenger_hood",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scavenger_jacket",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scavenger_trousers",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scavenger_boots",
+					"weight": 1
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:horde/wave_salvage"
+}

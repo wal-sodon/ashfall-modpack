@@ -1,0 +1,214 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:dark_oak_planks"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:bricks"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:spruce_planks"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:spruce_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:spruce_fence[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:spruce_fence[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:spruce_trapdoor[facing=north,half=bottom,open=true,powered=false,waterlogged=false]"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:brown_carpet"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:bookshelf"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:spruce_fence[east=false,north=true,south=false,west=false]"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:dark_oak_stairs[facing=west,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:dark_oak_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:spruce_trapdoor[facing=south,half=bottom,open=true,powered=false,waterlogged=false]"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:spruce_slab[type=top,waterlogged=false]"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:chest[facing=east,type=single,waterlogged=false]",
+    "tag": {
+     "LootTable": "ashfall_cache:kiln_office"
+    }
+   },
+   {
+    "char": "2",
+    "block": "minecraft:barrel[facing=west,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/office"
+    }
+   },
+   {
+    "char": "3",
+    "block": "minecraft:orange_terracotta"
+   },
+   {
+    "char": "4",
+    "block": "minecraft:glass_pane[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "5",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!               ",
+   "!               ",
+   "#               ",
+   "#               ",
+   "!               ",
+   "!               ",
+   "!               ",
+   "!               ",
+   "!$$$$$$$$$$$$$  ",
+   "! %%%%%%%%%%%$  ",
+   "! %%%%%%%%%%%$  ",
+   "! %%%%%%%%%%%$  ",
+   "!&%%%%%%%%%%%$  ",
+   "!%%%%%%%%%%%%$  ",
+   "!%%%%%%%%%%%%$  ",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "$               ",
+   "$               ",
+   "#               ",
+   "#               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$$$$$''''''''$  ",
+   "$ ( %        $  ",
+   "$ ( % )**** +$  ",
+   "$ , % -**** +$  ",
+   "$   % -**.*  $  ",
+   "$     /  00  $  ",
+   "$    1      2$  ",
+   "$$$$$$$$$$$$$$33"
+  ],
+  [
+   "$               ",
+   "$               ",
+   "#               ",
+   "#               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$$$$$        $  ",
+   "$   %        $  ",
+   "$   %       +$  ",
+   "$   %       +$  ",
+   "$   %        $  ",
+   "$            $  ",
+   "$            $  ",
+   "$$4$4$4$4$4$$$33"
+  ],
+  [
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$$$$$        $  ",
+   "$   %        $  ",
+   "$   %        $  ",
+   "$   %        $  ",
+   "$   %        $  ",
+   "$            $  ",
+   "$            $  ",
+   "$$4$4$4$4$4$$$$$"
+  ],
+  [
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$               ",
+   "$$$$$        $  ",
+   "$   %        $  ",
+   "$   %        $  ",
+   "$   %        $  ",
+   "$   %        $  ",
+   "$            $  ",
+   "$            $  ",
+   "$$$$$$$$$$$$$$$$"
+  ],
+  [
+   "$               ",
+   "$               ",
+   "$               ",
+   "$       5       ",
+   "$               ",
+   "$               ",
+   "$              5",
+   "$               ",
+   "$$$$$        $  ",
+   "$   %        $  ",
+   "$   %        $  ",
+   "$   %    5   $  ",
+   "$   %        $  ",
+   "$            $  ",
+   "$            $  ",
+   "$$$$$$$$$$$$$$$$"
+  ]
+ ]
+}

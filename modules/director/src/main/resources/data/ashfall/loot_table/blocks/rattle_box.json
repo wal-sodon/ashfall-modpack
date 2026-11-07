@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:block",
+	"pools": [
+		{
+			"rolls": 1,
+			"condition": {
+				"type": "minecraft:survives_explosion"
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:rattle_box"
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:blocks/rattle_box"
+}

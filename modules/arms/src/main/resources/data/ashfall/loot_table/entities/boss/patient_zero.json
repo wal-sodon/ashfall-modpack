@@ -1,0 +1,135 @@
+{
+	"type": "minecraft:entity",
+	"pools": [
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 3,
+				"max": 4
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:energy_cell",
+					"weight": 1,
+					"modifier": [
+						{
+							"type": "minecraft:set_components",
+							"components": {
+								"team_reborn_energy:energy": 240
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"condition": {
+				"type": "minecraft:random_chance",
+				"chance": 0.45
+			},
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"value": "ashfall:blasters/rare"
+				}
+			]
+		},
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 2,
+				"max": 3
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:focusing_lens",
+					"weight": 2,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 1,
+								"max": 2
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_electronics",
+					"weight": 3,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 2,
+								"max": 5
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:antibiotics",
+					"weight": 4,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 1,
+								"max": 2
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bandage",
+					"weight": 3,
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 2,
+								"max": 4
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:cell_pack_standard",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:hazmat_mask",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:hazmat_suit",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:hazmat_leggings",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:hazmat_boots",
+					"weight": 3
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:entities/boss/patient_zero"
+}

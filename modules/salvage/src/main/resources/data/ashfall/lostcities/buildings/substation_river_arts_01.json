@@ -1,0 +1,32 @@
+{
+ "filler": "#",
+ "palette": {
+  "palette": [
+   {
+    "char": "#",
+    "block": "minecraft:stone_bricks"
+   }
+  ]
+ },
+ "allowDoors": false,
+ "allowFillers": false,
+ "overrideFloors": true,
+ "minfloors": 1,
+ "maxfloors": 1,
+ "mincellars": 1,
+ "maxcellars": 1,
+ "parts": [
+  {
+   "part": "ashfall:landmarks/substation_river_arts/substation_river_arts_01_c1",
+   "floor": -1
+  },
+  {
+   "part": "ashfall:landmarks/substation_river_arts/substation_river_arts_01_f0",
+   "floor": 0
+  },
+  {
+   "part": "ashfall:landmarks/substation_river_arts/substation_river_arts_01_top",
+   "floor": 1
+  }
+ ]
+}

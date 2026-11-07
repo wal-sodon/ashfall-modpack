@@ -1,0 +1,57 @@
+# Phase 2 playtest, part 1 (headless, no player): safe zones, bosses and the Resonance Crystal drop,
+# crash-site planning on the ridge, and TPS. Run on a fresh world (level-name world-p2, seed ashfall-p2).
+until Done \(
+cmd ashfall director status
+cmd ashfall safezone list
+cmd execute positioned -152 80 -792 run ashfall city zone
+cmd ashfall boss list
+cmd undeadnights status
+# Crash sites: the fixed Wreck hull and the planned ridge sites around it.
+cmd execute positioned 2300 80 -100 run ashfall site list 640
+# Safe zone: load the safehouse's 3x3 chunks and a Downtown block of the same size, run a night, count zombies.
+cmd forceload add -176 -816 -129 -769
+cmd forceload add -24 -24 23 23
+cmd time set 18000
+wait 60
+cmd execute if entity @e[type=#minecraft:zombies,x=-176,y=-64,z=-816,dx=48,dy=400,dz=48]
+cmd execute if entity @e[type=#minecraft:zombies,x=-24,y=-64,z=-24,dx=48,dy=400,dz=48]
+cmd ashfall director status
+# Bosses. The Abomination lives in the Kiln & Co. warehouse (chunk -60,7, 2x2 chunks).
+cmd forceload add -960 112 -929 143
+wait 5
+cmd ashfall boss spawn ashfall:abomination
+wait 3
+cmd ashfall boss list
+cmd spark tps
+cmd kill @e[tag=ashfall_boss]
+wait 12
+cmd execute as @e[type=item,x=-960,y=-64,z=112,dx=32,dy=400,dz=32] run data get entity @s Item
+cmd execute if entity @e[type=item,x=-960,y=-64,z=112,dx=32,dy=400,dz=32,nbt={Item:{id:"ashfall:resonance_crystal"}}]
+cmd ashfall boss list
+# Patient Zero: sealed in the hospital's deep ward (chunk 44,39, 3x2 chunks).
+cmd forceload add 704 624 751 655
+wait 5
+cmd ashfall boss list
+cmd ashfall boss unseal ashfall:patient_zero
+cmd ashfall boss spawn ashfall:patient_zero
+wait 20
+cmd ashfall boss list
+cmd execute if entity @e[tag=ashfall_boss]
+cmd kill @e[tag=ashfall_boss]
+wait 5
+cmd execute as @e[type=item,x=704,y=-64,z=624,dx=48,dy=400,dz=32] run data get entity @s Item
+# The Juggernaut stands at the Wreck hull, which is placed lazily near players; place it by command.
+cmd ashfall site place fixed:ashfall:wreck_hull
+cmd forceload add 2280 -120 2320 -80
+wait 5
+cmd ashfall boss spawn ashfall:juggernaut
+wait 3
+cmd ashfall boss list
+cmd kill @e[tag=ashfall_boss]
+wait 5
+cmd execute as @e[type=item,x=2270,y=-64,z=-130,dx=60,dy=400,dz=60] run data get entity @s Item
+cmd ashfall boss list
+cmd execute positioned 2300 80 -100 run ashfall site list 640
+cmd spark tps
+cmd forceload remove all
+wait 3

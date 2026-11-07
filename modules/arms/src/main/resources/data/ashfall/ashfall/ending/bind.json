@@ -1,0 +1,33 @@
+{
+	"antibiotics_cure": false,
+	"flags": ["ashfall:bind"],
+	"spawn_multiplier": 1.0,
+	"horde_interval_multiplier": 1,
+	"horde_growth": {
+		"every_days": 7,
+		"tier_start": 4,
+		"tier_per_step": 1,
+		"tier_cap": 6,
+		"size_per_step": 0.1,
+		"size_cap": 1.5
+	},
+	"free_relays": false,
+	"unlock_attachments": true,
+	"bunker_radius_bonus": 2,
+	"rewards": ["ashfall:resonant_plasma_blade"],
+	"aftershocks": {
+		"every_days": 7,
+		"chance_scale": 0.5
+	},
+	"closing": {
+		"title": "We Kept It",
+		"pages": [
+			"We did not kill it. We put our hands on the pylons and held on until it stopped pulling and started listening.",
+			"Now the Heart answers to us. Our bunkers hum with it, our blades burn the colour of its core, and the blasters take a charge the old grid never could.",
+			"It still dreams, though. The virus is part of how it mends itself, and it keeps changing. Every week the hordes come a little thicker, and every tenth night something big climbs out of the hull to test us.",
+			"We tell ourselves there is a ceiling, that it can only grow so far. So far that has been true.",
+			"This was a choice for people who would rather hold a dangerous thing than lose it. If you are one of them, sharpen your blade and watch the ridge.",
+			"The city is lit. Keeping it that way is the job now."
+		]
+	}
+}

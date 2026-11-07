@@ -1,0 +1,41 @@
+{
+  "regions": [
+    "dimensions/minecraft/overworld/region/r.-1.-1.mca",
+    "dimensions/minecraft/overworld/region/r.-1.0.mca",
+    "dimensions/minecraft/overworld/region/r.-1.1.mca",
+    "dimensions/minecraft/overworld/region/r.-1.2.mca",
+    "dimensions/minecraft/overworld/region/r.0.-1.mca",
+    "dimensions/minecraft/overworld/region/r.0.0.mca",
+    "dimensions/minecraft/overworld/region/r.0.1.mca",
+    "dimensions/minecraft/overworld/region/r.0.2.mca",
+    "dimensions/minecraft/overworld/region/r.1.-1.mca",
+    "dimensions/minecraft/overworld/region/r.1.0.mca",
+    "dimensions/minecraft/overworld/region/r.1.1.mca",
+    "dimensions/minecraft/overworld/region/r.1.2.mca",
+    "dimensions/minecraft/overworld/region/r.2.-1.mca",
+    "dimensions/minecraft/overworld/region/r.2.0.mca",
+    "dimensions/minecraft/overworld/region/r.2.1.mca",
+    "dimensions/minecraft/overworld/region/r.2.2.mca"
+  ],
+  "chunks": 7514,
+  "data_versions": {
+    "5023": 7514
+  },
+  "block_entities": {
+    "minecraft:chest": 2627,
+    "minecraft:barrel": 534,
+    "minecraft:banner": 335
+  },
+  "containers_with_items": 7,
+  "containers_with_loot_table": 3145,
+  "item_stacks_legacy_Count": 9,
+  "item_stacks_modern_count": 22,
+  "light_blocks": {
+    "minecraft:red_bed": 1471,
+    "minecraft:white_bed": 488,
+    "minecraft:sea_lantern": 309,
+    "minecraft:lantern": 56,
+    "minecraft:end_rod": 14,
+    "minecraft:redstone_lamp": 10
+  }
+}

@@ -1,0 +1,32 @@
+{
+	"parent": "minecraft:recipes/root",
+	"criteria": {
+		"has_glass_shard": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:glass_shard"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_the_recipe": {
+			"conditions": {
+				"recipes": "ashfall:glass_from_shards"
+			},
+			"trigger": "minecraft:recipe_unlocked"
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_glass_shard"
+		]
+	],
+	"rewards": {
+		"recipes": [
+			"ashfall:glass_from_shards"
+		]
+	}
+}

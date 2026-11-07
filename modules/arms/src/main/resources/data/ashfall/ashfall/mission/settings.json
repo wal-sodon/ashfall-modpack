@@ -1,0 +1,11 @@
+{
+	"briefing_delay_ticks": 80,
+	"sync_interval_ticks": 20,
+	"crystals_needed": 3,
+	"banks_needed": 2,
+	"pylons": 4,
+	"story_bosses": [ "ashfall:abomination", "ashfall:patient_zero", "ashfall:juggernaut" ],
+	"title_fade_in_ticks": 20,
+	"title_stay_ticks": 90,
+	"title_fade_out_ticks": 30
+}

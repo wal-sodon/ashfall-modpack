@@ -1,0 +1,36 @@
+{
+ "filler": "#",
+ "palette": {
+  "palette": [
+   {
+    "char": "#",
+    "block": "minecraft:stone_bricks"
+   }
+  ]
+ },
+ "allowDoors": false,
+ "allowFillers": false,
+ "overrideFloors": true,
+ "minfloors": 2,
+ "maxfloors": 2,
+ "mincellars": 1,
+ "maxcellars": 1,
+ "parts": [
+  {
+   "part": "ashfall:landmarks/safehouse/safehouse_c1",
+   "floor": -1
+  },
+  {
+   "part": "ashfall:landmarks/safehouse/safehouse_f0",
+   "floor": 0
+  },
+  {
+   "part": "ashfall:landmarks/safehouse/safehouse_f1",
+   "floor": 1
+  },
+  {
+   "part": "ashfall:landmarks/safehouse/safehouse_top",
+   "floor": 2
+  }
+ ]
+}

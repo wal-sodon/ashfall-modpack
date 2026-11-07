@@ -1,0 +1,61 @@
+{
+	"type": "minecraft:entity",
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:rotten_flesh",
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 0,
+								"max": 2
+							}
+						},
+						{
+							"type": "minecraft:enchanted_count_increase",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 0.0,
+								"max": 1.0
+							},
+							"enchantment": "minecraft:looting"
+						}
+					]
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"condition": {
+				"type": "minecraft:all_of",
+				"terms": [
+					{
+						"type": "minecraft:killed_by_player"
+					},
+					{
+						"type": "minecraft:random_chance",
+						"chance": 0.15
+					}
+				]
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_metal",
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": 1
+						}
+					]
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:entities/spitter"
+}

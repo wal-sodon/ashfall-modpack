@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"wound=false": {
+			"model": "ashfall:block/rattle_box"
+		},
+		"wound=true": {
+			"model": "ashfall:block/rattle_box_wound"
+		}
+	}
+}

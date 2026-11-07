@@ -1,0 +1,30 @@
+{
+	"parent": "ashfall:relight/grid_coupler",
+	"criteria": {
+		"grid_80": {
+			"trigger": "ashfall:grid_percent",
+			"conditions": {
+				"percent": {
+					"min": 80
+				}
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:focusing_lens"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.grid_80.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.grid_80.description"
+		},
+		"frame": "challenge"
+	},
+	"requirements": [
+		[
+			"grid_80"
+		]
+	]
+}

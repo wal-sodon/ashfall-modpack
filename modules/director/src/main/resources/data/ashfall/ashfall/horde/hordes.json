@@ -1,0 +1,17 @@
+{
+	"update_ticks": 40,
+	"group_radius": 8.0,
+	"min_group": 3,
+	"merge_radius": 16.0,
+	"max_size": 40,
+	"stimulus_scale": 2.0,
+	"leash": 10.0,
+	"arrive_radius": 4.0,
+	"blood": {
+		"enabled": true,
+		"health_fraction": 0.5,
+		"radius": 10.0,
+		"interval_ticks": 40,
+		"min_step": 3.0
+	}
+}

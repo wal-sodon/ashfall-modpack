@@ -1,0 +1,214 @@
+{
+	"_doc": "Repaint of Kenney's 512x512 blaster-kit colormap (variation-a layout). Each swatch rect [x0,y0,x1,y1] gets a role; a role is a top->bottom gradient (the source swatch's own luminance ramp picks the position) plus optional 'glow_band' = [t0,t1] slice of the gradient (0=top,1=bottom) that becomes the emissive energy accent (side faces span the ramp, so a mid band reads as a glowing strip; top faces sit at t~0 and stay metal), or 'glow_top': 1.0 for fully glowing swatches. 'ACCENT' in a colour means the blaster's accent colour; 'mix(a,b,t)' blends. Used by tools/art/blender/palette.py.",
+	"source": ".cache/assets/blaster-kit/Models/Textures/variation-a.png",
+	"default_role": "gunmetal",
+	"roles": {
+		"gunmetal": {
+			"top": "#6a7079",
+			"bottom": "#2c3037"
+		},
+		"steel": {
+			"top": "#9aa0a8",
+			"bottom": "#50555d"
+		},
+		"dark_steel": {
+			"top": "#4a4e56",
+			"bottom": "#24272c"
+		},
+		"polymer": {
+			"top": "#34353b",
+			"bottom": "#161719"
+		},
+		"chrome": {
+			"top": "#d4d8de",
+			"bottom": "#7d838c"
+		},
+		"accent_panel": {
+			"top": "mix(#555a63,ACCENT,0.06)",
+			"bottom": "mix(#292c32,ACCENT,0.04)",
+			"glow": "ACCENT",
+			"glow_band": [
+				0.4,
+				0.56
+			]
+		},
+		"energy": {
+			"top": "mix(ACCENT,#ffffff,0.35)",
+			"bottom": "ACCENT",
+			"glow_top": 1.0,
+			"glow": "ACCENT"
+		}
+	},
+	"swatches": [
+		{
+			"name": "purple",
+			"rect": [
+				0,
+				128,
+				64,
+				256
+			],
+			"role": "accent_panel"
+		},
+		{
+			"name": "pink",
+			"rect": [
+				64,
+				128,
+				128,
+				256
+			],
+			"role": "energy"
+		},
+		{
+			"name": "skin",
+			"rect": [
+				0,
+				256,
+				128,
+				384
+			],
+			"role": "dark_steel"
+		},
+		{
+			"name": "green",
+			"rect": [
+				128,
+				256,
+				192,
+				384
+			],
+			"role": "accent_panel"
+		},
+		{
+			"name": "yellow",
+			"rect": [
+				192,
+				256,
+				256,
+				384
+			],
+			"role": "accent_panel"
+		},
+		{
+			"name": "orange",
+			"rect": [
+				256,
+				256,
+				320,
+				384
+			],
+			"role": "accent_panel"
+		},
+		{
+			"name": "red",
+			"rect": [
+				320,
+				256,
+				384,
+				384
+			],
+			"role": "accent_panel"
+		},
+		{
+			"name": "blue",
+			"rect": [
+				384,
+				256,
+				448,
+				384
+			],
+			"role": "energy"
+		},
+		{
+			"name": "light_blue",
+			"rect": [
+				448,
+				256,
+				512,
+				384
+			],
+			"role": "chrome"
+		},
+		{
+			"name": "grip_grey",
+			"rect": [
+				0,
+				384,
+				64,
+				512
+			],
+			"role": "polymer"
+		},
+		{
+			"name": "black",
+			"rect": [
+				64,
+				384,
+				128,
+				512
+			],
+			"role": "polymer"
+		},
+		{
+			"name": "slate",
+			"rect": [
+				128,
+				384,
+				192,
+				512
+			],
+			"role": "steel"
+		},
+		{
+			"name": "dark_slate",
+			"rect": [
+				192,
+				384,
+				256,
+				512
+			],
+			"role": "dark_steel"
+		},
+		{
+			"name": "lavender",
+			"rect": [
+				256,
+				384,
+				320,
+				512
+			],
+			"role": "gunmetal"
+		},
+		{
+			"name": "white",
+			"rect": [
+				320,
+				384,
+				384,
+				512
+			],
+			"role": "chrome"
+		},
+		{
+			"name": "tan",
+			"rect": [
+				384,
+				384,
+				448,
+				512
+			],
+			"role": "dark_steel"
+		},
+		{
+			"name": "brown",
+			"rect": [
+				448,
+				384,
+				512,
+				512
+			],
+			"role": "polymer"
+		}
+	]
+}

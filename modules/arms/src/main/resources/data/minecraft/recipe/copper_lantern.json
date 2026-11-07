@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"key": {
+		"E": "ashfall:scrap_electronics",
+		"X": "minecraft:copper_nugget"
+	},
+	"pattern": [
+		"XXX",
+		"XEX",
+		"XXX"
+	],
+	"result": {
+		"id": "minecraft:copper_lantern"
+	}
+}

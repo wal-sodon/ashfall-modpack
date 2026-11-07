@@ -1,0 +1,9 @@
+{
+	"parent": "ashfall:block/field_charger_active",
+	"textures": {
+		"particle": "ashfall:block/rapid_charger_side",
+		"front": "ashfall:block/rapid_charger_front",
+		"side": "ashfall:block/rapid_charger_side",
+		"top": "ashfall:block/rapid_charger_top"
+	}
+}

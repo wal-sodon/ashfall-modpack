@@ -1,0 +1,65 @@
+{
+	"parent": "minecraft:recipes/root",
+	"criteria": {
+		"has_weapon_parts": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:weapon_parts"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_focusing_lens": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:focusing_lens"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_wire_spool": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:wire_spool"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_energy_cell": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:energy_cell"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_the_recipe": {
+			"conditions": {
+				"recipes": "ashfall:overcharger"
+			},
+			"trigger": "minecraft:recipe_unlocked"
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_weapon_parts",
+			"has_focusing_lens",
+			"has_wire_spool",
+			"has_energy_cell"
+		]
+	],
+	"rewards": {
+		"recipes": [
+			"ashfall:overcharger"
+		]
+	}
+}

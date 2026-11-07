@@ -1,0 +1,324 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:blue_concrete"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:polished_andesite"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:light_gray_concrete"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:gray_concrete"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:barrel[facing=south,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/police"
+    }
+   },
+   {
+    "char": "'",
+    "block": "minecraft:barrel[facing=south,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/office"
+    }
+   },
+   {
+    "char": "(",
+    "block": "minecraft:polished_blackstone_bricks"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:chest[facing=south,type=single,waterlogged=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/police"
+    }
+   },
+   {
+    "char": "*",
+    "block": "minecraft:iron_bars[east=true,north=true,south=true,west=false]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:barrel[facing=east,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/police"
+    }
+   },
+   {
+    "char": ",",
+    "block": "minecraft:anvil[facing=north]"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:smithing_table"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:dark_oak_door[facing=north,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:iron_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:blue_carpet"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:dark_oak_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:birch_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:spruce_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "4",
+    "block": "minecraft:cauldron"
+   },
+   {
+    "char": "5",
+    "block": "minecraft:dark_oak_slab[type=top,waterlogged=false]"
+   },
+   {
+    "char": "6",
+    "block": "minecraft:birch_stairs[facing=west,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "7",
+    "block": "minecraft:birch_slab[type=top,waterlogged=false]"
+   },
+   {
+    "char": "8",
+    "block": "minecraft:birch_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "9",
+    "block": "minecraft:spruce_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": ":",
+    "block": "minecraft:white_stained_glass_pane[east=false,north=false,south=true,west=false]"
+   },
+   {
+    "char": ";",
+    "block": "minecraft:white_stained_glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "<",
+    "block": "minecraft:smooth_quartz"
+   },
+   {
+    "char": "=",
+    "block": "minecraft:light_blue_stained_glass_pane[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": ">",
+    "block": "minecraft:light_blue_stained_glass_pane[east=true,north=false,south=true,west=true]"
+   },
+   {
+    "char": "?",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": "@",
+    "block": "minecraft:barrel[facing=south,open=false]"
+   },
+   {
+    "char": "A",
+    "block": "minecraft:dark_oak_shelf[facing=south,powered=false,side_chain=unconnected,waterlogged=false]"
+   },
+   {
+    "char": "B",
+    "block": "minecraft:stone_button[face=wall,facing=north,powered=false]"
+   },
+   {
+    "char": "C",
+    "block": "minecraft:dark_oak_door[facing=north,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "D",
+    "block": "minecraft:iron_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "E",
+    "block": "minecraft:stone_button[face=wall,facing=south,powered=false]"
+   },
+   {
+    "char": "F",
+    "block": "minecraft:dark_oak_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "G",
+    "block": "minecraft:birch_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "H",
+    "block": "minecraft:light_blue_stained_glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "I",
+    "block": "minecraft:lever[face=wall,facing=west,powered=false]"
+   },
+   {
+    "char": "J",
+    "block": "minecraft:birch_trapdoor[facing=north,half=bottom,open=true,powered=false,waterlogged=false]"
+   },
+   {
+    "char": "K",
+    "block": "minecraft:light_blue_stained_glass_pane[east=true,north=true,south=false,west=true]"
+   },
+   {
+    "char": "L",
+    "block": "minecraft:spruce_shelf[facing=south,powered=false,side_chain=unconnected,waterlogged=false]"
+   },
+   {
+    "char": "M",
+    "block": "minecraft:iron_bars[east=true,north=false,south=true,west=false]"
+   },
+   {
+    "char": "N",
+    "block": "minecraft:iron_bars[east=true,north=true,south=false,west=true]"
+   },
+   {
+    "char": "O",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "###############!",
+   "###############!",
+   "###############!",
+   "###############!",
+   "###############!",
+   "###############!",
+   "###############!",
+   "###############!",
+   "###############!",
+   "###############!",
+   "###############!",
+   "###############!",
+   "###############!",
+   "###############!",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "$$$$$$$$$$$$$$$$",
+   "%&' '&'(   )   $",
+   "%     *(+     ,$",
+   "%     *(+     -$",
+   "%%%.%%%%(((/((($",
+   "000000000000000$",
+   "000000000000000$",
+   "%%%%%%%1%%%%2%%$",
+   "     %    %    $",
+   "333  %    %   4$",
+   "555  %677 %   4$",
+   "555  % 778%    $",
+   "999  %    % :  $",
+   "     %   %% ;  $",
+   "     %<4<<%4;4 $",
+   "!!!$$$$$$$$$$$$$"
+  ],
+  [
+   "$$$=>$$$$$$$$$$$",
+   "?@@ @@@(AAA AAA$",
+   "?     *(       $",
+   "?     *(  B    $",
+   "???C????(((D((($",
+   "          E    $",
+   "               $",
+   "???????F????G??$",
+   "     ?    ?    $",
+   "     ?    ?    H",
+   "     ?    ?    H",
+   "     ?    ?    H",
+   "     ?    ? :  H",
+   "     ?  I?? ;  $",
+   "???  ?    ?J;J $",
+   "KKK=$$$===$=K=$$"
+  ],
+  [
+   "$$$==$$$$$$$$$$$",
+   "?LLLLLL(AAA AAA$",
+   "?     M(       $",
+   "?     *(       $",
+   "????????((((((($",
+   "               $",
+   "               $",
+   "???????????????$",
+   "     ?    ?    $",
+   "     ?    ?    H",
+   "     ?    ?    H",
+   "     ?    ?    H",
+   "     ?    ?    H",
+   "     ?    ?    $",
+   "???  ?    ?    $",
+   "KKK=$$$===$===$$"
+  ],
+  [
+   "$$$$$$$$$$$$$$$$",
+   "?      (NNNNNNN$",
+   "?      (       $",
+   "?      (       $",
+   "????????((((((($",
+   "               $",
+   "               $",
+   "???????????????$",
+   "     ?    ?    $",
+   "     ?    ?    $",
+   "     ?    ?    $",
+   "     ?    ?    $",
+   "     ?    ?    $",
+   "     ?    ?    $",
+   "     ?    ?    $",
+   "$$$$$$$$$$$$$$$$"
+  ],
+  [
+   "$$$$$$$$$$$$$$$$",
+   "?      (       $",
+   "?   O  (   O   $",
+   "?      (       $",
+   "????????((((((($",
+   "               $",
+   "               $",
+   "???????????????$",
+   "     ?    ?    $",
+   "     ?    ?    $",
+   "     ?    ?    $",
+   " O   ?    ?    $",
+   "     ?    ?    $",
+   "     ?    ?    $",
+   "     ?    ?    $",
+   "$$$$$$$$$$$$$$$$"
+  ]
+ ]
+}

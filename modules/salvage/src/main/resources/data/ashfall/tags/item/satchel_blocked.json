@@ -1,0 +1,6 @@
+{
+	"values": [
+		{ "id": "#travelersbackpack:custom_travelers_backpack", "required": false },
+		{ "id": "travelersbackpack:standard", "required": false }
+	]
+}

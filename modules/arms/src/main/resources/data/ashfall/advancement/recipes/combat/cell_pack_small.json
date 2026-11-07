@@ -1,0 +1,43 @@
+{
+	"parent": "minecraft:recipes/root",
+	"criteria": {
+		"has_wire_spool": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:wire_spool"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_scrap_electronics": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:scrap_electronics"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_the_recipe": {
+			"conditions": {
+				"recipes": "ashfall:cell_pack_small"
+			},
+			"trigger": "minecraft:recipe_unlocked"
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_wire_spool",
+			"has_scrap_electronics"
+		]
+	],
+	"rewards": {
+		"recipes": [
+			"ashfall:cell_pack_small"
+		]
+	}
+}

@@ -1,0 +1,215 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+		"particle": "ashfall:block/tripline_alarm",
+		"case": "ashfall:block/tripline_alarm",
+		"bell": "ashfall:block/tripline_alarm_bell",
+		"lamp": "ashfall:block/tripline_alarm_lamp_lit"
+	},
+	"elements": [
+		{
+			"from": [
+				4,
+				3,
+				14
+			],
+			"to": [
+				12,
+				13,
+				16
+			],
+			"faces": {
+				"north": {
+					"texture": "#case",
+					"uv": [
+						4,
+						3,
+						12,
+						13
+					]
+				},
+				"south": {
+					"texture": "#case",
+					"uv": [
+						4,
+						3,
+						12,
+						13
+					]
+				},
+				"west": {
+					"texture": "#case",
+					"uv": [
+						14,
+						3,
+						16,
+						13
+					]
+				},
+				"east": {
+					"texture": "#case",
+					"uv": [
+						14,
+						3,
+						16,
+						13
+					]
+				},
+				"up": {
+					"texture": "#case",
+					"uv": [
+						4,
+						14,
+						12,
+						16
+					]
+				},
+				"down": {
+					"texture": "#case",
+					"uv": [
+						4,
+						14,
+						12,
+						16
+					]
+				}
+			}
+		},
+		{
+			"from": [
+				5,
+				8,
+				12
+			],
+			"to": [
+				11,
+				12,
+				14
+			],
+			"faces": {
+				"north": {
+					"texture": "#bell",
+					"uv": [
+						5,
+						4,
+						11,
+						8
+					]
+				},
+				"south": {
+					"texture": "#bell",
+					"uv": [
+						5,
+						4,
+						11,
+						8
+					]
+				},
+				"west": {
+					"texture": "#bell",
+					"uv": [
+						12,
+						4,
+						14,
+						8
+					]
+				},
+				"east": {
+					"texture": "#bell",
+					"uv": [
+						12,
+						4,
+						14,
+						8
+					]
+				},
+				"up": {
+					"texture": "#bell",
+					"uv": [
+						5,
+						12,
+						11,
+						14
+					]
+				},
+				"down": {
+					"texture": "#bell",
+					"uv": [
+						5,
+						12,
+						11,
+						14
+					]
+				}
+			}
+		},
+		{
+			"from": [
+				7,
+				4,
+				13
+			],
+			"to": [
+				9,
+				6,
+				14
+			],
+			"faces": {
+				"north": {
+					"texture": "#lamp",
+					"uv": [
+						7,
+						10,
+						9,
+						12
+					]
+				},
+				"south": {
+					"texture": "#lamp",
+					"uv": [
+						7,
+						10,
+						9,
+						12
+					]
+				},
+				"west": {
+					"texture": "#lamp",
+					"uv": [
+						13,
+						10,
+						14,
+						12
+					]
+				},
+				"east": {
+					"texture": "#lamp",
+					"uv": [
+						13,
+						10,
+						14,
+						12
+					]
+				},
+				"up": {
+					"texture": "#lamp",
+					"uv": [
+						7,
+						13,
+						9,
+						14
+					]
+				},
+				"down": {
+					"texture": "#lamp",
+					"uv": [
+						7,
+						13,
+						9,
+						14
+					]
+				}
+			}
+		}
+	]
+}

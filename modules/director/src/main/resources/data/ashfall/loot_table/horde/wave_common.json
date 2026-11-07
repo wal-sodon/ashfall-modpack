@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:random_chance",
+        "chance": 0.25
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ashfall:cloth",
+          "weight": 4,
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "ashfall:scrap_metal",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "ashfall:matches",
+          "weight": 1
+        }
+      ]
+    }
+  ],
+  "random_sequence": "ashfall:horde/wave_common"
+}

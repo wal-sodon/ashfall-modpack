@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"pattern": [
+		"S S",
+		"SGS",
+		"TST"
+	],
+	"key": {
+		"S": "ashfall:scrap_metal",
+		"G": "ashfall:glass_shard",
+		"T": "ashfall:duct_tape"
+	},
+	"result": {
+		"id": "ashfall:rain_collector",
+		"count": 1
+	}
+}

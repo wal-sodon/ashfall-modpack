@@ -1,0 +1,65 @@
+{
+	"replace": false,
+	"values": [
+		{
+			"id": "minecraft:written_book",
+			"required": false
+		},
+		{
+			"id": "minecraft:writable_book",
+			"required": false
+		},
+		{
+			"id": "ashfall:field_radio",
+			"required": false
+		},
+		{
+			"id": "ashfall:bandage",
+			"required": false
+		},
+		{
+			"id": "ashfall:antibiotics",
+			"required": false
+		},
+		{
+			"id": "ashfall:bottled_water",
+			"required": false
+		},
+		{
+			"id": "ashfall:dirty_water",
+			"required": false
+		},
+		{
+			"id": "ashfall:canned_food",
+			"required": false
+		},
+		{
+			"id": "ashfall:spark_pistol",
+			"required": false
+		},
+		{
+			"id": "ashfall:volt_sidearm",
+			"required": false
+		},
+		{
+			"id": "ashfall:pulse_carbine",
+			"required": false
+		},
+		{
+			"id": "ashfall:ion_rifle",
+			"required": false
+		},
+		{
+			"id": "ashfall:arc_magnum",
+			"required": false
+		},
+		{
+			"id": "ashfall:lancer_longrifle",
+			"required": false
+		},
+		{
+			"id": "ashfall:storm_repeater",
+			"required": false
+		}
+	]
+}

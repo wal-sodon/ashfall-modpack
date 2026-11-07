@@ -1,0 +1,13 @@
+{
+	"variants": {
+		"power=0": {
+			"model": "ashfall:block/uplink_socket"
+		},
+		"power=1": {
+			"model": "ashfall:block/uplink_socket_lit"
+		},
+		"power=2": {
+			"model": "ashfall:block/uplink_socket_lit"
+		}
+	}
+}

@@ -1,0 +1,394 @@
+{
+	"multipart": [
+		{
+			"when": {
+				"facing": "north",
+				"symbol": "cleared"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_cleared"
+			}
+		},
+		{
+			"when": {
+				"facing": "east",
+				"symbol": "cleared"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_cleared",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"facing": "south",
+				"symbol": "cleared"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_cleared",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"facing": "west",
+				"symbol": "cleared"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_cleared",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"facing": "north",
+				"symbol": "danger"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_danger"
+			}
+		},
+		{
+			"when": {
+				"facing": "east",
+				"symbol": "danger"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_danger",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"facing": "south",
+				"symbol": "danger"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_danger",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"facing": "west",
+				"symbol": "danger"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_danger",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"facing": "north",
+				"symbol": "loot"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_loot"
+			}
+		},
+		{
+			"when": {
+				"facing": "east",
+				"symbol": "loot"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_loot",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"facing": "south",
+				"symbol": "loot"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_loot",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"facing": "west",
+				"symbol": "loot"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_loot",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"facing": "north",
+				"symbol": "safehouse"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_safehouse"
+			}
+		},
+		{
+			"when": {
+				"facing": "east",
+				"symbol": "safehouse"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_safehouse",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"facing": "south",
+				"symbol": "safehouse"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_safehouse",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"facing": "west",
+				"symbol": "safehouse"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_safehouse",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"facing": "north",
+				"symbol": "arrow_up"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_up"
+			}
+		},
+		{
+			"when": {
+				"facing": "east",
+				"symbol": "arrow_up"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_up",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"facing": "south",
+				"symbol": "arrow_up"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_up",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"facing": "west",
+				"symbol": "arrow_up"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_up",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"facing": "north",
+				"symbol": "arrow_right"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_right"
+			}
+		},
+		{
+			"when": {
+				"facing": "east",
+				"symbol": "arrow_right"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_right",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"facing": "south",
+				"symbol": "arrow_right"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_right",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"facing": "west",
+				"symbol": "arrow_right"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_right",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"facing": "north",
+				"symbol": "arrow_down"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_down"
+			}
+		},
+		{
+			"when": {
+				"facing": "east",
+				"symbol": "arrow_down"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_down",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"facing": "south",
+				"symbol": "arrow_down"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_down",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"facing": "west",
+				"symbol": "arrow_down"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_down",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"facing": "north",
+				"symbol": "arrow_left"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_left"
+			}
+		},
+		{
+			"when": {
+				"facing": "east",
+				"symbol": "arrow_left"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_left",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"facing": "south",
+				"symbol": "arrow_left"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_left",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"facing": "west",
+				"symbol": "arrow_left"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_arrow_left",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"facing": "north",
+				"state": "warn"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_warn"
+			}
+		},
+		{
+			"when": {
+				"facing": "east",
+				"state": "warn"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_warn",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"facing": "south",
+				"state": "warn"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_warn",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"facing": "west",
+				"state": "warn"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_warn",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"facing": "north",
+				"state": "stale"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_stale"
+			}
+		},
+		{
+			"when": {
+				"facing": "east",
+				"state": "stale"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_stale",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"facing": "south",
+				"state": "stale"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_stale",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"facing": "west",
+				"state": "stale"
+			},
+			"apply": {
+				"model": "ashfall:block/graffiti_stale",
+				"y": 270
+			}
+		}
+	]
+}

@@ -1,0 +1,29 @@
+# Phase 6 playtest, part 3 (headless) on world-p6, after the fixes: a finished Black Start explains how to replay
+# instead of claiming to be running; the console closes a running vote with /ashfall ending set; the reset rearms.
+until Done \(
+cmd forceload add 2288 -112 2320 -90
+wait 10
+cmd ashfall finale unattended on
+cmd ashfall finale start
+cmd ashfall finale phase heart
+wait 3
+cmd setblock 2296 64 -103 air
+cmd setblock 2296 64 -99 air
+cmd setblock 2310 64 -103 air
+cmd setblock 2310 64 -99 air
+wait 3
+cmd ashfall ending status
+cmd ashfall ending vote sever
+cmd ashfall ending set sever
+wait 2
+cmd ashfall ending status
+cmd ashfall finale start
+cmd ashfall finale status
+cmd ashfall story reset
+wait 2
+cmd ashfall finale status
+cmd ashfall ending status
+cmd ashfall finale unattended off
+cmd kill @e[tag=ashfall_finale]
+cmd forceload remove all
+wait 3

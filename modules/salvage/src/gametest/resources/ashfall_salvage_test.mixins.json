@@ -1,0 +1,9 @@
+{
+	"required": true,
+	"package": "xyz.toesinthesand.ashfall.salvage.test.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"GameTestServerMixin"
+	],
+	"injectors": { "defaultRequire": 1 }
+}

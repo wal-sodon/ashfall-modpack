@@ -1,0 +1,16 @@
+{
+	"variants": {
+		"wear=0": {
+			"model": "ashfall:block/spike_strip_0"
+		},
+		"wear=1": {
+			"model": "ashfall:block/spike_strip_1"
+		},
+		"wear=2": {
+			"model": "ashfall:block/spike_strip_2"
+		},
+		"wear=3": {
+			"model": "ashfall:block/spike_strip_3"
+		}
+	}
+}

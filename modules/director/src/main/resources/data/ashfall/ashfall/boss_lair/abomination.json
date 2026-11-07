@@ -1,0 +1,19 @@
+{
+	"name": "boss.ashfall.abomination",
+	"anchor": { "landmark": "ashfall:kiln_warehouse", "chunk": [-60, 7], "size": [2, 2] },
+	"boss": { "entity": "mutantmonsters:mutant_zombie", "fallback_variant": "ashfall:abomination_standin" },
+	"attributes": {
+		"minecraft:max_health": 300.0,
+		"minecraft:follow_range": 40.0
+	},
+	"glowing": false,
+	"particle": "minecraft:ash",
+	"bossbar": { "color": "red", "overlay": "notched_10" },
+	"trigger_radius": 28,
+	"bar_radius": 56,
+	"respawn": { "after_ending_days": 10 },
+	"drops": {
+		"guaranteed": [ { "item": "ashfall:resonance_crystal", "count": 1 } ],
+		"loot_table": "ashfall:entities/boss/abomination"
+	}
+}

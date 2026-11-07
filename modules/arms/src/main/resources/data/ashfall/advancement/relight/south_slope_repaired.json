@@ -1,0 +1,28 @@
+{
+	"parent": "ashfall:relight/grid_coupler",
+	"criteria": {
+		"repaired": {
+			"trigger": "ashfall:district",
+			"conditions": {
+				"district": "south_slope",
+				"state": "repaired"
+			}
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "ashfall:battery"
+		},
+		"title": {
+			"translate": "advancements.ashfall.relight.south_slope_repaired.title"
+		},
+		"description": {
+			"translate": "advancements.ashfall.relight.south_slope_repaired.description"
+		}
+	},
+	"requirements": [
+		[
+			"repaired"
+		]
+	]
+}

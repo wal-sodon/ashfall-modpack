@@ -1,0 +1,56 @@
+{
+	"match": [
+		{
+			"shop": "car_repair|car_parts|tyres|hardware|doityourself|motorcycle|bicycle|trade"
+		},
+		{
+			"craft": "*"
+		},
+		{
+			"lc_multibuilding": "*:factory"
+		},
+		{
+			"lc_multibuilding": "ashfall:substation_*"
+		},
+		{
+			"lc_building": "*:building3|*:building4",
+			"lc_zone": "river_arts"
+		}
+	],
+	"arnis_uses": [
+		"Workshop",
+		"Shop(Hardware)"
+	],
+	"priority": 25,
+	"tier": 2,
+	"loot_table": "ashfall:buildings/workshop",
+	"containers": {
+		"per_100m2": 1.2,
+		"min": 1,
+		"max": 6,
+		"blocks": [
+			{
+				"block": "minecraft:chest",
+				"weight": 1
+			},
+			{
+				"block": "minecraft:barrel",
+				"weight": 2
+			}
+		]
+	},
+	"refill": {
+		"enabled": true,
+		"delay_ticks": 72000,
+		"no_player_radius": 32,
+		"quiet_ticks": 6000
+	},
+	"population": {
+		"per_100m2": 0.5,
+		"entities": {
+			"minecraft:zombie": 100
+		}
+	},
+	"safe_candidate": false,
+	"relay_chance": 0.02
+}

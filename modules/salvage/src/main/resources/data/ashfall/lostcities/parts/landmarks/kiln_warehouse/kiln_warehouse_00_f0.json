@@ -1,0 +1,234 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:stone_bricks"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:blackstone"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:polished_blackstone"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:basalt[axis=y]"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:reinforced_deepslate"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:bricks"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:blast_furnace[facing=south,lit=false]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:cauldron"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:iron_block"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:anvil[facing=north]"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:chiseled_copper"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:bone_block[axis=y]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:crafting_table"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:cobweb"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:smithing_table"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:grindstone[face=floor,facing=east]"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:stonecutter[facing=east]"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:chest[facing=east,type=left,waterlogged=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/workshop"
+    }
+   },
+   {
+    "char": "4",
+    "block": "minecraft:chest[facing=east,type=right,waterlogged=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/workshop"
+    }
+   },
+   {
+    "char": "5",
+    "block": "minecraft:raw_iron_block"
+   },
+   {
+    "char": "6",
+    "block": "minecraft:exposed_copper"
+   },
+   {
+    "char": "7",
+    "block": "minecraft:glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "8",
+    "block": "minecraft:anvil[facing=east]"
+   },
+   {
+    "char": "9",
+    "block": "minecraft:iron_bars[east=true,north=true,south=true,west=true]"
+   },
+   {
+    "char": ":",
+    "block": "minecraft:iron_chain[axis=y]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!###!!!!!!!##",
+   "!!!!###!!!!!!!##",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!$$",
+   "!!!!!!!!!!!!%$$%",
+   "!!!!!!!!!!!!$$%$",
+   "!!!!!!!!!!!$$%$$",
+   "!!!!!!!!!!!$%$$&",
+   "!!!!!!!!!!!%$$%$",
+   "!!!!!!!!!!!$$%$$",
+   "!!!!!!!!!!!!%$$%"
+  ],
+  [
+   "''''''''''''''''",
+   "'  '''''     '''",
+   "'  ' ( '     ' (",
+   "'  ')  '     ') ",
+   "'  '   '     '  ",
+   "'               ",
+   "'               ",
+   "'    *+         ",
+   "'   ,,**      - ",
+   "'.    +  /      ",
+   "'0         )    ",
+   "'1              ",
+   "'*              ",
+   "'2        -     ",
+   "'3     /        ",
+   "'4 56        +  "
+  ],
+  [
+   "''''''''''''''''",
+   "'  '''''     '''",
+   "'  '   '     '  ",
+   "'  '   '     '  ",
+   "'  '   '     '  ",
+   "'               ",
+   "'               ",
+   "'    +,         ",
+   "'    *+         ",
+   "'               ",
+   "'               ",
+   "'               ",
+   "'*              ",
+   "'               ",
+   "'               ",
+   "'  6*           "
+  ],
+  [
+   "''''''''''''''''",
+   "'  '''''     '''",
+   "'  '   '     '  ",
+   "7  '   '     '  ",
+   "7  '   '     '  ",
+   "'               ",
+   "'               ",
+   "'    ,          ",
+   "7     ,         ",
+   "7               ",
+   "'               ",
+   "'               ",
+   "'*              ",
+   "7               ",
+   "7               ",
+   "'  *            "
+  ],
+  [
+   "''''''''''''''''",
+   "'  '''''     '''",
+   "'  '''''     '''",
+   "7  '''''     '''",
+   "7  '''''     '''",
+   "'               ",
+   "'               ",
+   "'               ",
+   "7               ",
+   "7               ",
+   "'               ",
+   "'               ",
+   "'*             8",
+   "7               ",
+   "7               ",
+   "'               "
+  ],
+  [
+   "''''''''''''''''",
+   "'   '''       ''",
+   "'   '9'       ''",
+   "7   '''       ''",
+   "7               ",
+   "'               ",
+   "'               ",
+   "'               ",
+   "7               ",
+   "7               ",
+   "'               ",
+   "'               ",
+   "'*             :",
+   "7               ",
+   "7               ",
+   "'               "
+  ]
+ ]
+}

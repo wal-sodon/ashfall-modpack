@@ -1,0 +1,230 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 1,
+				"max": 2
+			},
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 25
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:cloth",
+					"weight": 3,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:canned_food",
+					"weight": 7,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bottled_water",
+					"weight": 7,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:battery",
+					"weight": 5,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:matches",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:duct_tape",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_metal",
+					"weight": 4,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_electronics",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bandage",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:leather",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:torch",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:candle",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:glass_bottle",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:gold_nugget",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:name_tag",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:clock",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:compass",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:book",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:wire_spool",
+					"weight": 3,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:cell_pack_small",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_components",
+						"components": {
+							"team_reborn_energy:energy": 30
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scavenger_hood",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scavenger_jacket",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scavenger_trousers",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scavenger_boots",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:satchel",
+					"weight": 2
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:buildings/shop"
+}

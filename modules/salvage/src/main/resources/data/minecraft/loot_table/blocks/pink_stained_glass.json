@@ -1,0 +1,47 @@
+{
+	"type": "minecraft:block",
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:alternatives",
+					"children": [
+						{
+							"type": "minecraft:item",
+							"name": "minecraft:pink_stained_glass",
+							"condition": {
+								"type": "minecraft:match_tool",
+								"predicate": {
+									"predicates": {
+										"minecraft:enchantments": [
+											{
+												"enchantments": "minecraft:silk_touch",
+												"levels": {
+													"min": 1
+												}
+											}
+										]
+									}
+								}
+							}
+						},
+						{
+							"type": "minecraft:item",
+							"name": "ashfall:glass_shard",
+							"modifier": {
+								"type": "minecraft:set_count",
+								"count": {
+									"type": "minecraft:uniform",
+									"min": 2,
+									"max": 4
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"random_sequence": "minecraft:blocks/pink_stained_glass"
+}

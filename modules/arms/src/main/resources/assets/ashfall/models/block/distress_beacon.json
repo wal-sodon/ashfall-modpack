@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:block/cube_bottom_top",
+	"textures": {
+		"top": "ashfall:block/distress_beacon_top",
+		"bottom": "ashfall:block/distress_beacon_side",
+		"side": "ashfall:block/distress_beacon_side"
+	}
+}

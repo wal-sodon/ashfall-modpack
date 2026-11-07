@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "redstone",
+	"key": {
+		"A": "ashfall:alloy_plate",
+		"P": "#minecraft:planks"
+	},
+	"pattern": [
+		"AA",
+		"PP",
+		"AA"
+	],
+	"result": {
+		"id": "ashfall:reinforced_door"
+	}
+}

@@ -1,0 +1,8 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}" apply false
+}
+
+subprojects {
+	group = rootProject.group
+	version = rootProject.version
+}

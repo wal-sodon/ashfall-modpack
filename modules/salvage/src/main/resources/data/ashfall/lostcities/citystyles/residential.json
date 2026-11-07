@@ -1,0 +1,33 @@
+{
+	"inherit": "lcmt:citystyle_standard",
+	"explosionchance": 0.4,
+	"buildingsettings": {
+		"minfloors": 1,
+		"maxfloors": 3,
+		"mincellars": 0,
+		"maxcellars": 1,
+		"buildingchance": 0.45
+	},
+	"selectors": {
+		"buildings": [
+			{
+				"factor": 0.4,
+				"value": "lcmt:building1"
+			},
+			{
+				"factor": 0.4,
+				"value": "lcmt:building4"
+			},
+			{
+				"factor": 0.05,
+				"value": "ashfall:pharmacy"
+			}
+		],
+		"multibuildings": [
+			{
+				"factor": 0.06,
+				"value": "ashfall:police_precinct"
+			}
+		]
+	}
+}

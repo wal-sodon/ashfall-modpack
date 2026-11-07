@@ -1,0 +1,14 @@
+{
+ "dimx": 2,
+ "dimz": 2,
+ "buildings": [
+  [
+   "ashfall:kiln_warehouse_00",
+   "ashfall:kiln_warehouse_01"
+  ],
+  [
+   "ashfall:kiln_warehouse_10",
+   "ashfall:kiln_warehouse_11"
+  ]
+ ]
+}

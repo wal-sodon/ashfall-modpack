@@ -1,0 +1,10 @@
+{
+	"base_cost": 10,
+	"cost_per_100_blocks": 5,
+	"max_cost": 40,
+	"warmup_ticks": 60,
+	"substation_radius": 16,
+	"threat_radius": 24,
+	"arrival_protection_ticks": 100,
+	"bunker_departure_multiplier": 2.0
+}

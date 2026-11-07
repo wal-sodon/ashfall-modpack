@@ -1,0 +1,215 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:smooth_quartz"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:light_blue_terracotta"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:cyan_carpet"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:birch_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:bookshelf"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:birch_slab[type=top,waterlogged=false]"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:birch_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:spruce_trapdoor[facing=west,half=bottom,open=true,powered=false,waterlogged=false]"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:dark_oak_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:spruce_trapdoor[facing=east,half=bottom,open=true,powered=false,waterlogged=false]"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:light_blue_bed[facing=south,occupied=false,part=foot]"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:barrel[facing=north,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/hospital"
+    }
+   },
+   {
+    "char": ".",
+    "block": "minecraft:light_blue_bed[facing=south,occupied=false,part=head]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:dark_oak_planks"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:potted_fern"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:birch_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:black_concrete"
+   },
+   {
+    "char": "4",
+    "block": "minecraft:light_blue_stained_glass_pane[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "5",
+    "block": "minecraft:light_blue_stained_glass_pane[east=true,north=true,south=false,west=true]"
+   },
+   {
+    "char": "6",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "################"
+  ],
+  [
+   "$$$$$$$$$$$$$$$$",
+   "#%######%#####%#",
+   "    #       #   ",
+   "    #&      #   ",
+   "    #&      #   ",
+   "    #&    '(#   ",
+   "    #     '(#   ",
+   "    #       #   ",
+   "    #       #   ",
+   "    #       #   ",
+   "   (#)****+ #  (",
+   "    #       #   ",
+   "    #       #   ",
+   " ,  #       # , ",
+   "-.  # //// 0#-. ",
+   "1111111111111111"
+  ],
+  [
+   "                ",
+   "1211111121111121",
+   "    1       1   ",
+   "    1&      1   ",
+   "    1&      1   ",
+   "    1&      1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1  33   1   ",
+   "1144114511441144"
+  ],
+  [
+   "                ",
+   "1111111111111111",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "1144114411441144"
+  ],
+  [
+   "                ",
+   "1111111111111111",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "1111111111111111"
+  ],
+  [
+   "                ",
+   "1111111111111111",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1   6   1   ",
+   " 6  1       1 6 ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "    1       1   ",
+   "1111111111111111"
+  ]
+ ]
+}

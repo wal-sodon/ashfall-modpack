@@ -1,0 +1,59 @@
+{
+	"_comment": "Pinned third-party mods for the Ashfall pack (Minecraft 26.3, Fabric). Each entry is a Modrinth project slug and an exact version id. side: both | client | server. optional: shown as optional in launchers. tools/build_mrpack.py turns this into modrinth.index.json and checks required dependencies.",
+	"name": "Ashfall",
+	"minecraft": "26.3",
+	"fabric_loader": "0.20.1",
+	"mods": [
+		{ "slug": "fabric-api", "version": "EQKgpeKu", "side": "both", "why": "Fabric API 0.165.0+26.3" },
+		{ "slug": "cloth-config", "version": "fg2uyxOW", "side": "both", "why": "Config library (Better Combat, Unlit Campfire, REI)" },
+
+		{ "slug": "the-lost-cities", "version": "xuEuPjKk", "side": "both", "why": "City generator that replaces Arnis (26.3-12.0.0-fabric). The Ashfall profile ships in our salvage jar. both: the LAN host runs the server" },
+		{ "slug": "lost-cities-modern-tweaks-nolighting", "version": "AqUDSjNd", "side": "both", "why": "Modern Tweaks, Lights Off edition (6.0.0, MIT): vanilla-block buildings and streets with lamps removed. Never install the standard edition next to it" },
+		{ "slug": "ferrite-core", "version": "d5ddUdiB", "side": "both", "why": "Memory: Lost Cities cities are block-state heavy" },
+
+		{ "slug": "zombies-break-and-build", "version": "9eCq1eqL", "side": "both", "why": "Zombie block breaking/building + restoration" },
+		{ "slug": "contagion", "version": "DsutKMck", "side": "both", "why": "Infection (we add stages and treatments)" },
+		{ "slug": "mutant-monsters", "version": "XNliGY5t", "side": "both", "why": "Milestone bosses" },
+		{ "slug": "puzzles-lib", "version": "vbwu116x", "side": "both", "why": "Required by Mutant Monsters" },
+		{ "slug": "forge-config-api-port", "version": "JpKvrr9J", "side": "both", "why": "Required by Mutant Monsters, Open Parties and Claims, The Lost Cities and Traveler's Backpack" },
+
+		{ "slug": "open-parties-and-claims", "version": "KBCCg0os", "side": "both", "why": "Safe zones (server claims) and bunkers (party claims). BETA on 26.3" },
+		{ "slug": "lootr", "version": "gVwn7m2v", "side": "both", "why": "Per-player top-tier caches" },
+		{ "slug": "loot-table-modifier", "version": "IwBmifgz", "side": "both", "why": "Datapack edits to mob drops and loot tables" },
+		{ "slug": "monkeylib538", "version": "7XcbSAdm", "side": "both", "why": "Required by Loot Table Modifier" },
+		{ "slug": "placeholder-api", "version": "lXytLqWj", "side": "both", "why": "Required by monkeylib538 and Mod Menu" },
+
+		{ "slug": "unlit-campfire", "version": "YVEyhulC", "side": "both", "why": "Campfires burn out" },
+		{ "slug": "better-combat", "version": "8Vyq1h9a", "side": "both", "why": "Plasma Blade sweep movesets (M5)" },
+		{ "slug": "player-animation-library", "version": "xJ30QmpE", "side": "both", "why": "Required by Better Combat. BETA on 26.3" },
+		{ "slug": "geckolib", "version": "kSxHvs99", "side": "both", "why": "Animated models (special infected, M9)" },
+
+		{ "slug": "down-but-not-out", "version": "cLfXmsBA", "side": "both", "why": "Co-op revive: downed for 45 s, revive by right-click. both: the LAN host needs it" },
+		{ "slug": "travelersbackpack", "version": "SmhjfeWr", "side": "both", "why": "Big bags for scavenging runs: loot-only (Ashfall removes the Standard recipe; the craftable small bag is the Satchel). Fluid tanks limited so they cannot bypass Hydration" },
+		{ "slug": "jade", "version": "71CTWqdE", "side": "both", "why": "Block and mob info; later a plugin for Substation Core, Relay and charger status" },
+		{ "slug": "carry-on", "version": "6kJQXHUF", "side": "both", "why": "Move chests and blocks when setting up a haven (Lootr and Ashfall grid blocks blacklisted)" },
+		{ "slug": "appleskin", "version": "PHjDtQay", "side": "both", "why": "Hunger and saturation HUD" },
+		{ "slug": "farmers-delight-refabricated", "version": "dRScyUeE", "side": "both", "why": "Food and farming depth for havens and Reclaimed districts" },
+
+		{ "slug": "lithium", "version": "xS0Q8LSi", "side": "both", "why": "Performance" },
+		{ "slug": "servercore", "version": "LCG1Bm84", "side": "server", "why": "Server performance tuning" },
+		{ "slug": "spark", "version": "e3hsPc1o", "side": "both", "why": "Profiler" },
+		{ "slug": "chunky", "version": "4Eotm6ov", "side": "both", "why": "Chunk pregeneration of the city before play (the LAN host needs it too)" },
+
+		{ "slug": "sodium", "version": "bAZQdGpg", "side": "client", "optional": true, "why": "Rendering performance (release build, not the beta)" },
+		{ "slug": "lambdynamiclights", "version": "rylKnJ4M", "side": "client", "why": "Held torches and Plasma Blades light up the area" },
+		{ "slug": "modmenu", "version": "kyy7dbrZ", "side": "client", "why": "Mod list and config screens" },
+		{ "slug": "sound-physics-remastered", "version": "gA7nKz5g", "side": "client", "optional": true, "why": "Echo and muffling. BETA on 26.3" },
+		{ "slug": "rei", "version": "rKsAE6bX", "side": "client", "why": "Recipe viewer (EMI has no 26.3 build)" },
+		{ "slug": "architectury-api", "version": "1pMaB6So", "side": "client", "why": "Required by REI" },
+		{ "slug": "better-advancements", "version": "FQp3HIDr", "side": "client", "why": "Readable Relight advancement tab, our quest log. BETA on 26.3" },
+		{ "slug": "advancement-plaques", "version": "CWKBEIsY", "side": "client", "why": "Banners for district Reclaimed and Asheville Relit" },
+		{ "slug": "iceberg", "version": "zhVGUJyW", "side": "client", "why": "Required by Advancement Plaques" },
+		{ "slug": "ambientsounds", "version": "LFUkYKC1", "side": "client", "why": "Atmosphere in a dead city" },
+		{ "slug": "creativecore", "version": "7YUEsxpw", "side": "client", "why": "Required by AmbientSounds" },
+		{ "slug": "particle-rain", "version": "ecVAaY1R", "side": "client", "why": "Rain, mist and fog" },
+		{ "slug": "xaeros-minimap", "version": "eUEhnw8G", "side": "client", "optional": true, "why": "Minimap" },
+		{ "slug": "xaeros-world-map", "version": "IEtfiHVq", "side": "client", "optional": true, "why": "World map" },
+		{ "slug": "e4mc", "version": "RNDvrMAd", "side": "client", "optional": true, "why": "Open to LAN over the internet without port forwarding" }
+	]
+}

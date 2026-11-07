@@ -1,0 +1,7 @@
+{
+	"slot": "core",
+	"damage": 1.25,
+	"heat_per_shot": 1.2,
+	"energy_per_shot": 1.2,
+	"requires_district": "downtown"
+}

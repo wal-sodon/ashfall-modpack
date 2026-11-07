@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"pattern": [
+		" N ",
+		"SGS",
+		"SSS"
+	],
+	"key": {
+		"N": "minecraft:iron_nugget",
+		"S": "ashfall:scrap_metal",
+		"G": "ashfall:glass_shard"
+	},
+	"result": {
+		"id": "ashfall:rattle_box",
+		"count": 1
+	}
+}

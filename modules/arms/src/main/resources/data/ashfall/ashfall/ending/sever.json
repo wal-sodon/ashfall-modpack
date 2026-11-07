@@ -1,0 +1,25 @@
+{
+	"antibiotics_cure": true,
+	"flags": [],
+	"spawn_multiplier": 0.4,
+	"horde_interval_multiplier": 3,
+	"free_relays": true,
+	"unlock_attachments": false,
+	"bunker_radius_bonus": 0,
+	"rewards": [],
+	"aftershocks": {
+		"every_days": 7,
+		"chance_scale": 0.5
+	},
+	"closing": {
+		"title": "After the Heart",
+		"pages": [
+			"We cut it loose. The pylons went grey one after another, and for a minute the whole ridge was so quiet we could hear the river from the hull.",
+			"Below us Asheville stayed lit. Not because something up there wanted it lit, but because we ran the lines ourselves.",
+			"The sick still come down with it, but it sleeps now. A course of antibiotics and a week of rest, and people walk out of the clinic on their own feet.",
+			"The dead are fewer every night. Some nights the siren never sounds at all. When the ground shakes and the old wreck sheds another piece, we go and pick it over like anyone would.",
+			"This is the part nobody wrote a log about: the rebuilding. Fences, gardens, a school in the old bank. Ordinary work, and plenty of it.",
+			"If you are reading this on a relay that still hums, the grid is yours too. Keep it running."
+		]
+	}
+}

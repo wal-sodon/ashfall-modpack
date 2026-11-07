@@ -1,0 +1,5 @@
+{
+	"values": [
+		{ "id": "ashfall:energy_cell", "required": false }
+	]
+}

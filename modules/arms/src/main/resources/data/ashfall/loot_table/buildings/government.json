@@ -1,0 +1,162 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 1,
+				"max": 2
+			},
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 25
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:canned_food",
+					"weight": 6,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bottled_water",
+					"weight": 5,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:battery",
+					"weight": 4,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 2
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:duct_tape",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:matches",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:cloth",
+					"weight": 2,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:bandage",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:scrap_electronics",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:weapon_parts",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:paper",
+					"weight": 3,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 2,
+							"max": 6
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:book",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:map",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:compass",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:gold_nugget",
+					"weight": 1,
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 4
+						}
+					}
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:name_tag",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:riot_helmet",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:riot_vest",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:riot_leggings",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:riot_boots",
+					"weight": 1
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:buildings/government"
+}

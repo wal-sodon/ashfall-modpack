@@ -1,0 +1,54 @@
+{
+	"parent": "minecraft:recipes/root",
+	"criteria": {
+		"has_grid_coupler": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:grid_coupler"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_capacitor_bank": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:capacitor_bank"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_uplink_frame": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:uplink_frame"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_the_recipe": {
+			"conditions": {
+				"recipes": "ashfall:grid_uplink"
+			},
+			"trigger": "minecraft:recipe_unlocked"
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_grid_coupler",
+			"has_capacitor_bank",
+			"has_uplink_frame"
+		]
+	],
+	"rewards": {
+		"recipes": [
+			"ashfall:grid_uplink"
+		]
+	}
+}

@@ -1,0 +1,258 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:gray_concrete"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:yellow_concrete"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:black_concrete"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:light_gray_concrete"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:smooth_stone"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:smooth_stone_slab[type=top,waterlogged=false]"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:smooth_stone_slab[type=bottom,waterlogged=false]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:iron_door[facing=north,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:iron_block"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:iron_bars[east=true,north=true,south=true,west=false]"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:iron_bars[east=true,north=true,south=true,west=true]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:polished_blackstone_slab[type=bottom,waterlogged=false]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:iron_bars[east=true,north=true,south=false,west=false]"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:barrel[facing=west,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/fuel"
+    }
+   },
+   {
+    "char": "1",
+    "block": "minecraft:barrel[facing=up,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/electronics"
+    }
+   },
+   {
+    "char": "2",
+    "block": "minecraft:spruce_slab[type=top,waterlogged=false]"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:iron_bars[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "4",
+    "block": "minecraft:stone_button[face=wall,facing=north,powered=false]"
+   },
+   {
+    "char": "5",
+    "block": "minecraft:iron_door[facing=north,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "6",
+    "block": "minecraft:observer[facing=south,powered=false]"
+   },
+   {
+    "char": "7",
+    "block": "minecraft:target[power=0]"
+   },
+   {
+    "char": "8",
+    "block": "minecraft:iron_bars[east=false,north=true,south=true,west=true]"
+   },
+   {
+    "char": "9",
+    "block": "minecraft:glass_pane[east=true,north=true,south=true,west=false]"
+   },
+   {
+    "char": ":",
+    "block": "minecraft:heavy_core[waterlogged=false]"
+   },
+   {
+    "char": ";",
+    "block": "minecraft:iron_bars[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "<",
+    "block": "minecraft:iron_bars[east=true,north=true,south=false,west=true]"
+   },
+   {
+    "char": "=",
+    "block": "minecraft:lever[face=wall,facing=south,powered=false]"
+   },
+   {
+    "char": ">",
+    "block": "minecraft:iron_chain[axis=y]"
+   },
+   {
+    "char": "?",
+    "block": "minecraft:lightning_rod[facing=up,powered=false]"
+   },
+   {
+    "char": "@",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!#$#!!!!!",
+   "!!!!!!!!$#$!!!!!",
+   "!!!!!!!!#$#!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "%      % &&&   %",
+   "         &&&   %",
+   "         &&&   %",
+   "         &&&   %",
+   "         '''   %",
+   "         (((   %",
+   "               %",
+   "%   %%%%)%%%%%%%",
+   "    %*** *****%%",
+   " ++ %      ,**-%",
+   " ++ %    . /**-%",
+   " ++ %         %%",
+   "    %      0  %%",
+   "    %1       2%%",
+   "    %%%%%%%%%%%%",
+   "%%%%%%%%%%%%%%%%"
+  ],
+  [
+   "%      % &&&   %",
+   "         &&&   3",
+   "         '''   3",
+   "         (((   3",
+   "               3",
+   "               3",
+   "         4     3",
+   "%   %%%%5%%%%%%%",
+   "    %676 67676%8",
+   " ++ %      ,**-8",
+   " 9+ %    : /**-8",
+   " ++ %         %8",
+   "    %         %8",
+   "    %         %8",
+   "    %%%%%%%%%%%8",
+   "%;;;<<<%<<<<<<<%"
+  ],
+  [
+   "%      % '''   %",
+   "         (((    ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "%   %%%%%%%%%%%%",
+   "    %         % ",
+   " ++ %=     =**% ",
+   " ++ %    >  **% ",
+   " ++ %         % ",
+   "    %         % ",
+   "    %         % ",
+   "    %%%%%%%%%%% ",
+   "%      %       %"
+  ],
+  [
+   "%      %       %",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "%   %%%%%%%%%%%%",
+   " (((%         % ",
+   " (((%       ? % ",
+   " (((%    >   ?% ",
+   " (((%         % ",
+   " (((%         % ",
+   "    %         % ",
+   "    %%%%%%%%%%% ",
+   "%      %       %"
+  ],
+  [
+   "%      %       %",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "                ",
+   "%   %%%%%%%%%%%%",
+   "    %         % ",
+   "    %         % ",
+   "    %   @>@   % ",
+   "    %         % ",
+   "    %         % ",
+   "    %         % ",
+   "    %%%%%%%%%%% ",
+   "%      %       %"
+  ]
+ ]
+}

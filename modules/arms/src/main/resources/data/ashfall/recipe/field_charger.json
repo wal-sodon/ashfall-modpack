@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"key": {
+		"B": "ashfall:battery",
+		"C": "ashfall:wire_spool",
+		"E": "ashfall:scrap_electronics",
+		"I": "ashfall:alloy_plate",
+		"R": "ashfall:wire_spool"
+	},
+	"pattern": [
+		"ICI",
+		"ERB",
+		"ICI"
+	],
+	"result": {
+		"id": "ashfall:field_charger"
+	}
+}

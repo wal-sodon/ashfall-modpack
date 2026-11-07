@@ -1,0 +1,231 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:light_blue_terracotta"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:smooth_quartz"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:quartz_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:cauldron"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:white_bed[facing=west,occupied=false,part=head]"
+   },
+   {
+    "char": "(",
+    "block": "minecraft:white_bed[facing=west,occupied=false,part=foot]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:barrel[facing=east,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/hospital"
+    }
+   },
+   {
+    "char": "*",
+    "block": "minecraft:white_stained_glass_pane[east=false,north=false,south=false,west=true]"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:white_wool"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:iron_bars[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:barrel[facing=east,open=false]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:quartz_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": "/",
+    "block": "minecraft:birch_door[facing=north,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "0",
+    "block": "minecraft:cyan_carpet"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:light_blue_stained_glass_pane[east=true,north=false,south=false,west=true]"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:white_stained_glass_pane[east=false,north=false,south=false,west=false]"
+   },
+   {
+    "char": "3",
+    "block": "minecraft:light_blue_stained_glass_pane[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "4",
+    "block": "minecraft:white_carpet"
+   },
+   {
+    "char": "5",
+    "block": "minecraft:iron_bars[east=false,north=true,south=false,west=false]"
+   },
+   {
+    "char": "6",
+    "block": "minecraft:birch_door[facing=north,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "7",
+    "block": "minecraft:tripwire_hook[attached=false,facing=north,powered=false]"
+   },
+   {
+    "char": "8",
+    "block": "minecraft:iron_bars[east=false,north=true,south=true,west=false]"
+   },
+   {
+    "char": "9",
+    "block": "minecraft:iron_bars[east=false,north=false,south=true,west=false]"
+   },
+   {
+    "char": ":",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "!###############",
+   "! ##############",
+   "! ##############",
+   "! ##############",
+   "!$##############",
+   "!###############"
+  ],
+  [
+   "%%%%%%%%%%%%%%%%",
+   "%&&&    !'( !'( ",
+   "%       !)* !)* ",
+   "%+++    !   !   ",
+   "%+++    !'( !'( ",
+   "%       !,* !,* ",
+   "%       !   !   ",
+   "%       !'( !'( ",
+   "%       !-* !-* ",
+   "%       !   !   ",
+   "%!!!!   !'( !'( ",
+   "%###!   !,* !,* ",
+   "% ##!   !   !   ",
+   "% ##!   !   !   ",
+   "% #.!!/!!!/!!!/!",
+   "%000000000000000"
+  ],
+  [
+   "%%11%%11%%11%%11",
+   "%       %   %   ",
+   "%       % 2 % 2 ",
+   "34      %   %   ",
+   "3       %   %   ",
+   "%       %,* %,* ",
+   "%       %   %   ",
+   "3       %   %   ",
+   "3       % 2 % 2 ",
+   "%       %   %   ",
+   "%%%%%   %   %   ",
+   "%###%   %,* %,* ",
+   "% ##%   %   %   ",
+   "% #.%   %   %   ",
+   "% 5 %%6%%%6%%%6%",
+   "%               "
+  ],
+  [
+   "%%11%%11%%11%%11",
+   "%       %   %   ",
+   "%       % 2 % 2 ",
+   "3       %   %   ",
+   "3       %   %   ",
+   "%       %72 %72 ",
+   "%       %   %   ",
+   "3       %   %   ",
+   "3       % 2 % 2 ",
+   "%       %   %   ",
+   "%%%%%   %   %   ",
+   "%###%   %72 %72 ",
+   "% #.%   %   %   ",
+   "% 8 %   %   %   ",
+   "% 5 %%%%%%%%%%%%",
+   "%               "
+  ],
+  [
+   "%%%%%%%%%%%%%%%%",
+   "%       %   %   ",
+   "%       %   %   ",
+   "%       %   %   ",
+   "%       %   %   ",
+   "%       %   %   ",
+   "%       %   %   ",
+   "%       %   %   ",
+   "%       %   %   ",
+   "%       %   %   ",
+   "%%%%%   %   %   ",
+   "%   %   %   %   ",
+   "%$9 %   %   %   ",
+   "% 8 %   %   %   ",
+   "% 5 %%%%%%%%%%%%",
+   "%               "
+  ],
+  [
+   "%%%%%%%%%%%%%%%%",
+   "%       %   %   ",
+   "%       %   %   ",
+   "%       %   %   ",
+   "%       %   %   ",
+   "%       %   %   ",
+   "% :     %   %   ",
+   "%       % : % : ",
+   "%       %   %   ",
+   "%       %   %   ",
+   "%%%%%   %   %   ",
+   "%   %   %   %   ",
+   "% 9 %   %   %   ",
+   "%$8 %   %   %   ",
+   "% 5 %%%%%%%%%%%%",
+   "%               "
+  ]
+ ]
+}

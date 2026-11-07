@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "equipment",
+	"ingredients": [
+		"ashfall:scrap_metal",
+		"ashfall:scrap_metal",
+		"#c:dyes"
+	],
+	"result": {
+		"id": "ashfall:spray_can",
+		"count": 1
+	}
+}

@@ -1,0 +1,44 @@
+# Phase 3 playtest, part 2 (headless, no player): Downtown siege with the failure path, on world-p3c after part 1.
+# Checks River Arts is still reclaimed after a restart, that a charger outside a lit district gets no free power,
+# then lets a real siege wave reach the core (the surge holds the control room's security doors open) until the
+# core falls: back to REPAIRED with couplers and links kept.
+until Done \(
+cmd ashfall grid status
+cmd execute positioned 104 80 -16 run ashfall city zone
+cmd execute positioned 8 80 8 run ashfall city info
+# No village may start in or near a district any more (seed ashfall-p3 had one on Downtown).
+cmd execute positioned 0 80 0 run locate structure #minecraft:village
+# Downtown substation (map marker 64, -16) and the control charger spot.
+cmd forceload add 32 -48 111 31
+wait 20
+cmd ashfall grid status
+cmd setblock 104 200 -16 ashfall:field_charger
+cmd item replace block 104 200 -16 container.0 with ashfall:cell_pack_standard[team_reborn_energy:energy=0]
+# Day 0 noon on the clock, so the siege is scheduled for this evening.
+cmd time set 6000
+cmd ashfall grid set downtown energized
+cmd ashfall grid status
+wait 5
+cmd data get block 104 200 -16
+cmd time set 12000
+wait 8
+cmd ashfall grid status
+cmd execute as @e[tag=ashfall_siege] run data get entity @s Pos
+wait 30
+cmd ashfall grid status
+cmd execute as @e[tag=ashfall_siege] run data get entity @s Pos
+cmd spark tps
+wait 30
+cmd ashfall grid status
+cmd execute as @e[tag=ashfall_siege] run data get entity @s Pos
+wait 30
+cmd ashfall grid status
+wait 30
+cmd ashfall grid status
+cmd spark tps
+# If the wave has not brought the core down by now, finish it by command (same loss path as the siege tick).
+cmd ashfall grid damage downtown 400
+cmd ashfall grid status
+cmd kill @e[tag=ashfall_siege]
+cmd forceload remove all
+wait 3

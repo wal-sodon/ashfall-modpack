@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"pattern": [
+		"SSS",
+		"SCS",
+		"SIS"
+	],
+	"key": {
+		"S": "ashfall:scrap_metal",
+		"C": "minecraft:chest",
+		"I": "minecraft:iron_ingot"
+	},
+	"result": {
+		"id": "ashfall:supply_locker",
+		"count": 1
+	}
+}

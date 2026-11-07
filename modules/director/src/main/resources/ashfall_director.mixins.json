@@ -1,0 +1,23 @@
+{
+	"required": true,
+	"package": "xyz.toesinthesand.ashfall.director.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"BlockItemWearMixin",
+		"BlockStateDropsWearMixin",
+		"BottleItemMixin",
+		"ConsumableMixin",
+		"FoodDataMixin",
+		"LevelChunkWearMixin",
+		"MobBuildingPersistenceMixin",
+		"MobStunMixin",
+		"MobTargetMixin",
+		"NearestAttackableTargetGoalMixin",
+		"PistonBaseBlockWearMixin",
+		"PistonMovingBlockEntityWearMixin",
+		"PlayerThirstMixin",
+		"ServerLevelGameEventMixin",
+		"WolfMixin"
+	],
+	"injectors": { "defaultRequire": 1 }
+}

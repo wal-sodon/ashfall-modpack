@@ -1,0 +1,11 @@
+{
+	"name": "Montford Safehouse",
+	"landmark": "ashfall:safehouse",
+	"dimension": "minecraft:overworld",
+	"area": {
+		"chunk_x": -10,
+		"chunk_z": -50,
+		"radius": 1
+	},
+	"use_world_spawn": true
+}

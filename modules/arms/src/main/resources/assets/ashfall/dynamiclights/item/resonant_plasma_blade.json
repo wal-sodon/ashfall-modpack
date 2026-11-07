@@ -1,0 +1,9 @@
+{
+	"match": {
+		"items": "ashfall:resonant_plasma_blade",
+		"components": {
+			"ashfall:blade_lit": {}
+		}
+	},
+	"luminance": 14
+}

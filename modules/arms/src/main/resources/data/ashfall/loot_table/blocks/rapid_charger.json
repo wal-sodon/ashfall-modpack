@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:block",
+	"pools": [
+		{
+			"rolls": 1,
+			"condition": {
+				"type": "minecraft:survives_explosion"
+			},
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "ashfall:rapid_charger",
+					"modifier": {
+						"type": "minecraft:copy_components",
+						"include": [
+							"minecraft:custom_name"
+						],
+						"source": "block_entity"
+					}
+				}
+			]
+		}
+	],
+	"random_sequence": "ashfall:blocks/rapid_charger"
+}

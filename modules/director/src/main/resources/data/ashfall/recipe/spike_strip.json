@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "building",
+	"pattern": [
+		"NNN",
+		"SSS"
+	],
+	"key": {
+		"N": "minecraft:iron_nugget",
+		"S": "ashfall:scrap_metal"
+	},
+	"result": {
+		"id": "ashfall:spike_strip",
+		"count": 2
+	}
+}

@@ -1,0 +1,41 @@
+{
+	"couplers_required": 4,
+	"cells_required": 4,
+	"cell_min_energy": 240,
+	"energize_seconds": 300,
+	"hold_radius": 32,
+	"relays_required": 3,
+	"hum_interval_seconds": 4,
+	"hum_radius": 144,
+	"pressure": {
+		"interval_seconds": 15,
+		"count": 2,
+		"max_alive": 8,
+		"radius_min": 24,
+		"radius_max": 40
+	},
+	"core": {
+		"hp": 1600,
+		"attack_radius": 6.5,
+		"attack_height": 3,
+		"damage_per_zombie_second": 1,
+		"door_radius": 14
+	},
+	"siren_warning_seconds": 150,
+	"dawn_time": 23000,
+	"min_siege_presence_seconds": 240,
+	"presence_radius": 96,
+	"reclaimed": {
+		"darkness_scale": 0.2,
+		"compound_radius_chunks": 1,
+		"light_radius": 16,
+		"light_interval_ticks": 40,
+		"light_player_radius": 96,
+		"light_max_per_pass": 64,
+		"relight_chunks_per_tick": 4
+	},
+	"districts": {
+		"river_arts": { "city_pump": true },
+		"mission": { "unseal_lair": "ashfall:patient_zero" }
+	}
+}

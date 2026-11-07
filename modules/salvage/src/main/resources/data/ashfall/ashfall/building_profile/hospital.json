@@ -1,0 +1,56 @@
+{
+	"match": [
+		{
+			"amenity": "hospital"
+		},
+		{
+			"building": "hospital"
+		},
+		{
+			"healthcare": "hospital"
+		},
+		{
+			"lc_multibuilding": "ashfall:hospital"
+		},
+		{
+			"lc_multibuilding": "*:multi?|*:huge?",
+			"lc_zone": "mission"
+		}
+	],
+	"arnis_uses": [
+		"Hospital"
+	],
+	"priority": 90,
+	"tier": 4,
+	"loot_table": "ashfall:buildings/hospital",
+	"containers": {
+		"per_100m2": 0.5,
+		"min": 1,
+		"max": 8,
+		"blocks": [
+			{
+				"block": "minecraft:chest",
+				"weight": 3
+			},
+			{
+				"block": "minecraft:barrel",
+				"weight": 1
+			}
+		]
+	},
+	"refill": {
+		"enabled": true,
+		"delay_ticks": 168000,
+		"no_player_radius": 32,
+		"quiet_ticks": 6000
+	},
+	"population": {
+		"per_100m2": 1.2,
+		"entities": {
+			"minecraft:zombie": 100
+		}
+	},
+	"safe_candidate": false,
+	"cache_table": "ashfall_cache:hospital_supply",
+	"relay_chance": 0.15
+}

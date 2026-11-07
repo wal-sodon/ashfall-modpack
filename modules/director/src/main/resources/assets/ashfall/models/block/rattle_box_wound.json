@@ -1,0 +1,215 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+		"particle": "ashfall:block/rattle_box_side",
+		"side": "ashfall:block/rattle_box_side",
+		"top": "ashfall:block/rattle_box_top",
+		"key": "ashfall:block/rattle_box_key_wound"
+	},
+	"elements": [
+		{
+			"from": [
+				3,
+				0,
+				3
+			],
+			"to": [
+				13,
+				9,
+				13
+			],
+			"faces": {
+				"north": {
+					"texture": "#side",
+					"uv": [
+						3,
+						7,
+						13,
+						16
+					]
+				},
+				"south": {
+					"texture": "#side",
+					"uv": [
+						3,
+						7,
+						13,
+						16
+					]
+				},
+				"west": {
+					"texture": "#side",
+					"uv": [
+						3,
+						7,
+						13,
+						16
+					]
+				},
+				"east": {
+					"texture": "#side",
+					"uv": [
+						3,
+						7,
+						13,
+						16
+					]
+				},
+				"up": {
+					"texture": "#top",
+					"uv": [
+						3,
+						3,
+						13,
+						13
+					]
+				},
+				"down": {
+					"texture": "#top",
+					"uv": [
+						3,
+						3,
+						13,
+						13
+					]
+				}
+			}
+		},
+		{
+			"from": [
+				7.5,
+				9,
+				7.5
+			],
+			"to": [
+				8.5,
+				10,
+				8.5
+			],
+			"faces": {
+				"north": {
+					"texture": "#key",
+					"uv": [
+						7.5,
+						6,
+						8.5,
+						7
+					]
+				},
+				"south": {
+					"texture": "#key",
+					"uv": [
+						7.5,
+						6,
+						8.5,
+						7
+					]
+				},
+				"west": {
+					"texture": "#key",
+					"uv": [
+						7.5,
+						6,
+						8.5,
+						7
+					]
+				},
+				"east": {
+					"texture": "#key",
+					"uv": [
+						7.5,
+						6,
+						8.5,
+						7
+					]
+				},
+				"up": {
+					"texture": "#key",
+					"uv": [
+						7.5,
+						7.5,
+						8.5,
+						8.5
+					]
+				},
+				"down": {
+					"texture": "#key",
+					"uv": [
+						7.5,
+						7.5,
+						8.5,
+						8.5
+					]
+				}
+			}
+		},
+		{
+			"from": [
+				5.5,
+				10,
+				7.5
+			],
+			"to": [
+				10.5,
+				12,
+				8.5
+			],
+			"faces": {
+				"north": {
+					"texture": "#key",
+					"uv": [
+						5.5,
+						4,
+						10.5,
+						6
+					]
+				},
+				"south": {
+					"texture": "#key",
+					"uv": [
+						5.5,
+						4,
+						10.5,
+						6
+					]
+				},
+				"west": {
+					"texture": "#key",
+					"uv": [
+						7.5,
+						4,
+						8.5,
+						6
+					]
+				},
+				"east": {
+					"texture": "#key",
+					"uv": [
+						7.5,
+						4,
+						8.5,
+						6
+					]
+				},
+				"up": {
+					"texture": "#key",
+					"uv": [
+						5.5,
+						7.5,
+						10.5,
+						8.5
+					]
+				},
+				"down": {
+					"texture": "#key",
+					"uv": [
+						5.5,
+						7.5,
+						10.5,
+						8.5
+					]
+				}
+			}
+		}
+	]
+}

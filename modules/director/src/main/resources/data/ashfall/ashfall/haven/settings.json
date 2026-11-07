@@ -1,0 +1,9 @@
+{
+	"bunker_radius": 2,
+	"respawn_protection_seconds": 10,
+	"respawn_choice_seconds": 20,
+	"siren_warning_seconds": 150,
+	"siren_repeat_seconds": 30,
+	"siren_sound": "minecraft:event.raid.horn",
+	"siren_volume": 0.8
+}

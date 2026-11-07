@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"key": {
+		"M": "ashfall:scrap_metal",
+		"E": "ashfall:scrap_electronics",
+		"T": "ashfall:duct_tape",
+		"C": "minecraft:crafting_table",
+		"P": "#minecraft:planks"
+	},
+	"pattern": [
+		"MEM",
+		"TCT",
+		"P P"
+	],
+	"result": {
+		"id": "ashfall:weaponsmith_bench"
+	}
+}

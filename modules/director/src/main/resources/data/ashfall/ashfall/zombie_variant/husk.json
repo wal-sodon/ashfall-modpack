@@ -1,0 +1,10 @@
+{
+	"entity": "minecraft:husk",
+	"weight": 60,
+	"min_day": 1,
+	"environment": "hot",
+	"attributes": {
+		"minecraft:max_health": 20.0,
+		"minecraft:movement_speed": 0.23
+	}
+}

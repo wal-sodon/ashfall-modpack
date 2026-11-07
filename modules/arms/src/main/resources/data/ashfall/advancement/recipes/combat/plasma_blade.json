@@ -1,0 +1,87 @@
+{
+	"parent": "minecraft:recipes/root",
+	"criteria": {
+		"has_resonance_crystal": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:resonance_crystal"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_scrap_electronics": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:scrap_electronics"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_focusing_lens": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:focusing_lens"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_scrap_metal": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:scrap_metal"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_battery": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:battery"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_duct_tape": {
+			"conditions": {
+				"items": [
+					{
+						"items": "ashfall:duct_tape"
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		},
+		"has_the_recipe": {
+			"conditions": {
+				"recipes": "ashfall:plasma_blade"
+			},
+			"trigger": "minecraft:recipe_unlocked"
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_resonance_crystal",
+			"has_scrap_electronics",
+			"has_focusing_lens",
+			"has_scrap_metal",
+			"has_battery",
+			"has_duct_tape"
+		]
+	],
+	"rewards": {
+		"recipes": [
+			"ashfall:plasma_blade"
+		]
+	}
+}

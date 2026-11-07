@@ -1,0 +1,8 @@
+{
+	"variants": {
+		"facing=north": { "model": "ashfall:block/barricade" },
+		"facing=east": { "model": "ashfall:block/barricade", "y": 90 },
+		"facing=south": { "model": "ashfall:block/barricade", "y": 180 },
+		"facing=west": { "model": "ashfall:block/barricade", "y": 270 }
+	}
+}

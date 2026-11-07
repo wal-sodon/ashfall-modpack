@@ -1,0 +1,235 @@
+# Phase 4.5 playtest, part 1 (headless, no player): special infected, a forced horde wave, a Breach, and a stress run.
+# Fresh world (level-name world-p45, seed ashfall-p45). Downtown is around the origin; its substation is near 64, -16.
+until Done \(
+cmd ashfall grid status
+cmd ashfall horde status
+cmd execute positioned 64 80 -16 run ashfall city zone
+# Load Downtown wide enough for the horde ring (40-64 blocks out) around the substation.
+cmd forceload add -32 -112 159 79
+wait 30
+cmd ashfall grid status
+# Day 10, midnight: every special is unlocked (brute from day 8), tier 2.
+cmd time set 258000
+cmd ashfall horde status
+cmd execute positioned 64 80 -16 run ashfall director status
+# 1. Summon each special infected downtown at night.
+cmd execute positioned 40 0 -60 positioned over motion_blocking_no_leaves run summon ashfall:crawler ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_special"]}
+cmd execute positioned 46 0 -60 positioned over motion_blocking_no_leaves run summon ashfall:bloated ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_special"]}
+cmd execute positioned 52 0 -60 positioned over motion_blocking_no_leaves run summon ashfall:spitter ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_special"]}
+cmd execute positioned 58 0 -60 positioned over motion_blocking_no_leaves run summon ashfall:screamer ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_special"]}
+cmd execute positioned 64 0 -60 positioned over motion_blocking_no_leaves run summon ashfall:stalker ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_special"]}
+cmd execute positioned 70 0 -60 positioned over motion_blocking_no_leaves run summon ashfall:brute ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_special"]}
+# Villagers as targets for the specials (invulnerable).
+cmd execute positioned 56 0 -40 positioned over motion_blocking_no_leaves run summon villager ~ ~ ~ {PersistenceRequired:1b,Invulnerable:1b,NoAI:1b,Tags:["p45_target"]}
+cmd execute positioned 56 0 -50 positioned over motion_blocking_no_leaves run summon villager ~ ~ ~ {PersistenceRequired:1b,Invulnerable:1b,NoAI:1b,Tags:["p45_target"]}
+wait 5
+cmd execute if entity @e[type=ashfall:crawler]
+cmd execute if entity @e[type=ashfall:bloated]
+cmd execute if entity @e[type=ashfall:spitter]
+cmd execute if entity @e[type=ashfall:screamer]
+cmd execute if entity @e[type=ashfall:stalker]
+cmd execute if entity @e[type=ashfall:brute]
+cmd execute as @e[tag=p45_special] run data get entity @s Health
+cmd execute as @e[type=ashfall:brute] run attribute @s minecraft:scale get
+cmd execute as @e[type=ashfall:crawler] run attribute @s minecraft:max_health get
+wait 30
+cmd execute as @e[tag=p45_special] run data get entity @s Pos
+cmd execute if entity @e[type=ashfall:stalker,nbt={active_effects:[{id:"minecraft:invisibility"}]}]
+# The bloated's death cloud.
+cmd kill @e[type=ashfall:bloated]
+wait 2
+cmd execute if entity @e[type=area_effect_cloud,tag=ashfall_infection_cloud]
+cmd kill @e[tag=p45_special]
+cmd kill @e[tag=p45_target]
+wait 3
+# 2. Horde waves aimed at the substation (no player online, so the 'at' form). Three waves, to see specials roll in.
+cmd execute positioned 64 80 -16 run ashfall horde wave at ~ ~ ~
+wait 3
+cmd execute positioned 64 80 -16 run ashfall horde wave at ~ ~ ~
+wait 3
+cmd execute positioned 64 80 -16 run ashfall horde wave at ~ ~ ~
+wait 3
+cmd ashfall horde status
+cmd execute positioned 64 80 -16 run ashfall director status
+cmd execute if entity @e[type=ashfall:crawler]
+cmd execute if entity @e[type=ashfall:bloated]
+cmd execute if entity @e[type=ashfall:spitter]
+cmd execute if entity @e[type=ashfall:screamer]
+cmd execute if entity @e[type=ashfall:stalker]
+cmd execute if entity @e[type=ashfall:brute]
+wait 30
+cmd ashfall horde status
+cmd spark tps
+wait 30
+cmd ashfall horde status
+cmd execute positioned 64 80 -16 run ashfall director status
+cmd kill @e[type=#minecraft:zombies]
+wait 3
+# 3. Breach on a reclaimed Downtown: the core falls, the district goes BROKEN.
+cmd ashfall grid status
+cmd ashfall grid set downtown reclaimed
+cmd ashfall grid status
+cmd ashfall horde breach downtown
+wait 10
+cmd ashfall grid status
+cmd execute if entity @e[tag=ashfall_siege]
+cmd execute if entity @e[type=ashfall:crawler,tag=ashfall_siege]
+cmd execute if entity @e[type=ashfall:bloated,tag=ashfall_siege]
+cmd execute if entity @e[type=ashfall:spitter,tag=ashfall_siege]
+cmd execute if entity @e[type=ashfall:screamer,tag=ashfall_siege]
+cmd execute if entity @e[type=ashfall:stalker,tag=ashfall_siege]
+cmd execute if entity @e[type=ashfall:brute,tag=ashfall_siege]
+wait 30
+cmd ashfall grid status
+wait 30
+cmd ashfall grid status
+cmd spark tps
+wait 30
+cmd ashfall grid status
+# If the wave has not brought the core down by now, finish it through the siege's own loss path.
+cmd ashfall grid damage downtown 400
+wait 2
+cmd ashfall grid status
+cmd kill @e[type=#minecraft:zombies]
+wait 3
+# 4. Stress: 108 zombies + 12 specials around the substation, plus a horde wave, at midnight.
+cmd time set 258000
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon villager ~ ~ ~ {PersistenceRequired:1b,Invulnerable:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon villager ~ ~ ~ {PersistenceRequired:1b,Invulnerable:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon villager ~ ~ ~ {PersistenceRequired:1b,Invulnerable:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon ashfall:crawler ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon ashfall:bloated ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon ashfall:spitter ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon ashfall:screamer ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon ashfall:stalker ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon ashfall:brute ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon ashfall:crawler ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon ashfall:bloated ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon ashfall:spitter ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon ashfall:screamer ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon ashfall:stalker ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd execute positioned 64 0 -16 positioned over motion_blocking_no_leaves run summon ashfall:brute ~ ~ ~ {PersistenceRequired:1b,Tags:["p45_stress"]}
+cmd spreadplayers 64 -16 3 60 false @e[tag=p45_stress]
+cmd execute positioned 64 80 -16 run ashfall horde wave at ~ ~ ~
+cmd execute if entity @e[tag=p45_stress]
+cmd execute if entity @e[type=#minecraft:zombies]
+wait 60
+cmd execute if entity @e[type=#minecraft:zombies]
+cmd ashfall horde status
+cmd spark tps
+wait 60
+cmd execute if entity @e[type=#minecraft:zombies]
+cmd ashfall horde status
+cmd spark tps
+cmd kill @e[tag=p45_stress]
+cmd kill @e[type=#minecraft:zombies]
+cmd forceload remove all
+wait 3

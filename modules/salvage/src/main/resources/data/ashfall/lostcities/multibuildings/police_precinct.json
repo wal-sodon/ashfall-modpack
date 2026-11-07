@@ -1,0 +1,12 @@
+{
+ "dimx": 2,
+ "dimz": 1,
+ "buildings": [
+  [
+   "ashfall:police_precinct_00"
+  ],
+  [
+   "ashfall:police_precinct_10"
+  ]
+ ]
+}

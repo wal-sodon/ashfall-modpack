@@ -1,0 +1,205 @@
+{
+ "xsize": 16,
+ "zsize": 16,
+ "meta": [
+  {
+   "key": "dontconnect",
+   "boolean": true
+  }
+ ],
+ "palette": {
+  "palette": [
+   {
+    "char": " ",
+    "block": "minecraft:air"
+   },
+   {
+    "char": "!",
+    "block": "minecraft:polished_andesite"
+   },
+   {
+    "char": "#",
+    "block": "minecraft:cyan_carpet"
+   },
+   {
+    "char": "$",
+    "block": "minecraft:stone_bricks"
+   },
+   {
+    "char": "%",
+    "block": "minecraft:light_blue_terracotta"
+   },
+   {
+    "char": "&",
+    "block": "minecraft:spruce_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "'",
+    "block": "minecraft:barrel[facing=west,open=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/fuel"
+    }
+   },
+   {
+    "char": "(",
+    "block": "minecraft:spruce_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]"
+   },
+   {
+    "char": ")",
+    "block": "minecraft:spruce_slab[type=top,waterlogged=false]"
+   },
+   {
+    "char": "*",
+    "block": "minecraft:crafting_table"
+   },
+   {
+    "char": "+",
+    "block": "minecraft:smithing_table"
+   },
+   {
+    "char": ",",
+    "block": "minecraft:anvil[facing=east]"
+   },
+   {
+    "char": "-",
+    "block": "minecraft:grindstone[face=floor,facing=north]"
+   },
+   {
+    "char": ".",
+    "block": "minecraft:chest[facing=north,type=left,waterlogged=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/workshop"
+    }
+   },
+   {
+    "char": "/",
+    "block": "minecraft:chest[facing=north,type=right,waterlogged=false]",
+    "tag": {
+     "LootTable": "ashfall:buildings/workshop"
+    }
+   },
+   {
+    "char": "0",
+    "block": "minecraft:white_concrete"
+   },
+   {
+    "char": "1",
+    "block": "minecraft:spruce_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+   },
+   {
+    "char": "2",
+    "block": "minecraft:redstone_lamp[lit=false]"
+   }
+  ]
+ },
+ "slices": [
+  [
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!",
+   "!!!!!!!!!!!!!!!!"
+  ],
+  [
+   "###############$",
+   "%%%%%%&%%%%%%%%$",
+   "%             '$",
+   "%              $",
+   "%              $",
+   "%              $",
+   "%              $",
+   "%          (   $",
+   "%         )))) $",
+   "%         )))) $",
+   "%              $",
+   "%              $",
+   "%              $",
+   "%              $",
+   "% *+,-  ./     $",
+   "$$$$$$$$$$$$$$$$"
+  ],
+  [
+   "               $",
+   "000000100000000$",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "$$$$$$$$$$$$$$$$"
+  ],
+  [
+   "               $",
+   "000000000000000$",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "$$$$$$$$$$$$$$$$"
+  ],
+  [
+   "               $",
+   "000000000000000$",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "$$$$$$$$$$$$$$$$"
+  ],
+  [
+   "    2          $",
+   "000000000000000$",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0       2      $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "0              $",
+   "$$$$$$$$$$$$$$$$"
+  ]
+ ]
+}
