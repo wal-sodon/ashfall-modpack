@@ -1,15 +1,29 @@
 # Versions
 
-Ashfall versions are **MAJOR.MEDIUM.MINOR**:
+Ashfall follows **semantic versioning**, MAJOR.MINOR.PATCH, set as `version=` in `gradle.properties`:
 
-- **Major** (first number): a new core system or an overhaul, such as a new city generator or the finale.
-- **Medium** (second number): new features or content, a notable rebalance, or anything that changes world
-  generation (an older world will generate new areas differently).
-- **Minor** (last number): bug fixes, small tweaks and tuning.
+- **Major** (first number): breaks existing worlds or saves, such as removed items, blocks or mods, or an overhaul
+  of a core system like the city generator or the finale.
+- **Minor** (second number): new features or content, a notable rebalance, or anything that changes world
+  generation in a way an existing world can live with (new chunks generate differently).
+- **Patch** (last number): bug fixes, small tweaks and balance-number changes.
 
-Raising a number resets the ones after it: after 9.9.1, a medium update is 9.10.0 and a major one is 10.0.0.
+Raising a number resets the ones after it: after 1.2.3, a minor update is 1.3.0 and a major one is 2.0.0. Each
+release is tagged `vX.Y.Z` on `wal-sodon/ashfall-modpack` and gets a GitHub release with the `.mrpack` attached.
 
-## Old labels
+## Releases
+
+| Version | Class | What changed |
+|---|---|---|
+| 1.0.0 | first | Numbering restarts with the move to `wal-sodon/ashfall-modpack`. Same gameplay as 10.3.1 below |
+
+## Before 1.0.0
+
+Until 2026-11-07 the pack used a MAJOR.MEDIUM.MINOR scheme and shipped up to 10.3.1 from
+`wal-sodon/ashfall-modpack-release`. Those numbers are kept below. The "New" column is the old scheme's number, so
+the old 1.0.0 to 9.x rows are not the same releases as the 1.0.0 above.
+
+### Old labels
 
 Releases were first labelled 0.x and then 1.0.0-rcN. Every one of them shipped as a real release, so each is
 counted and given its number under this scheme. Old files in `dist/` keep their original names.

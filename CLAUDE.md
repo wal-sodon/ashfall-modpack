@@ -39,10 +39,14 @@ GitHub: `wal-sodon/ashfall-modpack-release` and its wiki.
 
 ## Versioning and releases
 
-- Versions are MAJOR.MEDIUM.MINOR, set in `gradle.properties`.
-  - Medium: new features or a world-generation change.
-  - Minor: fixes and balance tweaks, even large rebalances.
-- Every release gets a `docs/versions.md` row, the wiki's "Written for Ashfall X" line, a README entry in the release
+- Versions follow semantic versioning, MAJOR.MINOR.PATCH, set in `gradle.properties`. Numbering restarted at
+  1.0.0 (same gameplay as the old 10.3.1).
+  - Major: breaks existing worlds or saves, or overhauls a core system.
+  - Minor: new features or a world-generation change.
+  - Patch: fixes and balance tweaks, even large rebalances.
+- Merging a PR into `main` bumps and releases automatically: label it `major` or `minor` (default patch) or
+  `no-release`. See `docs/releasing.md`.
+- Every release gets a `vX.Y.Z` tag and GitHub release on this repo, a `docs/versions.md` row, the wiki's "Written for Ashfall X" line, a README entry in the release
   repo and an updated field manual. Follow `docs/releasing.md`.
 - The release clones live in `.cache/release/`. Commit with the global git identity (GitHub account `wal-sodon`) and
   push with `git -c http.postBuffer=524288000 push`.

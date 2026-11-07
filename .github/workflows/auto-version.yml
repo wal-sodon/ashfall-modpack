@@ -1,0 +1,60 @@
+name: Auto version
+
+# When a pull request is merged into main, bump the semantic version and release it. The PR's labels pick the bump:
+# `major`, `minor`, otherwise patch; `no-release` skips it. The bump commit sets gradle.properties, the field
+# manual's "Written for Ashfall X.Y.Z" line and a docs/versions.md row from the PR title, then is tagged vX.Y.Z.
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-version
+  cancel-in-progress: false
+
+jobs:
+  bump:
+    if: github.event.pull_request.merged && !contains(github.event.pull_request.labels.*.name, 'no-release')
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.bump.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - id: bump
+        env:
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ' ') }}
+          TITLE: ${{ github.event.pull_request.title }}
+          NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          old="$(sed -n 's/^version=//p' gradle.properties)"
+          IFS=. read -r major minor patch <<< "$old"
+          case " $LABELS " in
+            *" major "*) kind=major; new="$((major + 1)).0.0" ;;
+            *" minor "*) kind=minor; new="$major.$((minor + 1)).0" ;;
+            *)           kind=patch; new="$major.$minor.$((patch + 1))" ;;
+          esac
+          sed -i "s/^version=.*/version=$new/" gradle.properties
+          sed -i "s/Written for Ashfall [0-9.]*,/Written for Ashfall $new,/" docs/wiki/ashfall-wiki.html
+          summary="$(printf '%s' "$TITLE" | tr '|' '/') (#$NUMBER)"
+          awk -v row="| $new | $kind | $summary |" '
+            { print }
+            /^## Releases/ { sec = 1 }
+            sec && /^\|---/ { print row; sec = 0 }
+          ' docs/versions.md > versions.tmp && mv versions.tmp docs/versions.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Release v$new ($kind): $summary"
+          git tag "v$new"
+          git push origin main "v$new"
+          echo "tag=v$new" >> "$GITHUB_OUTPUT"
+
+  release:
+    needs: bump
+    uses: ./.github/workflows/release.yml
+    with:
+      tag: ${{ needs.bump.outputs.tag }}

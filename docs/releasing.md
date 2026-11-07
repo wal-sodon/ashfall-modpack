@@ -1,5 +1,16 @@
 # Releasing a new version
 
+## Automatic (merged pull requests)
+
+Merging a pull request into `main` releases it (`.github/workflows/auto-version.yml`). Label the PR `major` or
+`minor` to pick the bump; with neither it is a patch, and `no-release` skips it (docs-only changes, for example). The
+workflow bumps `version=` in `gradle.properties`, the "Written for Ashfall X.Y.Z" line and adds a `docs/versions.md`
+row from the PR title, commits that to `main` as `github-actions[bot]`, tags `vX.Y.Z` and builds the GitHub release.
+Write the PR title as the release summary. Steps 4, 6 and 7 below (release repo, wiki, field manual page) are still
+done by hand. Pull before branching again, since the bump commit lands on `main` after the merge.
+
+## By hand
+
 Everything a release needs lives in the project:
 
 - `tools/build_mrpack.py` builds the pack;
@@ -10,11 +21,13 @@ Everything a release needs lives in the project:
 Commits are made with the global git identity, `walsodon-hash <263426854+walsodon-hash@users.noreply.github.com>`. GitHub
 matches the noreply address by account id, so they show up under `wal-sodon`.
 
-## Steps
+### Steps
 
 1. **Version.** Set `version=X.Y.Z` in `gradle.properties`, the "Written for Ashfall X.Y.Z" line in
-   `docs/wiki/ashfall-wiki.html`, and add a row to `docs/versions.md`. The scheme is in that file: medium for new
-   features or a world-generation change, minor for fixes and balance tweaks.
+   `docs/wiki/ashfall-wiki.html`, and add a row to the Releases table in `docs/versions.md`. Ashfall uses semantic
+   versioning (details in that file): bump **major** when existing worlds or saves break, **minor** for new
+   features or a world-generation change, **patch** for fixes and balance tweaks. A bump resets the numbers after
+   it (1.2.3 → 1.3.0 → 2.0.0).
 2. **Test.** Run `./gradlew build`, then `:salvage:runGameTest`, `:director:runGameTest` and `:arms:runGameTest`, one at
    a time. Write the output to log files.
 3. **Pack.** Run `python3 -I tools/build_mrpack.py`. It writes `dist/Ashfall-X.Y.Z.mrpack`.
@@ -27,7 +40,15 @@ matches the noreply address by account id, so they show up under `wal-sodon`.
    git -c http.postBuffer=524288000 push
    ```
    The larger post buffer is needed: a 2 MB push fails with HTTP 400 without it.
-5. **Wiki.**
+5. **Source tag and GitHub release.** Commit the version bump in this repo, then:
+   ```
+   git push && git tag vX.Y.Z && git push origin vX.Y.Z
+   ```
+   The tag starts `.github/workflows/release.yml`. It checks the tag matches `gradle.properties`, builds the pack and
+   creates the GitHub release with `Ashfall-X.Y.Z.mrpack` attached and the `docs/versions.md` row as notes. Rewrite
+   the notes as Added / Changed / Removed / Fixed afterwards if needed. CI (`.github/workflows/ci.yml`) builds and
+   runs the gametests on every push to `main` and every pull request.
+6. **Wiki.**
    ```
    python3 -I tools/gh_wiki.py
    cp -R .cache/release/wikiout/. .cache/release/wiki/
@@ -35,7 +56,7 @@ matches the noreply address by account id, so they show up under `wal-sodon`.
    git -c http.postBuffer=524288000 push origin master
    ```
    The wiki's default branch is `master`.
-6. **Field manual page.** Republish `docs/wiki/ashfall-wiki.html` to https://claude.ai/artifact/JpfqXRU3ZMTcpQDNZYGFHJ,
+7. **Field manual page.** Republish `docs/wiki/ashfall-wiki.html` to https://claude.ai/artifact/JpfqXRU3ZMTcpQDNZYGFHJ,
    adding any new images it references.
 
 ## If something is missing
