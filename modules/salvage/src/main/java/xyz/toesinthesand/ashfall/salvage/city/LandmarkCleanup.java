@@ -29,7 +29,7 @@ import java.util.Optional;
  * them with (the LightStripper safety net covers those when it runs).
  */
 public final class LandmarkCleanup {
-	/** The cave decoration this removes, when lit (glow berries make cave vines glow). */
+	/** The cave decoration this removes, when lit (glow berries make cave vines glow; brown mushrooms give light 1). */
 	public static final TagKey<Block> CAVE_LIGHTS = TagKey.create(Registries.BLOCK,
 			Identifier.fromNamespaceAndPath("ashfall", "landmark/cave_lights"));
 
