@@ -226,9 +226,9 @@ you have moved 3 blocks. Heal up before you lead them home.
   through a night moves it forward, so it counts as a day survived.
 - **Sleeping costs water and food.** Waking from a skipped night takes 3 droplets of thirst and 2 shanks of food,
   and beds refuse you below 7 thirst or 7 food (3.5 droplets or shanks). Lying down and getting up again costs nothing.
-- **You can only sleep at home.** Beds, and Traveler's Backpack sleeping bags, work only inside your own (or your party's) Bunker Core claim. Anywhere else,
-  safe zones included, the bed refuses, so it can't set your respawn point either. Until you place a core you can't sleep
-  at all. A host can turn this off with `/gamerule ashfall:bunker_beds_only false`.
+- **You can only sleep at home.** Beds, and Traveler's Backpack sleeping bags, work only inside your own (or your party's) Bunker Core claim,
+  or inside a reclaimed substation compound. Anywhere else, the safehouse included, the bed refuses, so it can't set your
+  respawn point either. Until you place a core or reclaim a district you can't sleep at all. A host can turn this off with `/gamerule ashfall:bunker_beds_only false`.
 
 **Zombie types.** Walkers (20 HP, slow). Runners from day 7 (14 HP, fast). Armoured zombies from day 16 (police or
 worker gear). Husks. Drowned, in water only. Patients, in hospitals and Mission: their bites infect far more
@@ -367,12 +367,14 @@ Travel instantly between your stops, paid for with Cell Pack charge.
 The Montford safehouse is a server safe zone. Inside it nothing spawns, and zombies can neither build nor
 break. Anyone can open its doors, chests, barrels and furnaces, but nobody can break or place blocks there. The claim may also block right-clicking
 items inside it (including the Field Radio); if it does, step outside, or use `/ashfall mission` for the same report. Each **reclaimed substation compound** (the core's chunk and the chunks around it) becomes a safe zone
-too. Server admins can add more.
+too, and an **open** one: there every player can do everything they could in their own Bunker Core claim. You can
+build, break, place and use items, sleep in beds, and put down Rain Collectors, while nothing spawns and zombies still
+break nothing. Server admins can add more.
 
 ### Respawn choice
 When you die, you respawn at once at the best place you have, in this order:
 1. your Bunker Core;
-2. your bed (which must be inside your Bunker Core claim) or respawn anchor;
+2. your bed (which must be inside your Bunker Core claim or a reclaimed compound) or respawn anchor;
 3. the safe zone nearest where you died;
 4. the world spawn (the safehouse).
 
@@ -428,7 +430,7 @@ players and Arc Charges stun pets. Survivors stay protected either way. Direct h
 server's normal PvP setting.
 
 ### Rain Collector
-- 6 Scrap Metal, 2 Duct Tape and a Glass Shard (`S S / SGS / TST`). **Only placeable inside your Bunker Core's area.**
+- 6 Scrap Metal, 2 Duct Tape and a Glass Shard (`S S / SGS / TST`). **Only placeable inside your Bunker Core's area or a reclaimed substation compound.**
 - Put empty glass bottles in (up to 4); while rain falls on it, one fills with clean Bottled Water every minute.
   Use it with an empty hand to take the water out.
 
@@ -654,7 +656,8 @@ night, not lost. Failing costs time, not the district.
 
 ### What reclaiming gives
 - **+20% Grid** (shared by the whole world), up to 80% with all four districts.
-- **A safe compound:** the core's chunk and the chunks around it become a safe zone.
+- **A safe compound:** the core's chunk and the chunks around it become a safe zone that works like a Bunker Core
+  claim for everyone: build, break, sleep and set up Rain Collectors there.
 - **80% less darkness spawning** in the whole district. The district still has zombies, just fewer.
 - **Free charging:** Field Chargers and Power Relays in the district need no cells.
 - **A reward cache** at the core, one per player.

@@ -54,6 +54,8 @@ import xyz.toesinthesand.ashfall.arms.grid.SubstationCoreBlock;
 import xyz.toesinthesand.ashfall.arms.grid.SubstationCoreBlockEntity;
 import xyz.toesinthesand.ashfall.arms.item.ArmsItems;
 import xyz.toesinthesand.ashfall.director.haven.HavenState;
+import xyz.toesinthesand.ashfall.director.haven.Havens;
+import xyz.toesinthesand.ashfall.director.haven.SafeZone;
 import xyz.toesinthesand.ashfall.director.senses.Stimuli;
 import xyz.toesinthesand.ashfall.director.senses.StimulusType;
 import xyz.toesinthesand.ashfall.director.spawn.SpawnDirector;
@@ -313,6 +315,15 @@ public class GridGameTest {
 		helper.assertTrue(GridState.get(level.getServer()).isReclaimed(id), "isReclaimed");
 		helper.assertTrue(HavenState.get(level.getServer()).customZones().containsKey(GridReclaim.compoundZoneId(id)),
 				"the substation compound is a safe zone");
+		HavenState havens = HavenState.get(level.getServer());
+		SafeZone compound = havens.customZones().get(GridReclaim.compoundZoneId(id));
+		helper.assertTrue(compound.open(), "the compound is open to building like a Bunker Core claim");
+		helper.assertTrue(Havens.inOpenZone(level, abs), "the core stands in an open zone");
+		// A world reclaimed before compounds were open: start-up reopens it.
+		havens.putCustomZone(GridReclaim.compoundZoneId(id), compound.withOpen(false));
+		helper.assertTrue(GridReclaim.openCompounds(level.getServer()) >= 1, "start-up reopened no compound");
+		helper.assertTrue(havens.customZones().get(GridReclaim.compoundZoneId(id)).open(), "an old closed compound stayed closed");
+		helper.assertValueEqual(GridReclaim.openCompounds(level.getServer()), 0, "reopening twice changed something");
 		helper.assertTrue(r.rewarded, "reward cache placed");
 		boolean chest = false;
 		for (BlockPos p : BlockPos.betweenClosed(abs.offset(-3, -1, -3), abs.offset(3, 1, 3))) {

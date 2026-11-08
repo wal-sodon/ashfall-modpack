@@ -31,6 +31,7 @@ import java.util.UUID;
  * {@code IPlayerConfigAPI#getSubIndex()} returns for it). Safe-zone server claims use their own sub-config,
  * {@link SafeZoneClaimOptions#SUB_ID}, so survivors can open the doors and chests inside (the main server claim
  * config refuses everyone everything); it is created on first use and its options re-applied once per server.
+ * Open safe zones use a second one, {@link SafeZoneClaimOptions#OPEN_SUB_ID}, set up the same way.
  * <p>
  * Any failure inside OPAC (API not ready during start-up, a future API change) is logged once and answered
  * as "not claimed / nothing done", so a claims problem never takes the server tick down.
@@ -39,9 +40,19 @@ final class OpacClaimBackend implements ClaimBackend {
 	private static final int MAIN_SUB_CONFIG = -1;
 	private boolean warned;
 	private boolean warnedOptions;
-	/** Server whose safe-zone sub-config was set up, and its index; redone for a new server (singleplayer worlds). */
-	private WeakReference<MinecraftServer> safeZoneServer = new WeakReference<>(null);
-	private int safeZoneSub = MAIN_SUB_CONFIG;
+	/** Per sub-config (closed, open): the server it was set up for, and its index; redone for a new server. */
+	private final SubConfig closedSub = new SubConfig(false);
+	private final SubConfig openSub = new SubConfig(true);
+
+	private static final class SubConfig {
+		final boolean open;
+		WeakReference<MinecraftServer> server = new WeakReference<>(null);
+		int index = MAIN_SUB_CONFIG;
+
+		SubConfig(boolean open) {
+			this.open = open;
+		}
+	}
 
 	@Override
 	public boolean available() {
@@ -67,7 +78,7 @@ final class OpacClaimBackend implements ClaimBackend {
 	}
 
 	@Override
-	public boolean claim(ServerLevel level, @Nullable UUID owner, int chunkX, int chunkZ) {
+	public boolean claim(ServerLevel level, @Nullable UUID owner, int chunkX, int chunkZ, boolean open) {
 		try {
 			MinecraftServer server = level.getServer();
 			IServerClaimsManagerAPI claims = claims(server);
@@ -76,7 +87,7 @@ final class OpacClaimBackend implements ClaimBackend {
 				return false; // never take over anyone's claim, ours included (it is already protected)
 			}
 			if (owner == null) {
-				return claims.claim(dim, serverClaimId(server), safeZoneSubIndex(server), chunkX, chunkZ, false) != null;
+				return claims.claim(dim, serverClaimId(server), safeZoneSubIndex(server, open), chunkX, chunkZ, false) != null;
 			}
 			ClaimResult<IPlayerChunkClaimAPI> result = claims.tryToClaim(dim, owner, MAIN_SUB_CONFIG, chunkX, chunkZ, chunkX, chunkZ, false);
 			return result.getResultType().success;
@@ -87,7 +98,7 @@ final class OpacClaimBackend implements ClaimBackend {
 	}
 
 	@Override
-	public boolean adoptServerClaim(ServerLevel level, int chunkX, int chunkZ) {
+	public boolean adoptServerClaim(ServerLevel level, int chunkX, int chunkZ, boolean open) {
 		try {
 			MinecraftServer server = level.getServer();
 			IServerClaimsManagerAPI claims = claims(server);
@@ -97,7 +108,7 @@ final class OpacClaimBackend implements ClaimBackend {
 				return false;
 			}
 			UUID serverId = serverClaimId(server);
-			int sub = safeZoneSubIndex(server);
+			int sub = safeZoneSubIndex(server, open);
 			if (!SafeZoneClaimOptions.shouldAdopt(true, serverId.equals(claim.getPlayerId()), claim.getSubConfigIndex(), sub)) {
 				return false;
 			}
@@ -109,34 +120,35 @@ final class OpacClaimBackend implements ClaimBackend {
 	}
 
 	/**
-	 * The safe-zone sub-config's index in the server claim config, creating it and applying
-	 * {@link SafeZoneClaimOptions#options()} the first time per server. Falls back to the main sub-config (the old,
-	 * fully locked behaviour) if OPAC refuses to create it, so a safe zone is still claimed.
+	 * The closed or open safe-zone sub-config's index in the server claim config, creating it and applying
+	 * {@link SafeZoneClaimOptions#options(boolean)} the first time per server. Falls back to the main sub-config (the
+	 * old, fully locked behaviour) if OPAC refuses to create it, so a safe zone is still claimed.
 	 */
-	private int safeZoneSubIndex(MinecraftServer server) {
-		if (safeZoneServer.get() == server) {
-			return safeZoneSub;
+	private int safeZoneSubIndex(MinecraftServer server, boolean open) {
+		SubConfig cache = open ? openSub : closedSub;
+		if (cache.server.get() == server) {
+			return cache.index;
 		}
+		String id = SafeZoneClaimOptions.subId(open);
 		// Remembered only once settled, so an OPAC exception here (API not ready yet) is retried on the next claim.
 		IPlayerConfigManagerAPI configs = OpenPACServerAPI.get(server).getPlayerConfigManager();
 		IPlayerConfigAPI main = configs.getServerClaimConfig();
-		IPlayerConfigAPI sub = main.getSubConfig(SafeZoneClaimOptions.SUB_ID);
+		IPlayerConfigAPI sub = main.getSubConfig(id);
 		if (sub == null) {
-			sub = main.createSubConfig(SafeZoneClaimOptions.SUB_ID);
+			sub = main.createSubConfig(id);
 		}
 		if (sub == null) {
-			AshfallDirector.LOGGER.warn("Open Parties and Claims refused the {} sub-config; safe zones use the locked main server claim config",
-					SafeZoneClaimOptions.SUB_ID);
-			safeZoneServer = new WeakReference<>(server);
-			safeZoneSub = MAIN_SUB_CONFIG;
-			return safeZoneSub;
+			AshfallDirector.LOGGER.warn("Open Parties and Claims refused the {} sub-config; safe zones use the locked main server claim config", id);
+			cache.server = new WeakReference<>(server);
+			cache.index = MAIN_SUB_CONFIG;
+			return cache.index;
 		}
-		for (Map.Entry<String, String> option : SafeZoneClaimOptions.options().entrySet()) {
+		for (Map.Entry<String, String> option : SafeZoneClaimOptions.options(cache.open).entrySet()) {
 			apply(configs, sub, option.getKey(), option.getValue());
 		}
-		safeZoneSub = sub.getSubIndex();
-		safeZoneServer = new WeakReference<>(server);
-		return safeZoneSub;
+		cache.index = sub.getSubIndex();
+		cache.server = new WeakReference<>(server);
+		return cache.index;
 	}
 
 	/** Sets one String option on the sub-config; options missing on this server (a removed group) are skipped. */

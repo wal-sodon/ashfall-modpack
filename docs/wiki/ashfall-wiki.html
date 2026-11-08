@@ -296,7 +296,7 @@ figcaption { font-size: .85rem; color: var(--muted); max-width: 68ch; }
 	</table></div>
 	<ul>
 		<li>Fill a glass bottle at any river or pond to get Dirty Water, then <strong>cook it</strong> in a furnace, smoker or campfire to make it clean.</li>
-		<li><img class="tex" src="img/rain_collector.png" alt="" width="32" height="32"><strong>Rain Collector</strong> (6 Scrap Metal, 2 Duct Tape, 1 Glass Shard): put empty glass bottles in, and while rain falls on it, it fills one with clean Bottled Water every minute. It holds 4. Empty hand takes the water out. <strong>It only goes inside your Bunker Core's area.</strong></li>
+		<li><img class="tex" src="img/rain_collector.png" alt="" width="32" height="32"><strong>Rain Collector</strong> (6 Scrap Metal, 2 Duct Tape, 1 Glass Shard): put empty glass bottles in, and while rain falls on it, it fills one with clean Bottled Water every minute. It holds 4. Empty hand takes the water out. <strong>It only goes inside your Bunker Core's area or a reclaimed substation compound.</strong></li>
 		<li>Once River Arts is reclaimed, water from inside reclaimed districts comes up clean.</li>
 	</ul>
 	<h3>Where zombies come from</h3>
@@ -394,7 +394,7 @@ figcaption { font-size: .85rem; color: var(--muted); max-width: 68ch; }
 	<h3>Quiet weapons</h3>
 	<p>Guns are loud, but melee makes no noise at all. The scrap melee weapons, the Nail Launcher, the Bottle Lure and the Arc Charge are on <a href="#quiet">Weapons and ammo</a>.</p>
 	<h3>Sleeping</h3>
-	<p><strong>You can only sleep at home:</strong> beds (and backpack sleeping bags) work only inside your own or your party's Bunker Core claim. Anywhere else, safe zones included, the bed refuses and doesn't set your respawn point; with no core you can't sleep at all. A host can turn this off with <code>/gamerule ashfall:bunker_beds_only false</code>. At home, beds work as normal at night when no zombie is near, and set your respawn point. Sleeping counts as a day survived, so new threats arrive sooner. You can't sleep on a horde night or while a district siege is set for tonight.</p>
+	<p><strong>You can only sleep at home:</strong> beds (and backpack sleeping bags) work only inside your own or your party's Bunker Core claim, or a reclaimed substation compound. Anywhere else, the safehouse included, the bed refuses and doesn't set your respawn point; with no core and no reclaimed district you can't sleep at all. A host can turn this off with <code>/gamerule ashfall:bunker_beds_only false</code>. At home, beds work as normal at night when no zombie is near, and set your respawn point. Sleeping counts as a day survived, so new threats arrive sooner. You can't sleep on a horde night or while a district siege is set for tonight.</p>
 	<ul>
 		<li><strong>Sleeping costs water and food.</strong> You wake up 3 droplets thirstier and 2 shanks hungrier, as if you'd stayed up all night.</li>
 		<li><strong>You can't sleep while you're thirsty or hungry:</strong> a bed refuses you with less than 3.5 droplets or 3.5 shanks left. Drink and eat before bed.</li>
@@ -897,6 +897,8 @@ P . P</span></td><td>2 S, 1 E, 2 T, 1 crafting table (X), 2 planks (P)</td></tr>
 	<h2>Bases and co-op</h2>
 	<h3>The safehouse</h3>
 	<p>Anyone can open its doors, chests and barrels, use its furnaces and beds, read books, and use the Field Radio, medical items, food and blasters. Nobody can break or place blocks there.</p>
+	<h3>Reclaimed compounds</h3>
+	<p>A reclaimed substation's compound is a safe zone that works like a Bunker Core claim for every player: build, break, place and use items, sleep in beds and set up Rain Collectors. Nothing spawns there and zombies break nothing. It stops being one while a Breach is on, or if the district goes dark.</p>
 	<h3>Your Bunker Core</h3>
 	<ul>
 		<li>Placing it claims an 80×80-block area for you or your party. Nothing spawns inside, and Field Chargers work.</li>
@@ -1116,7 +1118,7 @@ P . P</span></td><td>2 S, 1 E, 2 T, 1 crafting table (X), 2 planks (P)</td></tr>
 	<h3>What reclaiming gives</h3>
 	<ul>
 		<li><strong>+20% Grid</strong> for the whole world, up to 80% with all four.</li>
-		<li><strong>A safe compound:</strong> the core's chunk and the chunks around it become a safe zone.</li>
+		<li><strong>A safe compound:</strong> the core's chunk and the chunks around it become a safe zone that works like a Bunker Core claim for everyone: build, break, sleep and set up Rain Collectors there.</li>
 		<li><strong>A transit stop:</strong> fast travel to and from the substation (see Bases).</li>
 		<li><strong>80% fewer zombies</strong> spawning from the dark across the district.</li>
 		<li><strong>Free charging:</strong> Field Chargers and Power Relays in the district need no cells.</li>

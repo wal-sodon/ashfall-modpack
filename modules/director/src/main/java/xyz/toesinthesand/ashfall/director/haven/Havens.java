@@ -36,7 +36,8 @@ import java.util.Optional;
  */
 public final class Havens {
 	/** One protected area. */
-	public record Region(String id, ResourceKey<Level> dimension, ChunkArea area, boolean safeZone) {
+	/** @param open a safe zone players may build and sleep in like a Bunker Core claim ({@link SafeZone#open}) */
+	public record Region(String id, ResourceKey<Level> dimension, ChunkArea area, boolean safeZone, boolean open) {
 		boolean contains(ResourceKey<Level> dim, BlockPos pos) {
 			return dimension.equals(dim) && area.contains(pos.getX(), pos.getZ());
 		}
@@ -77,14 +78,14 @@ public final class Havens {
 	 */
 	public static void rebuild(MinecraftServer server) {
 		List<Region> next = new ArrayList<>();
-		SafeZones.active(server).forEach((id, zone) -> next.add(new Region(id, zone.dimension(), zone.area(), true)));
+		SafeZones.active(server).forEach((id, zone) -> next.add(new Region(id, zone.dimension(), zone.area(), true, zone.open())));
 		int bonus = StoryHooks.bunkerRadiusBonus(server);
 		for (BunkerCoreRecord core : HavenState.get(server).cores()) {
 			ChunkArea area = core.area();
 			if (bonus > 0) {
 				area = new ChunkArea(area.chunkX(), area.chunkZ(), area.radius() + bonus);
 			}
-			next.add(new Region("bunker:" + core.ownerKey(), core.dimension(), area, false));
+			next.add(new Region("bunker:" + core.ownerKey(), core.dimension(), area, false, false));
 		}
 		regions = List.copyOf(next);
 	}
@@ -104,11 +105,11 @@ public final class Havens {
 			ServerLevel level = server.getLevel(e.getValue().dimension());
 			if (level != null) {
 				// Zones claimed before the safe-zone claim settings existed were locked to everyone; move them over.
-				int adopted = Claims.adoptServerClaims(level, state.serverClaims(e.getKey()));
+				int adopted = Claims.adoptServerClaims(level, state.serverClaims(e.getKey()), e.getValue().open());
 				if (adopted > 0) {
 					AshfallDirector.LOGGER.info("Safe zone {}: moved {} claimed chunks to the safe-zone claim settings", e.getKey(), adopted);
 				}
-				List<Long> claimed = Claims.claimArea(level, null, e.getValue().area());
+				List<Long> claimed = Claims.claimArea(level, null, e.getValue().area(), e.getValue().open());
 				state.addServerClaims(e.getKey(), claimed);
 				if (!claimed.isEmpty()) {
 					AshfallDirector.LOGGER.info("Safe zone {}: server-claimed {} chunks", e.getKey(), claimed.size());
@@ -161,6 +162,17 @@ public final class Havens {
 		ResourceKey<Level> dim = level.dimension();
 		for (Region region : regions) {
 			if (region.safeZone && region.contains(dim, pos)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/** Whether {@code pos} lies in an open safe zone, which players may use like a Bunker Core claim. */
+	public static boolean inOpenZone(ServerLevel level, BlockPos pos) {
+		ResourceKey<Level> dim = level.dimension();
+		for (Region region : regions) {
+			if (region.open && region.contains(dim, pos)) {
 				return true;
 			}
 		}

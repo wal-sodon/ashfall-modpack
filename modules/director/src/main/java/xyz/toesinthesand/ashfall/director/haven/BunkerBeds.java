@@ -16,7 +16,8 @@ import java.util.Optional;
 
 /**
  * Beds only work at home (10.3.1): a player can sleep only inside their own Bunker Core's claim, or their party's
- * ({@link BunkerCores#forPlayer}). Anywhere else, safe zones included, the bed refuses before vanilla sets the respawn
+ * ({@link BunkerCores#forPlayer}), or in an open safe zone (a reclaimed substation compound, {@link SafeZone#open}).
+ * Anywhere else, the safehouse included, the bed refuses before vanilla sets the respawn
  * point, so a bed out in the city can't be used as a spawn point either. A player with no core can't sleep at all.
  * Traveler's Backpack sleeping bags are covered too: they lie down through vanilla's {@code startSleepInBed}, which
  * asks this veto first, and their own "sleeping bag sets spawn" option is off in the pack (its default).
@@ -41,7 +42,7 @@ public final class BunkerBeds {
 				|| !level.getGameRules().get(ENABLED)) {
 			return null;
 		}
-		return atHome(level, player, pos) ? null
+		return atHome(level, player, pos) || Havens.inOpenZone(level, pos) ? null
 				: new Player.BedSleepingProblem(Component.translatable("message.ashfall.no_sleep.bunker"));
 	}
 
