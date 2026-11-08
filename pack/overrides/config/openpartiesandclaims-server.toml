@@ -6,3 +6,7 @@
 			# Right-click use of Ashfall gear (books, Field Radio, medical items, food and water, blasters) inside any
 			# claim, including the safehouse. Edit the item tag #ashfall:claim_usable instead of this list.
 			itemUseProtectionExceptionList = ["minecraft:firework_rocket", "#ashfall:claim_usable"]
+			# Claims shield friendly entities from mobs, which made survivors and pets immune to zombies at home.
+			# They are left out of claim protection so zombies can hurt them anywhere; Ashfall keeps players from
+			# hurting them itself (PetGuard). "#minecraft:boat" is the OPAC default.
+			friendlyChunkProtectedEntityList = ["#minecraft:boat", "ashfall:survivor", "minecraft:wolf", "minecraft:cat", "minecraft:parrot"]

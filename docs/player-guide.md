@@ -330,6 +330,8 @@ Your home base. Recipe: 4 Alloy Plate, 4 Scrap Metal and an Energy Cell, so no i
   - zombies can't build;
   - Field Chargers work;
   - your party's containers are locked to the party.
+- The claim doesn't shield survivors or pets: zombies that get inside can hurt them and infect survivors, so
+  wall them in on horde nights.
 - **Hordes still break plain blocks inside the claim.** Fortified blocks hold for a while, so wall with them and repair them.
 - **One core per party**, or per player if you are not in a party. Breaking the core releases the claim.
 - The core itself is fortified, blast resistant and can't be pushed by pistons.
