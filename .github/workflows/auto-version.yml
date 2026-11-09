@@ -1,20 +1,29 @@
 name: Auto version
 
-# When a pull request is merged into main, bump the semantic version and release it. The PR's labels pick the bump:
-# `major`, `minor`, otherwise patch; `no-release` skips it. The bump sets gradle.properties, the field manual's
-# "Written for Ashfall X.Y.Z" line and a docs/versions.md row from the PR title.
-#
-# main is protected (changes only through pull requests), so the bot never pushes to it and never merges anything:
-#   1. A merged feature PR: the bot pushes the bump to release/vX.Y.Z and opens a "Release vX.Y.Z" pull request.
+# Semantic versioning through one rolling release pull request. The bot never pushes to main and never merges:
+#   1. A PR is merged into main (or someone runs this workflow by hand). The bot rebuilds the branch release/next
+#      from main with the next version and opens, or updates, the "Release vX.Y.Z" pull request.
 #   2. A maintainer reviews and merges that release PR by hand.
-#   3. The release PR's merge: the bot tags the merged commit vX.Y.Z and builds the GitHub release.
-# Release PRs carry the `no-release` label and a release/ branch, so their merge never bumps again. Opening the PR
-# needs the repository setting "Allow GitHub Actions to create and approve pull requests" (Settings > Actions >
-# General); nothing here approves or merges.
+#   3. Its merge makes the bot tag the merged commit vX.Y.Z and build the GitHub release.
+# Several PRs merged before a release share the one release PR: the bump is the largest any of them asked for
+# (labels `major`, `minor`, otherwise patch) and their titles are joined in one docs/versions.md row. A PR labelled
+# `no-release` changes nothing. Opening the release PR needs the repository setting "Allow GitHub Actions to create
+# and approve pull requests" (Settings > Actions > General); nothing here approves or merges.
 on:
   pull_request:
     types: [closed]
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      kind:
+        description: Bump to add to the pending release
+        type: choice
+        options: [patch, minor, major]
+        default: patch
+      summary:
+        description: Release notes line (for changes already on main)
+        type: string
+        required: true
 
 permissions:
   contents: write
@@ -24,12 +33,17 @@ concurrency:
   group: auto-version
   cancel-in-progress: false
 
+env:
+  RELEASE_BRANCH: release/next
+
 jobs:
+  # Step 1: a merged PR (not the release PR itself), or a manual run.
   bump:
     if: >-
-      github.event.pull_request.merged
-      && !contains(github.event.pull_request.labels.*.name, 'no-release')
-      && !startsWith(github.event.pull_request.head.ref, 'release/')
+      github.event_name == 'workflow_dispatch'
+      || (github.event.pull_request.merged
+          && !contains(github.event.pull_request.labels.*.name, 'no-release')
+          && github.event.pull_request.head.ref != 'release/next')
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
@@ -38,58 +52,93 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-      - id: bump
+      - name: Rebuild release/next and open or update the release PR
         env:
+          EVENT: ${{ github.event_name }}
           LABELS: ${{ join(github.event.pull_request.labels.*.name, ' ') }}
           TITLE: ${{ github.event.pull_request.title }}
           NUMBER: ${{ github.event.pull_request.number }}
+          INPUT_KIND: ${{ inputs.kind }}
+          INPUT_SUMMARY: ${{ inputs.summary }}
         run: |
-          old="$(sed -n 's/^version=//p' gradle.properties)"
-          IFS=. read -r major minor patch <<< "$old"
-          case " $LABELS " in
-            *" major "*) kind=major; new="$((major + 1)).0.0" ;;
-            *" minor "*) kind=minor; new="$major.$((minor + 1)).0" ;;
-            *)           kind=patch; new="$major.$minor.$((patch + 1))" ;;
-          esac
+          set -euo pipefail
+          rank() { case "$1" in major) echo 3 ;; minor) echo 2 ;; *) echo 1 ;; esac; }
+          bump() {
+            local a b c
+            IFS=. read -r a b c <<< "$1"
+            case "$2" in
+              major) echo "$((a + 1)).0.0" ;;
+              minor) echo "$a.$((b + 1)).0" ;;
+              *)     echo "$a.$b.$((c + 1))" ;;
+            esac
+          }
+
+          if [ "$EVENT" = workflow_dispatch ]; then
+            kind="$INPUT_KIND"
+            summary="$(printf '%s' "$INPUT_SUMMARY" | tr '|' '/')"
+          else
+            case " $LABELS " in
+              *" major "*) kind=major ;;
+              *" minor "*) kind=minor ;;
+              *)           kind=patch ;;
+            esac
+            summary="$(printf '%s' "$TITLE" | tr '|' '/') (#$NUMBER)"
+          fi
+
+          base="$(sed -n 's/^version=//p' gradle.properties)"
+          # Fold in a release PR that is still waiting: keep its bump if larger, and its notes.
+          if git ls-remote --exit-code --heads origin "$RELEASE_BRANCH" >/dev/null; then
+            git fetch -q origin "$RELEASE_BRANCH"
+            pending="$(git show "origin/$RELEASE_BRANCH:gradle.properties" | sed -n 's/^version=//p')"
+            pending_kind=""
+            for k in major minor patch; do
+              if [ "$(bump "$base" "$k")" = "$pending" ]; then pending_kind="$k"; break; fi
+            done
+            if [ -n "$pending_kind" ]; then
+              if [ "$(rank "$pending_kind")" -gt "$(rank "$kind")" ]; then kind="$pending_kind"; fi
+              notes="$(git show "origin/$RELEASE_BRANCH:docs/versions.md" | { grep -m1 "^| $pending |" || true; } | awk -F'|' '{print $4}' | sed 's/^ *//; s/ *$//')"
+              if [ -n "$notes" ]; then summary="$notes; $summary"; fi
+            else
+              echo "::warning::$RELEASE_BRANCH has version $pending, which is no bump of main's $base; starting it again"
+            fi
+          fi
+
+          new="$(bump "$base" "$kind")"
           if git rev-parse -q --verify "refs/tags/v$new" >/dev/null; then
-            echo "::error::Tag v$new already exists but gradle.properties says $old. Delete the stray tag or fix the version by hand."
+            echo "::error::Tag v$new already exists but main says $base. Delete the stray tag or fix the version by hand."
             exit 1
           fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$RELEASE_BRANCH"
           sed -i "s/^version=.*/version=$new/" gradle.properties
           sed -i "s/Written for Ashfall [0-9.]*,/Written for Ashfall $new,/" docs/wiki/ashfall-wiki.html
-          summary="$(printf '%s' "$TITLE" | tr '|' '/') (#$NUMBER)"
           awk -v row="| $new | $kind | $summary |" '
             { print }
             /^## Releases/ { sec = 1 }
             sec && /^\|---/ { print row; sec = 0 }
           ' docs/versions.md > versions.tmp && mv versions.tmp docs/versions.md
-          branch="release/v$new"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git switch -c "$branch"
-          git commit -am "Release v$new ($kind): $summary"
-          git push origin "$branch"
-          {
-            echo "new=$new"
-            echo "kind=$kind"
-            echo "branch=$branch"
-            echo "summary=$summary"
-          } >> "$GITHUB_OUTPUT"
-      - name: Open the release pull request
-        env:
-          NEW: ${{ steps.bump.outputs.new }}
-          KIND: ${{ steps.bump.outputs.kind }}
-          BRANCH: ${{ steps.bump.outputs.branch }}
-          SUMMARY: ${{ steps.bump.outputs.summary }}
-        run: |
-          gh label create no-release --color ededed --description "Merging does not bump the version" --force
-          gh pr create --base main --head "$BRANCH" --label no-release \
-            --title "Release v$NEW" \
-            --body "Automatic $KIND release for $SUMMARY: gradle.properties, the field manual's version line and docs/versions.md. Merging this tags v$NEW and builds the release."
+          git commit -qam "Release v$new ($kind): $summary"
+          # The bot's own branch, rebuilt from main every time, so a force push is expected here (never to main).
+          git push --force origin "$RELEASE_BRANCH"
 
-  # Step 3: a release PR was merged by hand. Tag its merge commit and release it.
+          gh label create no-release --color ededed --description "Merging does not bump the version" --force
+          body="Merging this tags **v$new** ($kind) and builds the GitHub release.
+
+          Changes: $summary
+
+          Made by the Auto version workflow. It updates this PR when more PRs are merged first; nothing merges it automatically."
+          pr="$(gh pr list --head "$RELEASE_BRANCH" --state open --json number -q '.[0].number')"
+          if [ -n "$pr" ] && [ "$pr" != null ]; then
+            gh pr edit "$pr" --title "Release v$new" --body "$body"
+          else
+            gh pr create --base main --head "$RELEASE_BRANCH" --label no-release --title "Release v$new" --body "$body"
+          fi
+
+  # Step 3: the release PR was merged by hand. Tag its merge commit and release it.
   tag:
-    if: github.event.pull_request.merged && startsWith(github.event.pull_request.head.ref, 'release/v')
+    if: github.event.pull_request.merged && github.event.pull_request.head.ref == 'release/next'
     runs-on: ubuntu-latest
     outputs:
       tag: ${{ steps.tag.outputs.tag }}
@@ -100,20 +149,16 @@ jobs:
           fetch-depth: 0
       - id: tag
         env:
-          HEAD_REF: ${{ github.event.pull_request.head.ref }}
           SHA: ${{ github.event.pull_request.merge_commit_sha }}
         run: |
-          tag="${HEAD_REF#release/}"
-          version="$(sed -n 's/^version=//p' gradle.properties)"
-          if [ "v$version" != "$tag" ]; then
-            echo "::error::Branch $HEAD_REF but gradle.properties says $version"; exit 1
-          fi
+          set -euo pipefail
+          tag="v$(sed -n 's/^version=//p' gradle.properties)"
           if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
             echo "::error::Tag $tag already exists"; exit 1
           fi
           git tag "$tag" "$SHA"
           git push origin "$tag"
-          git push origin --delete "$HEAD_REF" || true
+          git push origin --delete "$RELEASE_BRANCH" || true
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
 
   release:
