@@ -5,9 +5,19 @@
 Merging a pull request into `main` releases it (`.github/workflows/auto-version.yml`). Label the PR `major` or
 `minor` to pick the bump; with neither it is a patch, and `no-release` skips it (docs-only changes, for example). The
 workflow bumps `version=` in `gradle.properties`, the "Written for Ashfall X.Y.Z" line and adds a `docs/versions.md`
-row from the PR title, commits that to `main` as `github-actions[bot]`, tags `vX.Y.Z` and builds the GitHub release.
-Write the PR title as the release summary. Steps 4, 6 and 7 below (release repo, wiki, field manual page) are still
-done by hand. Pull before branching again, since the bump commit lands on `main` after the merge.
+row from the PR title. `main` is protected (changes only through pull requests), and the bot never merges anything:
+
+1. When a PR is merged, the bot pushes the bump to a `release/vX.Y.Z` branch and opens a "Release vX.Y.Z" PR
+   (labelled `no-release`).
+2. You review that PR and merge it yourself.
+3. Its merge makes the bot tag the merged commit `vX.Y.Z` and build the GitHub release.
+
+Opening the release PR needs the repository setting "Allow GitHub Actions to create and approve pull requests"
+(Settings > Actions > General). Write the feature PR's title as the release summary. Steps 4, 6 and 7 below (release
+repo, wiki, field manual page) are still done by hand. Merge release PRs in order, and pull before branching again.
+
+If a run fails half way, check for a leftover `release/vX.Y.Z` branch or PR and a `vX.Y.Z` tag that is not on
+`main`, and delete them before re-running: the workflow refuses to reuse an existing tag.
 
 ## By hand
 
@@ -40,9 +50,10 @@ matches the noreply address by account id, so they show up under `wal-sodon`.
    git -c http.postBuffer=524288000 push
    ```
    The larger post buffer is needed: a 2 MB push fails with HTTP 400 without it.
-5. **Source tag and GitHub release.** Commit the version bump in this repo, then:
+5. **Source tag and GitHub release.** `main` only takes pull requests: open a PR with the version bump, label it
+   `no-release` so the automatic bump skips it, merge it, then tag the merged commit:
    ```
-   git push && git tag vX.Y.Z && git push origin vX.Y.Z
+   git switch main && git pull && git tag vX.Y.Z && git push origin vX.Y.Z
    ```
    The tag starts `.github/workflows/release.yml`. It checks the tag matches `gradle.properties`, builds the pack and
    creates the GitHub release with `Ashfall-X.Y.Z.mrpack` attached and the `docs/versions.md` row as notes. Rewrite
