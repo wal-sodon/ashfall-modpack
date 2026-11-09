@@ -4,11 +4,13 @@ name: Auto version
 # `major`, `minor`, otherwise patch; `no-release` skips it. The bump sets gradle.properties, the field manual's
 # "Written for Ashfall X.Y.Z" line and a docs/versions.md row from the PR title.
 #
-# main is protected (changes only through pull requests), so the bot can't push the bump to it. It pushes the bump
-# to a release/vX.Y.Z branch, opens a "Release vX.Y.Z" pull request, merges it itself (main needs no approvals),
-# then tags the merged commit and builds the release. A pull request opened with the workflow token starts no
-# workflows, so the release PR's own merge never starts another bump. Needs the repository setting
-# "Allow GitHub Actions to create and approve pull requests" (Settings > Actions > General).
+# main is protected (changes only through pull requests), so the bot never pushes to it and never merges anything:
+#   1. A merged feature PR: the bot pushes the bump to release/vX.Y.Z and opens a "Release vX.Y.Z" pull request.
+#   2. A maintainer reviews and merges that release PR by hand.
+#   3. The release PR's merge: the bot tags the merged commit vX.Y.Z and builds the GitHub release.
+# Release PRs carry the `no-release` label and a release/ branch, so their merge never bumps again. Opening the PR
+# needs the repository setting "Allow GitHub Actions to create and approve pull requests" (Settings > Actions >
+# General); nothing here approves or merges.
 on:
   pull_request:
     types: [closed]
@@ -29,8 +31,6 @@ jobs:
       && !contains(github.event.pull_request.labels.*.name, 'no-release')
       && !startsWith(github.event.pull_request.head.ref, 'release/')
     runs-on: ubuntu-latest
-    outputs:
-      tag: ${{ steps.tag.outputs.tag }}
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
@@ -75,7 +75,7 @@ jobs:
             echo "branch=$branch"
             echo "summary=$summary"
           } >> "$GITHUB_OUTPUT"
-      - name: Open and merge the release pull request
+      - name: Open the release pull request
         env:
           NEW: ${{ steps.bump.outputs.new }}
           KIND: ${{ steps.bump.outputs.kind }}
@@ -85,24 +85,39 @@ jobs:
           gh label create no-release --color ededed --description "Merging does not bump the version" --force
           gh pr create --base main --head "$BRANCH" --label no-release \
             --title "Release v$NEW" \
-            --body "Automatic $KIND release for $SUMMARY: gradle.properties, the field manual's version line and docs/versions.md."
-          gh pr merge "$BRANCH" --squash --delete-branch --subject "Release v$NEW ($KIND): $SUMMARY"
+            --body "Automatic $KIND release for $SUMMARY: gradle.properties, the field manual's version line and docs/versions.md. Merging this tags v$NEW and builds the release."
+
+  # Step 3: a release PR was merged by hand. Tag its merge commit and release it.
+  tag:
+    if: github.event.pull_request.merged && startsWith(github.event.pull_request.head.ref, 'release/v')
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 0
       - id: tag
         env:
-          NEW: ${{ steps.bump.outputs.new }}
-          BRANCH: ${{ steps.bump.outputs.branch }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          SHA: ${{ github.event.pull_request.merge_commit_sha }}
         run: |
-          sha="$(gh pr view "$BRANCH" --json mergeCommit -q .mergeCommit.oid)"
-          if [ -z "$sha" ]; then
-            echo "::error::The release pull request for v$NEW did not merge"; exit 1
+          tag="${HEAD_REF#release/}"
+          version="$(sed -n 's/^version=//p' gradle.properties)"
+          if [ "v$version" != "$tag" ]; then
+            echo "::error::Branch $HEAD_REF but gradle.properties says $version"; exit 1
           fi
-          git fetch origin main
-          git tag "v$NEW" "$sha"
-          git push origin "v$NEW"
-          echo "tag=v$NEW" >> "$GITHUB_OUTPUT"
+          if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
+            echo "::error::Tag $tag already exists"; exit 1
+          fi
+          git tag "$tag" "$SHA"
+          git push origin "$tag"
+          git push origin --delete "$HEAD_REF" || true
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
 
   release:
-    needs: bump
+    needs: tag
     uses: ./.github/workflows/release.yml
     with:
-      tag: ${{ needs.bump.outputs.tag }}
+      tag: ${{ needs.tag.outputs.tag }}
