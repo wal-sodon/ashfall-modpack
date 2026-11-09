@@ -7,17 +7,21 @@ Merging a pull request into `main` releases it (`.github/workflows/auto-version.
 workflow bumps `version=` in `gradle.properties`, the "Written for Ashfall X.Y.Z" line and adds a `docs/versions.md`
 row from the PR title. `main` is protected (changes only through pull requests), and the bot never merges anything:
 
-1. When a PR is merged, the bot pushes the bump to a `release/vX.Y.Z` branch and opens a "Release vX.Y.Z" PR
-   (labelled `no-release`).
+1. When a PR is merged, the bot rebuilds the branch `release/next` from `main` with the next version and opens a
+   "Release vX.Y.Z" PR (labelled `no-release`), or updates the one already open.
 2. You review that PR and merge it yourself.
-3. Its merge makes the bot tag the merged commit `vX.Y.Z` and build the GitHub release.
+3. Its merge makes the bot tag the merged commit `vX.Y.Z`, build the GitHub release and delete `release/next`.
+
+PRs merged while a release PR is still open all go into that one release: the bump is the largest any of them asked
+for, and their titles are joined in one `docs/versions.md` row. To release changes that are already on `main` without
+merging another PR, run the workflow by hand (Actions > Auto version > Run workflow) with a bump and a summary line.
 
 Opening the release PR needs the repository setting "Allow GitHub Actions to create and approve pull requests"
 (Settings > Actions > General). Write the feature PR's title as the release summary. Steps 4, 6 and 7 below (release
-repo, wiki, field manual page) are still done by hand. Merge release PRs in order, and pull before branching again.
+repo, wiki, field manual page) are still done by hand. Pull before branching again after a release.
 
-If a run fails half way, check for a leftover `release/vX.Y.Z` branch or PR and a `vX.Y.Z` tag that is not on
-`main`, and delete them before re-running: the workflow refuses to reuse an existing tag.
+If a run fails, read its log: the workflow refuses to reuse an existing `vX.Y.Z` tag, so delete a stray tag that is
+not on `main` before running it again.
 
 ## By hand
 
