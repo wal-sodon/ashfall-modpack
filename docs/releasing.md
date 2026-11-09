@@ -54,6 +54,20 @@ matches the noreply address by account id, so they show up under `wal-sodon`.
    git -c http.postBuffer=524288000 push
    ```
    The larger post buffer is needed: a 2 MB push fails with HTTP 400 without it.
+
+   Keep the README's world compatibility up to date in the same commit:
+   - **Does the release change world generation?** That means new chunks come out differently: the city generator,
+     Lost Cities profiles or building placement, terrain or biomes. Things the salvage pass adds when a chunk is
+     first visited (loot, street props, bicycles, relays, Strongboxes) are not world generation, because it re-runs
+     on chunks visited under older versions.
+   - **If it doesn't:** add the new version to the first row of the "World compatibility" table, give the new
+     entry a `**World generation:** same as ...` line listing the rest of that row, and add the new version to the
+     same line on every other release in that row.
+   - **If it does:** add a new top row to the table naming the change, with only the new version in it, and give
+     the new entry `**World generation:** new in X.Y.Z (...). Not the same as <previous versions>.` A new row
+     starts a new group; later releases join it.
+   - **If it removes a mod or something else an old world relies on,** add a note under the table like the
+     10.3.0 one.
 5. **Source tag and GitHub release.** `main` only takes pull requests: open a PR with the version bump, label it
    `no-release` so the automatic bump skips it, merge it, then tag the merged commit:
    ```
