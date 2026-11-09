@@ -2,15 +2,23 @@ package xyz.toesinthesand.ashfall.salvage.test;
 
 import mcjty.lostcities.LostCities;
 import net.fabricmc.fabric.api.gametest.v1.GameTest;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.MultifaceBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
 import xyz.toesinthesand.ashfall.salvage.city.CityChunk;
 import xyz.toesinthesand.ashfall.salvage.city.LandmarkCensus;
+import xyz.toesinthesand.ashfall.salvage.city.LandmarkCleanup;
 import xyz.toesinthesand.ashfall.salvage.city.Landmarks;
 import xyz.toesinthesand.ashfall.salvage.city.LostCityContext;
 
@@ -108,6 +116,47 @@ public class LandmarkGameTest {
 			}
 			LandmarkCensus warehouse = census(helper, level, "ashfall:kiln_warehouse_00", 4, 3, 2, 2);
 			helper.assertTrue(warehouse.lootTables().getOrDefault("ashfall_cache:kiln_office", 0) == 1, "Kiln & Co. office cache: " + warehouse.lootTables());
+			helper.succeed();
+		});
+	}
+
+	/**
+	 * The cleanup runs on every chunk load, so it may only take cave decoration: a repaired Substation Core glows,
+	 * and it (or a player's torch) must survive the substation being reloaded. The probes are placed, cleaned and
+	 * taken out in one synchronous block, so the census in {@link #substationsAndWarehouse} never sees them.
+	 */
+	@GameTest(maxTicks = 1200)
+	public void cleanupKeepsPlacedLights(GameTestHelper helper) {
+		ServerLevel level = level(helper);
+		generate(helper, level, "ashfall:substation_downtown_00", 7, 0, 2, 2);
+		helper.runAfterDelay(SETTLE_TICKS, () -> {
+			int cx = CX + 7, cz = CZ;
+			CityChunk plan = LostCityContext.chunk(level, cx, cz).orElseThrow();
+			LevelChunk chunk = level.getChunk(cx, cz);
+			int y = plan.groundY() + 2;
+			BlockPos torch = new BlockPos((cx << 4) + 4, y, (cz << 4) + 4);
+			BlockPos lantern = torch.east(2);
+			BlockPos lichen = torch.east(4);
+			BlockPos[] probes = {torch, lantern, lichen};
+			BlockState[] before = new BlockState[probes.length];
+			for (int i = 0; i < probes.length; i++) {
+				before[i] = level.getBlockState(probes[i]);
+			}
+			int flags = Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE;
+			level.setBlock(torch, Blocks.TORCH.defaultBlockState(), flags);
+			level.setBlock(lantern, Blocks.SEA_LANTERN.defaultBlockState(), flags);
+			level.setBlock(lichen, Blocks.GLOW_LICHEN.defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true), flags);
+			int removed = LandmarkCleanup.clean(level, chunk);
+			boolean torchKept = level.getBlockState(torch).is(Blocks.TORCH);
+			boolean lanternKept = level.getBlockState(lantern).is(Blocks.SEA_LANTERN);
+			boolean lichenGone = level.getBlockState(lichen).isAir();
+			for (int i = 0; i < probes.length; i++) {
+				level.setBlock(probes[i], before[i], flags);
+			}
+			helper.assertTrue(torchKept, "LandmarkCleanup removed a placed torch");
+			helper.assertTrue(lanternKept, "LandmarkCleanup removed a placed light block");
+			helper.assertTrue(lichenGone, "LandmarkCleanup left glow lichen");
+			helper.assertTrue(removed == 1, "LandmarkCleanup removed " + removed + " blocks, expected 1");
 			helper.succeed();
 		});
 	}
