@@ -22,6 +22,11 @@ import java.util.Map;
  * {@code forge:chests/wooden} and {@code forge:barrels} block tags pull Lootr containers into OPAC's Chests and
  * Barrels groups (Lootr only tags {@code c:}), and the pack's OPAC server config exempts the {@code #ashfall:claim_usable}
  * item tag (Field Radio, medical items, blasters) from item-use protection in every claim.
+ * <p>
+ * Open safe zones (reclaimed substation compounds, {@code SafeZone#open}) use a second sub-config,
+ * {@link #OPEN_SUB_ID}: the same options plus {@code fullAccess} for everyone, so every survivor has what a Bunker
+ * Core's party has in its claim (building, breaking, item use, entities). OPAC's fluid, piston, fire and explosion
+ * barriers stay on there too.
  * Values are OPAC's exception levels:
  * {@code "N"} nobody, {@code "P"} party, {@code "A"} allies, {@code "E"} everyone.
  */
@@ -31,10 +36,16 @@ public final class SafeZoneClaimOptions {
 	/** Shown by OPAC (map, claim messages) for these chunks. */
 	public static final String NAME = "Ashfall Safe Zone";
 	public static final String EVERYONE = "E";
+	/** Sub-config id for open safe zones. */
+	public static final String OPEN_SUB_ID = "ashfall-compound";
+	/** Shown by OPAC for open safe-zone chunks. */
+	public static final String OPEN_NAME = "Ashfall Reclaimed Compound";
 
 	static final String NAME_OPTION = "playerConfig.claims.name";
 	static final String EXCEPTIONS = "playerConfig.claims.protection.exceptions.";
 	static final String BLOCK_INTERACT = EXCEPTIONS + "groups.block.interact.";
+	/** Everyone counts as the claim's owner: what a Bunker Core's party has in its claim. */
+	static final String FULL_ACCESS = EXCEPTIONS + "fullAccess";
 	/** OPAC's default item group for written and writable books: the Mission Briefing, Relay Logs, survivor notes. */
 	static final String BOOKS = EXCEPTIONS + "groups.item.interact.Books";
 
@@ -65,6 +76,24 @@ public final class SafeZoneClaimOptions {
 		// Pressure plates at the safehouse door.
 		out.put(EXCEPTIONS + "platesByPlayers", EVERYONE);
 		return out;
+	}
+
+	/** The open safe-zone sub-config: {@link #options()} with full access for everyone. */
+	public static Map<String, String> openOptions() {
+		Map<String, String> out = options();
+		out.put(NAME_OPTION, OPEN_NAME);
+		out.put(FULL_ACCESS, EVERYONE);
+		return out;
+	}
+
+	/** The sub-config id for a closed or an open safe zone. */
+	public static String subId(boolean open) {
+		return open ? OPEN_SUB_ID : SUB_ID;
+	}
+
+	/** The options of the sub-config for a closed or an open safe zone. */
+	public static Map<String, String> options(boolean open) {
+		return open ? openOptions() : options();
 	}
 
 	/**

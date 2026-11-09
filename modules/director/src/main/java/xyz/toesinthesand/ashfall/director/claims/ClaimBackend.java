@@ -27,7 +27,7 @@ public interface ClaimBackend {
 		}
 
 		@Override
-		public boolean claim(ServerLevel level, @Nullable UUID owner, int chunkX, int chunkZ) {
+		public boolean claim(ServerLevel level, @Nullable UUID owner, int chunkX, int chunkZ, boolean open) {
 			return false;
 		}
 
@@ -36,7 +36,7 @@ public interface ClaimBackend {
 		}
 
 		@Override
-		public boolean adoptServerClaim(ServerLevel level, int chunkX, int chunkZ) {
+		public boolean adoptServerClaim(ServerLevel level, int chunkX, int chunkZ, boolean open) {
 			return false;
 		}
 
@@ -55,16 +55,18 @@ public interface ClaimBackend {
 	/**
 	 * Claims one chunk for {@code owner}, or as a server claim when {@code owner} is null. Never takes a chunk
 	 * someone else already claimed. Returns true only when this call created the claim, so the caller knows
-	 * which chunks are its own to release later.
+	 * which chunks are its own to release later. {@code open} (server claims only) picks the open safe-zone settings,
+	 * where every player has full access.
 	 */
-	boolean claim(ServerLevel level, @Nullable UUID owner, int chunkX, int chunkZ);
+	boolean claim(ServerLevel level, @Nullable UUID owner, int chunkX, int chunkZ, boolean open);
 
 	/**
-	 * Moves a server claim Ashfall made for a safe zone onto the current safe-zone claim settings, so worlds whose
-	 * safe zones were claimed before those settings existed get them too. Only called for chunks the haven state
-	 * records as ours; returns true when the claim changed.
+	 * Moves a server claim Ashfall made for a safe zone onto the current safe-zone claim settings (the open ones when
+	 * {@code open}), so worlds whose safe zones were claimed before those settings existed, or whose zone became
+	 * open since, get them too. Only called for chunks the haven state records as ours; returns true when the claim
+	 * changed.
 	 */
-	boolean adoptServerClaim(ServerLevel level, int chunkX, int chunkZ);
+	boolean adoptServerClaim(ServerLevel level, int chunkX, int chunkZ, boolean open);
 
 	/** Releases one chunk, but only while it is still claimed by {@code owner} (null = the server). */
 	void unclaim(ServerLevel level, @Nullable UUID owner, int chunkX, int chunkZ);

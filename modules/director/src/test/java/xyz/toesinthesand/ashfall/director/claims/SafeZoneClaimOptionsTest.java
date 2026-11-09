@@ -44,8 +44,27 @@ class SafeZoneClaimOptionsTest {
 
 	@Test
 	void subConfigIdIsOneOpacAccepts() {
-		assertTrue(SafeZoneClaimOptions.SUB_ID.matches("[a-zA-Z0-9_-]+"));
-		assertTrue(SafeZoneClaimOptions.SUB_ID.length() <= 32);
+		for (String id : new String[]{SafeZoneClaimOptions.SUB_ID, SafeZoneClaimOptions.OPEN_SUB_ID}) {
+			assertTrue(id.matches("[a-zA-Z0-9_-]+"), id);
+			assertTrue(id.length() <= 32, id);
+		}
+		assertFalse(SafeZoneClaimOptions.SUB_ID.equals(SafeZoneClaimOptions.OPEN_SUB_ID));
+	}
+
+	/** Reclaimed compounds: everyone gets the full access a Bunker Core's party has, on top of the shelter options. */
+	@Test
+	void openZonesGiveEveryoneFullAccess() {
+		Map<String, String> open = SafeZoneClaimOptions.options(true);
+		assertEquals("E", open.get("playerConfig.claims.protection.exceptions.fullAccess"));
+		assertEquals(SafeZoneClaimOptions.OPEN_NAME, open.get("playerConfig.claims.name"));
+		for (Map.Entry<String, String> e : SafeZoneClaimOptions.options().entrySet()) {
+			if (!e.getKey().equals("playerConfig.claims.name")) {
+				assertEquals(e.getValue(), open.get(e.getKey()), e.getKey());
+			}
+		}
+		assertEquals(SafeZoneClaimOptions.options(), SafeZoneClaimOptions.options(false));
+		assertEquals(SafeZoneClaimOptions.OPEN_SUB_ID, SafeZoneClaimOptions.subId(true));
+		assertEquals(SafeZoneClaimOptions.SUB_ID, SafeZoneClaimOptions.subId(false));
 	}
 
 	@Test

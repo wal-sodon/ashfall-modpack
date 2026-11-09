@@ -18,19 +18,36 @@ import java.util.Optional;
  * the Montford safehouse, whose exact floor height depends on Lost Cities' terrain: on an Ashfall world the
  * world spawn is already the safehouse's front hall ({@code CitySpawn}), so pointing at it is exact on every
  * seed. Without either, players respawn on the surface at the area's centre.
+ * <p>
+ * {@code open}: the zone is also a home anyone may use like their own Bunker Core claim. Every player gets full
+ * claim access (building, breaking, item use, entities), beds work, and Rain Collectors can be placed. Zombies
+ * still break nothing and nothing spawns. Reclaimed substation compounds are open; the safehouse is not.
  *
  * @param landmark the Lost Cities landmark the zone wraps, informational (lets {@code list} say what it is)
+ * @param open     whether players may build and live here as in a Bunker Core claim
  */
 public record SafeZone(String name, ResourceKey<Level> dimension, ChunkArea area, Optional<BlockPos> respawn,
-					   boolean useWorldSpawn, Optional<String> landmark) {
+					   boolean useWorldSpawn, Optional<String> landmark, boolean open) {
 	public static final Codec<SafeZone> CODEC = RecordCodecBuilder.create(i -> i.group(
 			Codec.STRING.fieldOf("name").forGetter(SafeZone::name),
 			Level.RESOURCE_KEY_CODEC.optionalFieldOf("dimension", Level.OVERWORLD).forGetter(SafeZone::dimension),
 			ChunkArea.CODEC.fieldOf("area").forGetter(SafeZone::area),
 			BlockPos.CODEC.optionalFieldOf("respawn").forGetter(SafeZone::respawn),
 			Codec.BOOL.optionalFieldOf("use_world_spawn", false).forGetter(SafeZone::useWorldSpawn),
-			Codec.STRING.optionalFieldOf("landmark").forGetter(SafeZone::landmark)
+			Codec.STRING.optionalFieldOf("landmark").forGetter(SafeZone::landmark),
+			Codec.BOOL.optionalFieldOf("open", false).forGetter(SafeZone::open)
 	).apply(i, SafeZone::new));
+
+	/** A closed zone (the safehouse kind): shelter only, nobody builds. */
+	public SafeZone(String name, ResourceKey<Level> dimension, ChunkArea area, Optional<BlockPos> respawn,
+					boolean useWorldSpawn, Optional<String> landmark) {
+		this(name, dimension, area, respawn, useWorldSpawn, landmark, false);
+	}
+
+	/** This zone with {@link #open} set. */
+	public SafeZone withOpen(boolean value) {
+		return new SafeZone(name, dimension, area, respawn, useWorldSpawn, landmark, value);
+	}
 
 	public boolean contains(ResourceKey<Level> dim, BlockPos pos) {
 		return dimension.equals(dim) && area.contains(pos.getX(), pos.getZ());

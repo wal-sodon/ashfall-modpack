@@ -60,12 +60,17 @@ public final class Claims {
 	 * returns the packed chunk positions this call actually claimed. Empty without a claims mod.
 	 */
 	public static List<Long> claimArea(ServerLevel level, @Nullable UUID owner, ChunkArea area) {
+		return claimArea(level, owner, area, false);
+	}
+
+	/** {@link #claimArea(ServerLevel, UUID, ChunkArea)}, with server claims on the open safe-zone settings when {@code open}. */
+	public static List<Long> claimArea(ServerLevel level, @Nullable UUID owner, ChunkArea area, boolean open) {
 		List<Long> claimed = new ArrayList<>();
 		if (!claimsModPresent()) {
 			return claimed;
 		}
 		for (long chunk : area.chunks()) {
-			if (backend().claim(level, owner, ChunkPos.unpack(chunk).x(), ChunkPos.unpack(chunk).z())) {
+			if (backend().claim(level, owner, ChunkPos.unpack(chunk).x(), ChunkPos.unpack(chunk).z(), open)) {
 				claimed.add(chunk);
 			}
 		}
@@ -76,14 +81,14 @@ public final class Claims {
 	 * Moves server claims earlier returned by {@link #claimArea} onto the safe-zone claim settings (see
 	 * {@link ClaimBackend#adoptServerClaim}). @return how many changed
 	 */
-	public static int adoptServerClaims(ServerLevel level, List<Long> chunks) {
+	public static int adoptServerClaims(ServerLevel level, List<Long> chunks, boolean open) {
 		if (!claimsModPresent()) {
 			return 0;
 		}
 		int changed = 0;
 		for (long chunk : chunks) {
 			ChunkPos pos = ChunkPos.unpack(chunk);
-			if (backend().adoptServerClaim(level, pos.x(), pos.z())) {
+			if (backend().adoptServerClaim(level, pos.x(), pos.z(), open)) {
 				changed++;
 			}
 		}

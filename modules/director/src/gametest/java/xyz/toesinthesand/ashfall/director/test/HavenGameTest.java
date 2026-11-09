@@ -233,6 +233,41 @@ public class HavenGameTest {
 		helper.succeed();
 	}
 
+	/**
+	 * An open safe zone (a reclaimed compound) is a home for everyone: beds work there without a Bunker Core, while
+	 * it stays a safe zone (no spawns, zombies break nothing). A closed one (the safehouse kind) refuses the bed.
+	 */
+	@GameTest(maxTicks = 40)
+	public void openSafeZoneWorksLikeABunkerClaim(GameTestHelper helper) {
+		BlockPos pos = darkRoom(helper);
+		helper.runAfterDelay(10, () -> {
+			ServerLevel level = helper.getLevel();
+			ServerPlayer player = mockPlayer(level);
+			HavenState state = HavenState.get(level.getServer());
+			SafeZone closed = new SafeZone("Gametest", Level.OVERWORLD, ChunkArea.around(pos.getX(), pos.getZ(), 0),
+					Optional.of(pos), false, Optional.empty());
+			try {
+				state.putCustomZone(TEMP_ZONE, closed);
+				Havens.rebuild(level.getServer());
+				helper.assertFalse(Havens.inOpenZone(level, pos), "a closed zone counts as open");
+				helper.assertTrue(BunkerBeds.problem(player, pos) != null, "a bed in a closed safe zone works");
+				state.putCustomZone(TEMP_ZONE, closed.withOpen(true));
+				Havens.rebuild(level.getServer());
+				helper.assertTrue(Havens.inOpenZone(level, pos), "the open zone is not open");
+				helper.assertFalse(Havens.inBunker(level, pos), "an open zone counts as a Bunker Core area");
+				helper.assertTrue(BunkerBeds.problem(player, pos) == null, "a bed in an open safe zone refuses");
+				helper.assertValueEqual(SpawnDirector.check(level, pos), SpawnDirector.Verdict.CLAIM, "verdict in an open safe zone");
+				helper.assertFalse(Fortified.mayBreak(level, pos, Blocks.OAK_PLANKS.defaultBlockState(), EntityTypes.ZOMBIE),
+						"zombies may break blocks in an open safe zone");
+			} finally {
+				state.removeCustomZone(TEMP_ZONE);
+				Havens.rebuild(level.getServer());
+				level.getServer().getPlayerList().remove(player);
+			}
+			helper.succeed();
+		});
+	}
+
 	private static ServerPlayer mockPlayer(ServerLevel level) {
 		CommonListenerCookie cookie = CommonListenerCookie.createInitial(new GameProfile(UUID.randomUUID(), "haven-mock"), false);
 		ServerPlayer player = new ServerPlayer(level.getServer(), level, cookie.gameProfile(), cookie.clientInformation()) {

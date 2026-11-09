@@ -1,5 +1,6 @@
 package xyz.toesinthesand.ashfall.arms.grid;
 
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -7,6 +8,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -22,6 +24,7 @@ import xyz.toesinthesand.ashfall.director.haven.HavenState;
 import xyz.toesinthesand.ashfall.director.haven.Havens;
 import xyz.toesinthesand.ashfall.director.haven.SafeZone;
 
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -30,7 +33,9 @@ import java.util.Optional;
  * <ul>
  * <li>The substation compound becomes a safe zone, through the Director's haven regions (and an OPAC server claim
  * when OPAC is present). Only the compound: the rest of the district keeps spawning, at the reduced darkness
- * weight {@link GridPower} applies, because a lit district must never be a free safe zone.</li>
+ * weight {@link GridPower} applies, because a lit district must never be a free safe zone. The zone is
+ * {@linkplain SafeZone#open open}: every player may build, break, sleep and set up there as in their own Bunker
+ * Core claim.</li>
  * <li>A per-player reward cache at the core: a chest with an {@code ashfall_cache:} table, which Lootr turns into
  * a per-player chest.</li>
  * <li>District extras from the settings: Mission unseals Patient Zero's deep ward; River Arts starts the city
@@ -54,11 +59,35 @@ public final class GridReclaim {
 				AshfallArms.LOGGER.info("Grid: {} {}, {} grid lamps went dark in loaded chunks", id, to.id(), darkened);
 			}
 		});
+		ServerLifecycleEvents.SERVER_STARTED.register(GridReclaim::openCompounds);
 	}
+
+	/**
+	 * Compounds reclaimed before compounds were open are saved as closed safe zones; reopens them. Refreshes the
+	 * havens itself (which moves their OPAC claims to the open settings), since the Director's own refresh on
+	 * start may already have run. @return how many changed
+	 */
+	public static int openCompounds(MinecraftServer server) {
+		HavenState havens = HavenState.get(server);
+		int changed = 0;
+		for (Map.Entry<String, SafeZone> e : Map.copyOf(havens.customZones()).entrySet()) {
+			if (e.getKey().startsWith(COMPOUND_PREFIX) && !e.getValue().open()) {
+				havens.putCustomZone(e.getKey(), e.getValue().withOpen(true));
+				changed++;
+			}
+		}
+		if (changed > 0) {
+			Havens.refresh(server);
+			AshfallArms.LOGGER.info("Grid: opened {} reclaimed compounds to building", changed);
+		}
+		return changed;
+	}
+
+	private static final String COMPOUND_PREFIX = "ashfall:grid_";
 
 	/** The safe-zone id of a district's substation compound. */
 	public static String compoundZoneId(String district) {
-		return "ashfall:grid_" + district;
+		return COMPOUND_PREFIX + district;
 	}
 
 	static void onReclaimed(ServerLevel level, String id) {
@@ -71,7 +100,7 @@ public final class GridReclaim {
 			BlockPos core = BlockPos.of(r.corePos);
 			SafeZone zone = new SafeZone(Component.translatable("safezone.ashfall.grid_compound", GridDistricts.name(id)).getString(),
 					Level.OVERWORLD, ChunkArea.around(core.getX(), core.getZ(), settings.reclaimed().compoundRadiusChunks()),
-					Optional.empty(), false, Optional.of("ashfall:substation_" + id));
+					Optional.empty(), false, Optional.of("ashfall:substation_" + id), true);
 			HavenState.get(level.getServer()).putCustomZone(compoundZoneId(id), zone);
 			Havens.refresh(level.getServer());
 			if (!r.rewarded && placeRewardCache(level, core, settings.rewardTable(id)) != null) {
