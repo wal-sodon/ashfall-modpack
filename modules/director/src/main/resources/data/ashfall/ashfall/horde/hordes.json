@@ -13,5 +13,10 @@
 		"radius": 10.0,
 		"interval_ticks": 40,
 		"min_step": 3.0
+	},
+	"break_in": {
+		"enabled": true,
+		"radius": 48.0,
+		"stuck_ticks": 60
 	}
 }

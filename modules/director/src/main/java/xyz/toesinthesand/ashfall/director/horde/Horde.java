@@ -1,5 +1,6 @@
 package xyz.toesinthesand.ashfall.director.horde;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
@@ -20,6 +21,8 @@ public final class Horde {
 	private long destinationUntil;
 	/** A horde-night horde is sent after this player (their haven or themselves); null for a horde that formed by itself. */
 	private @Nullable UUID chase;
+	/** The Bunker Core this horde is breaking in toward, refreshed on every horde update ({@link Hordes#besiegedCore}). */
+	private @Nullable BlockPos besieging;
 
 	Horde(int id, UUID leader) {
 		this.id = id;
@@ -78,5 +81,13 @@ public final class Horde {
 
 	public void setChase(@Nullable UUID chase) {
 		this.chase = chase;
+	}
+
+	public @Nullable BlockPos besieging() {
+		return besieging;
+	}
+
+	public void setBesieging(@Nullable BlockPos core) {
+		this.besieging = core;
 	}
 }

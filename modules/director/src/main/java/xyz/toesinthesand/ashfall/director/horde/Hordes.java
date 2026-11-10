@@ -70,7 +70,10 @@ public final class Hordes {
 				update(server.overworld());
 			}
 		});
-		ServerLifecycleEvents.SERVER_STOPPED.register(server -> clear());
+		ServerLifecycleEvents.SERVER_STOPPED.register(server -> {
+			clear();
+			CoreBreakIn.clear();
+		});
 		ServerEntityEvents.ENTITY_LOAD.register((entity, level) -> {
 			if (level.dimension() == Level.OVERWORLD && entity instanceof Zombie zombie && eligible(zombie)) {
 				attachGoal(zombie);
@@ -168,6 +171,7 @@ public final class Hordes {
 		merge(settings);
 		for (Horde horde : HORDES.values()) {
 			steer(level, horde, settings);
+			horde.setBesieging(settings.breakIn().enabled() ? besiegedCore(level, horde) : null);
 		}
 	}
 
@@ -371,6 +375,25 @@ public final class Hordes {
 	 * Where a horde sent after {@code player} goes: their Bunker Core if they are within {@code havenRadius} of it
 	 * (the horde comes for the haven they hide in), else the player. Null if the player is not in this level.
 	 */
+	/**
+	 * The Bunker Core {@code horde} is besieging, or null: a horde-night horde whose destination is the core of the
+	 * player it was sent after (that player is within the haven radius of it, see {@link #chaseTarget}). A horde
+	 * following a noise, chasing a player away from home, or sent after a player with no core gets null and moves
+	 * as it always has.
+	 */
+	public static @Nullable BlockPos besiegedCore(ServerLevel level, Horde horde) {
+		UUID chase = horde.chase();
+		Vec3 dest = horde.destination();
+		if (chase == null || dest == null) {
+			return null;
+		}
+		BunkerCoreRecord core = BunkerCores.forPlayer(level.getServer(), chase).orElse(null);
+		if (core == null || core.dimension() != level.dimension()) {
+			return null;
+		}
+		return Vec3.atBottomCenterOf(core.pos()).distanceToSqr(dest) < 0.01 ? core.pos() : null;
+	}
+
 	public static @Nullable Vec3 chaseTarget(ServerLevel level, UUID player, int havenRadius) {
 		if (!(level.getPlayerByUUID(player) instanceof ServerPlayer p) || !p.isAlive() || p.isSpectator()) {
 			return null;
