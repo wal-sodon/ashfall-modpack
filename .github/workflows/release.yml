@@ -1,8 +1,8 @@
 name: Release
 
 # Builds the pack for a vX.Y.Z tag and attaches Ashfall-X.Y.Z.mrpack to the GitHub release, creating the release
-# (notes from the docs/versions.md row) or replacing the file on an existing one. Runs on a tag pushed by hand, or
-# is called by auto-version.yml after a merged pull request (a tag pushed by a workflow starts no other workflow).
+# (notes from the docs/versions.md row) or replacing the file on an existing one. Runs on a tag pushed by hand or by
+# auto-version.yml (which pushes with RELEASE_TOKEN, so its tag starts this workflow), or when called directly.
 on:
   push:
     tags: ['v*.*.*']

@@ -3,22 +3,24 @@
 ## Automatic (merged pull requests)
 
 Merging a pull request into `main` releases it (`.github/workflows/auto-version.yml`). Label the PR `major` or
-`minor` to pick the bump; with neither it is a patch, and `no-release` skips it (docs-only changes, for example). The
-workflow bumps `version=` in `gradle.properties`, the "Written for Ashfall X.Y.Z" line and adds a `docs/versions.md`
-row from the PR title. `main` is protected (changes only through pull requests), and the bot never merges anything:
+`minor` to pick the bump; with neither it is a patch, and `no-release` skips it (docs-only changes, for example).
+There is only the one PR: when you merge it, the bot
 
-1. When a PR is merged, the bot rebuilds the branch `release/next` from `main` with the next version and opens a
-   "Release vX.Y.Z" PR (labelled `no-release`), or updates the one already open.
-2. You review that PR and merge it yourself.
-3. Its merge makes the bot tag the merged commit `vX.Y.Z`, build the GitHub release and delete `release/next`.
+1. bumps `version=` in `gradle.properties` and the "Written for Ashfall X.Y.Z" line, and adds a `docs/versions.md`
+   row from the PR title;
+2. commits that straight to `main` as "Release vX.Y.Z (...)" and tags it `vX.Y.Z`;
+3. the tag starts `.github/workflows/release.yml`, which builds the pack and creates the GitHub release.
 
-PRs merged while a release PR is still open all go into that one release: the bump is the largest any of them asked
-for, and their titles are joined in one `docs/versions.md` row. To release changes that are already on `main` without
-merging another PR, run the workflow by hand (Actions > Auto version > Run workflow) with a bump and a summary line.
+The bot never merges or approves anything. `main` is protected (changes only through pull requests), so the bot
+pushes with the repository secret `RELEASE_TOKEN`: a personal access token of a repository admin with Contents
+read/write. The protection does not apply to admins ("Do not allow bypassing the above settings" stays off), and a
+push made with that token, unlike the built-in one, starts other workflows. When the token expires, make a new one
+and replace the secret (Settings > Secrets and variables > Actions).
 
-Opening the release PR needs the repository setting "Allow GitHub Actions to create and approve pull requests"
-(Settings > Actions > General). Write the feature PR's title as the release summary. Steps 4, 6 and 7 below (release
-repo, wiki, field manual page) are still done by hand. Pull before branching again after a release.
+Each merged PR is its own release. To release changes that are already on `main` without merging another PR, run
+the workflow by hand (Actions > Auto version > Run workflow) with a bump and a summary line. Write the feature PR's
+title as the release summary. Steps 4, 6 and 7 below (release repo, wiki, field manual page) are still done by hand.
+Pull before branching again after a release.
 
 If a run fails, read its log: the workflow refuses to reuse an existing `vX.Y.Z` tag, so delete a stray tag that is
 not on `main` before running it again.
@@ -68,8 +70,8 @@ matches the noreply address by account id, so they show up under `wal-sodon`.
      starts a new group; later releases join it.
    - **If it removes a mod or something else an old world relies on,** add a note under the table like the
      10.3.0 one.
-5. **Source tag and GitHub release.** `main` only takes pull requests: open a PR with the version bump, label it
-   `no-release` so the automatic bump skips it, merge it, then tag the merged commit:
+5. **Source tag and GitHub release.** `main` only takes pull requests (admins can push): open a PR with the version
+   bump, label it `no-release` so the automatic bump skips it, merge it, then tag the merged commit:
    ```
    git switch main && git pull && git tag vX.Y.Z && git push origin vX.Y.Z
    ```
