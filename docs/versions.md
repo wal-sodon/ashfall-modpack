@@ -15,6 +15,7 @@ release is tagged `vX.Y.Z` on `wal-sodon/ashfall-modpack` and gets a GitHub rele
 
 | Version | Class | What changed |
 |---|---|---|
+| 1.2.0 | minor | Let horde-night waves break into a sealed bunker toward its core (#12) |
 | 1.1.0 | minor | Use one rolling release PR so several merges before a release work (#7); Build, sleep and set up in reclaimed substation compounds (#4, minor); fix: repaired Substation Cores no longer vanish when their chunk reloads (#2, patch); fix: zombies can hurt survivors and pets inside claims (#5, patch) |
 | 1.0.0 | first | Numbering restarts with the move to `wal-sodon/ashfall-modpack`. Same gameplay as 10.3.1 below |
 
