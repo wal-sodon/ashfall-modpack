@@ -1,5 +1,7 @@
 package xyz.toesinthesand.ashfall.director.horde;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.pathfinder.Path;
@@ -15,6 +17,9 @@ import java.util.EnumSet;
  * <p>
  * It never runs while the zombie has a target, so the attack goal always wins, and a follower inside the leash is
  * left to its own senses ({@code SenseGoal}), which spreads a horde out naturally instead of marching in file.
+ * <p>
+ * A horde besieging a Bunker Core ({@link Horde#besieging}) is different: every member walks to the core, and one
+ * that has stood stuck long enough near it, with no target, breaks its way in ({@link CoreBreakIn}).
  */
 public class HordeGoal extends Goal {
 	/** Followers hurry a little to catch up with their leader. */
@@ -37,9 +42,18 @@ public class HordeGoal extends Goal {
 	 */
 	private static final int MAX_DONE_REPATH_TICKS = 80;
 
+	/** Ticks between stuck checks while besieging a core. */
+	private static final int STUCK_SAMPLE_TICKS = 20;
+	/** Moving less than this (squared) between two stuck checks counts as standing still. */
+	private static final double STUCK_MOVE_SQR = 0.5 * 0.5;
+
 	private final Mob mob;
 	private int ticks;
 	private int doneRepathTicks = DONE_REPATH_TICKS;
+	private @Nullable Vec3 stuckSample;
+	private int sampleTicks;
+	private int stuckTicks;
+	private CoreBreakIn.@Nullable Breaker breaker;
 
 	public HordeGoal(Mob mob) {
 		this.mob = mob;
@@ -61,6 +75,7 @@ public class HordeGoal extends Goal {
 	public void start() {
 		ticks = 0;
 		doneRepathTicks = DONE_REPATH_TICKS;
+		resetStuck();
 		path();
 	}
 
@@ -83,6 +98,49 @@ public class HordeGoal extends Goal {
 			ticks = 0;
 			path();
 		}
+		breakIn();
+	}
+
+	/**
+	 * While besieging a core: counts how long this zombie has stood still short of the core, and once that passes
+	 * {@code stuck_ticks} within {@code radius} of it, hits the block in its way every goal tick (the breaker's own
+	 * cooldown spaces the hits). A step taken starts the count again. Standing still is the test rather than the
+	 * path's own verdict, because a path through a closed door counts as reaching.
+	 */
+	private void breakIn() {
+		Horde horde = Hordes.hordeOf(mob);
+		BlockPos core = horde != null ? horde.besieging() : null;
+		if (core == null || !(mob.level() instanceof ServerLevel level)) {
+			resetStuck();
+			return;
+		}
+		HordeSettings.BreakIn settings = HordeSettings.get().breakIn();
+		sampleTicks += 2;
+		if (sampleTicks >= STUCK_SAMPLE_TICKS) {
+			Vec3 here = mob.position();
+			boolean still = stuckSample != null && stuckSample.distanceToSqr(here) < STUCK_MOVE_SQR;
+			stuckTicks = still ? stuckTicks + sampleTicks : 0;
+			stuckSample = here;
+			sampleTicks = 0;
+		}
+		double dx = core.getX() + 0.5 - mob.getX();
+		double dz = core.getZ() + 0.5 - mob.getZ();
+		if (stuckTicks < settings.stuckTicks() || dx * dx + dz * dz > settings.radius() * settings.radius()) {
+			return;
+		}
+		BlockPos block = CoreBreakIn.blockToBreak(level, mob, core);
+		if (block != null) {
+			if (breaker == null) {
+				breaker = CoreBreakIn.breakerFor(mob);
+			}
+			breaker.hit(block);
+		}
+	}
+
+	private void resetStuck() {
+		stuckSample = null;
+		sampleTicks = 0;
+		stuckTicks = 0;
 	}
 
 	private void path() {
@@ -97,8 +155,9 @@ public class HordeGoal extends Goal {
 	}
 
 	/**
-	 * Where this member should be walking, or null when it is free: the destination for a leader not yet there, the
-	 * leader's position for a follower further than {@code leashFactor} x the leash.
+	 * Where this member should be walking, or null when it is free: the destination for a leader not yet there (for
+	 * every member while the horde besieges a core), the leader's position for a follower further than
+	 * {@code leashFactor} x the leash.
 	 */
 	private @Nullable Vec3 wanted(double leashFactor) {
 		Horde horde = Hordes.hordeOf(mob);
@@ -106,7 +165,7 @@ public class HordeGoal extends Goal {
 			return null;
 		}
 		HordeSettings settings = HordeSettings.get();
-		if (horde.isLeader(mob.getUUID())) {
+		if (horde.isLeader(mob.getUUID()) || horde.besieging() != null) {
 			Vec3 dest = horde.destination();
 			if (dest == null) {
 				return null;

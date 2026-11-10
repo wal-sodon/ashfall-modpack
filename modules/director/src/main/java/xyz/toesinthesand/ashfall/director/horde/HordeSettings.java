@@ -26,9 +26,23 @@ import java.util.Map;
  * @param leash          a follower further than this from its leader walks back to it
  * @param arriveRadius   a leader this close to the horde's destination has arrived
  * @param blood          blood trails
+ * @param breakIn        horde-night waves breaking in toward a Bunker Core they can't reach
  */
 public record HordeSettings(int updateTicks, double groupRadius, int minGroup, double mergeRadius, int maxSize,
-		double stimulusScale, double leash, double arriveRadius, Blood blood) {
+		double stimulusScale, double leash, double arriveRadius, Blood blood, BreakIn breakIn) {
+
+	/**
+	 * Break-in: a horde-night zombie heading for a Bunker Core, with no target, that has stood stuck for
+	 * {@code stuckTicks} within {@code radius} blocks (horizontally) of the core breaks the block in its way toward it.
+	 */
+	public record BreakIn(boolean enabled, double radius, int stuckTicks) {
+		public static final BreakIn DEFAULT = new BreakIn(true, 48.0, 60);
+		public static final Codec<BreakIn> CODEC = RecordCodecBuilder.create(i -> i.group(
+				Codec.BOOL.optionalFieldOf("enabled", DEFAULT.enabled).forGetter(BreakIn::enabled),
+				Codec.doubleRange(4.0, 128.0).optionalFieldOf("radius", DEFAULT.radius).forGetter(BreakIn::radius),
+				Codec.intRange(20, 1200).optionalFieldOf("stuck_ticks", DEFAULT.stuckTicks).forGetter(BreakIn::stuckTicks)
+		).apply(i, BreakIn::new));
+	}
 
 	/**
 	 * Blood trails: a player at or below {@code healthFraction} of their health leaves a BLOOD stimulus of
@@ -45,7 +59,8 @@ public record HordeSettings(int updateTicks, double groupRadius, int minGroup, d
 		).apply(i, Blood::new));
 	}
 
-	public static final HordeSettings DEFAULT = new HordeSettings(40, 8.0, 3, 16.0, 40, 2.0, 10.0, 4.0, Blood.DEFAULT);
+	public static final HordeSettings DEFAULT = new HordeSettings(40, 8.0, 3, 16.0, 40, 2.0, 10.0, 4.0, Blood.DEFAULT,
+			BreakIn.DEFAULT);
 
 	public static final Codec<HordeSettings> CODEC = RecordCodecBuilder.create(i -> i.group(
 			Codec.intRange(10, 1200).optionalFieldOf("update_ticks", DEFAULT.updateTicks).forGetter(HordeSettings::updateTicks),
@@ -56,7 +71,8 @@ public record HordeSettings(int updateTicks, double groupRadius, int minGroup, d
 			Codec.doubleRange(1.0, 6.0).optionalFieldOf("stimulus_scale", DEFAULT.stimulusScale).forGetter(HordeSettings::stimulusScale),
 			Codec.doubleRange(2.0, 64.0).optionalFieldOf("leash", DEFAULT.leash).forGetter(HordeSettings::leash),
 			Codec.doubleRange(1.0, 32.0).optionalFieldOf("arrive_radius", DEFAULT.arriveRadius).forGetter(HordeSettings::arriveRadius),
-			Blood.CODEC.optionalFieldOf("blood", Blood.DEFAULT).forGetter(HordeSettings::blood)
+			Blood.CODEC.optionalFieldOf("blood", Blood.DEFAULT).forGetter(HordeSettings::blood),
+			BreakIn.CODEC.optionalFieldOf("break_in", BreakIn.DEFAULT).forGetter(HordeSettings::breakIn)
 	).apply(i, HordeSettings::new));
 
 	private static volatile HordeSettings current = DEFAULT;

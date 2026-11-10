@@ -333,6 +333,10 @@ Your home base. Recipe: 4 Alloy Plate, 4 Scrap Metal and an Energy Cell, so no i
 - The claim doesn't shield survivors or pets: zombies that get inside can hurt them and infect survivors, so
   wall them in on horde nights.
 - **Hordes still break plain blocks inside the claim.** Fortified blocks hold for a while, so wall with them and repair them.
+- **Sealing yourself in doesn't stop a horde night.** A wave sent at your core that finds no way in stands at your
+  wall for a few seconds and then **breaks through toward the core**, even if it never sees anyone. Once a zombie sees
+  you or a survivor, it goes for them instead. Zombies can't place blocks inside the claim, so they come through your
+  walls, not over them.
 - **One core per party**, or per player if you are not in a party. Breaking the core releases the claim.
 - The core itself is fortified, blast resistant and can't be pushed by pistons.
 - Horde-night waves aim for your core if you are within 96 blocks of it (see [section 8](#8-horde-nights-dynamic-hordes-and-breaches)).
@@ -513,7 +517,9 @@ items drop where you died, as with any other death. Go back for them before the 
   zombies.
 - **Waves:** from nightfall, waves arrive one after another. Each wave spawns as one group **40-64 blocks** from
   your Bunker Core if you are within 96 blocks of it, otherwise from you. It spawns out of sight and outside
-  claims, then comes for your haven, or for you.
+  claims, then comes for your haven, or for you. A wave heading for your core breaks through any wall in its way
+  (see [section 6](#6-havens-the-bunker-core-safe-zones-and-respawning)). If you have no core, or are more than 96
+  blocks from it, the wave hunts you as before.
 - **Tier = the higher of your day tier and your Grid tier.** Day tiers start on days 1, 14, 28, 45, 65 and 90
   (tiers I-VI). The Grid tier is 1 plus the number of reclaimed districts. **Relighting the city makes horde
   nights harder.**
@@ -532,7 +538,8 @@ items drop where you died, as with any other death. Go back for them before the 
 - **Special infected** can take a wave member's place once they have unlocked.
 - Horde zombies carry extra loot: cloth, scrap, duct tape, bandages, food, and rarely antibiotics.
 
-**Defending:** fortified walls and doors around a lit, curtained core room; a choke point; overheat discipline
+**Defending:** fortified walls and doors around a lit, curtained core room (a sealed base still gets broken into, so
+layer the walls and repair between waves); a choke point; overheat discipline
 (swap blasters rather than locking one). The Pulse Carbine and Storm Repeater are made for this.
 
 ### Dynamic hordes

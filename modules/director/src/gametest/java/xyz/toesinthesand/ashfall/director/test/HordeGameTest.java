@@ -19,6 +19,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
+import xyz.toesinthesand.ashfall.director.haven.BunkerCores;
+import xyz.toesinthesand.ashfall.director.haven.HavenBlocks;
+import xyz.toesinthesand.ashfall.director.horde.CoreBreakIn;
 import xyz.toesinthesand.ashfall.director.horde.Horde;
 import xyz.toesinthesand.ashfall.director.horde.HordeSettings;
 import xyz.toesinthesand.ashfall.director.horde.Hordes;
@@ -78,7 +81,7 @@ public class HordeGameTest {
 		try {
 			// first with merging out of reach: two hordes of three
 			HordeSettings.setForTesting(new HordeSettings(d.updateTicks(), 8.0, 3, 1.0, 40, d.stimulusScale(), d.leash(),
-					d.arriveRadius(), d.blood()));
+					d.arriveRadius(), d.blood(), d.breakIn()));
 			Hordes.update(level);
 			Horde ha = Hordes.hordeOf(a.getFirst());
 			Horde hb = Hordes.hordeOf(b.getFirst());
@@ -91,7 +94,7 @@ public class HordeGameTest {
 			}
 			// then with the real merge radius (16): the leaders are close enough to merge
 			HordeSettings.setForTesting(new HordeSettings(d.updateTicks(), 8.0, 3, 16.0, 40, d.stimulusScale(), d.leash(),
-					d.arriveRadius(), d.blood()));
+					d.arriveRadius(), d.blood(), d.breakIn()));
 			Hordes.update(level);
 			Horde merged = Hordes.hordeOf(a.getFirst());
 			helper.assertTrue(merged != null && merged == Hordes.hordeOf(b.getFirst()), "the two hordes merged");
@@ -233,6 +236,98 @@ public class HordeGameTest {
 				helper.setBlock(x, y, 3, Blocks.STONE_BRICKS);
 			}
 		}
+	}
+
+	/**
+	 * The block a stuck horde zombie breaks on its way to a core: the one ahead toward it at its feet, then its head,
+	 * nothing when the way is clear, and the floor when the core is buried below.
+	 */
+	@GameTest(padding = PADDING)
+	public void breakInPicksTheBlockTowardTheCore(GameTestHelper helper) {
+		floor(helper);
+		ServerLevel level = helper.getLevel();
+		Zombie zombie = walker(helper, 1, 3);
+		try {
+			Vec3 at = helper.absoluteVec(new Vec3(1.5, 1, 3.5));
+			zombie.snapTo(at.x, at.y, at.z, 0f, 0f);
+			BlockPos core = helper.absolutePos(new BlockPos(6, 1, 4));
+			helper.setBlock(2, 1, 3, Blocks.STONE);
+			helper.setBlock(2, 2, 3, Blocks.STONE);
+			helper.assertValueEqual(CoreBreakIn.blockToBreak(level, zombie, core), helper.absolutePos(new BlockPos(2, 1, 3)),
+					"the wall at its feet, along the longer axis");
+			helper.setBlock(2, 1, 3, Blocks.AIR);
+			helper.assertValueEqual(CoreBreakIn.blockToBreak(level, zombie, core), helper.absolutePos(new BlockPos(2, 2, 3)),
+					"then the wall at head height");
+			helper.setBlock(2, 2, 3, Blocks.AIR);
+			helper.assertTrue(CoreBreakIn.blockToBreak(level, zombie, core) == null, "nothing to break when the way is clear");
+			BlockPos buried = helper.absolutePos(new BlockPos(1, -3, 3));
+			helper.assertValueEqual(CoreBreakIn.blockToBreak(level, zombie, buried), helper.absolutePos(new BlockPos(1, 0, 3)),
+					"digs down to a buried core");
+			helper.setBlock(2, 1, 3, Blocks.STONE);
+			helper.assertTrue(CoreBreakIn.blockToBreak(level, zombie, helper.absolutePos(new BlockPos(2, 1, 3))) == null,
+					"never the core itself");
+			helper.setBlock(2, 1, 3, Blocks.AIR);
+		} finally {
+			zombie.discard();
+		}
+		helper.succeed();
+	}
+
+	/**
+	 * A horde-night zombie sent after a player sealed in with their Bunker Core, with nothing in sight to target,
+	 * breaks through the wall between it and the core. The same horde sent after a player with no core is not
+	 * besieging anything and moves as before. The breaker is swapped for one that breaks at once, because the
+	 * gametest server runs without Zombies Break &amp; Build.
+	 */
+	@GameTest(maxTicks = 400, padding = PADDING)
+	public void aHordeBreaksInTowardItsPlayersCore(GameTestHelper helper) {
+		floor(helper);
+		ServerLevel level = helper.getLevel();
+		ServerPlayer player = mockPlayer(level);
+		BlockPos coreRel = new BlockPos(6, 1, 3);
+		BlockPos core = helper.absolutePos(coreRel);
+		// a wall three high across the floor at x 3, and the player sealed in a stone cell at (6, 1, 6)
+		for (int z = 0; z < 8; z++) {
+			for (int y = 1; y <= 3; y++) {
+				helper.setBlock(3, y, z, Blocks.STONE);
+			}
+		}
+		for (BlockPos side : List.of(new BlockPos(5, 1, 6), new BlockPos(7, 1, 6), new BlockPos(6, 1, 5), new BlockPos(6, 1, 7))) {
+			helper.setBlock(side, Blocks.STONE);
+			helper.setBlock(side.above(), Blocks.STONE);
+		}
+		helper.setBlock(6, 3, 6, Blocks.STONE);
+		Vec3 cell = helper.absoluteVec(new Vec3(6.5, 1, 6.5));
+		player.snapTo(cell.x, cell.y, cell.z, 0f, 0f);
+
+		Zombie zombie = DirectorSpawns.spawn(level, helper.absolutePos(new BlockPos(1, 1, 3)), ZombieVariants.byName("walker"),
+				DirectorZombie.Source.HORDE, DirectorZombie.NO_BUILDING);
+		helper.assertTrue(zombie != null, "a horde walker spawned");
+		zombie.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.LEATHER_HELMET)); // no burning in daylight
+		Hordes.attachGoal(zombie);
+		Horde horde = Hordes.create(List.of(zombie), Vec3.atBottomCenterOf(core), player.getUUID(), Long.MAX_VALUE);
+		helper.assertTrue(Hordes.besiegedCore(level, horde) == null, "no core: the horde besieges nothing and works as before");
+
+		helper.setBlock(coreRel, HavenBlocks.BUNKER_CORE);
+		helper.assertTrue(BunkerCores.onPlaced(level, core, player.getUUID()) != null, "the player's core registered");
+		BlockPos besieged = Hordes.besiegedCore(level, horde);
+		helper.assertValueEqual(besieged, core, "a wave sent at the player's home besieges their core");
+		horde.setBesieging(besieged);
+
+		List<BlockPos> hits = new java.util.ArrayList<>();
+		CoreBreakIn.setForTesting(mob -> pos -> {
+			hits.add(pos.immutable());
+			return level.destroyBlock(pos, false, mob);
+		});
+		helper.succeedWhen(() -> {
+			helper.assertTrue(zombie.getTarget() == null, "the sealed-in player stays unseen");
+			boolean through = helper.getBlockState(new BlockPos(3, 1, 3)).isAir() && helper.getBlockState(new BlockPos(3, 2, 3)).isAir();
+			helper.assertTrue(through, "the zombie has not broken through the wall yet (hits " + hits + ")");
+			CoreBreakIn.setForTesting(null);
+			zombie.discard();
+			helper.setBlock(coreRel, Blocks.AIR);
+			level.getServer().getPlayerList().remove(player);
+		});
 	}
 
 	/** A survival mock player in the player list (removed by the caller), as in {@code HavenGameTest}. */
