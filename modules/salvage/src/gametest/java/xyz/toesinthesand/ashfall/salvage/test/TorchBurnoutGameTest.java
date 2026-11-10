@@ -36,7 +36,9 @@ public class TorchBurnoutGameTest {
 		return new BlockHitResult(Vec3.atCenterOf(pos).relative(side, 0.5), side, pos, false);
 	}
 
-	@GameTest(maxTicks = 200)
+	// Gametest ticks run as fast as the server can, so 200 ticks can be about a second: too little for the light
+	// engine's own thread to darken the burnt-out torch on a slow CI runner. The wait below ends as soon as it does.
+	@GameTest(maxTicks = 1200)
 	public void placedTorchBurnsOutAndRelights(GameTestHelper helper) {
 		ServerLevel level = helper.getLevel();
 		helper.setBlock(new BlockPos(1, 1, 1), Blocks.STONE);
