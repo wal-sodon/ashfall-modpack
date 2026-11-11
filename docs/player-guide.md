@@ -62,6 +62,7 @@ finishes). Generating new city chunks is what makes the game lag while you explo
 | Right-click with the **Field Radio** | Grid report in chat, with your current objective and the way home |
 | **Sneak** + right-click with the **Field Radio** | Just the objective and the way home (your Bunker Core, else the safehouse) |
 | `/ashfall mission` | The mission checklist: what is done, the current step, where it is and how to do it. `[Read the full briefing]` opens the briefing; `/ashfall mission book` gives a new copy of the book |
+| `/ashfall radio` | A replacement Field Radio, if you don't carry one. One every three in-game days (60 minutes of play; sleeping doesn't shorten it) |
 | **Toggle Objective Line** (unbound) | Hides or shows the objective line. Bind it in Controls if you want it |
 | Right-click a **Power Relay** while holding the Field Radio | Tune in to that relay's Relay Log |
 | Advancements screen, **Relight** tab | Your quest log for the whole arc |
@@ -102,7 +103,7 @@ place in the city, but it is only a few rooms.
 **Do these first:**
 1. **Go upstairs to the radio room** and open the cache chest. Each player gets their own copy (it is a Lootr
    chest). It holds:
-   - the **Field Radio**;
+   - the **Field Radio** (it has no recipe: lost it? `/ashfall radio` gives a new one, once every three in-game days);
    - the **Survivor's Notes**, a four-page primer you can reread any time;
    - 1-3 survival items (batteries, bottled water, bandages, canned food or scrap electronics).
 2. **Use the radio.** You get the grid report, and the Grid HUD turns on. The report shows:

@@ -33,6 +33,7 @@ import xyz.toesinthesand.ashfall.arms.mission.MissionWorld;
 import xyz.toesinthesand.ashfall.arms.mission.Objective;
 import xyz.toesinthesand.ashfall.arms.mission.ObjectiveArg;
 import xyz.toesinthesand.ashfall.arms.story.RadioProgress;
+import xyz.toesinthesand.ashfall.arms.story.StoryItems;
 import xyz.toesinthesand.ashfall.arms.story.StoryRules;
 import xyz.toesinthesand.ashfall.director.haven.BunkerCoreRecord;
 import xyz.toesinthesand.ashfall.director.haven.HavenBlocks;
@@ -75,6 +76,37 @@ public class MissionGameTest {
 		player.getInventory().clearContent();
 		MissionProgress.set(player, MissionProgress.EMPTY);
 		return player;
+	}
+
+	/**
+	 * {@code /ashfall radio}: a player with no radio gets one, a player carrying one gets none, and a player who lost
+	 * theirs waits out three in-game days of game time before the next.
+	 */
+	@GameTest
+	public void radioCommandGivesOneRadioEveryThreeDays(GameTestHelper helper) {
+		ServerPlayer player = freshPlayer(helper);
+		helper.assertValueEqual(MissionCommand.giveRadio(player), MissionCommand.RadioResult.GIVEN, "first radio");
+		helper.assertValueEqual(radios(player), 1, "radios after the first ask");
+		helper.assertValueEqual(MissionCommand.giveRadio(player), MissionCommand.RadioResult.HAVE_ONE, "while carrying one");
+		player.getInventory().clearContent();
+		helper.assertValueEqual(MissionCommand.giveRadio(player), MissionCommand.RadioResult.COOLDOWN, "lost it the same day");
+		long left = MissionCommand.radioCooldownLeft(player);
+		helper.assertTrue(left > 0 && left <= MissionCommand.RADIO_COOLDOWN_TICKS, "cooldown left " + left);
+		long now = helper.getLevel().getGameTime();
+		MissionProgress.set(player, MissionProgress.get(player).withRadioAt(now - MissionCommand.RADIO_COOLDOWN_TICKS));
+		helper.assertValueEqual(MissionCommand.giveRadio(player), MissionCommand.RadioResult.GIVEN, "three days later");
+		helper.assertValueEqual(radios(player), 1, "radios after the second ask");
+		helper.succeed();
+	}
+
+	private static int radios(ServerPlayer player) {
+		int n = 0;
+		for (ItemStack stack : player.getInventory()) {
+			if (stack.is(StoryItems.FIELD_RADIO)) {
+				n += stack.getCount();
+			}
+		}
+		return n;
 	}
 
 	@GameTest
