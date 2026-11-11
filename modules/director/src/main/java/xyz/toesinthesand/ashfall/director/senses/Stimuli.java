@@ -4,10 +4,13 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+import xyz.toesinthesand.ashfall.director.skills.Skill;
+import xyz.toesinthesand.ashfall.director.skills.Skills;
 
 import java.util.HashMap;
 import java.util.List;
@@ -45,6 +48,10 @@ public final class Stimuli {
 	 */
 	@Nullable
 	public static Stimulus emit(ServerLevel level, Vec3 pos, StimulusType type, double radius, @Nullable Entity source) {
+		if (type == StimulusType.SOUND && source instanceof ServerPlayer player) {
+			// Light Step: the sounds a player makes carry less far
+			radius *= Skills.reduction(player, Skill.LIGHT_STEP);
+		}
 		int sourceId = source == null ? Stimulus.NO_SOURCE : source.getId();
 		return field(level).emit(type, pos.x, pos.y, pos.z, radius, sourceId, level.getGameTime());
 	}

@@ -18,7 +18,12 @@ import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.ChestType;
 import net.minecraft.world.level.chunk.LevelChunk;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import xyz.toesinthesand.ashfall.salvage.AshfallSalvage;
 import xyz.toesinthesand.ashfall.salvage.building.Building;
 import xyz.toesinthesand.ashfall.salvage.profile.BuildingProfile;
@@ -28,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
+import java.util.function.ToDoubleFunction;
 
 /**
  * Lazy refill on open, plus the container operations behind {@code /lootzone}.
@@ -37,7 +43,23 @@ import java.util.function.Consumer;
  * own open path, so loot functions see the real opening player.
  */
 public final class LootRefill {
+	/**
+	 * Chance (0 to 1) that a player's first open of fresh loot rolls the table a second time. Set by the Director's
+	 * Pack Rat skill; salvage itself never gives a bonus.
+	 */
+	private static volatile ToDoubleFunction<ServerPlayer> extraRollChance = player -> 0.0;
+
 	private LootRefill() {
+	}
+
+	/** This player's chance of an extra roll (0 without the Pack Rat skill). */
+	public static double extraRollChance(ServerPlayer player) {
+		return extraRollChance.applyAsDouble(player);
+	}
+
+	/** Replaces the extra-roll chance (see {@link #extraRollChance}); null restores "never". */
+	public static void setExtraRollChance(ToDoubleFunction<ServerPlayer> chance) {
+		extraRollChance = chance == null ? player -> 0.0 : chance;
 	}
 
 	/** {@code UseBlockCallback}: refill if due, stamp the open, and let vanilla open the container. */
@@ -48,6 +70,7 @@ public final class LootRefill {
 		}
 		BlockPos pos = hit.getBlockPos();
 		handleOpen(server, pos, true);
+		maybeExtraRoll(server, pos, (ServerPlayer) player, player.getRandom().nextDouble());
 		// A double chest opens as one inventory: handle the other half too, even when only that
 		// half is tracked (e.g. a zone radius that covers just one half).
 		BlockState state = level.getBlockState(pos);
@@ -93,6 +116,35 @@ public final class LootRefill {
 		}
 		be.setAttached(AshfallSalvage.LOOT_STATE, state.opened(now));
 		be.setChanged();
+		return true;
+	}
+
+	/**
+	 * The Pack Rat bonus: if the tracked container at {@code pos} still holds an unrolled table and {@code roll} is
+	 * under the player's extra-roll chance, unpack it now (as vanilla's open would) and roll the same table once more
+	 * into the slots left empty.
+	 *
+	 * @param roll uniform in [0, 1), passed in so tests can pin both outcomes
+	 * @return whether an extra roll happened
+	 */
+	public static boolean maybeExtraRoll(ServerLevel level, BlockPos pos, ServerPlayer player, double roll) {
+		BlockEntity be = level.getBlockEntity(pos);
+		if (!(be instanceof RandomizableContainer container) || be.getAttached(AshfallSalvage.LOOT_STATE) == null) {
+			return false;
+		}
+		ResourceKey<LootTable> key = container.getLootTable();
+		if (key == null || roll >= extraRollChance.applyAsDouble(player)) {
+			return false;
+		}
+		container.unpackLootTable(player);
+		LootTable table = level.getServer().reloadableRegistries().getLootTable(key);
+		LootParams params = new LootParams.Builder(level)
+				.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
+				.withLuck(player.getLuck())
+				.withParameter(LootContextParams.THIS_ENTITY, player)
+				.create(LootContextParamSets.CHEST);
+		table.fill(container, params, level.getRandom().nextLong());
+		container.setChanged();
 		return true;
 	}
 

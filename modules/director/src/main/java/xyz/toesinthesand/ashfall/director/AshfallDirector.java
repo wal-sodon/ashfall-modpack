@@ -22,6 +22,7 @@ public class AshfallDirector implements ModInitializer {
 		xyz.toesinthesand.ashfall.director.spawn.SpawnDirector.init();
 		xyz.toesinthesand.ashfall.director.special.SpecialInfected.init();
 		Havens.init();
+		xyz.toesinthesand.ashfall.director.skills.Skills.init();
 		xyz.toesinthesand.ashfall.director.horde.HordeSystem.init();
 		xyz.toesinthesand.ashfall.director.boss.BossLairs.init();
 		xyz.toesinthesand.ashfall.director.graffiti.Graffiti.init();

@@ -18,7 +18,8 @@
 			"xyz.toesinthesand.ashfall.director.test.TrapsGameTest",
 			"xyz.toesinthesand.ashfall.director.test.GraffitiGameTest",
 			"xyz.toesinthesand.ashfall.director.test.PetsGameTest",
-			"xyz.toesinthesand.ashfall.director.test.FortifyWearGameTest"
+			"xyz.toesinthesand.ashfall.director.test.FortifyWearGameTest",
+			"xyz.toesinthesand.ashfall.director.test.SkillsGameTest"
 		],
 		"fabric-client-gametest": [
 			"xyz.toesinthesand.ashfall.director.test.ZombieLoadClientBenchmark",

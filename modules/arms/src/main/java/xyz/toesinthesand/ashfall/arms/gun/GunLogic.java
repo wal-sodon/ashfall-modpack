@@ -16,6 +16,8 @@ import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 import team.reborn.energy.api.base.SimpleEnergyItem;
 import xyz.toesinthesand.ashfall.arms.entity.EnergyBolt;
+import xyz.toesinthesand.ashfall.director.skills.Skill;
+import xyz.toesinthesand.ashfall.director.skills.Skills;
 import xyz.toesinthesand.ashfall.arms.item.EnergyItems;
 
 /**
@@ -101,8 +103,11 @@ public final class GunLogic {
 				stats.coolPerSecond(), heatPerShot(stats, stun), stats.heatCapacity());
 		gun.set(ArmsComponents.GUN_STATE, new GunState(shot.heat(), now, shot.locked(), credit));
 
-		EnergyBolt bolt = EnergyBolt.create(level, shooter, stun ? 0f : stats.damage(),
-				stats.headshotMultiplier(), stats.range(), stun ? STUN_BOLT_COLOR : stats.boltColor());
+		// Steady Aim: a player's bolts hit harder per rank
+		float damage = stats.damage() * (shooter instanceof Player p ? 1f + (float) Skills.bonus(p, Skill.STEADY_AIM) : 1f);
+		EnergyBolt bolt = EnergyBolt.create(level, shooter, stun ? 0f : damage,
+				stats.headshotMultiplier() * (shooter instanceof Player hp ? 1f + (float) Skills.bonus(hp, Skill.HEADHUNTER) : 1f),
+				stats.range(), stun ? STUN_BOLT_COLOR : stats.boltColor());
 		bolt.setStyle(item.boltStyle());
 		bolt.setStun(stun);
 		bolt.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0f, stats.boltSpeed(), stats.spread());

@@ -241,3 +241,27 @@ rarity). They use the landmark's rooms and the `police` profile without the armo
 weight, 16 to 8 (total weight 94 to 86): about 0.14 Weapon Parts a container instead of 0.26, and a container holds at
 least one about 14% of the time instead of 24%, level with workshops (13%). The police armory cache
 (`ashfall_cache:police_armory`), supply drops, grid rewards, bosses and other buildings are unchanged.
+
+## Survivor Skills and classes (XP spending)
+
+Each player picks one of six classes (Medic, Brawler, Sniper, Tank, Scout, Engineer). A class's three core skills
+train to rank 5 at 40 / 100 / 180 / 280 / 400 XP points; the other nine skills stop at rank 2 at 60 / 180
+(`data/ashfall/ashfall/skills/skills.json`). Ranks are priced in points rather than levels because vanilla levels get
+dearer with height: 5 levels cost 55 points from level 0 but 485 from level 30, which would punish saving up.
+
+- **Totals:** one core skill maxed is 1000 points (about 200 plain zombies at 5 XP); all three core skills 3000;
+  every other skill to rank 2 another 2160. Everything is about 5160 points (about 1000 kills).
+- **Special infected XP:** Crawler 8, Spitter and Bloated 10, Stalker and Screamer 15, Brute 25 (vanilla gives
+  every zombie 5).
+- **Pacing goal**, assuming roughly 15–30 kills a day: a first core rank on day 1, all three core skills at rank 2
+  around the first horde night (day 7), core skills at rank 3–4 by the first tier-2 horde (day 14–20), and core
+  skills maxed in the late game (day 45+). The kill rate is an estimate; check it in a real playthrough.
+- **Per rank** was lowered from the classless draft so rank 5 isn't overwhelming: Hardy +1 heart (5 at rank 5);
+  Fleet Foot +3% speed (base, so it adds to weapon weight); Brawler +6% attack damage (Plasma Blades scale from
+  the attribute); Steady Aim +6% bolt damage; Headhunter +10% headshot multiplier; Bulwark +1 armour; Field Medic
+  +20% Bandage healing; Iron Gut −12% thirst exhaustion and Dirty Water risk; Immune System −10% on every infection
+  roll (multiplies with Hazmat); Light Step −10% radius on SOUND stimuli the player is the source of (gunfire has no
+  source and is unchanged); Pack Rat +10% chance of a second roll of a fresh container's table; Tinker +20% Fortify
+  repair.
+- **Class change:** at a Bunker Core, once per 7 in-game days; all ranks reset and 50% of the points spent come
+  back, so a change costs real progress without being a dead end.
