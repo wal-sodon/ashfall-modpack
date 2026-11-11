@@ -11,6 +11,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import xyz.toesinthesand.ashfall.arms.grid.GridState;
+import xyz.toesinthesand.ashfall.arms.story.StoryItems;
 
 import java.util.List;
 
@@ -18,8 +19,17 @@ import java.util.List;
  * {@code /ashfall mission} (every player): the mission as a chat checklist with the current step, where it is and how
  * to do it. {@code briefing} opens the full briefing; {@code book} hands out a new copy of the book if the player has
  * none. These work with {@code ashfall:objective} off too: the rule stops the story prompting, not a player asking.
+ * <p>
+ * {@code /ashfall radio} (every player) hands out a Field Radio to a player who carries none, at most once every
+ * three in-game days ({@link #RADIO_COOLDOWN_TICKS} of game time, which sleeping doesn't skip). The radio is a starter kit
+ * item from the safehouse cache with no recipe, so without this a player who lost it had no way back to relay tuning.
  */
 public final class MissionCommand {
+	/** Three in-game days between radios from {@code /ashfall radio}. */
+	public static final long RADIO_COOLDOWN_TICKS = 3L * 24000L;
+
+	/** What {@link #giveRadio} did: gave one, refused because one is carried, or refused for the cooldown. */
+	public enum RadioResult { GIVEN, HAVE_ONE, COOLDOWN }
 	private MissionCommand() {
 	}
 
@@ -29,6 +39,8 @@ public final class MissionCommand {
 						.executes(MissionCommand::checklist)
 						.then(Commands.literal("briefing").executes(MissionCommand::briefing))
 						.then(Commands.literal("book").executes(MissionCommand::book))));
+		dispatcher.register(Commands.literal("ashfall")
+				.then(Commands.literal("radio").executes(MissionCommand::radio)));
 	}
 
 	private static int checklist(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
@@ -95,5 +107,43 @@ public final class MissionCommand {
 		MissionBriefing.give(player, MissionBriefing.book());
 		ctx.getSource().sendSuccess(() -> Component.translatable("mission.ashfall.book.given").withStyle(ChatFormatting.GREEN), false);
 		return 1;
+	}
+
+	private static int radio(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+		ServerPlayer player = ctx.getSource().getPlayerOrException();
+		RadioResult result = giveRadio(player);
+		Component message = switch (result) {
+			case GIVEN -> Component.translatable("mission.ashfall.radio.given").withStyle(ChatFormatting.GREEN);
+			case HAVE_ONE -> Component.translatable("mission.ashfall.radio.have").withStyle(ChatFormatting.GRAY);
+			case COOLDOWN -> Component.translatable("mission.ashfall.radio.cooldown",
+					(radioCooldownLeft(player) + 1199) / 1200).withStyle(ChatFormatting.GRAY);
+		};
+		ctx.getSource().sendSuccess(() -> message, false);
+		return result == RadioResult.GIVEN ? 1 : 0;
+	}
+
+	/** Gives {@code player} a Field Radio unless they carry one or had one from this command less than three days ago. */
+	public static RadioResult giveRadio(ServerPlayer player) {
+		for (ItemStack stack : player.getInventory()) {
+			if (stack.is(StoryItems.FIELD_RADIO)) {
+				return RadioResult.HAVE_ONE;
+			}
+		}
+		if (radioCooldownLeft(player) > 0) {
+			return RadioResult.COOLDOWN;
+		}
+		MissionProgress.set(player, MissionProgress.get(player).withRadioAt(player.level().getGameTime()));
+		MissionBriefing.give(player, new ItemStack(StoryItems.FIELD_RADIO));
+		return RadioResult.GIVEN;
+	}
+
+	/** Game ticks until {@code player} may get another radio from {@code /ashfall radio}; 0 when they may now. */
+	public static long radioCooldownLeft(ServerPlayer player) {
+		long at = MissionProgress.get(player).radioAt();
+		if (at == MissionProgress.NEVER) {
+			return 0L;
+		}
+		long since = player.level().getGameTime() - at;
+		return since < 0 ? 0L : Math.max(0L, RADIO_COOLDOWN_TICKS - since);
 	}
 }

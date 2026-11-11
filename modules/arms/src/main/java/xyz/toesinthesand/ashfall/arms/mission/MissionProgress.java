@@ -17,13 +17,16 @@ import net.minecraft.world.entity.player.Player;
  *
  * @param briefed the first-join briefing has been delivered in this world
  * @param armed   the player has been armed at least once
+ * @param radioAt game time {@code /ashfall radio} last gave this player a Field Radio, or {@link #NEVER}
  */
-public record MissionProgress(boolean briefed, boolean armed) {
-	public static final MissionProgress EMPTY = new MissionProgress(false, false);
+public record MissionProgress(boolean briefed, boolean armed, long radioAt) {
+	public static final long NEVER = Long.MIN_VALUE;
+	public static final MissionProgress EMPTY = new MissionProgress(false, false, NEVER);
 
 	public static final Codec<MissionProgress> CODEC = RecordCodecBuilder.create(i -> i.group(
 			Codec.BOOL.optionalFieldOf("briefed", false).forGetter(MissionProgress::briefed),
-			Codec.BOOL.optionalFieldOf("armed", false).forGetter(MissionProgress::armed)
+			Codec.BOOL.optionalFieldOf("armed", false).forGetter(MissionProgress::armed),
+			Codec.LONG.optionalFieldOf("radio_at", NEVER).forGetter(MissionProgress::radioAt)
 	).apply(i, MissionProgress::new));
 
 	public static final AttachmentType<MissionProgress> TYPE = AttachmentRegistry.create(
@@ -43,10 +46,14 @@ public record MissionProgress(boolean briefed, boolean armed) {
 	}
 
 	public MissionProgress withBriefed() {
-		return briefed ? this : new MissionProgress(true, armed);
+		return briefed ? this : new MissionProgress(true, armed, radioAt);
+	}
+
+	public MissionProgress withRadioAt(long gameTime) {
+		return new MissionProgress(briefed, armed, gameTime);
 	}
 
 	public MissionProgress withArmed() {
-		return armed ? this : new MissionProgress(briefed, true);
+		return armed ? this : new MissionProgress(briefed, true, radioAt);
 	}
 }
