@@ -982,7 +982,7 @@ P . P</span></td><td>2 S, 1 E, 2 T, 1 crafting table (X), 2 planks (P)</td></tr>
 		<li><strong>Warm-up:</strong> hold still for 3 seconds. Moving or taking damage cancels it, and nothing is charged.</li>
 		<li><strong>Cost:</strong> taken from loose Cell Packs in your inventory, emptiest first. Packs loaded in a blaster aren't touched. <strong>Trips leaving your Bunker Core cost double</strong>, because its Field Chargers refill packs for free.</li>
 		<li><strong>From the Grid Map:</strong> while standing at a stop, open the map (<code>G</code>) and click the safehouse, your Bunker or a reclaimed substation.</li>
-		<li><strong>Not allowed</strong> on horde nights, while a district siege is set or running, or while a zombie is hunting you.</li>
+		<li><strong>Not allowed</strong> on horde nights, while a district siege is set or running, or while a zombie is hunting you. The one exception is the free <strong>Defend</strong> trip to a Breach.</li>
 		<li>You arrive with 5 seconds of protection.</li>
 	</ul>
 	<div class="table-wrap"><table>
@@ -1160,7 +1160,7 @@ P . P</span></td><td>2 S, 1 E, 2 T, 1 crafting table (X), 2 planks (P)</td></tr>
 	</table></div>
 	<p>The day tier rises on days 14, 28, 45, 65 and 90. The siege tier is the higher of the day tier and the grid tier, which goes up with every district you've already reclaimed. <strong>Your first siege</strong> counts the day tier as II at most, so taking your time doesn't make the first district harder (the district's own tier still applies, so Mission stays tier IV).</p>
 	<ul>
-		<li><strong>You win</strong> by clearing every wave, or by reaching dawn after players spent at least 4 minutes of the siege within 96 blocks of the core.</li>
+		<li><strong>You win</strong> by clearing every wave, or by reaching dawn after players spent at least 4 minutes of the siege within 96 blocks of the core. The boss bar counts down the time still needed (<code>defend 3:12</code>). It pauses while nobody is near, then shows the time to dawn.</li>
 		<li><strong>If the core falls,</strong> it drops back to Repaired. You keep the couplers and relay links, but must load 4 fresh cells and redo the hold.</li>
 		<li>If nobody turned up, the siege moves to the next night instead of being lost.</li>
 	</ul>
@@ -1233,9 +1233,11 @@ P . P</span></td><td>2 S, 1 E, 2 T, 1 crafting table (X), 2 planks (P)</td></tr>
 	<h3>Breaches</h3>
 	<ul>
 		<li>Every 7 days from day 7, a <strong>Breach</strong> hits a random reclaimed district. The siren names it 150 s before nightfall. A Breach never lands on a horde night, the night after one, or a District Siege night: it waits for the next free night.</li>
+		<li><strong>Free Defend trip:</strong> each siren comes with a <strong>[Defend]</strong> button in chat (or <code>/ashfall travel defend</code>). It takes you to the breached substation from anywhere, free, after the usual 3-second hold-still, even on a horde night or while a zombie is hunting you. One trip per player per Breach.</li>
 		<li>It's a siege on that core. While it runs, the district loses its safe compound and free power.</li>
-		<li><strong>If the core is still standing at dawn,</strong> the Breach is held, even if you weren't there. <strong>Every held Breach leaves a supply cache at the core</strong> (each player gets their own roll): an Energy Cell, salvage and parts, sometimes a charged Standard pack or a Resonance Crystal.</li>
-		<li><strong>If it falls,</strong> the district goes <strong>Broken</strong>: dark again, no free power, no safe compound. Socket <strong>2 Grid Couplers</strong> to restore it at once. You keep your links, reward and Grid %.</li>
+		<li><strong>You have to defend it.</strong> The Breach is held if the core is still standing at dawn <strong>and</strong> players spent at least 4 minutes within 96 blocks of it, or if you clear every wave. The boss bar counts the defence time down. <strong>Stay away and the district is lost at dawn.</strong></li>
+		<li><strong>Every held Breach leaves a supply cache at the core</strong> (each player gets their own roll): an Energy Cell, salvage and parts, sometimes a charged Standard pack or a Resonance Crystal.</li>
+		<li><strong>If it falls, or nobody defends it,</strong> the district goes <strong>Broken</strong>: dark again, no free power, no safe compound. Socket <strong>2 Grid Couplers</strong> to restore it at once. You keep your links, reward and Grid %.</li>
 	</ul>
 
 	<h3>Relay Logs</h3>
@@ -1365,7 +1367,7 @@ P . P</span></td><td>2 S, 1 E, 2 T, 1 crafting table (X), 2 planks (P)</td></tr>
 	<p>Both endings give every voter a <strong>Field Report</strong> (days survived, districts lit, bosses killed, logs heard, deaths) and an <strong>Epilogue</strong> book with one page per Relay Log you collected.</p>
 	<h3>After the ending</h3>
 	<ul>
-		<li>The world carries on. Breaches still come every 7 days, and each one held pays out a supply cache.</li>
+		<li>The world carries on. Breaches still come every 7 days and still have to be defended, and each one held pays out a supply cache.</li>
 		<li><strong>Aftershock crash sites</strong> can appear every 7 days, with crystals and rare blasters, so blades stay re-socketable.</li>
 		<li><strong>Bosses return</strong> 10 days after the ending, and 10 days after each later defeat.</li>
 		<li>Missed Relay Logs stay collectible. <code>/ashfall ending epilogue</code> prints a fresh epilogue; <code>/ashfall ending status</code> shows the world's ending.</li>
