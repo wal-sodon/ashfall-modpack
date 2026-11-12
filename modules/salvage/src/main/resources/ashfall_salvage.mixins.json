@@ -3,9 +3,11 @@
 	"package": "xyz.toesinthesand.ashfall.salvage.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
+		"ChunkGeneratorDecorationMixin",
 		"ChunkGeneratorStructureMixin",
 		"ChunkMapAccessor",
 		"MinecraftServerSpawnMixin",
+		"NoiseBasedChunkGeneratorMixin",
 		"TorchBlockMixin"
 	],
 	"injectors": {

@@ -65,6 +65,16 @@ public final class CityZoneRules {
 		return zone.isDistrict() && zone.city();
 	}
 
+	/**
+	 * True in every city zone (the districts, Montford, the suburbs and the wasteland), false in wilderness and where
+	 * no zone data is loaded: the land there gets the plains biome ({@link DistrictGround}), so the whole city
+	 * looks alike and only ever rains.
+	 */
+	public static boolean plainsBiome(int chunkX, int chunkZ) {
+		Zone zone = ZoneMap.zoneAtChunk(chunkX, chunkZ);
+		return zone != Zone.UNKNOWN && zone.city();
+	}
+
 	/** The Lost Cities city style the zone imposes on this chunk, if any. */
 	public static Optional<String> cityStyle(int chunkX, int chunkZ) {
 		return ZoneMap.zoneAtChunk(chunkX, chunkZ).cityStyle();
