@@ -31,6 +31,8 @@ import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import xyz.toesinthesand.ashfall.director.hydration.Hydration;
+import xyz.toesinthesand.ashfall.director.skills.Skill;
+import xyz.toesinthesand.ashfall.director.skills.Skills;
 import xyz.toesinthesand.ashfall.director.item.DirectorItems;
 import xyz.toesinthesand.ashfall.director.spawn.DirectorContexts;
 import xyz.toesinthesand.ashfall.director.spawn.DirectorSpawns;
@@ -297,7 +299,7 @@ public final class Infection {
 		if (!progresses(player) || isInfected(player)) {
 			return false;
 		}
-		if (roll < chance * hazmatFactor(player)) {
+		if (roll < chance * resistanceFactor(player)) {
 			infect(player);
 			return true;
 		}
@@ -310,6 +312,11 @@ public final class Infection {
 				rules().sources().hazmatReductionPerPiece());
 	}
 
+	/** What Hazmat pieces and the Immune System skill together leave of any infection roll. */
+	public static float resistanceFactor(ServerPlayer player) {
+		return hazmatFactor(player) * Skills.reduction(player, Skill.IMMUNE_SYSTEM);
+	}
+
 	/** The infection chance of one hit from {@code zombie} on {@code player} where they stand now. */
 	public static float hitChance(ServerPlayer player, Zombie zombie) {
 		DirectorZombie tag = zombie.getAttached(DirectorSpawns.TAG);
@@ -317,7 +324,7 @@ public final class Infection {
 		// a special spawned by an egg or command has no Director tag, but its kind is still its variant name
 		String variant = tag != null ? tag.variant()
 				: zombie instanceof SpecialInfectedEntity special ? special.kind().id() : null;
-		return rules().sources().chance(variant, zone, player.getArmorValue()) * hazmatFactor(player);
+		return rules().sources().chance(variant, zone, player.getArmorValue()) * resistanceFactor(player);
 	}
 
 	// --- treatments -----------------------------------------------------------------------------------
@@ -336,7 +343,7 @@ public final class Infection {
 	 * (There is no bleeding effect in the pack yet; when one arrives, the Bandage is where it stops.)
 	 */
 	public static void treatWithBandage(ServerPlayer player) {
-		player.heal(rules().treatments().bandageHeal());
+		player.heal(rules().treatments().bandageHeal() * (1f + (float) Skills.bonus(player, Skill.FIELD_MEDIC)));
 		InfectionData data = get(player);
 		if (data.infected()) {
 			set(player, rules().bandage(data));

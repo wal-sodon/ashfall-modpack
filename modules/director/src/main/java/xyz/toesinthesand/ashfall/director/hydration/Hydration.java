@@ -23,6 +23,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.gamerules.GameRule;
 import net.minecraft.world.level.gamerules.GameRuleCategory;
 import xyz.toesinthesand.ashfall.director.infection.Infection;
+import xyz.toesinthesand.ashfall.director.skills.Skill;
+import xyz.toesinthesand.ashfall.director.skills.Skills;
 
 import java.util.function.BiPredicate;
 
@@ -142,7 +144,7 @@ public final class Hydration {
 		}
 		ThirstData data = get(player);
 		if (isHot(player)) {
-			data = data.addExhaustion(HEAT_EXHAUSTION_PER_TICK);
+			data = data.addExhaustion(HEAT_EXHAUSTION_PER_TICK * Skills.reduction(player, Skill.IRON_GUT));
 		}
 		data = data.drain();
 		set(player, data);
@@ -168,7 +170,7 @@ public final class Hydration {
 	/** Called by the exhaustion mixin with the amount hunger just received. */
 	public static void onFoodExhaustion(ServerPlayer player, float amount) {
 		if (amount > 0 && drains(player)) {
-			set(player, get(player).addExhaustion(amount * ACTIVITY_MULTIPLIER));
+			set(player, get(player).addExhaustion(amount * ACTIVITY_MULTIPLIER * Skills.reduction(player, Skill.IRON_GUT)));
 		}
 	}
 
@@ -184,17 +186,18 @@ public final class Hydration {
 		}
 	}
 
-	/** Nausea is common and harmless; infection is the real reason to boil water first. */
+	/** Nausea is common and harmless; infection is the real reason to boil water first. Iron Gut lowers both. */
 	public static void applyDirtyWaterRisk(ServerPlayer player, RandomSource random) {
 		applyDirtyWaterRisk(player, random.nextFloat(), random.nextFloat());
 	}
 
 	/** The rolls passed in (each in [0, 1)), so tests can pin both outcomes. */
 	public static void applyDirtyWaterRisk(ServerPlayer player, float nauseaRoll, float infectionRoll) {
-		if (nauseaRoll < NAUSEA_CHANCE) {
+		float ironGut = Skills.reduction(player, Skill.IRON_GUT);
+		if (nauseaRoll < NAUSEA_CHANCE * ironGut) {
 			player.addEffect(new MobEffectInstance(MobEffects.NAUSEA, NAUSEA_TICKS));
 		}
-		if (infectionRoll < INFECTION_CHANCE * Infection.hazmatFactor(player)) {
+		if (infectionRoll < INFECTION_CHANCE * ironGut * Infection.resistanceFactor(player)) {
 			Infection.infect(player);
 		}
 	}

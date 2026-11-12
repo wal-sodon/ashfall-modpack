@@ -47,6 +47,7 @@ finishes). Generating new city chunks is what makes the game lag while you explo
 16. [After the ending](#16-after-the-ending)
 17. [Recipe reference](#17-recipe-reference)
 18. [Where things are](#18-where-things-are)
+19. [Survivor Skills](#19-survivor-skills)
 
 ---
 
@@ -57,6 +58,7 @@ finishes). Generating new city chunks is what makes the game lag while you explo
 | **Right-click** with a blaster | Fire. Semi-auto blasters fire once per click; the Pulse Carbine and Storm Repeater keep firing while held |
 | **R** | Reload: swaps the loaded Cell Pack for the fullest matching pack in your inventory (about 1.2 s) |
 | **G** | Grid Map: the city's zones coloured by district state, with the safehouse, the substations, the Wreck and the relays you have tuned into |
+| **K** | Survivor Skills: your class and skill tree; spend XP on permanent buffs (see [section 19](#19-survivor-skills)) |
 | **Sneak** with an Optic fitted | Aim down the scope: 4x zoom (7x on the Lancer Blaster Rifle), a steadier aim and slower mouse turning. Right-click still fires |
 | **Scroll** while aiming a scope | Switch between the two zoom steps (2x / 4x, or 3.5x / 7x on the Lancer). The hotbar does not move while you aim |
 | Right-click with the **Field Radio** | Grid report in chat, with your current objective and the way home |
@@ -75,7 +77,7 @@ finishes). Generating new city chunks is what makes the game lag while you explo
 - Above it, the **objective line** names your next step and, when it has a place, how far and which way
   (for example `Objective: River Arts: socket Grid Couplers 2/4 · 640 m W`).
 
-All keys can be rebound in Controls, under "Ashfall: Arms".
+All keys can be rebound in Controls, under "Ashfall: Arms" (Survivor Skills is under "Ashfall: Survival").
 
 ## 2. The first night
 
@@ -995,3 +997,60 @@ Coordinates are block x, z. The layout is the same in every world; ordinary buil
 
 The Grid Map (**G**) shows the safehouse, the four substations, the Wreck hull, your Bunker Core and the current
 objective's target (a blinking frame).
+
+## 19. Survivor Skills
+
+**Pick a class.** The first time you join a world, the class picker opens and stays open until you choose. Each
+class has three **core skills** that train to **rank 5** and cost less; every other skill stops at **rank 2**. So
+anyone can pick up a little of everything, but only a Medic is a great medic.
+
+| Class | Core skills | Plays as |
+|---|---|---|
+| **Medic** | Field Medic, Immune System, Iron Gut | Patches people up and shrugs off infection and bad water |
+| **Brawler** | Brawler, Fleet Foot, Hardy | Up close and fast |
+| **Sniper** | Steady Aim, Headhunter, Light Step | Quiet and deadly at range |
+| **Tank** | Hardy, Bulwark, Brawler | Soaks up hits for the group |
+| **Scout** | Fleet Foot, Light Step, Pack Rat | Fast, quiet, finds loot |
+| **Engineer** | Tinker, Pack Rat, Steady Aim | Keeps walls standing and blasters firing |
+
+**Train skills.** Press **K** to open your skill tree: core skills are at the top in gold. **Train** buys the next
+rank with XP.
+
+- **Skills and class are kept when you die.** The XP you were carrying still drops as usual.
+- **Ranks cost XP points, not levels**, so a rank costs the same at level 5 as at level 30 and there is no reason to
+  save XP up first.
+- A zombie drops 5 XP. Special infected drop more: Crawler 8, Spitter and Bloated 10, Stalker and Screamer 15,
+  Brute 25. Mining, smelting and anything else that gives XP counts too.
+
+| Rank | Core skill (XP points) | Other skill (XP points) |
+|---|---|---|
+| 1 | 40 (8 zombies) | 60 (12 zombies) |
+| 2 | 100 (20) | 180 (36) |
+| 3 | 180 (36) | - |
+| 4 | 280 (56) | - |
+| 5 | 400 (80) | - |
+
+A core skill to rank 5 is 1000 XP (about 200 zombies); all three is 3000. Every other skill to rank 2 is 240 XP.
+
+| Skill | Each rank |
+|---|---|
+| **Hardy** | +1 max heart |
+| **Fleet Foot** | +3% movement speed (adds to weapon weight) |
+| **Brawler** | +6% melee damage, Plasma Blades included |
+| **Steady Aim** | +6% blaster damage |
+| **Headhunter** | +10% blaster headshot damage |
+| **Bulwark** | +1 armour |
+| **Field Medic** | +20% healing from Bandages |
+| **Iron Gut** | Thirst drains 12% slower; Dirty Water's nausea and infection chances 12% lower |
+| **Immune System** | Every infection chance 10% lower: bites, clouds, acid and Dirty Water (stacks with Hazmat) |
+| **Light Step** | The noise you make (footsteps, doors, breaking blocks) reaches 10% less far. Gunfire is unchanged |
+| **Pack Rat** | 10% chance that a container of fresh loot rolls its loot a second time when you open it |
+| **Tinker** | Fortify repairs restore 20% more |
+
+**Changing class.** In the skill tree, **Change class** opens the picker again. A change only works inside your
+Bunker Core's area and once every 7 in-game days (the first change after your first pick has no wait). It resets
+every skill and gives back half the XP you spent on them.
+
+`/ashfall skills` shows your class and ranks. Operators can use `/ashfall skills class <player> <class>`,
+`/ashfall skills set <player> <skill> <rank>` and `/ashfall skills reset <player>` (which reopens the picker); none of
+them refunds XP. The numbers live in `data/ashfall/ashfall/skills/skills.json`.

@@ -1,0 +1,36 @@
+{
+	"core_costs": [40, 100, 180, 280, 400],
+	"general_costs": [60, 180],
+	"classes": {
+		"medic": ["field_medic", "immune_system", "iron_gut"],
+		"brawler": ["brawler", "fleet_foot", "hardy"],
+		"sniper": ["steady_aim", "headhunter", "light_step"],
+		"tank": ["hardy", "bulwark", "brawler"],
+		"scout": ["fleet_foot", "light_step", "pack_rat"],
+		"engineer": ["tinker", "pack_rat", "steady_aim"]
+	},
+	"per_rank": {
+		"hardy": 2.0,
+		"fleet_foot": 0.03,
+		"brawler": 0.06,
+		"steady_aim": 0.06,
+		"headhunter": 0.10,
+		"bulwark": 1.0,
+		"field_medic": 0.20,
+		"iron_gut": 0.12,
+		"immune_system": 0.10,
+		"light_step": 0.10,
+		"pack_rat": 0.10,
+		"tinker": 0.20
+	},
+	"class_change_days": 7,
+	"class_change_refund": 0.5,
+	"special_infected_xp": {
+		"crawler": 8,
+		"spitter": 10,
+		"bloated": 10,
+		"stalker": 15,
+		"screamer": 15,
+		"brute": 25
+	}
+}

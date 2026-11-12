@@ -246,6 +246,7 @@ figcaption { font-size: .85rem; color: var(--muted); max-width: 68ch; }
 		<tr><td>Right-click with a blaster</td><td>Fire. The Pulse Carbine and Storm Repeater keep firing while held.</td></tr>
 		<tr><td><code>R</code></td><td>Reload with the fullest matching Cell Pack in your inventory.</td></tr>
 		<tr><td><code>G</code></td><td>Grid Map: districts, the safehouse, substations, the Wreck, your Bunker and tuned relays.</td></tr>
+		<tr><td><code>K</code></td><td><a href="#skills">Survivor Skills</a>: your class and skill tree.</td></tr>
 		<tr><td>Sneak with an Optic</td><td>Aim down the scope: 4× zoom, or 7× on the Lancer. Scroll switches to half zoom.</td></tr>
 		<tr><td>Sneak + right-click the radio</td><td>Just your objective and the way home.</td></tr>
 		<tr><td><code>/ashfall mission</code></td><td>The full checklist. <code>/ashfall mission book</code> replaces a lost briefing book.</td></tr>
@@ -401,6 +402,41 @@ figcaption { font-size: .85rem; color: var(--muted); max-width: 68ch; }
 		<li><strong>You can't sleep while you're thirsty or hungry:</strong> a bed refuses you with less than 3.5 droplets or 3.5 shanks left. Drink and eat before bed.</li>
 		<li>Lying down and getting up again (to set your respawn point) costs nothing. Only a night actually skipped does.</li>
 	</ul>
+	<h3 id="skills">Survivor Skills and classes</h3>
+	<p><strong>Pick a class</strong> when you first join (the picker won't close until you do). Each class has three <strong>core skills</strong> that train to <strong>rank 5</strong> and cost less; every other skill stops at <strong>rank 2</strong>. Press <strong>K</strong> for your skill tree and spend XP with <strong>Train</strong>. Class and skills are kept when you die. Ranks cost XP points, not levels, so a rank costs the same at any level. A zombie drops 5 XP; specials drop more (Crawler 8, Spitter and Bloated 10, Stalker and Screamer 15, Brute 25).</p>
+	<div class="table-wrap"><table>
+		<tr><th>Class</th><th>Core skills</th><th>Plays as</th></tr>
+		<tr><td><strong>Medic</strong></td><td>Field Medic, Immune System, Iron Gut</td><td>Patches people up and shrugs off infection and bad water</td></tr>
+		<tr><td><strong>Brawler</strong></td><td>Brawler, Fleet Foot, Hardy</td><td>Up close and fast</td></tr>
+		<tr><td><strong>Sniper</strong></td><td>Steady Aim, Headhunter, Light Step</td><td>Quiet and deadly at range</td></tr>
+		<tr><td><strong>Tank</strong></td><td>Hardy, Bulwark, Brawler</td><td>Soaks up hits for the group</td></tr>
+		<tr><td><strong>Scout</strong></td><td>Fleet Foot, Light Step, Pack Rat</td><td>Fast, quiet, finds loot</td></tr>
+		<tr><td><strong>Engineer</strong></td><td>Tinker, Pack Rat, Steady Aim</td><td>Keeps walls standing and blasters firing</td></tr>
+	</table></div>
+	<div class="table-wrap"><table>
+		<tr><th>Skill</th><th>Each rank</th></tr>
+		<tr><td><strong>Hardy</strong></td><td>+1 max heart</td></tr>
+		<tr><td><strong>Fleet Foot</strong></td><td>+3% movement speed (adds to weapon weight)</td></tr>
+		<tr><td><strong>Brawler</strong></td><td>+6% melee damage, Plasma Blades included</td></tr>
+		<tr><td><strong>Steady Aim</strong></td><td>+6% blaster damage</td></tr>
+		<tr><td><strong>Headhunter</strong></td><td>+10% blaster headshot damage</td></tr>
+		<tr><td><strong>Bulwark</strong></td><td>+1 armour</td></tr>
+		<tr><td><strong>Field Medic</strong></td><td>+20% healing from Bandages</td></tr>
+		<tr><td><strong>Iron Gut</strong></td><td>Thirst drains 12% slower; Dirty Water's nausea and infection chances 12% lower</td></tr>
+		<tr><td><strong>Immune System</strong></td><td>Every infection chance 10% lower: bites, clouds, acid and Dirty Water (stacks with Hazmat)</td></tr>
+		<tr><td><strong>Light Step</strong></td><td>The noise you make (footsteps, doors, breaking blocks) reaches 10% less far. Gunfire is unchanged</td></tr>
+		<tr><td><strong>Pack Rat</strong></td><td>10% chance that a container of fresh loot rolls its loot a second time when you open it</td></tr>
+		<tr><td><strong>Tinker</strong></td><td>Fortify repairs restore 20% more</td></tr>
+	</table></div>
+	<div class="table-wrap"><table>
+		<tr><th>Rank</th><th class="num">Core skill (XP)</th><th class="num">Other skill (XP)</th></tr>
+		<tr><td>1</td><td class="num">40</td><td class="num">60</td></tr>
+		<tr><td>2</td><td class="num">100</td><td class="num">180</td></tr>
+		<tr><td>3</td><td class="num">180</td><td class="num">-</td></tr>
+		<tr><td>4</td><td class="num">280</td><td class="num">-</td></tr>
+		<tr><td>5</td><td class="num">400</td><td class="num">-</td></tr>
+	</table></div>
+	<p><strong>Changing class:</strong> <em>Change class</em> in the skill tree works only inside your Bunker Core's area, once every 7 in-game days. Skills reset and half the XP spent on them comes back. <code>/ashfall skills</code> shows your class and ranks.</p>
 </section>
 
 <section id="mission">

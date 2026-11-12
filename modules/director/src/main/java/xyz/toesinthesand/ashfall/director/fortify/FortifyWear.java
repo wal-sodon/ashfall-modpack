@@ -1,5 +1,7 @@
 package xyz.toesinthesand.ashfall.director.fortify;
 
+import xyz.toesinthesand.ashfall.director.skills.Skill;
+import xyz.toesinthesand.ashfall.director.skills.Skills;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
@@ -385,7 +387,9 @@ public final class FortifyWear {
 					materialNames(rule)));
 			return InteractionResult.FAIL;
 		}
-		int left = repair(level, pos, WearSettings.get().repairPoints());
+		// Tinker: each repair restores more
+		int restore = (int) Math.round(WearSettings.get().repairPoints() * (1.0 + Skills.bonus(player, Skill.TINKER)));
+		int left = repair(level, pos, restore);
 		if (WearSettings.get().repairCooldownTicks() > 0) {
 			for (ItemStack key : cooldownKeys) {
 				player.getCooldowns().addCooldown(key, WearSettings.get().repairCooldownTicks());

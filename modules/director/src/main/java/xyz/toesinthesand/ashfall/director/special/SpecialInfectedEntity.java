@@ -52,6 +52,13 @@ public class SpecialInfectedEntity extends Zombie {
 		return kind;
 	}
 
+	/** Specials drop more XP than a plain zombie (Survivor Skills balance), or vanilla's amount if unset. */
+	@Override
+	protected int getBaseExperienceReward(net.minecraft.server.level.ServerLevel level) {
+		int xp = xyz.toesinthesand.ashfall.director.skills.SkillRules.get().specialXp(kind);
+		return xp >= 0 ? xp : super.getBaseExperienceReward(level);
+	}
+
 	public SpecialInfectedRule rule() {
 		return SpecialInfectedRules.get(kind);
 	}
