@@ -37,7 +37,8 @@ import java.util.Map;
  * after a restart instead of remembering entity ids.
  * <p>
  * A siege zombie within the core's attack radius is attacking the core and takes health off it every second.
- * At 0 the siege is lost (back to REPAIRED); clearing every wave, or holding the core until dawn, wins it.
+ * At 0 the siege is lost (back to REPAIRED); clearing every wave, or holding the core until dawn, wins it. The
+ * bossbar counts down the attended time a dawn win still needs, then the time to dawn.
  * <p>
  * Siege zombies are led in through the substation's entrance ({@link SiegeRoutes}): to the nearest door or
  * ground-level opening, then along the inside to the core, so they no longer stop on the roof above the core or in
@@ -183,7 +184,14 @@ public final class GridSiege {
 						.withStyle(ChatFormatting.YELLOW));
 				AshfallArms.LOGGER.info("Grid: {} siege postponed (nobody held the core)", id);
 			}
-			case CONTINUE -> siegeBar(level, id, r, rules, core, tier, alive.size(), settings);
+			case BREACH_LOST -> {
+				GridController.hideBar(id);
+				grid.update(level, id, DistrictLoop::loseBreach);
+				GridActions.broadcast(level, Component.translatable("message.ashfall.grid.breach_undefended", GridDistricts.name(id),
+						DistrictLoop.reRepairCouplers(rules)).withStyle(ChatFormatting.DARK_RED));
+				AshfallArms.LOGGER.info("Grid: {} lost its Breach, nobody defended it", id);
+			}
+			case CONTINUE -> siegeBar(level, id, r, rules, core, tier, alive.size(), settings, near, clock);
 		}
 	}
 
@@ -231,14 +239,40 @@ public final class GridSiege {
 	}
 
 	private static void siegeBar(ServerLevel level, String id, DistrictRecord r, LoopRules rules, BlockPos core, SiegeSettings.Tier tier,
-			int alive, GridSettings settings) {
+			int alive, GridSettings settings, boolean near, long clock) {
 		ServerBossEvent bar = GridController.bar(id);
-		bar.setName(Component.translatable(r.breach ? "bossbar.ashfall.grid.breach" : "bossbar.ashfall.grid.siege", GridDistricts.name(id),
-				r.coreHp, Math.max(r.coreHp, coreHp(level, id)),
-				r.wavesSpawned, tier.waves(), alive));
+		bar.setName(barName(id, r, rules, Math.max(r.coreHp, coreHp(level, id)), tier.waves(), alive, near, clock));
 		bar.setColor(BossEvent.BossBarColor.RED);
 		bar.setProgress(Math.clamp(r.coreHp / (float) Math.max(1, Math.max(r.coreHp, coreHp(level, id))), 0f, 1f));
 		GridController.showNear(level, bar, core, settings.presenceRadius() * 1.5);
+	}
+
+	/**
+	 * The siege bossbar's text: core, waves and zombies left, then the win countdown. While players still owe
+	 * attended time it counts that down ({@code defend 3:12}, paused when nobody is near); once they have held the
+	 * core long enough it shows the time to dawn instead. Public for gametests.
+	 */
+	public static Component barName(String id, DistrictRecord r, LoopRules rules, int maxHp, int waves, int alive,
+			boolean near, long clock) {
+		String key = r.breach ? "bossbar.ashfall.grid.breach" : "bossbar.ashfall.grid.siege";
+		long defend = DistrictLoop.defendTicksLeft(r, rules, clock);
+		String timer;
+		if (defend <= 0) {
+			key += "_dawn";
+			timer = clock(DistrictLoop.ticksToDawn(r, rules, clock));
+		} else {
+			if (!near) {
+				key += "_paused";
+			}
+			timer = clock(defend);
+		}
+		return Component.translatable(key, GridDistricts.name(id), r.coreHp, maxHp, r.wavesSpawned, waves, alive, timer);
+	}
+
+	/** {@code ticks} as m:ss, rounded up so the timer reads 0:00 only when it is done. */
+	static String clock(long ticks) {
+		long seconds = (Math.max(0, ticks) + 19) / 20;
+		return (seconds / 60) + ":" + String.format("%02d", seconds % 60);
 	}
 
 	/** Spawns one wave around the core. @return zombies spawned */
