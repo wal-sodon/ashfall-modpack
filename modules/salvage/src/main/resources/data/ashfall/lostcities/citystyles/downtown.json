@@ -1,5 +1,6 @@
 {
 	"inherit": "lcmt:citystyle_standard",
+	"style": "ashfall:downtown",
 	"explosionchance": 0.5,
 	"buildingsettings": {
 		"minfloors": 4,
@@ -8,40 +9,71 @@
 		"maxcellars": 2,
 		"buildingchance": 0.65
 	},
+	"parkblocks": {
+		"parkchance": 0.15
+	},
+	"streetblocks": {
+		"fountainchance": 0.08,
+		"frontchance": 0.4
+	},
 	"selectors": {
 		"buildings": [
 			{
-				"factor": 0.4,
+				"factor": 0.97,
 				"value": "lcmt:building2"
 			},
 			{
-				"factor": 0.4,
+				"factor": 0.97,
 				"value": "lcmt:building5"
 			},
 			{
-				"factor": 0.3,
+				"factor": 0.727,
 				"value": "lcmt:building8"
+			},
+			{
+				"factor": 0.606,
+				"value": "lcmt:building7"
+			},
+			{
+				"factor": 0.485,
+				"value": "lcmt:building6"
+			},
+			{
+				"factor": 0.242,
+				"value": "lcmt:building3"
 			}
 		],
 		"multibuildings": [
 			{
-				"factor": 0.15,
+				"factor": 0.5,
 				"value": "lcmt:huge1"
 			},
 			{
-				"factor": 0.15,
+				"factor": 0.5,
 				"value": "lcmt:huge2"
 			},
 			{
-				"factor": 0.1,
+				"factor": 0.333,
 				"value": "lcmt:center"
 			},
 			{
-				"factor": 0.1,
+				"factor": 0.333,
 				"value": "lcmt:townhall"
 			},
 			{
-				"factor": 0.1,
+				"factor": 0.333,
+				"value": "lcmt:multi2"
+			},
+			{
+				"factor": 0.333,
+				"value": "lcmt:multi4"
+			},
+			{
+				"factor": 0.167,
+				"value": "lcmt:library"
+			},
+			{
+				"factor": 0.206,
 				"value": "ashfall:police_precinct"
 			}
 		]

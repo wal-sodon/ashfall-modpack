@@ -1,5 +1,6 @@
 {
 	"inherit": "lcmt:citystyle_standard",
+	"style": "ashfall:wasteland",
 	"explosionchance": 1.0,
 	"buildingsettings": {
 		"minfloors": 1,
@@ -7,5 +8,12 @@
 		"mincellars": 0,
 		"maxcellars": 1,
 		"buildingchance": 0.15
+	},
+	"parkblocks": {
+		"parkchance": 0.2
+	},
+	"streetblocks": {
+		"fountainchance": 0.0,
+		"frontchance": 0.1
 	}
 }

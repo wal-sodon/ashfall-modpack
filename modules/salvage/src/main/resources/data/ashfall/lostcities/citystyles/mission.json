@@ -1,5 +1,6 @@
 {
 	"inherit": "lcmt:citystyle_standard",
+	"style": "ashfall:mission",
 	"explosionchance": 0.6,
 	"buildingsettings": {
 		"minfloors": 2,
@@ -8,28 +9,59 @@
 		"maxcellars": 2,
 		"buildingchance": 0.55
 	},
+	"parkblocks": {
+		"parkchance": 0.3
+	},
+	"streetblocks": {
+		"fountainchance": 0.04,
+		"frontchance": 0.25
+	},
 	"selectors": {
 		"buildings": [
 			{
-				"factor": 0.3,
+				"factor": 1.684,
 				"value": "lcmt:building6"
 			},
 			{
-				"factor": 0.06,
+				"factor": 0.842,
+				"value": "lcmt:building1"
+			},
+			{
+				"factor": 0.842,
+				"value": "lcmt:building3"
+			},
+			{
+				"factor": 0.632,
+				"value": "lcmt:building7"
+			},
+			{
+				"factor": 0.149,
 				"value": "ashfall:pharmacy"
 			}
 		],
 		"multibuildings": [
 			{
-				"factor": 0.2,
+				"factor": 0.556,
 				"value": "lcmt:center"
 			},
 			{
-				"factor": 0.15,
+				"factor": 0.556,
 				"value": "lcmt:library"
 			},
 			{
-				"factor": 0.08,
+				"factor": 0.556,
+				"value": "lcmt:multi1"
+			},
+			{
+				"factor": 0.556,
+				"value": "lcmt:multi3"
+			},
+			{
+				"factor": 0.278,
+				"value": "lcmt:huge1"
+			},
+			{
+				"factor": 0.179,
 				"value": "ashfall:police_precinct"
 			}
 		]

@@ -1,5 +1,6 @@
 {
 	"inherit": "lcmt:citystyle_standard",
+	"style": "ashfall:south_slope",
 	"explosionchance": 0.5,
 	"buildingsettings": {
 		"minfloors": 1,
@@ -8,32 +9,63 @@
 		"maxcellars": 1,
 		"buildingchance": 0.5
 	},
+	"parkblocks": {
+		"parkchance": 0.3
+	},
+	"streetblocks": {
+		"fountainchance": 0.05,
+		"frontchance": 0.3
+	},
 	"selectors": {
 		"buildings": [
 			{
-				"factor": 0.3,
+				"factor": 1.103,
 				"value": "lcmt:building1"
 			},
 			{
-				"factor": 0.3,
+				"factor": 1.103,
 				"value": "lcmt:building4"
 			},
 			{
-				"factor": 0.08,
+				"factor": 0.552,
+				"value": "lcmt:building2"
+			},
+			{
+				"factor": 0.414,
+				"value": "lcmt:building3"
+			},
+			{
+				"factor": 0.414,
+				"value": "lcmt:building5"
+			},
+			{
+				"factor": 0.414,
+				"value": "lcmt:building6"
+			},
+			{
+				"factor": 0.177,
 				"value": "ashfall:pharmacy"
 			}
 		],
 		"multibuildings": [
 			{
-				"factor": 0.15,
+				"factor": 0.833,
 				"value": "lcmt:shopping"
 			},
 			{
-				"factor": 0.15,
+				"factor": 0.833,
 				"value": "lcmt:shopping_open"
 			},
 			{
-				"factor": 0.07,
+				"factor": 0.417,
+				"value": "lcmt:multi1"
+			},
+			{
+				"factor": 0.417,
+				"value": "lcmt:multi3"
+			},
+			{
+				"factor": 0.162,
 				"value": "ashfall:police_precinct"
 			}
 		]

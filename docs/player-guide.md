@@ -135,7 +135,8 @@ downed friend and right-click them.
 ## 3. Water and thirst
 
 Thirst works like hunger and drains **1.5 times as fast** from the same activity (sprinting, jumping,
-fighting). It drains faster still in hot biomes such as desert, badlands and savanna.
+fighting). It drains faster still in hot biomes such as desert, badlands and savanna. The city itself is plains
+(see section 18), so that only happens in the wild beyond it.
 
 | Thirst | Effect |
 |---|---|
@@ -976,6 +977,26 @@ The Ion, Arc, Lancer and Storm blasters can't be crafted: find them.
 ## 18. Where things are
 City streets sit at two heights at most, one 6-block step apart (the Ashfall Lost Cities profile caps the city
 levels), so the city is walkable. This needs a world made with rc11 or later; older worlds keep their terrain.
+
+The whole city (the districts, Montford, the suburbs and the wasteland, out to 2,600 blocks from Downtown) is the
+plains biome from just below the cellars up, so it never snows there, only rains, and Rain Collectors work
+everywhere in town. Caves underneath keep their own biomes. Inside the four districts vanilla doesn't decorate the
+land either: no trees, mangroves, boulders, lakes, ice, snow or dripstone grow through the streets. The Ridge and
+the land past the wasteland stay wild. This needs a world made with Ashfall 1.4.0 or later (only newly generated
+chunks of an older world get it).
+
+Each district has its own look, inside and out (Ashfall 1.4.0 or later, new chunks only):
+
+| District | Buildings | Walls and glass | Inside |
+|---|---|---|---|
+| **Downtown** | Tall offices, hotels, banks, big multi-block towers; fewer parks, more fountains and shopfronts | Concrete, grey and dark stone, tinted glass | Dark oak and spruce, desks and drafting tables, more wrecked rooms |
+| **Mission** | Clinics, pharmacies, libraries, the odd hospital block | Pale brick, white concrete, clear glass | Birch and oak, apothecary stands |
+| **River Arts** | Warehouses, workshops, factories, the art museum | Red brick, terracotta, tuff, mud brick | Spruce and dark oak, smithing benches |
+| **South Slope** | Bars, restaurants, breweries, shops and malls | Painted terracotta and brick | Cherry, acacia and jungle wood, kitchens and music stands |
+| **Montford and the suburbs** | Houses, corner shops, cabins, small parks | Brick and painted houses | Mixed homely woods, kitchens |
+| **Wasteland** | Few, low and wrecked | Mossy brick and mud | Dark wood, mostly wrecked |
+
+The building type also picks the loot, so a district's lean shows in what you find (see "Loot-only materials" above).
 
 
 Coordinates are block x, z. The layout is the same in every world; ordinary buildings change with the seed.
