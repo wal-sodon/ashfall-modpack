@@ -42,7 +42,7 @@
 			"tier": 1,
 			"waves": 4,
 			"size": 8,
-			"core_hp": 1280,
+			"core_hp": 832,
 			"variants": {
 				"ashfall:walker": 6,
 				"ashfall:runner": 2
@@ -52,7 +52,7 @@
 			"tier": 2,
 			"waves": 6,
 			"size": 12,
-			"core_hp": 1920,
+			"core_hp": 1248,
 			"variants": {
 				"ashfall:walker": 6,
 				"ashfall:runner": 3,
@@ -63,7 +63,7 @@
 			"tier": 3,
 			"waves": 7,
 			"size": 20,
-			"core_hp": 3200,
+			"core_hp": 2080,
 			"variants": {
 				"ashfall:walker": 5,
 				"ashfall:runner": 4,
@@ -74,7 +74,7 @@
 			"tier": 4,
 			"waves": 6,
 			"size": 22,
-			"core_hp": 3520,
+			"core_hp": 2288,
 			"variants": {
 				"ashfall:walker": 3,
 				"ashfall:runner": 4,
@@ -86,7 +86,7 @@
 			"tier": 5,
 			"waves": 6,
 			"size": 24,
-			"core_hp": 3840,
+			"core_hp": 2496,
 			"variants": {
 				"ashfall:walker": 3,
 				"ashfall:runner": 5,
@@ -98,7 +98,7 @@
 			"tier": 6,
 			"waves": 7,
 			"size": 26,
-			"core_hp": 4160,
+			"core_hp": 2704,
 			"variants": {
 				"ashfall:walker": 2,
 				"ashfall:runner": 5,
