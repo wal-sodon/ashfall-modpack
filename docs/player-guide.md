@@ -648,7 +648,7 @@ for the coming nightfall. The siren warns you 150 s ahead.
 - At nightfall waves of zombies attack the core. Siege routes bring them **in through the building's entrance**,
   and the control room's iron security doors are held open for the siege.
 - **The core's health depends on the siege tier** (table below). Every zombie within about 6 blocks of it takes
-  1 HP per second off it. Left alone, the core falls in about 2.5 minutes, so you can step away briefly, but not
+  1 HP per second off it. Left alone, the core falls in under 2 minutes, so you can step away briefly, but not
   for long.
 - A new wave comes every 120 s, or sooner once 4 or fewer are left alive.
 - **Waves grow with the party:** the size below is for one player. With 2, 3 or 4 players within 96 blocks of the
@@ -660,14 +660,14 @@ for the coming nightfall. The siren warns you 150 s ahead.
 
 | Siege tier | Waves × zombies (solo) | Core HP |
 |---|---|---|
-| I | 4 × 8 | 1280 |
-| II | 6 × 12 | 1920 |
-| III | 7 × 20 | 3200 |
-| IV | 6 × 22 (patients join) | 3520 |
-| V | 6 × 24 | 3840 |
-| VI | 7 × 26 | 4160 |
+| I | 4 × 8 | 832 |
+| II | 6 × 12 | 1248 |
+| III | 7 × 20 | 2080 |
+| IV | 6 × 22 (patients join) | 2288 |
+| V | 6 × 24 | 2496 |
+| VI | 7 × 26 | 2704 |
 
-Special infected join siege waves too. Expect a party with the gear of its act to lose a quarter of the core or so;
+Special infected join siege waves too. Expect a party with the gear of its act to lose a third of the core or more;
 brutes, screamers and bloated drop cells, which pays back part of the cost.
 
 **Winning:** clear every wave, **or** reach dawn having had players within 96 blocks of the core for at least 4
