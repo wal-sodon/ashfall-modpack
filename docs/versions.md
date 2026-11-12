@@ -15,6 +15,7 @@ release is tagged `vX.Y.Z` on `wal-sodon/ashfall-modpack` and gets a GitHub rele
 
 | Version | Class | What changed |
 |---|---|---|
+| 1.3.0 | minor | Add Survivor Skills and classes: spend XP on permanent buffs (#14) |
 | 1.2.1 | patch | Add /ashfall radio: a free Field Radio once every three in-game days (#13) |
 | 1.2.0 | minor | Let horde-night waves break into a sealed bunker toward its core (#12) |
 | 1.1.0 | minor | Use one rolling release PR so several merges before a release work (#7); Build, sleep and set up in reclaimed substation compounds (#4, minor); fix: repaired Substation Cores no longer vanish when their chunk reloads (#2, patch); fix: zombies can hurt survivors and pets inside claims (#5, patch) |
