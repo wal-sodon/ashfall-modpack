@@ -73,9 +73,9 @@ class GridDataTest {
 		assertTrue(s.waveSize(s.tier(6), 4) * 2 <= 150, "the top siege's waves fit the Director's world cap");
 		for (SiegeSettings.Tier tier : s.tiers()) {
 			assertTrue(tier.coreHp(0) > 0, "tier " + tier.tier() + " sets its own core health");
-			// an undefended core lasts 2-3 minutes against one solo wave at 1 HP per zombie-second
+			// an undefended core lasts 90-120 s against one solo wave at 1 HP per zombie-second (cut 35% so leakers matter)
 			double seconds = tier.coreHp(0) / (double) tier.size();
-			assertTrue(seconds >= 120 && seconds <= 180, "tier " + tier.tier() + " core lasts " + seconds + " s");
+			assertTrue(seconds >= 90 && seconds <= 120, "tier " + tier.tier() + " core lasts " + seconds + " s");
 		}
 		assertEquals(s.tier(2).size(), s.waveSize(s.tier(2), 0), "nobody counts as solo");
 		assertTrue(s.waveSize(s.tier(2), 4) > s.waveSize(s.tier(2), 2), "bigger parties get bigger waves");

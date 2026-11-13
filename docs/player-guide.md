@@ -369,6 +369,7 @@ Travel instantly between your stops, paid for with Cell Pack charge.
   - on horde nights;
   - while a District Siege is set or running;
   - while a zombie is hunting you.
+  - The one exception is the free **Defend** trip to a Breach (see [Breaches](#breaches)).
 - You arrive with 5 seconds of respawn protection.
 - Server admins can tune the numbers in `data/ashfall/ashfall/travel/travel.json`.
 - **Waypoints:** Xaero's Minimap is included. Press **B** to mark a waypoint, and it shows on the minimap and
@@ -557,12 +558,22 @@ Once you have a reclaimed district, a **Breach** can hit one of its substations:
 - It comes **every 7 days from day 7**, on a random reclaimed district. It never lands on a horde night, the night
   after one, or a District Siege night; it waits for the next free night.
 - The siren names the district 150 s before nightfall.
-- The Breach is a siege on that core, with the same waves and core health as a district siege of its tier. While it runs, the district loses its
-  safe compound and free power.
-- **If the core is still standing at dawn, the Breach is held**, whether or not you were there. Every held Breach
-  leaves a **supply cache** at the core, with a separate roll for each player: an Energy Cell, salvage and parts,
-  sometimes a charged Standard pack or a Resonance Crystal.
-- **If the core is destroyed,** the district goes **BROKEN**: dark again, no free power, no safe compound.
+- **Free Defend trip:** with each siren, every player gets a **[Defend]** button in chat (or types
+  `/ashfall travel defend`).
+  - It takes you to the breached substation from anywhere, at no cost, after the usual 3-second hold-still.
+  - It works even on a horde night or while a zombie is hunting you.
+  - You get one trip per player per Breach.
+- The Breach is a siege on that core, with the same waves and core health as a district siege of its tier. While it
+  runs, the district loses its safe compound and free power.
+- **You have to defend it.** The Breach is held only if, at dawn, the core is still standing **and** players spent
+  at least **4 minutes** within 96 blocks of the core. Clearing every wave also holds it.
+  - The boss bar counts down the defence time still needed (`defend 3:12`). The countdown pauses while nobody is
+    near, then switches to `held, dawn in …`.
+  - **Staying away loses the district:** an undefended Breach breaks it at dawn, the same as a fallen core.
+- Every held Breach leaves a **supply cache** at the core, with a separate roll for each player: an Energy Cell,
+  salvage and parts, sometimes a charged Standard pack or a Resonance Crystal.
+- **If the core is destroyed, or nobody defended it,** the district goes **BROKEN**: dark again, no free power,
+  no safe compound.
   Socket **2 Grid Couplers** (half the original cost) into the core to restore it at once. You keep your links,
   your reward, and your Grid % once it is back.
 
@@ -639,7 +650,7 @@ for the coming nightfall. The siren warns you 150 s ahead.
 - At nightfall waves of zombies attack the core. Siege routes bring them **in through the building's entrance**,
   and the control room's iron security doors are held open for the siege.
 - **The core's health depends on the siege tier** (table below). Every zombie within about 6 blocks of it takes
-  1 HP per second off it. Left alone, the core falls in about 2.5 minutes, so you can step away briefly, but not
+  1 HP per second off it. Left alone, the core falls in under 2 minutes, so you can step away briefly, but not
   for long.
 - A new wave comes every 120 s, or sooner once 4 or fewer are left alive.
 - **Waves grow with the party:** the size below is for one player. With 2, 3 or 4 players within 96 blocks of the
@@ -651,18 +662,19 @@ for the coming nightfall. The siren warns you 150 s ahead.
 
 | Siege tier | Waves × zombies (solo) | Core HP |
 |---|---|---|
-| I | 4 × 8 | 1280 |
-| II | 6 × 12 | 1920 |
-| III | 7 × 20 | 3200 |
-| IV | 6 × 22 (patients join) | 3520 |
-| V | 6 × 24 | 3840 |
-| VI | 7 × 26 | 4160 |
+| I | 4 × 8 | 832 |
+| II | 6 × 12 | 1248 |
+| III | 7 × 20 | 2080 |
+| IV | 6 × 22 (patients join) | 2288 |
+| V | 6 × 24 | 2496 |
+| VI | 7 × 26 | 2704 |
 
-Special infected join siege waves too. Expect a party with the gear of its act to lose a quarter of the core or so;
+Special infected join siege waves too. Expect a party with the gear of its act to lose a third of the core or more;
 brutes, screamers and bloated drop cells, which pays back part of the cost.
 
 **Winning:** clear every wave, **or** reach dawn having had players within 96 blocks of the core for at least 4
-minutes of the siege. The district is then **RECLAIMED**.
+minutes of the siege. The district is then **RECLAIMED**. The boss bar counts down the defence time still needed
+(`defend 3:12`). The countdown pauses while nobody is near, then switches to `held, dawn in …`.
 
 **Losing:** if the core reaches 0 HP, it drops back to REPAIRED. You **keep the couplers and the relay links**, but
 you have to load 4 fresh cells and redo the hold. If nobody attended at all, the siege is postponed to the next
@@ -873,7 +885,7 @@ Both endings give every voter:
 ## 16. After the ending
 
 The world carries on in the shape you chose:
-- **Breaches** keep coming every 7 days on reclaimed substations.
+- **Breaches** keep coming every 7 days on reclaimed substations, and each one still has to be defended.
 - **Aftershock crash sites:** every 7 days a new wave of crash sites can appear on the ridge and in the wasteland
   (at half the usual chance), with crystals and rare blasters. That keeps blades re-socketable.
 - **Bosses return** 10 days after the ending, and 10 days after each later defeat.
