@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import xyz.toesinthesand.ashfall.salvage.city.CityZoneRules;
+import xyz.toesinthesand.ashfall.salvage.city.DistrictGround;
 
 /**
  * Keeps villages (and the other structures Lost Cities avoids) from starting in or near the four districts.
@@ -35,6 +36,11 @@ public abstract class ChunkGeneratorStructureMixin {
 			CallbackInfoReturnable<Boolean> cir) {
 		if (dimension == Level.OVERWORLD && entry.structure().is(CityZoneRules.KEPT_OUT_OF_DISTRICTS)
 				&& CityZoneRules.nearDistrict(pos.x(), pos.z())) {
+			cir.setReturnValue(false);
+		}
+		// The city has no oceans (DistrictGround), so ocean structures would start buried in solid ground.
+		if (entry.structure().is(CityZoneRules.KEPT_OUT_OF_CITY) && DistrictGround.isCityGenerator((ChunkGenerator) (Object) this)
+				&& CityZoneRules.plainsBiome(pos.x(), pos.z())) {
 			cir.setReturnValue(false);
 		}
 	}

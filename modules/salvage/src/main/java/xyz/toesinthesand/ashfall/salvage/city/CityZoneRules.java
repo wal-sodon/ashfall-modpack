@@ -19,6 +19,9 @@ public final class CityZoneRules {
 	/** Structures that never start in or near a district ({@code ChunkGeneratorStructureMixin}). */
 	public static final TagKey<Structure> KEPT_OUT_OF_DISTRICTS = TagKey.create(Registries.STRUCTURE,
 			Identifier.fromNamespaceAndPath("ashfall", "kept_out_of_districts"));
+	/** Ocean structures, which never start in a city zone: the city has no oceans ({@code DistrictGround}). */
+	public static final TagKey<Structure> KEPT_OUT_OF_CITY = TagKey.create(Registries.STRUCTURE,
+			Identifier.fromNamespaceAndPath("ashfall", "kept_out_of_city"));
 	/**
 	 * How far (chunks) outside a district a kept-out structure may not start either. A village's pieces reach about
 	 * 5 chunks from its start, and Lost Cities drops any city chunk they touch, so the margin keeps a village that
@@ -63,6 +66,16 @@ public final class CityZoneRules {
 	public static boolean forcesCity(int chunkX, int chunkZ) {
 		Zone zone = ZoneMap.zoneAtChunk(chunkX, chunkZ);
 		return zone.isDistrict() && zone.city();
+	}
+
+	/**
+	 * True in every city zone (the districts, Montford, the suburbs and the wasteland), false in wilderness and where
+	 * no zone data is loaded: the land there gets the plains biome ({@link DistrictGround}), so the whole city
+	 * looks alike and only ever rains.
+	 */
+	public static boolean plainsBiome(int chunkX, int chunkZ) {
+		Zone zone = ZoneMap.zoneAtChunk(chunkX, chunkZ);
+		return zone != Zone.UNKNOWN && zone.city();
 	}
 
 	/** The Lost Cities city style the zone imposes on this chunk, if any. */

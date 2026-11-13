@@ -98,6 +98,7 @@ public class AshfallSalvage implements ModInitializer {
 			LostCitiesBridge.registerProfile();
 			LostCitiesBridge.registerLandmarkProtection();
 			xyz.toesinthesand.ashfall.salvage.city.LandmarkCleanup.register();
+			xyz.toesinthesand.ashfall.salvage.city.DistrictGround.register();
 		}
 
 		LOGGER.info("Ashfall Salvage loaded");

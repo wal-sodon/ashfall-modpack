@@ -237,7 +237,7 @@ figcaption { font-size: .85rem; color: var(--muted); max-width: 68ch; }
 		<li><div><b>Go upstairs to the radio room.</b> Take the stairs in the north-west corner up one floor. The radio room is the north-east room. The cache chest sits against its south wall, under the desk corner. Everyone gets their own copy.</div></li>
 		<li><div><b><img class="tex" src="img/field_radio.png" alt="" width="32" height="32">Take the Field Radio and read the notes.</b> The chest also holds the Survivor's Notes and 1–3 supplies. Right-click the radio for the grid report and to turn on the Grid HUD.</div></li>
 		<li><div><b>Raid the pharmacy next door.</b> It is two chunks east, at <span class="coord">-120, -792</span>, outside the safe zone. Look for bandages, batteries and sometimes antibiotics.</div></li>
-		<li><div><b>Get clean water.</b> Fill a bottle at any river or pond, then cook the Dirty Water in a furnace or campfire. Never drink it raw if you can help it.</div></li>
+		<li><div><b>Get clean water.</b> Fill a bottle at a fountain or pool in town (or a river out in the wild), then cook the Dirty Water in a furnace or campfire. Never drink it raw if you can help it.</div></li>
 		<li><div><b>Be indoors and dark by nightfall.</b> Darkness spawns more zombies, and they follow light and noise.</div></li>
 	</ol>
 	<h3>Controls</h3>
@@ -297,7 +297,7 @@ figcaption { font-size: .85rem; color: var(--muted); max-width: 68ch; }
 		<tr><td><strong>Dirty Water</strong></td><td class="num">+5</td><td>40% chance of nausea and an 8% chance of infection</td></tr>
 	</table></div>
 	<ul>
-		<li>Fill a glass bottle at any river or pond to get Dirty Water, then <strong>cook it</strong> in a furnace, smoker or campfire to make it clean.</li>
+		<li>Fill a glass bottle at a fountain or pool in town, or a river out in the wild, to get Dirty Water, then <strong>cook it</strong> in a furnace, smoker or campfire to make it clean.</li>
 		<li><img class="tex" src="img/rain_collector.png" alt="" width="32" height="32"><strong>Rain Collector</strong> (6 Scrap Metal, 2 Duct Tape, 1 Glass Shard): put empty glass bottles in, and while rain falls on it, it fills one with clean Bottled Water every minute. It holds 4. Empty hand takes the water out. <strong>It only goes inside your Bunker Core's area or a reclaimed substation compound.</strong></li>
 		<li>Once River Arts is reclaimed, water from inside reclaimed districts comes up clean.</li>
 	</ul>
@@ -469,6 +469,17 @@ figcaption { font-size: .85rem; color: var(--muted); max-width: 68ch; }
 	<h2>Map and landmarks</h2>
 	<p>Downtown sits at the centre of the map, <span class="coord">0, 0</span>. These buildings are in the same place in every world. Press <code>F3</code> for your coordinates.</p>
 	<p>City streets sit at two heights at most, one 6-block step apart, so you can walk across town without climbing cliffs. Hills still rise outside the city.</p>
+	<p>The whole city, from the districts out through the suburbs and wasteland, is plains: it never snows in town, only rains, so Rain Collectors work everywhere. There are no rivers, oceans, ponds, lava lakes or springs in town either: open water there is only rain and the fountains and pools in buildings and parks. Inside the four districts no trees, mangroves, boulders, ice or dripstone grow through the streets. The Ridge and the land beyond the wasteland stay wild. (Worlds made with 1.4.0 or later; older worlds only get it in newly generated chunks.)</p>
+	<p>Each district has its own look, inside and out, and the building type picks the loot, so a district's lean shows in what you find. (1.4.0 or later, new chunks only.)</p>
+	<div class="table-wrap"><table>
+		<tr><th>District</th><th>Buildings</th><th>Walls and glass</th><th>Inside</th></tr>
+		<tr><td><strong>Downtown</strong></td><td>Tall offices, hotels, banks, big towers; fewer parks, more fountains</td><td>Concrete, grey and dark stone, tinted glass</td><td>Dark oak and spruce, desks, more wrecked rooms</td></tr>
+		<tr><td><strong>Mission</strong></td><td>Clinics, pharmacies, libraries, the odd hospital block</td><td>Pale brick, white concrete, clear glass</td><td>Birch and oak, apothecary stands</td></tr>
+		<tr><td><strong>River Arts</strong></td><td>Warehouses, workshops, factories, the art museum</td><td>Red brick, terracotta, tuff, mud brick</td><td>Spruce and dark oak, smithing benches</td></tr>
+		<tr><td><strong>South Slope</strong></td><td>Bars, restaurants, breweries, shops and malls</td><td>Painted terracotta and brick</td><td>Cherry, acacia and jungle wood, kitchens</td></tr>
+		<tr><td><strong>Montford, suburbs</strong></td><td>Houses, corner shops, cabins, small parks</td><td>Brick and painted houses</td><td>Mixed homely woods, kitchens</td></tr>
+		<tr><td><strong>Wasteland</strong></td><td>Few, low and wrecked</td><td>Mossy brick and mud</td><td>Dark wood, mostly wrecked</td></tr>
+	</table></div>
 	<div class="table-wrap"><table>
 		<tr><th>Landmark</th><th>District</th><th class="num">X, Z</th><th>From the safehouse</th></tr>
 		<tr><td><strong>Safehouse</strong> (spawn, Field Radio)</td><td>Montford</td><td class="num"><span class="coord">-152, -792</span></td><td>–</td></tr>
@@ -1108,7 +1119,7 @@ P . P</span></td><td>2 S, 1 E, 2 T, 1 crafting table (X), 2 planks (P)</td></tr>
 	<p>Each of the four districts has a dead <strong>Substation Core</strong> in a fortified control room. Relighting all four opens the finale. The Field Radio and the Grid Map (<code>G</code>) point to the nearest one you haven't reclaimed. Districts can be done in any order.</p>
 	<div class="table-wrap"><table>
 		<tr><th>District</th><th class="num">Tier</th><th>Substation</th><th class="num">X, Z</th><th>Reclaim reward</th></tr>
-		<tr><td><strong>River Arts</strong></td><td class="num">2</td><td>Riverside pump house</td><td class="num"><span class="coord">-864, 80</span></td><td><strong>City pump:</strong> clean water in reclaimed districts. Cache with an Ion Blaster Rifle</td></tr>
+		<tr><td><strong>River Arts</strong></td><td class="num">2</td><td>Pump house</td><td class="num"><span class="coord">-864, 80</span></td><td><strong>City pump:</strong> clean water in reclaimed districts. Cache with an Ion Blaster Rifle</td></tr>
 		<tr><td><strong>South Slope</strong></td><td class="num">2</td><td>Brewery-yard substation</td><td class="num"><span class="coord">96, 800</span></td><td>Heat Sink and Cell Regulator fit at the Bench. Cache with a Heat Sink, plus a Dampener or Focusing Lens</td></tr>
 		<tr><td><strong>Downtown</strong></td><td class="num">3</td><td>Parking-deck substation</td><td class="num"><span class="coord">64, -16</span></td><td>Overcharger fits at the Bench. Cache with a Pulse Carbine or Arc Magnum</td></tr>
 		<tr><td><strong>Mission</strong></td><td class="num">4</td><td>Hospital generator plant</td><td class="num"><span class="coord">784, 640</span></td><td><strong>Patient Zero's ward unseals.</strong> Cache with antibiotics, a Heavy Cell Pack and a rare blaster</td></tr>

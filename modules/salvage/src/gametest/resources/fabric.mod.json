@@ -14,6 +14,7 @@
 			"xyz.toesinthesand.ashfall.salvage.test.LootZoneGameTest",
 			"xyz.toesinthesand.ashfall.salvage.test.LootZoneAdminGameTest",
 			"xyz.toesinthesand.ashfall.salvage.test.CityZoneGameTest",
+			"xyz.toesinthesand.ashfall.salvage.test.DistrictGroundGameTest",
 			"xyz.toesinthesand.ashfall.salvage.test.LostCitiesAtlasGameTest",
 			"xyz.toesinthesand.ashfall.salvage.test.LandmarkGameTest",
 			"xyz.toesinthesand.ashfall.salvage.test.CrashSiteGameTest",

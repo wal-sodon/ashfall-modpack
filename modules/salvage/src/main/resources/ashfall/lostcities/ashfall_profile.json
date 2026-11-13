@@ -4,6 +4,7 @@
 		"description": "Ashfall: Asheville, dead and dark, waiting to be relit",
 		"extraDescription": "Fixed districts around the origin (Downtown), suburbs to 1.6 km, a wasteland ring to 2.6 km, wilderness beyond. Spawn is in Montford.",
 		"worldStyle": "ashfall:relight",
+		"liquidBlock": "minecraft:air",
 		"generateSpawners": false,
 		"generateLighting": false,
 		"generateLoot": true,
