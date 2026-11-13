@@ -591,7 +591,7 @@ Map point to them.
 
 | District | Zone tier | Substation | Reclaim extra | Nearby |
 |---|---|---|---|---|
-| **River Arts** | 2 | Riverside pump house, around (-864, 80) | **City pump:** clean water in reclaimed districts. Reward cache with an **Ion Blaster Rifle** | Kiln & Co. Salvage, the Abomination's lair |
+| **River Arts** | 2 | Pump house, around (-864, 80) | **City pump:** clean water in reclaimed districts. Reward cache with an **Ion Blaster Rifle** | Kiln & Co. Salvage, the Abomination's lair |
 | **South Slope** | 2 | Brewery-yard substation, around (96, 800) | **Heat Sink** and **Cell Regulator** fit at the Bench. Reward cache with a Heat Sink, plus a Dampener or Focusing Lens | - |
 | **Downtown** | 3 | Parking-deck substation, around (64, -16) | **Overcharger** fits at the Bench. Reward cache with a Pulse Carbine or Arc Magnum | The police station and its armory cache |
 | **Mission** | 4 | Hospital generator plant, around (784, 640) | **Patient Zero's deep ward unseals.** Reward cache with antibiotics, a Heavy Cell Pack and a rare blaster roll | The hospital, Patient Zero |
