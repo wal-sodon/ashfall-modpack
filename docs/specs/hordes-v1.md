@@ -42,7 +42,7 @@ File: `data/ashfall/ashfall/horde/hordes.json` (`HordeSettings`).
 - A Breach is a SIEGE flagged `DistrictRecord.breach` (saved): same waves, routes, core health and bossbar ("Breach"). While it runs the district is not reclaimed (no safe compound, no free power).
 - **Core destroyed:** the district goes **BROKEN**: dark again (Grid Lamps in loaded chunks turn back into dead redstone lamps and lose `RELIT`; other relit chunks go dark when they next load), no couplers in the core, links and reward flag kept.
 - **Re-repair:** socket `ceil(couplers_required / 2)` Grid Couplers (2 with the shipped 4) and the district goes straight back to RECLAIMED, keeping its first reclaim day; no second reward cache or fanfare.
-- **Core standing at dawn:** held, back to RECLAIMED, if players attended the core for the siege presence time; otherwise lost (BROKEN). (Changed from "attended or not" with the Defend trip.)
+- **Core standing at dawn:** held, back to RECLAIMED, attended or not.
 - Commands: `/ashfall horde status | wave [at <pos>] | breach [district]` (op; `wave at` aims the wave at a place, so a server console with nobody online can send one); `/ashfall grid set <district> broken` sets up a broken district.
 
 ## 4. Siege routes

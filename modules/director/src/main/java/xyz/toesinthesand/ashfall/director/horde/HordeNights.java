@@ -416,7 +416,6 @@ public final class HordeNights {
 			if (!target.isEmpty()) {
 				HordeSiren.alert(server, Component.translatable("title.ashfall.breach.warning"),
 						Component.translatable("subtitle.ashfall.breach.warning", hook.name(target)));
-				hook.announce(server, target);
 			}
 		}
 		if (schedule.inNightWindow(clock)) {
@@ -450,7 +449,6 @@ public final class HordeNights {
 		}
 		HordeSiren.alert(level.getServer(), Component.translatable("title.ashfall.breach"),
 				Component.translatable("subtitle.ashfall.breach", hook.name(target)));
-		hook.announce(level.getServer(), target);
 		AshfallDirector.LOGGER.info("Breach: a horde hits the {} substation", target);
 		return true;
 	}

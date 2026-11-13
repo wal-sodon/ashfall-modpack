@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.gametest.v1.GameTest;
 import net.minecraft.core.BlockPos;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.network.Connection;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
@@ -36,8 +35,6 @@ import xyz.toesinthesand.ashfall.arms.grid.GridSiege;
 import xyz.toesinthesand.ashfall.arms.grid.GridState;
 import xyz.toesinthesand.ashfall.arms.grid.SiegeSettings;
 import xyz.toesinthesand.ashfall.arms.grid.SubstationCoreBlockEntity;
-import xyz.toesinthesand.ashfall.arms.travel.Travel;
-import xyz.toesinthesand.ashfall.arms.travel.TravelRules;
 import xyz.toesinthesand.ashfall.director.haven.HavenState;
 import xyz.toesinthesand.ashfall.director.horde.HordeHooks;
 import xyz.toesinthesand.ashfall.director.horde.HordeNights;
@@ -63,14 +60,9 @@ public class BreachGameTest {
 
 	/** 2 couplers (re-repair 1), 2 cells, a 10-hp core with a 2.5-block reach doing 5 hp per zombie-second. */
 	private static GridSettings settings() {
-		return settings(0);
-	}
-
-	/** {@link #settings()} with a dawn win needing {@code presenceSeconds} of players within 6 blocks. */
-	private static GridSettings settings(int presenceSeconds) {
 		GridSettings d = GridSettings.DEFAULT;
 		return new GridSettings(2, 2, 240L, 2, 4, 1, 32, new GridSettings.Pressure(15, 0, 0, 24, 40),
-				new GridSettings.Core(10, 2.5, 3.0, 5, 0), 150, 23_000, presenceSeconds, 6, d.reclaimed(), Map.of());
+				new GridSettings.Core(10, 2.5, 3.0, 5, 0), 150, 23_000, 0, 6, d.reclaimed(), Map.of());
 	}
 
 	private static SiegeSettings siege() {
@@ -95,12 +87,8 @@ public class BreachGameTest {
 	}
 
 	private static String district(GameTestHelper helper, String id, SiegeSettings siege) {
-		return district(helper, id, siege, settings());
-	}
-
-	private static String district(GameTestHelper helper, String id, SiegeSettings siege, GridSettings settings) {
 		BoundingBox box = BoundingBox.fromCorners(helper.absolutePos(new BlockPos(0, 0, 0)), helper.absolutePos(new BlockPos(7, 7, 7)));
-		GridDistricts.registerTest(new GridDistricts.TestDistrict(id, box, Set.of(), settings, siege, 1, true));
+		GridDistricts.registerTest(new GridDistricts.TestDistrict(id, box, Set.of(), settings(), siege, 1, true));
 		GridState.get(helper.getLevel().getServer()).update(helper.getLevel(), id, r -> {
 			r.reset();
 			r.corePos = DistrictRecord.NO_CORE;
@@ -198,25 +186,20 @@ public class BreachGameTest {
 	}
 
 	@GameTest(maxTicks = 100, padding = PADDING)
-	public void defendedBreachStillStandingAtDawnIsHeld(GameTestHelper helper) {
-		String id = district(helper, "test_breach_held", farWavesTwice(), settings(3));
+	public void breachStillStandingAtDawnIsHeld(GameTestHelper helper) {
+		String id = district(helper, "test_breach_held", farWavesTwice());
 		floor(helper);
 		core(helper, CORE);
 		ServerLevel level = helper.getLevel();
-		ServerPlayer player = survivalPlayer(helper, "breach-defender");
-		BlockPos at = helper.absolutePos(CORE).offset(2, 0, 0);
-		player.snapTo(at.getX() + 0.5, at.getY(), at.getZ() + 0.5);
 		try {
 			GridCommand.force(level, id, DistrictState.RECLAIMED);
 			helper.assertTrue(new GridBreach().begin(level, id), "Breach started");
 			long start = record(helper, id).siegeAt;
-			GridController.tickDistrict(level, id, start + 100, 60);
+			GridController.tickDistrict(level, id, start + 100, 20);
 			helper.assertValueEqual(record(helper, id).state, DistrictState.SIEGE, "the Breach runs through the night");
-			helper.assertValueEqual(DistrictLoop.defendTicksLeft(record(helper, id), settings(3).rules(), start + 100), 0L,
-					"3 seconds at the core: defended");
 			GridController.tickDistrict(level, id, start + settings().rules().nightTicks(), 20);
 			DistrictRecord r = record(helper, id);
-			helper.assertValueEqual(r.state, DistrictState.RECLAIMED, "defended and standing at dawn: held");
+			helper.assertValueEqual(r.state, DistrictState.RECLAIMED, "held at dawn, nobody needed at the core");
 			helper.assertFalse(r.breach, "the Breach is over");
 			helper.assertTrue(HavenState.get(level.getServer()).customZones().containsKey(GridReclaim.compoundZoneId(id)),
 					"the compound is safe again");
@@ -226,81 +209,7 @@ public class BreachGameTest {
 			GridSiege.siegeZombies(level, id, helper.absolutePos(CORE)).forEach(Entity::discard);
 			helper.succeed();
 		} finally {
-			level.getServer().getPlayerList().remove(player);
 			GridDistricts.unregisterTest(id);
-		}
-	}
-
-	/** Staying away no longer keeps a district: nobody at the core all night, and at dawn the district breaks. */
-	@GameTest(maxTicks = 100, padding = PADDING)
-	public void undefendedBreachIsLostAtDawn(GameTestHelper helper) {
-		String id = district(helper, "test_breach_undefended", farWavesTwice(), settings(3));
-		floor(helper);
-		core(helper, CORE);
-		ServerLevel level = helper.getLevel();
-		try {
-			GridCommand.force(level, id, DistrictState.RECLAIMED);
-			helper.assertTrue(new GridBreach().begin(level, id), "Breach started");
-			DistrictRecord r = record(helper, id);
-			long start = r.siegeAt;
-			Component bar = GridSiege.barName(id, r, settings(3).rules(), 10, 2, 0, false, start);
-			helper.assertTrue(bar.getString().contains("0:03") && bar.getString().contains("paused"),
-					"the bar counts down the defence time, paused: " + bar.getString());
-			GridController.tickDistrict(level, id, start + settings().rules().nightTicks(), 20);
-			r = record(helper, id);
-			helper.assertValueEqual(r.state, DistrictState.BROKEN, "nobody defended it: broken at dawn");
-			helper.assertFalse(r.breach, "the Breach is over");
-			helper.assertFalse(GridState.get(level.getServer()).isReclaimed(id), "dark again");
-			GridSiege.siegeZombies(level, id, helper.absolutePos(CORE)).forEach(Entity::discard);
-			helper.succeed();
-		} finally {
-			GridDistricts.unregisterTest(id);
-		}
-	}
-
-	/**
-	 * The free Defend trip: from far away, while hunted, with no Cell Pack, it lands at the breached core, and only
-	 * once per Breach. With no Breach running it is refused.
-	 */
-	@GameTest(maxTicks = 200, padding = PADDING)
-	public void defendTripLandsAtTheBreachOncePerBreach(GameTestHelper helper) {
-		String id = district(helper, "test_breach_defend", farWavesTwice());
-		floor(helper);
-		core(helper, CORE);
-		ServerLevel level = helper.getLevel();
-		ServerPlayer player = survivalPlayer(helper, "breach-traveller");
-		player.getInventory().clearContent();
-		BlockPos far = helper.absolutePos(CORE).offset(200, 0, 0);
-		level.setBlock(far.below(), Blocks.STONE.defaultBlockState(), 3);
-		player.snapTo(far.getX() + 0.5, far.getY(), far.getZ() + 0.5);
-		Runnable cleanUp = () -> {
-			GridSiege.siegeZombies(level, id, helper.absolutePos(CORE)).forEach(Entity::discard);
-			level.getServer().getPlayerList().remove(player);
-			GridDistricts.unregisterTest(id);
-		};
-		try {
-			GridCommand.force(level, id, DistrictState.RECLAIMED);
-			helper.assertTrue(Travel.requestDefend(player, id).isPresent(), "no Breach yet: refused");
-			helper.assertTrue(new GridBreach().begin(level, id), "Breach started");
-			Zombie hunter = helper.spawnWithNoFreeWill(EntityTypes.ZOMBIE, new BlockPos(1, 1, 1));
-			hunter.teleportTo(far.getX() + 2.5, far.getY(), far.getZ() + 0.5);
-			hunter.setTarget(player);
-			helper.assertTrue(Travel.requestDefend(player, id).isEmpty(), "hunted, far away and with no charge: still allowed");
-			helper.runAfterDelay(TravelRules.get().warmupTicks() + 5, () -> {
-				try {
-					hunter.discard();
-					helper.assertTrue(player.blockPosition().closerThan(helper.absolutePos(CORE), 8),
-							"did not land at the core: at " + player.blockPosition());
-					player.snapTo(far.getX() + 0.5, far.getY(), far.getZ() + 0.5);
-					helper.assertTrue(Travel.requestDefend(player, id).isPresent(), "one free trip per Breach");
-				} finally {
-					cleanUp.run();
-				}
-				helper.succeed();
-			});
-		} catch (RuntimeException | AssertionError e) {
-			cleanUp.run();
-			throw e;
 		}
 	}
 

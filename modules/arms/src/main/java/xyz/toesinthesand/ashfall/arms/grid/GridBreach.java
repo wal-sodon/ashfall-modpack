@@ -5,7 +5,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import xyz.toesinthesand.ashfall.arms.AshfallArms;
-import xyz.toesinthesand.ashfall.arms.travel.Travel;
 import xyz.toesinthesand.ashfall.director.horde.BreachHook;
 import xyz.toesinthesand.ashfall.director.horde.HordeHooks;
 
@@ -19,9 +18,7 @@ import java.util.List;
  * <p>
  * A Breach is a SIEGE flagged {@link DistrictRecord#breach} on a reclaimed district, so it reuses the whole siege
  * (waves, routes into the building, core health, the bossbar) and only differs in its stakes, which
- * {@link DistrictLoop} owns: a destroyed core, or one nobody defended for long enough before dawn, breaks the
- * district (BROKEN); a defended core still standing at dawn keeps it. Each siren offers players a free Defend trip
- * ({@link Travel#requestDefend}) so a Breach far away can still be reached.
+ * {@link DistrictLoop} owns: a destroyed core breaks the district (BROKEN), a core still standing at dawn keeps it.
  */
 public final class GridBreach implements BreachHook {
 	/** The running server, for the Grid tier supplier (the Director's hook takes no arguments). */
@@ -70,12 +67,6 @@ public final class GridBreach implements BreachHook {
 	@Override
 	public Component name(String id) {
 		return GridDistricts.name(id);
-	}
-
-	/** After each Breach siren, offer every player the free Defend trip to the substation. */
-	@Override
-	public void announce(MinecraftServer server, String id) {
-		Travel.offerDefend(server);
 	}
 
 	/** Starts the Breach now: the district leaves RECLAIMED for a SIEGE that lasts until dawn. Public for gametests. */

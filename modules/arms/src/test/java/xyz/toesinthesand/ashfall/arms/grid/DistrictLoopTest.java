@@ -280,65 +280,17 @@ class DistrictLoopTest {
 	}
 
 	@Test
-	void aDefendedBreachStillStandingAtDawnIsHeld() {
+	void aBreachStillStandingAtDawnIsHeldEvenUnattended() {
 		DistrictRecord r = reclaimed(8);
 		DistrictLoop.startBreach(r, RULES, 12_000);
 		r.wavesSpawned = 1;
 		assertEquals(DistrictLoop.SiegeOutcome.CONTINUE, DistrictLoop.siegeOutcome(r, RULES, 12_500, 3, 2));
-		DistrictLoop.tickSiege(r, true, RULES.minPresenceTicks());
 		assertEquals(DistrictLoop.SiegeOutcome.WON, DistrictLoop.siegeOutcome(r, RULES, 23_000, 3, 2),
-				"defended long enough and still standing");
+				"no presence needed: the district was already won");
 		DistrictLoop.reclaim(r, 20);
 		assertEquals(DistrictState.RECLAIMED, r.state);
 		assertFalse(r.breach);
 		assertEquals(8, r.reclaimedAtDay, "a held Breach keeps the original reclaim day");
-	}
-
-	/** Staying away no longer keeps a district: a Breach nobody defended is lost at dawn, like a fallen core. */
-	@Test
-	void anUndefendedBreachIsLostAtDawn() {
-		DistrictRecord r = reclaimed(8);
-		DistrictLoop.startBreach(r, RULES, 12_000);
-		r.wavesSpawned = 1;
-		DistrictLoop.tickSiege(r, false, 10_000);
-		DistrictLoop.tickSiege(r, true, RULES.minPresenceTicks() - 1);
-		assertEquals(DistrictLoop.SiegeOutcome.BREACH_LOST, DistrictLoop.siegeOutcome(r, RULES, 23_000, 3, 2),
-				"one tick short of the defence time");
-		DistrictLoop.loseBreach(r);
-		assertEquals(DistrictState.BROKEN, r.state);
-		assertFalse(r.breach);
-		assertEquals(0, r.couplers, "re-repair from scratch, at half cost");
-	}
-
-	@Test
-	void theDefendCountdownOnlyRunsWithAPlayerNear() {
-		DistrictRecord r = reclaimed(8);
-		DistrictLoop.startBreach(r, RULES, 12_000);
-		assertEquals(40, DistrictLoop.defendTicksLeft(r, RULES, 12_000));
-		DistrictLoop.tickSiege(r, false, 25);
-		assertEquals(40, DistrictLoop.defendTicksLeft(r, RULES, 12_025), "nobody near: paused");
-		DistrictLoop.tickSiege(r, true, 25);
-		assertEquals(15, DistrictLoop.defendTicksLeft(r, RULES, 12_050));
-		DistrictLoop.tickSiege(r, true, 25);
-		assertEquals(0, DistrictLoop.defendTicksLeft(r, RULES, 12_075), "done, never negative");
-		assertEquals(23_000 - 12_075, DistrictLoop.ticksToDawn(r, RULES, 12_075));
-
-		DistrictRecord siege = holding();
-		DistrictLoop.startSiege(siege, RULES);
-		siege.siegeAt = 12_000;
-		DistrictLoop.tickSiege(siege, true, 10);
-		assertEquals(30, DistrictLoop.defendTicksLeft(siege, RULES, 12_010), "sieges count down the same way");
-	}
-
-	/** A Breach started with less night left than the defence time needs only the time there is. */
-	@Test
-	void aLateBreachNeedsNoMoreDefenceThanTheNightHasLeft() {
-		DistrictRecord r = reclaimed(8);
-		DistrictLoop.startBreach(r, RULES, 22_990);
-		assertEquals(10, DistrictLoop.defendTicksLeft(r, RULES, 22_990), "10 ticks to dawn");
-		DistrictLoop.tickSiege(r, true, 10);
-		r.wavesSpawned = 1;
-		assertEquals(DistrictLoop.SiegeOutcome.WON, DistrictLoop.siegeOutcome(r, RULES, 23_000, 3, 2));
 	}
 
 	/** Phase 4.5 playtest: an admin Breach at midnight ran until the next noon instead of ending at dawn. */
@@ -349,7 +301,6 @@ class DistrictLoopTest {
 		assertTrue(DistrictLoop.startBreach(r, RULES, day3 + 18_000));
 		assertEquals(day3 + 12_000, r.siegeAt, "anchored to tonight's nightfall");
 		r.wavesSpawned = 1;
-		DistrictLoop.tickSiege(r, true, RULES.minPresenceTicks());
 		assertEquals(DistrictLoop.SiegeOutcome.CONTINUE, DistrictLoop.siegeOutcome(r, RULES, day3 + 22_999, 3, 2));
 		assertEquals(DistrictLoop.SiegeOutcome.WON, DistrictLoop.siegeOutcome(r, RULES, day3 + 23_000, 3, 2), "held at dawn");
 
