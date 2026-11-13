@@ -152,7 +152,8 @@ fighting). It drains faster still in hot biomes such as desert, badlands and sav
 | Vanilla water bottle (cauldron, old stock) | +5 | +1 | Counts as dirty water |
 
 **Clean vs dirty water:**
-- A glass bottle used on any open water (a river, a pond or rain-filled water) gives **Dirty Water**.
+- A glass bottle used on any open water (a fountain or pool in town, a river or lake out in the wild, or rain-filled
+  water) gives **Dirty Water**.
 - **Purify it** by cooking: put Dirty Water in a furnace, smoker or campfire and you get Bottled Water. One
   bottle per cook, with no other cost than fuel. This is the habit that keeps you alive.
 - Bottled Water also turns up in houses, shops and caches.
@@ -980,7 +981,9 @@ levels), so the city is walkable. This needs a world made with rc11 or later; ol
 
 The whole city (the districts, Montford, the suburbs and the wasteland, out to 2,600 blocks from Downtown) is the
 plains biome from just below the cellars up, so it never snows there, only rains, and Rain Collectors work
-everywhere in town. Caves underneath keep their own biomes. Inside the four districts vanilla doesn't decorate the
+everywhere in town. Caves underneath keep their own biomes. There are no rivers, oceans, ponds, lava lakes or
+springs in the city either: where vanilla would put water the ground is solid, so in town open water is only rain,
+fountains and pools in buildings and parks. Inside the four districts vanilla doesn't decorate the
 land either: no trees, mangroves, boulders, lakes, ice, snow or dripstone grow through the streets. The Ridge and
 the land past the wasteland stay wild. This needs a world made with Ashfall 1.4.0 or later (only newly generated
 chunks of an older world get it).

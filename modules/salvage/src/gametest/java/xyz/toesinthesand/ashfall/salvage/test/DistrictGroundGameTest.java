@@ -13,12 +13,15 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeResolver;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.Aquifer;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import xyz.toesinthesand.ashfall.salvage.city.DistrictGround;
 import xyz.toesinthesand.ashfall.salvage.city.ZoneMap;
+import xyz.toesinthesand.ashfall.salvage.mixin.NoiseBasedChunkGeneratorAccessor;
 
 /**
- * {@link DistrictGround}: plains above the cellars across the whole city, no surface decoration in a district, and
+ * {@link DistrictGround}: dry plains above the cellars across the whole city, no surface decoration in a district, and
  * nothing changed in the wilderness. The test overworld is not an Ashfall world, so the hook is pointed at the
  * {@code lc_city} test dimension's generator. It is given that dimension's own plains, so tests generating chunks there at the same time
  * see no change of biome, and a stand-in resolver plays the vanilla mangrove swamp.
@@ -58,10 +61,14 @@ public class DistrictGroundGameTest {
 				helper.assertTrue(outer.getNoiseBiome(0, caveQuart, 0) == swamp, zone + " caves lost their biome");
 				helper.assertTrue(DistrictGround.decorates(generator, c[0], c[1],
 						GenerationStep.Decoration.VEGETAL_DECORATION.ordinal()), zone + " lost its decoration");
+				for (GenerationStep.Decoration step : DistrictGround.CITY_BARE_STEPS) {
+					helper.assertFalse(DistrictGround.decorates(generator, c[0], c[1], step.ordinal()),
+							zone + " still gets " + step);
+				}
 			}
 
 			for (GenerationStep.Decoration step : GenerationStep.Decoration.values()) {
-				boolean bare = DistrictGround.BARE_STEPS.contains(step);
+				boolean bare = DistrictGround.BARE_STEPS.contains(step) || DistrictGround.CITY_BARE_STEPS.contains(step);
 				helper.assertTrue(DistrictGround.decorates(generator, 0, 0, step.ordinal()) != bare,
 						"district step " + step + (bare ? " still decorates" : " was skipped"));
 				helper.assertTrue(DistrictGround.decorates(generator, ridgeX, 0, step.ordinal()),
@@ -69,6 +76,15 @@ public class DistrictGroundGameTest {
 			}
 			helper.assertTrue(DistrictGround.decorates(generator, 0, 0, GenerationStep.Decoration.RAW_GENERATION.ordinal()),
 					"Lost Cities' own step was skipped");
+
+			// No water forms in the city above DRY_FROM_Y, through this generator's own fluid picker only.
+			Aquifer.FluidPicker fluids = ((NoiseBasedChunkGeneratorAccessor) (Object) generator).ashfall$globalFluidPicker().get();
+			helper.assertTrue(DistrictGround.keepsDry(fluids, 8, 60, 8), "Downtown can hold water");
+			helper.assertTrue(DistrictGround.keepsDry(fluids, 1000, 40, -1000), "the suburbs can hold water");
+			helper.assertFalse(DistrictGround.keepsDry(fluids, 8, DistrictGround.DRY_FROM_Y - 1, 8), "deep caves went dry");
+			helper.assertFalse(DistrictGround.keepsDry(fluids, 2300, 60, 0), "the Ridge went dry");
+			helper.assertFalse(DistrictGround.keepsDry((x, y, z) -> new Aquifer.FluidStatus(63, Blocks.WATER.defaultBlockState()),
+					8, 60, 8), "another generator's water went dry");
 
 			// Any other generator (the gametest overworld here) is left alone.
 			ChunkGenerator other = helper.getLevel().getChunkSource().getGenerator();
