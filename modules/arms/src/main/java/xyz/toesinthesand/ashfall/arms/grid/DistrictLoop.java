@@ -13,8 +13,8 @@ import java.util.Set;
  * <p>
  * Failing costs time, not the run: a destroyed core drops back to REPAIRED with its couplers and links kept,
  * and only the cells and the hold have to be redone. A siege nobody attended is postponed, not lost. A Breach
- * (a horde hitting a reclaimed core) that destroys the core breaks the district (BROKEN) until it is re-repaired at
- * half the coupler cost.
+ * (a horde hitting a reclaimed core) that destroys the core, or that nobody defended until dawn, breaks the district
+ * (BROKEN) until it is re-repaired at half the coupler cost.
  */
 public final class DistrictLoop {
 	/** What a player action did, for the message the player sees. */
@@ -34,7 +34,13 @@ public final class DistrictLoop {
 	}
 
 	/** How a siege tick ended. */
-	public enum SiegeOutcome { CONTINUE, WON, ABANDONED }
+	public enum SiegeOutcome {
+		CONTINUE, WON,
+		/** A siege nobody attended: postponed to a later night. */
+		ABANDONED,
+		/** A Breach nobody defended: the district breaks, as if the core had fallen. */
+		BREACH_LOST
+	}
 
 	private DistrictLoop() {
 	}
@@ -246,14 +252,7 @@ public final class DistrictLoop {
 			return false;
 		}
 		if (r.breach) {
-			r.state = DistrictState.BROKEN;
-			r.breach = false;
-			r.couplers = 0;
-			r.cells = 0;
-			r.holdTicks = 0;
-			r.siegeAt = DistrictRecord.UNSET;
-			r.warned = false;
-			r.wavesSpawned = 0;
+			loseBreach(r);
 			return true;
 		}
 		r.state = DistrictState.REPAIRED;
@@ -266,8 +265,49 @@ public final class DistrictLoop {
 	}
 
 	/**
+	 * A lost Breach: BROKEN, dark again, with no couplers socketed (re-repair takes {@link #reRepairCouplers});
+	 * links and the reward flag are kept. Shared by a destroyed core and a Breach nobody defended until dawn.
+	 */
+	public static void loseBreach(DistrictRecord r) {
+		r.state = DistrictState.BROKEN;
+		r.breach = false;
+		r.couplers = 0;
+		r.cells = 0;
+		r.holdTicks = 0;
+		r.siegeAt = DistrictRecord.UNSET;
+		r.warned = false;
+		r.wavesSpawned = 0;
+	}
+
+	/**
+	 * Attended ticks a dawn win needs: {@link LoopRules#minPresenceTicks}. A Breach started late in the night (an
+	 * admin command, or a restart) needs no more than the whole Breach lasts, so it can always still be held.
+	 */
+	static long presenceNeeded(DistrictRecord r, LoopRules rules, long clock) {
+		if (!r.breach || r.siegeAt == DistrictRecord.UNSET) {
+			return rules.minPresenceTicks();
+		}
+		long length = r.siegeTicks + Math.max(0, r.siegeAt + rules.nightTicks() - clock);
+		return Math.min(rules.minPresenceTicks(), length);
+	}
+
+	/**
+	 * Attended ticks still missing for a dawn win, for the bossbar countdown: 0 once players have held the core
+	 * long enough, after which only the core has to last until dawn.
+	 */
+	public static long defendTicksLeft(DistrictRecord r, LoopRules rules, long clock) {
+		return Math.max(0, presenceNeeded(r, rules, clock) - r.presenceTicks);
+	}
+
+	/** Ticks until this siege night's dawn, 0 when unknown or past. */
+	public static long ticksToDawn(DistrictRecord r, LoopRules rules, long clock) {
+		return r.siegeAt == DistrictRecord.UNSET ? 0 : Math.max(0, r.siegeAt + rules.nightTicks() - clock);
+	}
+
+	/**
 	 * The siege's result after this tick: won once every wave is spawned and dead, or at dawn if players held
-	 * the core long enough; at dawn without enough presence the siege is abandoned (postponed).
+	 * the core long enough. At dawn without enough presence a siege is abandoned (postponed), and a Breach is lost:
+	 * the district breaks, so a reclaimed district can't be kept by staying away from it.
 	 */
 	public static SiegeOutcome siegeOutcome(DistrictRecord r, LoopRules rules, long clock, int alive, int totalWaves) {
 		if (r.state != DistrictState.SIEGE) {
@@ -277,8 +317,10 @@ public final class DistrictLoop {
 			return SiegeOutcome.WON;
 		}
 		if (r.siegeAt != DistrictRecord.UNSET && clock >= r.siegeAt + rules.nightTicks()) {
-			// A Breach is held if the core is still standing at dawn, attended or not: the district was already won.
-			return r.breach || r.presenceTicks >= rules.minPresenceTicks() ? SiegeOutcome.WON : SiegeOutcome.ABANDONED;
+			if (r.presenceTicks >= presenceNeeded(r, rules, clock)) {
+				return SiegeOutcome.WON;
+			}
+			return r.breach ? SiegeOutcome.BREACH_LOST : SiegeOutcome.ABANDONED;
 		}
 		return SiegeOutcome.CONTINUE;
 	}
