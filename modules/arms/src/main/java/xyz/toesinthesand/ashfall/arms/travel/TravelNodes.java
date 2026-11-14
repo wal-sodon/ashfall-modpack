@@ -15,6 +15,8 @@ import xyz.toesinthesand.ashfall.director.haven.BunkerCores;
 import xyz.toesinthesand.ashfall.director.haven.Havens;
 import xyz.toesinthesand.ashfall.director.haven.SafeZone;
 import xyz.toesinthesand.ashfall.director.haven.SafeZones;
+import xyz.toesinthesand.ashfall.director.horde.HordeSchedule;
+import xyz.toesinthesand.ashfall.director.horde.HordeState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,6 +109,54 @@ public final class TravelNodes {
 			}
 		}
 		return Optional.empty();
+	}
+
+	/**
+	 * The substation a Defend trip goes to: the district under a Breach now, else the one tonight's Breach siren
+	 * named (before nightfall it is still reclaimed). {@code day} is the Breach's world day, so each player gets one
+	 * free trip per Breach.
+	 */
+	public record BreachTarget(String district, int day, Node node) {
+	}
+
+	/** The Breach a Defend trip can go to right now, if any. */
+	public static Optional<BreachTarget> breachTarget(MinecraftServer server) {
+		return breachTarget(server, "");
+	}
+
+	/**
+	 * {@link #breachTarget(MinecraftServer)} limited to district {@code only} ("" for any). Gametests pass their own
+	 * district, since tests in a batch run at once and another test's Breach must not be picked.
+	 */
+	public static Optional<BreachTarget> breachTarget(MinecraftServer server, String only) {
+		ServerLevel overworld = server.overworld();
+		GridState grid = GridState.get(server);
+		for (Map.Entry<String, DistrictRecord> e : grid.records().entrySet()) {
+			DistrictRecord r = e.getValue();
+			if (!only.isEmpty() && !only.equals(e.getKey())) {
+				continue;
+			}
+			if (r.breach && r.hasCore() && r.siegeAt != DistrictRecord.UNSET) {
+				return Optional.of(new BreachTarget(e.getKey(), HordeSchedule.day(r.siegeAt), districtNode(overworld, e.getKey(), r)));
+			}
+		}
+		HordeState state = HordeState.get(server);
+		int today = HordeSchedule.day(overworld.getOverworldClockTime());
+		String warned = state.breachTarget();
+		if ((only.isEmpty() || only.equals(warned)) && state.breachWarnedDay() == today && state.lastBreachDay() < today
+				&& !warned.isEmpty() && grid.isReclaimed(warned)) {
+			DistrictRecord r = grid.record(warned);
+			if (r != null && r.hasCore()) {
+				return Optional.of(new BreachTarget(warned, today, districtNode(overworld, warned, r)));
+			}
+		}
+		return Optional.empty();
+	}
+
+	private static Node districtNode(ServerLevel overworld, String id, DistrictRecord r) {
+		BlockPos core = BlockPos.of(r.corePos);
+		return new Node(DISTRICT_PREFIX + id, Component.translatable("message.ashfall.travel.node.district", GridDistricts.name(id)),
+				Level.OVERWORLD, core, BunkerCores.respawnSpot(overworld, core));
 	}
 
 	/** Blocks between two stops, or -1 across dimensions. */

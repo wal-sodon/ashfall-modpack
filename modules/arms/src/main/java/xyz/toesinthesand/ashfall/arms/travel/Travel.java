@@ -32,6 +32,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import team.reborn.energy.api.base.SimpleEnergyItem;
 import xyz.toesinthesand.ashfall.arms.grid.DistrictState;
+import xyz.toesinthesand.ashfall.arms.grid.GridDistricts;
 import xyz.toesinthesand.ashfall.arms.grid.GridState;
 import xyz.toesinthesand.ashfall.arms.item.CellPackItem;
 import xyz.toesinthesand.ashfall.director.haven.BunkerCoreBlock;
@@ -63,10 +64,12 @@ public final class Travel {
 	private static final double MAX_DRIFT_SQR = 1.5 * 1.5;
 
 	/** A trip in its warm-up; a removed player (died, left, changed dimension by other means) cancels it. */
-	private record Pending(ServerPlayer player, String nodeId, Vec3 start, long departAt) {
+	private record Pending(ServerPlayer player, String nodeId, Vec3 start, long departAt, boolean defend) {
 	}
 
 	private static final Map<UUID, Pending> PENDING = new HashMap<>();
+	/** The Breach day each player last took their free Defend trip on (one trip per player per Breach). */
+	private static final Map<UUID, Integer> DEFEND_USED = new HashMap<>();
 
 	private Travel() {
 	}
@@ -82,7 +85,10 @@ public final class Travel {
 			}
 		});
 		ServerPlayConnectionEvents.DISCONNECT.register((handler, s) -> PENDING.remove(handler.player.getUUID()));
-		ServerLifecycleEvents.SERVER_STOPPED.register(s -> PENDING.clear());
+		ServerLifecycleEvents.SERVER_STOPPED.register(s -> {
+			PENDING.clear();
+			DEFEND_USED.clear();
+		});
 	}
 
 	private static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
@@ -91,6 +97,11 @@ public final class Travel {
 					offer(c.getSource().getPlayerOrException());
 					return 1;
 				})
+				.then(Commands.literal("defend").executes(c -> {
+					Optional<Component> problem = requestDefend(c.getSource().getPlayerOrException());
+					problem.ifPresent(c.getSource()::sendFailure);
+					return problem.isPresent() ? 0 : 1;
+				}))
 				.then(Commands.argument("stop", StringArgumentType.string()).executes(Travel::start))));
 	}
 
@@ -151,7 +162,7 @@ public final class Travel {
 		}
 		TravelRules rules = TravelRules.get();
 		MinecraftServer server = player.level().getServer();
-		PENDING.put(player.getUUID(), new Pending(player, id, player.position(), server.getTickCount() + rules.warmupTicks()));
+		PENDING.put(player.getUUID(), new Pending(player, id, player.position(), server.getTickCount() + rules.warmupTicks(), false));
 		player.sendSystemMessage(Component.translatable("message.ashfall.travel.warmup",
 				Math.max(1, Math.round(rules.warmupTicks() / 20f))).withStyle(ChatFormatting.AQUA));
 		player.level().playSound(null, player.blockPosition(), SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, 0.6f, 1.4f);
@@ -159,6 +170,100 @@ public final class Travel {
 			tick(server);
 		}
 		return Optional.empty();
+	}
+
+	/**
+	 * Starts the warm-up for the free Defend trip to the substation under a Breach (or named by tonight's Breach
+	 * siren). Unlike a normal trip it works from anywhere, on any night, while hunted, and costs nothing, but each
+	 * player gets one per Breach. Staying away from a Breach loses the district, so the trip makes sure a player far
+	 * from it still has a fair chance to defend it.
+	 */
+	public static Optional<Component> requestDefend(ServerPlayer player) {
+		return requestDefend(player, "");
+	}
+
+	/** {@link #requestDefend(ServerPlayer)} to district {@code only} ("" for whichever is breached). For gametests. */
+	public static Optional<Component> requestDefend(ServerPlayer player, String only) {
+		Optional<Component> problem = checkDefend(player, only);
+		if (problem.isPresent()) {
+			return problem;
+		}
+		TravelRules rules = TravelRules.get();
+		MinecraftServer server = player.level().getServer();
+		PENDING.put(player.getUUID(), new Pending(player, only, player.position(), server.getTickCount() + rules.warmupTicks(), true));
+		player.sendSystemMessage(Component.translatable("message.ashfall.travel.warmup",
+				Math.max(1, Math.round(rules.warmupTicks() / 20f))).withStyle(ChatFormatting.AQUA));
+		player.level().playSound(null, player.blockPosition(), SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, 0.6f, 1.4f);
+		if (rules.warmupTicks() == 0) {
+			tick(server);
+		}
+		return Optional.empty();
+	}
+
+	private static Optional<Component> checkDefend(ServerPlayer player, String only) {
+		Optional<TravelNodes.BreachTarget> target = TravelNodes.breachTarget(player.level().getServer(), only);
+		if (target.isEmpty()) {
+			return Optional.of(Component.translatable("message.ashfall.travel.defend.none"));
+		}
+		Integer used = DEFEND_USED.get(player.getUUID());
+		if (used != null && used == target.get().day()) {
+			return Optional.of(Component.translatable("message.ashfall.travel.defend.used"));
+		}
+		int radius = GridDistricts.settings(target.get().district()).presenceRadius();
+		if (player.level().dimension().equals(target.get().node().dimension())
+				&& target.get().node().anchor().distSqr(player.blockPosition()) <= (double) radius * radius) {
+			return Optional.of(Component.translatable("message.ashfall.travel.already_here"));
+		}
+		return Optional.empty();
+	}
+
+	/** The Defend warm-up is over: check again, then go, free. */
+	private static void departDefend(ServerPlayer player, String only) {
+		Optional<Component> problem = checkDefend(player, only);
+		if (problem.isPresent()) {
+			player.sendSystemMessage(problem.get().copy().withStyle(ChatFormatting.RED));
+			return;
+		}
+		MinecraftServer server = player.level().getServer();
+		TravelNodes.BreachTarget target = TravelNodes.breachTarget(server, only).orElseThrow();
+		ServerLevel level = server.getLevel(target.node().dimension());
+		if (level == null) {
+			return;
+		}
+		DEFEND_USED.put(player.getUUID(), target.day());
+		player.level().playSound(null, player.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 0.6f, 1.2f);
+		BlockPos pos = target.node().arrive();
+		teleport(player, level, pos);
+		level.playSound(null, pos, SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 0.6f, 1.2f);
+		RespawnChoice.protect(player, TravelRules.get().arrivalProtectionTicks());
+		player.sendSystemMessage(Component.translatable("message.ashfall.travel.defend.arrived", target.node().name())
+				.withStyle(ChatFormatting.AQUA));
+	}
+
+	/**
+	 * The clickable Defend offer, sent to every player after a Breach siren: one line with a [Defend] button that
+	 * runs {@code /ashfall travel defend}. Players who already used their trip, or are already at the core, get
+	 * nothing.
+	 */
+	public static void offerDefend(MinecraftServer server) {
+		Optional<TravelNodes.BreachTarget> target = TravelNodes.breachTarget(server);
+		if (target.isEmpty()) {
+			return;
+		}
+		Component name = target.get().node().name();
+		for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+			if (player.isSpectator() || checkDefend(player, "").isPresent()) {
+				continue;
+			}
+			player.sendSystemMessage(Component.translatable("message.ashfall.travel.defend.offer", name)
+					.withStyle(ChatFormatting.GOLD)
+					.append(" ")
+					.append(Component.translatable("message.ashfall.travel.defend.button")
+							.withStyle(Style.EMPTY.withColor(ChatFormatting.GREEN).withUnderlined(true)
+									.withClickEvent(new ClickEvent.RunCommand("/ashfall travel defend"))
+									.withHoverEvent(new HoverEvent.ShowText(
+											Component.translatable("message.ashfall.travel.defend.hover", name))))));
+		}
 	}
 
 	/** Why {@code player} cannot travel to stop {@code id} right now, or empty when they can. */
@@ -217,7 +322,11 @@ public final class Travel {
 			}
 			if (now >= pending.departAt) {
 				PENDING.remove(id);
-				depart(player, pending.nodeId);
+				if (pending.defend) {
+					departDefend(player, pending.nodeId);
+				} else {
+					depart(player, pending.nodeId);
+				}
 			}
 		}
 	}

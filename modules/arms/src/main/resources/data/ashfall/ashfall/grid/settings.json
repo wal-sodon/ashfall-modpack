@@ -15,7 +15,7 @@
 		"radius_max": 40
 	},
 	"core": {
-		"hp": 1600,
+		"hp": 1040,
 		"attack_radius": 6.5,
 		"attack_height": 3,
 		"damage_per_zombie_second": 1,

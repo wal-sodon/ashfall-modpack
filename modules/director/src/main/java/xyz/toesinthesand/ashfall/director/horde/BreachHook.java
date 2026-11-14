@@ -39,6 +39,13 @@ public interface BreachHook {
 	/** Display name for the siren and chat. */
 	Component name(String id);
 
+	/**
+	 * Called after each Breach siren (the warning before nightfall, and the attack itself) so the grid can offer
+	 * players a way to the substation. Does nothing by default.
+	 */
+	default void announce(MinecraftServer server, String id) {
+	}
+
 	/** Starts a Breach at {@code id} now. @return false if it could not start (no longer a valid target) */
 	boolean begin(ServerLevel level, String id);
 
