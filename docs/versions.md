@@ -15,6 +15,7 @@ release is tagged `vX.Y.Z` on `wal-sodon/ashfall-modpack` and gets a GitHub rele
 
 | Version | Class | What changed |
 |---|---|---|
+| 1.5.0 | minor | Make Breaches need defending, add a free Defend trip and a siege win countdown (with 35% lower core health) (#19) |
 | 1.4.0 | minor | Less repetitive city: district looks, interiors and no vanilla clutter (#16) |
 | 1.3.0 | minor | Add Survivor Skills and classes: spend XP on permanent buffs (#14) |
 | 1.2.1 | patch | Add /ashfall radio: a free Field Radio once every three in-game days (#13) |
